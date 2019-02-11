@@ -177,9 +177,16 @@ mode "resize"
 bindsym $mod+r mode "resize"
 
 # Volume
-bindsym XF86AudioRaiseVolume exec /home/pdmurray/.config/volumescripts/volume_change.sh +5%
-bindsym XF86AudioLowerVolume exec /home/pdmurray/.config/volumescripts/volume_change.sh -5%
-bindsym XF86AudioMute exec "/home/pdmurray/.config/volumescripts/mute.sh"
+#bindsym XF86AudioRaiseVolume exec /home/pdmurray/.config/volumescripts/volume_change.sh +5%
+#bindsym XF86AudioLowerVolume exec /home/pdmurray/.config/volumescripts/volume_change.sh -5%
+#bindsym XF86AudioMute exec "/home/pdmurray/.config/volumescripts/mute.sh"
+
+bindsym $mod+F11 exec /home/pdmurray/.config/volumescripts/volume_change.sh +5%
+bindsym $mod+F10 exec /home/pdmurray/.config/volumescripts/volume_change.sh -5%
+bindsym $mod+F9 exec "/home/pdmurray/.config/volumescripts/mute.sh"
+
+
+
 
 # borders
 for_window [class="^.*"] border pixel 0
