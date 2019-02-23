@@ -46,7 +46,7 @@ Xft.lcdfilter:                  lcdlight
 Xft.rgba:                       rgb
 
 !urxvt.font:						xft:DejaVuSansMono Nerd Font
-urxvt.font:						xft:FuraCode Nerd Font Mono:style=Regular
+urxvt.font:						xft:FuraCode Nerd Font Mono:style=Regular:size=9
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       true
 URxvt*cursorBlink:                true
