@@ -6,14 +6,14 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto --group-directories-first'
-PS1='[\u@\h \W]\$ '
+PS1='\e[0;31m[\u@\h \W]\$ \e[m'
 
 alias ll='ls -laH'
 alias python='/home/pdmurray/python36/bin/python3.6'
 alias pip='/home/pdmurray/python36/bin/pip3'
 
 export PATH=/home/pdmurray/python36/bin:$PATH
-export PATH=/home/pdmurray/.gem/ruby/2.5.0/bin:$PATH
+export PATH=/home/pdmurray/.gem/ruby/2.6.0/bin:$PATH
 export PATH=/home/pdmurray/go/bin:$PATH
 export PATH=/home/pdmurray/.local/bin:$PATH
 
