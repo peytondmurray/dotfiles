@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto --group-directories-first'
-PS1='[\u@\h \W]\$ '
+PS1="[\u@\h \W]\$ "
 
 alias ll='ls -lah'
 alias python='/home/pdmurray/python37/bin/python3.7'
