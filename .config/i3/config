@@ -188,6 +188,14 @@ bindsym $mod+F9 exec "/home/pdmurray/.config/volumescripts/mute.sh"
 
 
 
+bindsym $mod+F8 exec /home/pdmurray/.config/volumescripts/volume_change.sh +5%
+bindsym $mod+F7 exec /home/pdmurray/.config/volumescripts/volume_change.sh -5%
+bindsym $mod+F6 exec "/home/pdmurray/.config/volumescripts/mute.sh"
+
+
+# Flameshot
+bindsym Print exec "flameshot gui"
+
 # borders
 for_window [class="^.*"] border pixel 0
 hide_edge_borders both
