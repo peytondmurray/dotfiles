@@ -37,6 +37,8 @@
 *.color7:       #d0c8c6
 *.color15:      #f5eeeb
 
+*.font:			FuraCode Nerd Font Mono:style=Regular:size=9
+
 Xft.dpi:                        96
 Xft.antialias:                  1
 Xft.autohint:                   1
