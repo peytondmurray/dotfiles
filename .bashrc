@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto --group-directories-first'
-PS1='\[\e[0;31m\][\u@\h \W]\$\[\e[m\] '
+PS1="[\u@\h \W]\$ "
 
 alias ll='ls -lah'
 alias python='/home/pdmurray/python37/bin/python3.7'
@@ -29,5 +29,5 @@ export PYTHONPATH=/home/pdmurray/Workspace/fidimag:$PYTHONPATH
 export OMP_NUM_THREADS=4
 export LAMMPS_POTENTIALS=/home/pdmurray/Workspace/lammps/potentials
 export FONTCONFIG_PATH=/etc/fonts
-
 export TERM=xterm
+export PS1="\[\e[0;34m\]$PS1\[\e[m\]"
