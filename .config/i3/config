@@ -30,7 +30,7 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec st
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -73,7 +73,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-#bindsym $mod+f fullscreen toggle
+bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+s layout stacking
@@ -154,7 +154,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 mode "resize" 
 {
 	# distance variable bindings
-	set $distance 10
+	set $distance 5
 
 	# resize bindings
         bindsym Left resize shrink width $distance px or $distance ppt
@@ -185,9 +185,6 @@ bindsym $mod+F11 exec /home/pdmurray/.config/volumescripts/volume_change.sh +5%
 bindsym $mod+F10 exec /home/pdmurray/.config/volumescripts/volume_change.sh -5%
 bindsym $mod+F9 exec "/home/pdmurray/.config/volumescripts/mute.sh"
 
-
-
-
 bindsym $mod+F8 exec /home/pdmurray/.config/volumescripts/volume_change.sh +5%
 bindsym $mod+F7 exec /home/pdmurray/.config/volumescripts/volume_change.sh -5%
 bindsym $mod+F6 exec "/home/pdmurray/.config/volumescripts/mute.sh"
@@ -216,4 +213,4 @@ exec --no-startup-id feh --bg-fill ~/.config/wallpapers/*
 exec_always --no-startup-id ~/.config/compton_launch.sh
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id ~/.config/launch_pia_slowly.sh
-exec --no-startup-id setxkbmap -layout us -variant altgr-intl
+exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl
