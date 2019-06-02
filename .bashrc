@@ -17,6 +17,7 @@ export PATH=/home/pdmurray/python37/bin:$PATH
 export PATH=/home/pdmurray/.gem/ruby/2.6.0/bin:$PATH
 export PATH=/home/pdmurray/go/bin:$PATH
 export PATH=/home/pdmurray/.local/bin:$PATH
+export PATH=/home/pdmurray/Desktop/Workspace/oommf:$PATH
 
 export LD_LIBRARY_PATH=/home/pdmurray/python37/lib:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/home/pdmurray/Workspace/fidimag/local/lib:$LD_LIBRARY_PATH
@@ -24,8 +25,8 @@ export LD_LIBRARY_PATH=/home/pdmurray/Workspace/fidimag/local/lib:$LD_LIBRARY_PA
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export VISUAL=micro
 export EDITOR=micro
-export PYTHONPATH=/home/pdmurray/Workspace/fidimag:$PYTHONPATH
-
+export PYTHONPATH=/home/pdmurray/Desktop/Workspace/fidimag:$PYTHONPATH
+export OOMMFTCL=/home/pdmurray/Desktop/Workspace/oommf/oommf.tcl
 export OMP_NUM_THREADS=4
 export LAMMPS_POTENTIALS=/home/pdmurray/Workspace/lammps/potentials
 export FONTCONFIG_PATH=/etc/fonts
