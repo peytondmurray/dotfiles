@@ -57,10 +57,11 @@ font-0 = DejaVu\ Sans\ Mono:style=Book:size=10;0
 ;font-1 = Wuncon\ Siji:pixelsize=10;0
 ;font-1 = Font\ Awesome\ 5\ Free:style=Regular:size=10;0
 font-1 = RobotoMono\ Nerd\ Font:size=14;1
+font-2 = DejaVu\ Sans\ Mono:style=Book:size=14;0
 
 modules-left = i3
 modules-center =
-modules-right = pulseaudio xkeyboard system-nvidia-smi memory cpu eth temperature date
+modules-right = pulseaudio xkeyboard system-nvidia-smi memory cpu eth upspeed downspeed temperature date
 
 tray-position = right
 tray-padding = 2
@@ -301,6 +302,26 @@ format-disconnected =
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/upspeed]
+
+type = internal/network
+interface = enp4s0
+interval = 3.0
+;format-connected-underline = #55aa55
+format-connected-prefix = "⇑ "
+label-connected = %upspeed:2%
+label-connected-font = 1
+
+[module/downspeed]
+
+type = internal/network
+interface = enp4s0
+interval = 3.0
+;format-connected-underline = #55aa55
+format-connected-prefix = "⇓ "
+label-connected = %downspeed:2%
+label-connected-font = 1
 
 [module/date]
 type = internal/date

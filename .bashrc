@@ -12,6 +12,7 @@ alias ll='ls -lah'
 alias python='/home/pdmurray/python37/bin/python3.7'
 alias pip='/home/pdmurray/python37/bin/pip3'
 alias du='du -h'
+alias sudo='sudo '
 
 export PATH=/home/pdmurray/python37/bin:$PATH
 export PATH=/home/pdmurray/.gem/ruby/2.6.0/bin:$PATH
@@ -31,4 +32,4 @@ export OMP_NUM_THREADS=4
 export LAMMPS_POTENTIALS=/home/pdmurray/Workspace/lammps/potentials
 export FONTCONFIG_PATH=/etc/fonts
 export TERM=xterm
-export PS1="\[\e[0;34m\]$PS1\[\e[m\]"
+export PS1="\[\e[0;36m\]$PS1\[\e[m\]"

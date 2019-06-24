@@ -30,7 +30,7 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec st
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -136,8 +136,8 @@ set_from_resource $bg2 i3wm.color0  #f0f0f0
 set_from_resource $fg2 i3wm.color7  #f0f0f0
 
 # Class                 border  backgr. text indicator child_border
-client.focused          $bg      $bg    $fg  $bg   $bg
-client.focused_inactive $bg      $bg    $fg  $bg   $bg
+client.focused          $fg      $bg    $fg  $fg2  $bg
+client.focused_inactive $bg2     $bg2   $fg  $bg2  $bg2
 client.unfocused        $bg2     $bg2   $fg  $bg2  $bg2
 client.urgent           $bg      $bg    $fg  $bg   $bg
 client.placeholder      $bg      $bg    $fg  $bg   $bg
@@ -167,9 +167,9 @@ mode "resize"
         bindsym s move down $distance px
         bindsym w move up $distance px
         bindsym d move right $distance px
-	bindsym x move absolute position center
+		bindsym x move absolute position center
 
-        # back to normal: Enter or Escape
+    # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -194,12 +194,12 @@ bindsym $mod+F6 exec "/home/pdmurray/.config/volumescripts/mute.sh"
 bindsym Print exec "flameshot gui"
 
 # borders
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 2
 hide_edge_borders both
-new_window pixel 0
+new_window pixel 1
 
 # gaps
-gaps inner 50
+gaps inner 20
 gaps outer 0
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -209,8 +209,8 @@ gaps outer 0
 #}
 
 exec --no-startup-id udiskie
-exec --no-startup-id feh --bg-fill ~/.config/wallpapers/*
+exec --no-startup-id ~/.config/launch_pia_slowly.sh
+exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/4K-Leaves-Plant-Dark-Wallpaper-3840x2160.jpg
 exec_always --no-startup-id ~/.config/compton_launch.sh
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec_always --no-startup-id ~/.config/launch_pia_slowly.sh
 exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl
