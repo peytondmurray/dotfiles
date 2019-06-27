@@ -56,7 +56,9 @@ URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       true
 URxvt*cursorBlink:                true
 URxvt*saveLines:                  2000
-URxvt.perl-ext:
+URxvt.iso14755:					  false
+URxvt.iso14755_52:	    		  false
+URxvt.perl-ext:					  unichr
 URxvt.perl-ext-common:
 URxvt.letterSpace: -1
 URxvt.depth: 32
