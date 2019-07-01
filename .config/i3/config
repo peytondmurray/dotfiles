@@ -193,6 +193,9 @@ bindsym $mod+F6 exec "/home/pdmurray/.config/volumescripts/mute.sh"
 # Flameshot
 bindsym Print exec "flameshot gui"
 
+# Brightness toggle
+bindsym Pause exec ~/.config/brightness_toggle.sh
+
 # borders
 for_window [class="^.*"] border pixel 2
 hide_edge_borders both
