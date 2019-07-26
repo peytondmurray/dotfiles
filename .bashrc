@@ -23,6 +23,7 @@ export PATH=/home/pdmurray/Desktop/Workspace/oommf:$PATH
 export LD_LIBRARY_PATH=/home/pdmurray/python37/lib:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/home/pdmurray/Workspace/fidimag/local/lib:$LD_LIBRARY_PATH
 
+#export TEXINPUTS=.:$HOME/.latex//
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export VISUAL=micro
 export EDITOR=micro

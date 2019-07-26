@@ -37,7 +37,8 @@
 *.color7:       #e0f2ec
 *.color15: 		#f0f8f3
 
-*.font:			FuraCode Nerd Font Mono:style=Regular:size=9
+!*.font:			FuraCode Nerd Font Mono:style=Regular:size=9
+*.font:			"DejaVu Sans Mono Nerd Font Complete":style=Regular:size=9
 
 i3wm.background:				#515356
 i3wm.foreground: 				#a7aeba
