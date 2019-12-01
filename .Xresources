@@ -43,7 +43,7 @@
 i3wm.background:				#515356
 i3wm.foreground: 				#a7aeba
 
-Xft.dpi:                        96
+Xft.dpi:                        90
 Xft.antialias:                  1
 Xft.autohint:                   1
 Xft.hinting:                    1

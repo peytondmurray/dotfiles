@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Import colors from wal
+${HOME}/.cache/wal/colors.sh
+
 alias ll='ls -lashv --group-directories-first --sort=extension --color=auto'
 alias python='/home/pdmurray/python38/bin/python3'
 alias pip='/home/pdmurray/python38/bin/pip3'
@@ -14,6 +17,7 @@ alias sudo='sudo '
 alias yay='yay --color=auto'
 alias pacman='pacman --color=auto'
 alias grep='grep --color=auto'
+alias dmen='demnu_run -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15"'
 
 export PATH=/home/pdmurray/python38/bin:$PATH
 export PATH=/home/pdmurray/.gem/ruby/2.6.0/bin:$PATH

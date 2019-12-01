@@ -1,2 +1,10 @@
-set completion-ignore-case On
+set completion-ignore-case on
+set completion-map-case on
+set bell-style none
 "\C-H":"\C-W"
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e\e[C": forward-word
+"\e\e[D": backward-word
