@@ -130,17 +130,16 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws0
 
 # Set colors from Xresources
-set_from_resource $bg  i3wm.background #f0f0f0
-set_from_resource $fg  i3wm.foreground #f0f0f0
-set_from_resource $bg2 i3wm.color0  #f0f0f0
-set_from_resource $fg2 i3wm.color7  #f0f0f0
+set_from_resource $fg   i3wm.color1 #ffffff
+set_from_resource $wht1 i3wm.color7
+set_from_resource $bg   i3wm.background #000000
 
 # Class                     border  backgr. text    indicator   child_border
-client.focused              $fg     $bg     $fg     $fg2        $bg
-client.focused_inactpive    $bg2    $bg2    $fg     $bg2        $bg2
-client.unfocused            $bg2    $bg2    $fg     $bg2        $bg2
-client.urgent               $bg     $bg     $fg     $bg         $bg
-client.placeholder          $bg     $bg     $fg     $bg         $bg
+client.focused              $fg     $fg     $fg     $wht1         $fg
+client.focused_inactive     $bg     $bg     $bg     $bg         $bg
+client.unfocused            $bg     $bg     $bg     $bg         $bg
+client.urgent               $red    $bg     $bg     $bg         $bg
+client.placeholder          $bg     $bg     $bg     $bg         $bg
 client.background           $bg
 
 # reload the configuration file
