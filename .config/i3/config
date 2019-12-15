@@ -103,7 +103,7 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws0 "0"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -115,7 +115,7 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+0 workspace $ws0
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -127,7 +127,7 @@ bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+0 move container to workspace $ws0
 
 # Set colors from Xresources
 set_from_resource $bg  i3wm.background #f0f0f0
@@ -135,13 +135,13 @@ set_from_resource $fg  i3wm.foreground #f0f0f0
 set_from_resource $bg2 i3wm.color0  #f0f0f0
 set_from_resource $fg2 i3wm.color7  #f0f0f0
 
-# Class                 border  backgr. text indicator child_border
-client.focused          $fg      $bg    $fg  $fg2  $bg
-client.focused_inactpive $bg2     $bg2   $fg  $bg2  $bg2
-client.unfocused        $bg2     $bg2   $fg  $bg2  $bg2
-client.urgent           $bg      $bg    $fg  $bg   $bg
-client.placeholder      $bg      $bg    $fg  $bg   $bg
-client.background       $bg
+# Class                     border  backgr. text    indicator   child_border
+client.focused              $fg     $bg     $fg     $fg2        $bg
+client.focused_inactpive    $bg2    $bg2    $fg     $bg2        $bg2
+client.unfocused            $bg2    $bg2    $fg     $bg2        $bg2
+client.urgent               $bg     $bg     $fg     $bg         $bg
+client.placeholder          $bg     $bg     $fg     $bg         $bg
+client.background           $bg
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -150,8 +150,14 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+mode "sleep"
+{
+	bindsym Return mode "default"; exec systemctl suspend
+	bindsym Escape mode "default"
+}
+
 # resize window (you can also use the mouse for that)
-mode "resize" 
+mode "resize"
 {
 	# distance variable bindings
 	set $distance 5
@@ -212,6 +218,7 @@ mode "$mode_gaps_outer" {
 
 bindsym $mod+r mode "resize"
 bindsym $mod+Ctrl+r mode "$mode_gaps"
+bindsym $mod+BackSpace mode "sleep"
 
 # Volume
 #bindsym XF86AudioRaiseVolume exec /home/pdmurray/.config/volumescripts/volume_change.sh +5%

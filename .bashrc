@@ -11,6 +11,8 @@ ${HOME}/.cache/wal/colors.sh
 alias ll='ls -lAshvX --group-directories-first --color=auto'
 alias python='/home/pdmurray/python38/bin/python3'
 alias pip='/home/pdmurray/python38/bin/pip3'
+alias python37='/home/pdmurray/python37/bin/python3'
+alias pip37='/home/pdmurray/python37/bin/pip3'
 alias du='du -h'
 alias df='df -h'
 alias sudo='sudo '
@@ -19,6 +21,7 @@ alias pacman='pacman --color=auto'
 alias grep='grep --color=auto'
 alias dmen='demnu_run -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15"'
 
+export PATH=/home/pdmurray/python37/bin:$PATH
 export PATH=/home/pdmurray/python38/bin:$PATH
 export PATH=/home/pdmurray/.gem/ruby/2.6.0/bin:$PATH
 export PATH=/home/pdmurray/go/bin:$PATH
