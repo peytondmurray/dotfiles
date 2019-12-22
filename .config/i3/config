@@ -254,5 +254,4 @@ bar {
 }
 
 exec --no-startup-id udiskie
-exec --no-startup-id ~/.config/launch_pia_slowly.sh
 exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl

@@ -20,6 +20,7 @@ alias yay='yay --color=auto'
 alias pacman='pacman --color=auto'
 alias grep='grep --color=auto'
 alias dmen='demnu_run -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15"'
+alias vectivate='source vectivate'
 
 export PATH=/home/pdmurray/python37/bin:$PATH
 export PATH=/home/pdmurray/python38/bin:$PATH
@@ -78,6 +79,9 @@ bakpur="\[\e[45m\]"  # Purple
 bakcyn="\[\e[46m\]"  # Cyan
 bakwht="\[\e[47m\]"  # White
 
+# Others
+bakylwtxtblk="\[\e[30;43m\]"
+
 # Reset
 # txtrst="$(tput sgr 0 2>/dev/null || echo '\e[0m')"  # Text Reset
 txtrst="\[\e[0m\]"
@@ -125,8 +129,13 @@ generate_git_ps1() {
 	fi
 }
 
-set_ps1() {
-	export PS1="[\u@\h ${bldwht}\w${txtrst}]$(generate_git_ps1)$ "
+get_venv() {
+	echo "${bakylwtxtblk}$(echo ${VIRTUAL_ENV} | awk -F'/' '{print $NF}')${txtrst}"
 }
+
+set_ps1() {
+	export PS1="[\u@\h ${bldwht}\w${txtrst}]$(get_venv)$(generate_git_ps1)$ "
+}
+
 
 PROMPT_COMMAND=set_ps1
