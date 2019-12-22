@@ -8,11 +8,9 @@
 # Import colors from wal
 ${HOME}/.cache/wal/colors.sh
 
+python () { /home/pdmurray/python38/bin/python3 $@; }
+pip () { /home/pdmurray/python38/bin/pip3 $@; }
 alias ll='ls -lAshvX --group-directories-first --color=auto'
-alias python='/home/pdmurray/python38/bin/python3'
-alias pip='/home/pdmurray/python38/bin/pip3'
-alias python37='/home/pdmurray/python37/bin/python3'
-alias pip37='/home/pdmurray/python37/bin/pip3'
 alias du='du -h'
 alias df='df -h'
 alias sudo='sudo '
