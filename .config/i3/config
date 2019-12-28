@@ -255,3 +255,4 @@ bar {
 
 exec --no-startup-id udiskie
 exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl
+exec_always --no-startup-id feh --bg-fill /home/pdmurray/.config/wallpapers/astronaut.jpg
