@@ -1,5 +1,3 @@
-!! *.font: xft:mono:medium:size=10
-
 ! special
 *.foreground:   #e0f2ec
 *.background:   #0c0201
