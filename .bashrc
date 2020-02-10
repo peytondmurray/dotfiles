@@ -79,6 +79,7 @@ bakwht="\[\e[47m\]"  # White
 
 # Others
 bakylwtxtblk="\[\e[30;43m\]"
+bakblktxtylw="\[\e[33;40m\]"
 
 # Reset
 # txtrst="$(tput sgr 0 2>/dev/null || echo '\e[0m')"  # Text Reset
@@ -128,7 +129,7 @@ generate_git_ps1() {
 }
 
 get_venv() {
-	echo "${bakylwtxtblk}$(echo ${VIRTUAL_ENV} | awk -F'/' '{print $NF}')${txtrst}"
+	echo "${bakblktxtylw}$(echo ${VIRTUAL_ENV} | awk -F'/' '{print $NF}')${txtrst}"
 }
 
 set_ps1() {
