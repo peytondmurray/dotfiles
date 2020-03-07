@@ -19,7 +19,7 @@ color-link line-number "foreground,background"
 color-link current-line-number "foreground"
 color-link gutter-error "brightyellow"
 color-link gutter-warning "yellow"
-color-link cursor-line "black"
+color-link cursor-line "#000000"
 color-link color-column "white"
 #No extended types; Plain brackets.
 color-link type.extended "default"

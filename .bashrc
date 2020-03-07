@@ -33,7 +33,7 @@ export VISUAL=micro
 export EDITOR=micro
 export FONTCONFIG_PATH=/etc/fonts
 export TERM=xterm
-
+export MICRO_TRUECOLOR=1
 
 ### Colors ###
 
@@ -136,5 +136,14 @@ set_ps1() {
 	export PS1="[\u@\h ${bldwht}\w${txtrst}]$(get_venv)$(generate_git_ps1)$ "
 }
 
-
 PROMPT_COMMAND=set_ps1
+
+git() {
+	if [[ "$?" == 1 && "$1" == "log" && "$(git rev-parse --abbrev-ref HEAD)" != "master" ]]; then
+		command git log master.. -n 20 --pretty="%C(Yellow)%h %C(reset)%ad %C(Green)%<(12,trunc) %cr %C(reset) %<(20,trunc)%C(Cyan)%an %C(reset)%s" --date=short --no-merges
+	elif [[ "$1" == "log" && "$(git rev-parse --abbrev-ref HEAD)" == "master" ]]; then
+		command git log -n 20 --pretty="%C(Yellow)%h %C(reset)%ad %C(Green)%<(12,trunc) %cr %C(reset) %<(20,trunc)%C(Cyan)%an %C(reset)%s" --date=short --no-merges
+	else
+		command git $@
+	fi
+}
