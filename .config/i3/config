@@ -103,7 +103,7 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws0 "0"
+set $ws0 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -133,6 +133,7 @@ bindsym $mod+Shift+0 move container to workspace $ws0
 set_from_resource $fg   i3wm.color1 #ffffff
 set_from_resource $wht1 i3wm.color7
 set_from_resource $bg   i3wm.background #000000
+set_from_resource $ylw  i3wm.color3
 
 # Class                     border  backgr. text    indicator   child_border
 client.focused              $fg     $fg     $fg     $wht1         $fg
@@ -253,7 +254,8 @@ bar {
         status_command i3status
 }
 
+exec --no-startup-id picom
 exec --no-startup-id udiskie
 exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl
 exec_always --no-startup-id feh --bg-fill /home/pdmurray/.config/wallpapers/astronaut.jpg
-exec_always --no-startup-id volumeicon
+exec_always --no-startup-id pasystray

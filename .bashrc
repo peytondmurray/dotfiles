@@ -10,14 +10,15 @@ ${HOME}/.cache/wal/colors.sh
 
 python () { /home/pdmurray/python38/bin/python3 $@; }
 pip () { /home/pdmurray/python38/bin/pip3 $@; }
-alias ll='ls -lAshvX --group-directories-first --color=auto'
+alias exa='exa -la --group-directories-first'
+alias ll='exa'
 alias du='du -h'
 alias df='df -h'
 alias sudo='sudo '
 alias yay='yay --color=auto'
 alias pacman='pacman --color=auto'
 alias grep='grep --color=auto'
-alias dmen='demnu_run -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15"'
+alias dmenu='demnu_run -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15"'
 alias vectivate='source vectivate'
 
 export PATH=/home/pdmurray/python37/bin:$PATH
