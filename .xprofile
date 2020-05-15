@@ -35,3 +35,4 @@ fi
 /home/pdmurray/.screenlayout/4k_onescreen.sh
 xbindkeys
 wal -R
+xset dpms 7200 7200 7200

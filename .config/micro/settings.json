@@ -11,7 +11,7 @@
     "eofnewline": true,
     "fastdirty": true,
     "fileformat": "unix",
-    "filetype": "unknown",
+    "filetype": "shell",
     "ftoptions": true,
     "ignorecase": false,
     "indentchar": " ",
