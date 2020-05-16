@@ -28,6 +28,7 @@ export PATH=/home/pdmurray/go/bin:$PATH
 export PATH=/home/pdmurray/.local/bin:$PATH
 export PATH=/home/pdmurray/bin:$PATH
 export PATH=/home/pdmurray/.cargo/bin:$PATH
+export PATH=/home/pdmurray/v:$PATH
 
 export LD_LIBRARY_PATH=/home/pdmurray/python38/lib:$LD_LIBRARY_PATH
 
