@@ -28,7 +28,6 @@ export PATH=/home/pdmurray/go/bin:$PATH
 export PATH=/home/pdmurray/.local/bin:$PATH
 export PATH=/home/pdmurray/bin:$PATH
 export PATH=/home/pdmurray/.cargo/bin:$PATH
-export PATH=/home/pdmurray/v:$PATH
 
 export LD_LIBRARY_PATH=/home/pdmurray/python38/lib:$LD_LIBRARY_PATH
 
@@ -91,7 +90,7 @@ txtrst="\[\e[0m\]"
 
 get_git_branch() {
 	local branch
-	if branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null); then
+	if branch=$(command git rev-parse --abbrev-ref HEAD 2>/dev/null); then
 		if [[ "$branch" == "HEAD" ]]; then
 			branch='detached'
 		fi
@@ -124,7 +123,7 @@ get_git_color() {
 generate_git_ps1() {
 	# Exclude the directory which lives at $HOME; this is just my dotfiles repo,
 	# and I don't want it cluttering up PS1 all the time
-	if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" != "$HOME" ]]; then
+	if [[ "$(command git rev-parse --show-toplevel 2>/dev/null)" != "$HOME" ]]; then
 		echo "$(get_git_color)$(get_git_branch)${txtrst}";
 	else
 		echo "";
@@ -142,7 +141,7 @@ set_ps1() {
 PROMPT_COMMAND=set_ps1
 
 git() {
-	if [[ "$?" == 1 && "$1" == "log" && "$(git rev-parse --abbrev-ref HEAD)" != "master" ]]; then
+	if [[ "$#" == 1 && "$1" == "log" && "$(git rev-parse --abbrev-ref HEAD)" != "master" ]]; then
 		command git log master.. -n 20 --pretty="%C(Yellow)%h %C(reset)%ad %C(Green)%<(12,trunc) %cr %C(reset) %<(20,trunc)%C(Cyan)%an %C(reset)%s" --date=short --no-merges
 	elif [[ "$1" == "log" && "$(git rev-parse --abbrev-ref HEAD)" == "master" ]]; then
 		command git log -n 20 --pretty="%C(Yellow)%h %C(reset)%ad %C(Green)%<(12,trunc) %cr %C(reset) %<(20,trunc)%C(Cyan)%an %C(reset)%s" --date=short --no-merges
@@ -154,3 +153,4 @@ git() {
 pipupdate() {
 	pip install -U $(pip list --outdated | tail -n +3 | awk '{print $1}' | awk 'ORS=" "')
 }
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
