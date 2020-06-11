@@ -11,4 +11,4 @@ else
         SETVALUE=$DAYVALUE
 fi
 
-xrandr --output DP-0 --brightness $SETVALUE
+xrandr --output HDMI-0 --brightness $SETVALUE
