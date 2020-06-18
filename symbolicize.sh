@@ -33,7 +33,8 @@ for item in $(find ./ -type f ! -path './.git/*' ! -path './symbolicize.sh' ! -p
 		if [[ $(echo ${makelink} | awk '{print tolower($0)}') == "y" ]] || [[ $makelink == "" ]]; then
 			echo "${HOME}/${fname}->$(pwd)/${fname}";
 			if [[ $# == 0 ]]; then
-				mkdir -pv $(dirname ${fname});
+				echo "Making directory $(dirname ${HOME}/${fname})"
+				mkdir -pv $(dirname ${HOME}/${fname});
 				ln -s $(pwd)/${fname} ${HOME}/${fname};
 			fi
 		fi

@@ -1,39 +1,39 @@
 ! special
-*.foreground:   #e0f2ec
-*.background:   #0c0201
-*.cursorColor:  #e0f2ec
+*.foreground:   #f8f8f2
+*.background:   #272822
+*.cursorColor:  #f8f8f2
 
 ! black
-*.color0:       #0e1f22
-*.color8:       #1c4b4e
+*.color0:       #272822
+*.color8:       #75715e
 
 ! red
-*.color1:       #a85659
-*.color9:       #eb8995
+*.color1:       #f92672
+*.color9:       #f92672
 
 ! green
-*.color2:       #668e8c
-*.color10:      #82aea9
+*.color2:       #a6e22e
+*.color10:      #a6e22e
 
 ! yellow
-*.color3:       #c3b6a4
-*.color11:      #e1d9ce
+*.color3:       #f4bf75
+*.color11:      #f4bf75
 
 ! blue
-*.color4:       #326d78
-*.color12:      #a7d2cd
+*.color4:       #66d9ef
+*.color12:      #66d9ef
 
-! magenta (or orange)
-*.color5:       #433c32
-*.color13:      #aa9576
+! magenta
+*.color5:       #ae81ff
+*.color13:      #ae81ff
 
 ! cyan
-*.color6:       #386e74
-*.color14:      #90c0bd
+*.color6:       #a1efe4
+*.color14:      #a1efe4
 
 ! white
-*.color7:       #e0f2ec
-*.color15:         #f0f8f3
+*.color7:       #f8f8f2
+*.color15:      #f9f8f5
 
 !*.font:            FuraCode Nerd Font Mono:style=Regular:size=9
 *.font:            "DejaVu Sans Mono Nerd Font Complete":style=Regular:size=9
