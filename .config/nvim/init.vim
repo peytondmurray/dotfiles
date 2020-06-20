@@ -48,3 +48,16 @@ autocmd vimenter * NERDTree
 imap <C-_> NERDCommenterToggle
 vmap <C-_> NERDCommenterToggle<CR>gv
 nmap <C-_> <plug>NERDCommenterToggle   
+
+" Show line numbers
+set number
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+set splitbelow
+set splitright
+
+highlight VertSplit ctermfg=Brown ctermbg=Black
