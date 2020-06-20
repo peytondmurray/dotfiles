@@ -4,7 +4,6 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdtree'
@@ -13,11 +12,20 @@ Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'davidhalter/jedi-vim'
-Plug 'scrooloose/syntastic'
+
+" Themes
 Plug 'ronny/birds-of-paradise.vim'
 Plug 'jacoborus/tender.vim'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'scrooloose/nerdcommenter'
+
+" Git Integration
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+" Linting
+Plug 'w0rp/ale'
+"Plug 'scrooloose/syntastic'
 
 " Initialize plugin system
 call plug#end()
@@ -61,3 +69,7 @@ set splitbelow
 set splitright
 
 highlight VertSplit ctermfg=Brown ctermbg=Black
+let mapleader=","
+
+" Strip trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
