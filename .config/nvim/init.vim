@@ -27,6 +27,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
 "Plug 'scrooloose/syntastic'
 
+" Completion
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+
 " Initialize plugin system
 call plug#end()
 
@@ -35,7 +38,7 @@ let g:airline_theme = 'tender'
 
 " Show indent guidelines by default
 let g:indent_guides_enable_on_vim_startup = 1
-let g:python3_host_prog = '~/python38/bin/python3' 
+let g:python3_host_prog = '~/python38/bin/python3'
 
 " Instant markdown
 filetype plugin on
@@ -55,7 +58,7 @@ autocmd vimenter * NERDTree
 
 imap <C-_> NERDCommenterToggle
 vmap <C-_> NERDCommenterToggle<CR>gv
-nmap <C-_> <plug>NERDCommenterToggle   
+nmap <C-_> <plug>NERDCommenterToggle
 
 " Show line numbers
 set number
