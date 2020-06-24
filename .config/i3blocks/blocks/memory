@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo $(printf '<span size="large" weight="bold"> %s</span>' $(free -h --si | grep Mem: | awk '{print $3"/"$2}'))
