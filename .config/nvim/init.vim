@@ -12,6 +12,7 @@ Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'davidhalter/jedi-vim'
+Plug 'osyo-manga/vim-over'
 
 " Themes
 Plug 'ronny/birds-of-paradise.vim'
@@ -30,6 +31,9 @@ Plug 'w0rp/ale'
 " Completion
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 
+" Easy motion
+Plug 'easymotion/vim-easymotion'
+
 " Initialize plugin system
 call plug#end()
 
@@ -46,8 +50,11 @@ filetype plugin on
 " Use spaces instead of tabs
 set expandtab
 set tabstop=4
+set shiftwidth=4
 set autoindent
 set smartindent
+set smarttab
+
 inoremap <S-Tab> <C-d>
 inoremap ^I <C-t>
 vnoremap <S-Tab> <
@@ -56,17 +63,22 @@ vnoremap ^I >
 " Automatically open a NERDTree on startup
 autocmd vimenter * NERDTree
 
-imap <C-_> NERDCommenterToggle
+imap <C-_> <plug>NERDCommenterToggle
 vmap <C-_> NERDCommenterToggle<CR>gv
 nmap <C-_> <plug>NERDCommenterToggle
 
 " Show line numbers
 set number
 
+" Ctrl+HJKL to move between windows
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+nnoremap <M-C-J> <C-W>20-
+nnoremap <M-C-K> <C-W>20+
+nnoremap <M-C-L> <C-W>20>
+nnoremap <M-C-H> <C-W>20<
 
 set splitbelow
 set splitright
@@ -76,3 +88,24 @@ let mapleader=","
 
 " Strip trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
+
+" Ctrl+BS to delete word backwards
+imap <C-BS> <C-w>
+
+highlight EndOfBuffer ctermfg=235
+
+" Easymotion bindings
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)

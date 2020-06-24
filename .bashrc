@@ -31,11 +31,12 @@ export PATH=/home/pdmurray/.cargo/bin:$PATH
 
 export LD_LIBRARY_PATH=/home/pdmurray/python38/lib:$LD_LIBRARY_PATH
 
-export VISUAL=micro
-export EDITOR=micro
+export VISUAL=nvim
+export EDITOR=nvim
 export FONTCONFIG_PATH=/etc/fonts
 export TERM=xterm
 export MICRO_TRUECOLOR=1
+export RANGER_LOAD_DEFAULT_RC=FALSE
 
 ### Colors ###
 
