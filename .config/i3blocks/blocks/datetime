@@ -1,8 +1,4 @@
 #!/bin/bash
 
-FORMAT="%Y-%m-%d %H:%M"
-DATETIME=$(date "+${FORMAT}")
-
-echo "${DATETIME}"
-echo "${DATETIME}"
-echo ""
+DATETIME=$(date "+%Y-%m-%d %H:%M")
+echo $(printf '<span size="large" weight="bold">%s</span>' "${DATETIME}")

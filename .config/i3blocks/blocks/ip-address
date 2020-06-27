@@ -1,9 +1,7 @@
 #!/bin/bash
 
-IP_ADDRESS=$(ip route get 1 | awk '{print $NF;exit}')
+IP_ADDRESS=$(ip route get 1 | awk '{print $3;exit}')
 
 if [[ "${IP_ADDRESS}" != "" ]]; then
-  echo "${IP_ADDRESS}"
-  echo "${IP_ADDRESS}"
-  echo ""
+    echo $(printf '<span size="large" weight="bold">%s</span>' "${IP_ADDRESS}")
 fi

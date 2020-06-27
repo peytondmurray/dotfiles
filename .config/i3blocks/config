@@ -52,13 +52,13 @@ markup=none
 
 # Part 2
 
-[bluetooth]
-label=
-interval=10
+#[bluetooth]
+#label=
+#interval=10
 
-[brightness]
-label=
-interval=5
+#[brightness]
+#label=
+#interval=5
 
 #[countdown]
 #instance=tomorrow 05:00:00
@@ -68,12 +68,13 @@ interval=5
 # Part 3
 
 [cpu]
-label=
 interval=2
+markup=pango
 
 [datetime]
 #label=
 interval=5
+markup=pango
 
 #[display]
 #label=
@@ -92,16 +93,15 @@ interval=5
 [ip-address]
 #label=
 interval=60
+markup=pango
 
 # Part 5
 
 [keystate]
-label=
 instance=caps
 interval=1
 
 [keystate]
-label=
 instance=num
 interval=1
 
@@ -109,9 +109,9 @@ interval=1
 #label=
 #interval=once
 
-[load]
-label=
-interval=10
+#[load]
+#label=
+#interval=10
 
 # Part 6
 
@@ -125,7 +125,6 @@ interval=10
 #interval=60
 
 [memory]
-label=
 interval=10
 markup=pango
 
