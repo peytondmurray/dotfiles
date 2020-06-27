@@ -71,10 +71,6 @@ markup=none
 interval=2
 markup=pango
 
-[datetime]
-#label=
-interval=5
-markup=pango
 
 #[display]
 #label=
@@ -91,7 +87,6 @@ markup=pango
 #interval=10
 
 [ip-address]
-#label=
 interval=60
 markup=pango
 
@@ -220,3 +215,8 @@ markup=pango
 [keymap]
 label=
 interval=10
+
+
+[datetime]
+interval=5
+markup=pango
