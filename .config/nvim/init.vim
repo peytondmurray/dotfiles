@@ -61,10 +61,10 @@ vnoremap <S-Tab> <
 vnoremap ^I >
 
 " Automatically open a NERDTree on startup
-autocmd vimenter * NERDTree
+autocmd vimenter * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' | NERDTree | endif
 
-imap <C-_> <plug>NERDCommenterToggle
-vmap <C-_> NERDCommenterToggle<CR>gv
+imap <C-_> <Esc><plug>NERDCommenterTogglei
+vmap <C-_> <plug>NERDCommenterTogglegv
 nmap <C-_> <plug>NERDCommenterToggle
 
 " Show line numbers
@@ -75,6 +75,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Ctrl+Alt+HJKL to resize windows
 nnoremap <M-C-J> <C-W>20-
 nnoremap <M-C-K> <C-W>20+
 nnoremap <M-C-L> <C-W>20>
