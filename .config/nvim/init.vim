@@ -71,6 +71,10 @@ nmap <C-_> <plug>NERDCommenterToggle
 " Show line numbers
 set number
 
+" Shift+HJKL to move a lot in normal mode
+nnoremap J 30j
+nnoremap K 30k
+
 " Ctrl+HJKL to move between windows
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
