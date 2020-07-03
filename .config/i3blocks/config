@@ -95,10 +95,12 @@ markup=pango
 [keystate]
 instance=caps
 interval=1
+markup=pango
 
 [keystate]
 instance=num
 interval=1
+markup=pango
 
 #[launcher]
 #label=

@@ -57,6 +57,7 @@ set smarttab
 
 inoremap <S-Tab> <C-d>
 inoremap ^I <C-t>
+inoremap <C-Tab><C-t>
 vnoremap <S-Tab> <
 vnoremap ^I >
 
