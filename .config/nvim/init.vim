@@ -55,12 +55,13 @@ set autoindent
 set smartindent
 set smarttab
 
-inoremap <S-Tab> <C-d>
-inoremap ^I <C-t>
-inoremap <C-Tab><C-t>
-vnoremap <S-Tab> <
-vnoremap ^I >
-
+" Ta
+imap <S-Tab> <C-d>
+imap ^I <C-t>
+imap <C-Tab><C-t>
+vmap <S-Tab> <gv
+vmap ^I >gv
+vmap <Tab> >gv
 " Automatically open a NERDTree on startup
 autocmd vimenter * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' | NERDTree | endif
 
