@@ -23,7 +23,7 @@ alias vectivate='source vectivate'
 
 export PATH=/home/pdmurray/python37/bin:$PATH
 export PATH=/home/pdmurray/python38/bin:$PATH
-export PATH=/home/pdmurray/.gem/ruby/2.6.0/bin:$PATH
+export PATH=/home/pdmurray/.gem/ruby/2.7.0/bin:$PATH
 export PATH=/home/pdmurray/go/bin:$PATH
 export PATH=/home/pdmurray/.local/bin:$PATH
 export PATH=/home/pdmurray/bin:$PATH
@@ -154,4 +154,9 @@ git() {
 pipupdate() {
 	pip install -U $(pip list --outdated | tail -n +3 | awk '{print $1}' | awk 'ORS=" "')
 }
+
+vpn() {
+    sudo protonvpn d; sudo protonvpn c -f
+}
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

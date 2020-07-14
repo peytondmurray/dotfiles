@@ -29,8 +29,6 @@ command=~/.config/i3blocks/blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
-# Part 1
-
 #[audio]
 #label=
 #interval=5
@@ -50,8 +48,6 @@ markup=none
 #instance=0
 #interval=5
 
-# Part 2
-
 #[bluetooth]
 #label=
 #interval=10
@@ -65,32 +61,17 @@ markup=none
 #label=
 #interval=1
 
-# Part 3
-
 [cpu]
 interval=2
 markup=pango
-
 
 #[display]
 #label=
 #interval=5
 
-# Part 4
-#[feed]
-#instance=http://goo.gl/bR2hcp
-#label=
-#interval=60
-
-#[firewall]
-#label=
-#interval=10
-
 [ip-address]
 interval=60
 markup=pango
-
-# Part 5
 
 [keystate]
 instance=caps
@@ -102,24 +83,9 @@ instance=num
 interval=1
 markup=pango
 
-#[launcher]
-#label=
-#interval=once
-
-#[load]
-#label=
-#interval=10
-
-# Part 6
-
 #[locale]
 #label=
 #interval=once
-
-#[mail]
-#label=
-#instance=~/.gmx-private
-#interval=60
 
 [memory]
 interval=10
@@ -131,38 +97,6 @@ markup=pango
 #label=
 #interval=5
 
-[network]
-instance=enp6s0
-interval=5
-markup=pango
-
-#[packages]
-#label=
-#interval=300
-
-# Part 8
-
-#[playerctl]
-#label=
-#instance=rhythmbox
-#interval=5
-
-#[process]
-#instance=http
-#label=
-#interval=10
-
-#[space]
-#label=
-#interval=30
-
-#[space]
-#label=
-#instance=/pub
-#interval=30
-
-# Part 9
-
 #[ssid]
 #label=
 #interval=60
@@ -172,29 +106,13 @@ instance=it8792-is-0a60
 interval=5
 markup=pango
 
-#[user]
-#label=
-#interval=once
-
-# Part 10
-
 [vpn]
 interval=5
 markup=pango
 
-#[weather]
-#instance=2910831
-#interval=60
-
 #[webcam]
 #label=
 #interval=5
-
-# Part 11
-#[usb]
-#instance=PhotoSmart
-#label=
-#interval=10
 
 #[trash]
 #label=
@@ -205,19 +123,6 @@ markup=pango
 #label=
 #markup=pango
 #interval=repeat
-
-# Part 12
-
-#[window]
-#command=~/.i3-blocks/blocks/scroll $BLOCK_NAME
-#label=
-#markup=pango
-#interval=repeat
-
-[keymap]
-label=
-interval=10
-
 
 [datetime]
 interval=5
