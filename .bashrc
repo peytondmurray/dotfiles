@@ -152,7 +152,12 @@ git() {
 }
 
 pipupdate() {
-	pip install -U $(pip list --outdated | tail -n +3 | awk '{print $1}' | awk 'ORS=" "')
+    local outdated=$(pip list --outdated)
+    if [[ -z "${outdated/ //}" ]]; then
+        echo "All packages up to date."
+    else
+	    pip install -U $(echo ${outdated} | tail -n +3 | awk '{print $1}' | awk 'ORS=" "')
+    fi
 }
 
 vpn() {
