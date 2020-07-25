@@ -55,12 +55,6 @@ set autoindent
 set smartindent
 set smarttab
 
-" Tab indent/dedent
-inoremap <S-Tab> <C-d>
-inoremap <C-Tab><C-t>
-vnoremap <S-Tab> <gv
-vnoremap <Tab> >gv
-
 " Automatically open a NERDTree on startup
 autocmd vimenter * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' | NERDTree | endif
 
@@ -98,6 +92,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Ctrl+BS to delete word backwards
 imap <C-BS> <C-w>
+imap  <C-w>
 
 highlight EndOfBuffer ctermfg=235
 
@@ -119,3 +114,8 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 " Clear last search highlighting
 nmap <M-/> :let @/=""<CR>
+
+" Tab indent/dedent
+imap <S-Tab> <C-d>
+vnoremap <S-Tab> <gv
+vnoremap <Tab> >gv
