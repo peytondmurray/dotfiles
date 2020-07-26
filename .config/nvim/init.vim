@@ -9,6 +9,7 @@ Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'davidhalter/jedi-vim'
@@ -81,9 +82,11 @@ nnoremap <M-C-K> <C-W>20+
 nnoremap <M-C-L> <C-W>20>
 nnoremap <M-C-H> <C-W>20<
 
+" Make splits more sensible
 set splitbelow
 set splitright
 
+" Make orange bar for vertical splits
 highlight VertSplit ctermfg=Brown ctermbg=Black
 let mapleader=","
 
@@ -94,28 +97,30 @@ autocmd BufWritePre * :%s/\s\+$//e
 imap <C-BS> <C-w>
 imap  <C-w>
 
+" Make tildes at end of file invisible
 highlight EndOfBuffer ctermfg=235
 
 " Easymotion bindings
-" <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
-
-" s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
-
 " Move to line
 map <Leader>L <Plug>(easymotion-bd-jk)
 nmap <Leader>L <Plug>(easymotion-overwin-line)
 
-" Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
-
 " Clear last search highlighting
 nmap <M-/> :let @/=""<CR>
 
-" Tab indent/dedent
+" Make ; start fzf :Lines
+nmap ; :Lines<CR>
+
+" Tab/Shift+Tab to indent/dedent
 imap <S-Tab> <C-d>
 vnoremap <S-Tab> <gv
 vnoremap <Tab> >gv
+
+" Make s act like d, except it won't save anything to the register
+nnoremap s "_d
+
+" Alt+JK to move line down/up by one row
+nmap <M-j> :m+1<CR>
+nmap <M-k> :m-2<CR>
+
+set rtp+=/home/pdmurray/.fzf/bin/fzf
