@@ -12,7 +12,7 @@ Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'davidhalter/jedi-vim'
+"Plug 'davidhalter/jedi-vim'
 Plug 'osyo-manga/vim-over'
 
 " Themes
@@ -58,6 +58,11 @@ set smarttab
 
 " Automatically open a NERDTree on startup
 autocmd vimenter * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' | NERDTree | endif
+
+" Ignore python bytecode
+let NERDTreeIgnore = ['\.pyc$', '__pycache__$']
+
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 imap <C-_> <Esc><plug>NERDCommenterTogglei
 vmap <C-_> <plug>NERDCommenterTogglegv
