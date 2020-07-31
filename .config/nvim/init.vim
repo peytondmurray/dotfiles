@@ -62,7 +62,7 @@ autocmd vimenter * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' | N
 " Ignore python bytecode
 let NERDTreeIgnore = ['\.pyc$', '__pycache__$']
 
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-b> :NERDTreeToggle<CR>
 
 imap <C-_> <Esc><plug>NERDCommenterTogglei
 vmap <C-_> <plug>NERDCommenterTogglegv
