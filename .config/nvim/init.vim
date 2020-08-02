@@ -46,7 +46,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:python3_host_prog = '~/python38/bin/python3'
 
 " Instant markdown
-filetype plugin on
+filetype plugin indent on
 
 " Use spaces instead of tabs
 set expandtab
