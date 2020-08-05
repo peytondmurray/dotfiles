@@ -12,8 +12,9 @@ Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'nathanaelkane/vim-indent-guides'
-"Plug 'davidhalter/jedi-vim'
 Plug 'osyo-manga/vim-over'
+Plug 'kshenoy/vim-signature'
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 
 " Themes
 Plug 'ronny/birds-of-paradise.vim'
@@ -129,3 +130,19 @@ nmap <M-j> :m+1<CR>
 nmap <M-k> :m-2<CR>
 
 set rtp+=/home/pdmurray/.fzf/bin/fzf
+
+" ALE linting options
+let g:ale_linters = {
+    \'python': ['flake8', 'mypy']
+\}
+
+let g:ale_python_flake8_options = '--max-line-length=100'
+nmap <Leader>j :ALENext<CR>
+nmap <Leader>k :ALEPrevious<CR>
+
+" Show marks, but inherit color from gitgutter
+let g:SignatureMarkTextHLDynamic = 1
+
+" Use numpydoc docstrings
+let g:pydocstring_formatter = 'numpy'
+nmap <C-D> <Plug>(pydocstring)
