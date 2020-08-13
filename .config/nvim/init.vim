@@ -15,6 +15,9 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'osyo-manga/vim-over'
 Plug 'kshenoy/vim-signature'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
+Plug 'ervandew/supertab'
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
 
 " Themes
 Plug 'ronny/birds-of-paradise.vim'
@@ -32,9 +35,6 @@ Plug 'w0rp/ale'
 
 " Completion
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
-
-" Easy motion
-Plug 'easymotion/vim-easymotion'
 
 " Initialize plugin system
 call plug#end()
@@ -72,6 +72,9 @@ nmap <C-_> <plug>NERDCommenterToggle
 " Show line numbers
 set number
 
+ "Remap docstring lookup to ctrl-shift-/
+nnoremap <BS> K
+
 " Shift+HJKL to move a lot in normal mode
 nnoremap J 30j
 nnoremap K 30k
@@ -105,11 +108,6 @@ imap  <C-w>
 
 " Make tildes at end of file invisible
 highlight EndOfBuffer ctermfg=235
-
-" Easymotion bindings
-" Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
 
 " Clear last search highlighting
 nmap <M-/> :let @/=""<CR>
@@ -146,3 +144,18 @@ let g:SignatureMarkTextHLDynamic = 1
 " Use numpydoc docstrings
 let g:pydocstring_formatter = 'numpy'
 nmap <C-D> <Plug>(pydocstring)
+
+let NERDTreeMinimalUI = 1
+
+" Close the preview window after an autocomplete
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+" Ultisnips" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<Tab>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger="<cr>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
