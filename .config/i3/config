@@ -17,7 +17,8 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+#font pango:DejaVu Sans Mono 8
+font pango: SpaceMono Regular 11
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -240,12 +241,19 @@ new_window pixel 1
 gaps inner 40
 gaps outer 5
 
-# Start i3bar to display a workspace bar (plus the system information i3status finds out, if available)
 bar {
-        status_command 2>/tmp/i3blocks.err /usr/bin/i3blocks -vvv | tee /tmp/i3blocks.out
-        colors {
-            background $bg
-        }
+    font pango:DejaVu Sans Mono, FontAwesome 12
+    position top
+    status_command i3status-rs ~/.config/i3/status.toml
+    colors {
+        separator #666666
+        background #222222
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
+    }
 }
 
 exec --no-startup-id picom
