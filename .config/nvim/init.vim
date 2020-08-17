@@ -17,7 +17,7 @@ Plug 'kshenoy/vim-signature'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'ervandew/supertab'
 Plug 'sirver/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'peytondmurray/vim-snippets'
 
 " Themes
 Plug 'ronny/birds-of-paradise.vim'
