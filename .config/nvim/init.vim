@@ -8,7 +8,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -16,8 +15,8 @@ Plug 'osyo-manga/vim-over'
 Plug 'kshenoy/vim-signature'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'ervandew/supertab'
-Plug 'sirver/ultisnips'
-Plug 'peytondmurray/vim-snippets'
+Plug 'rrethy/vim-illuminate'
+Plug 'guns/xterm-color-table.vim'
 
 " Themes
 Plug 'ronny/birds-of-paradise.vim'
@@ -35,6 +34,10 @@ Plug 'w0rp/ale'
 
 " Completion
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+Plug 'sirver/ultisnips'
+Plug 'peytondmurray/vim-snippets'
+Plug 'craigemery/vim-autotag'
+Plug 'majutsushi/tagbar'
 
 " Initialize plugin system
 call plug#end()
@@ -64,6 +67,7 @@ autocmd vimenter * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' | N
 let NERDTreeIgnore = ['\.pyc$', '__pycache__$']
 
 nnoremap <C-b> :NERDTreeToggle<CR>
+nmap <C-n> :TagbarToggle<CR>
 
 imap <C-_> <Esc><plug>NERDCommenterTogglei
 vmap <C-_> <plug>NERDCommenterTogglegv
@@ -71,6 +75,9 @@ nmap <C-_> <plug>NERDCommenterToggle
 
 " Show line numbers
 set number
+
+" Highlight current cursor line
+set cursorline
 
  "Remap docstring lookup to ctrl-shift-/
 nnoremap <BS> K
@@ -97,6 +104,10 @@ set splitright
 
 " Make orange bar for vertical splits
 highlight VertSplit ctermfg=Brown ctermbg=Black
+
+" Make the currently selected word a different color
+highlight illuminatedWord ctermfg=0 ctermbg=6
+
 let mapleader=","
 
 " Strip trailing whitespace on save
