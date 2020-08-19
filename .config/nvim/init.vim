@@ -14,7 +14,6 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'osyo-manga/vim-over'
 Plug 'kshenoy/vim-signature'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
-Plug 'ervandew/supertab'
 Plug 'rrethy/vim-illuminate'
 Plug 'guns/xterm-color-table.vim'
 
@@ -29,15 +28,18 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 " Linting
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 "Plug 'scrooloose/syntastic'
 
 " Completion
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
-Plug 'sirver/ultisnips'
-Plug 'peytondmurray/vim-snippets'
-Plug 'craigemery/vim-autotag'
-Plug 'majutsushi/tagbar'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+"Plug 'sirver/ultisnips'
+"Plug 'peytondmurray/vim-snippets'
+"Plug 'majutsushi/tagbar'
+"Plug 'xolox/vim-easytags'
+"Plug 'xolox/vim-misc'
+"Plug 'ervandew/supertab'
 
 " Initialize plugin system
 call plug#end()
@@ -47,7 +49,11 @@ let g:airline_theme = 'tender'
 
 " Show indent guidelines by default
 let g:indent_guides_enable_on_vim_startup = 1
-let g:python3_host_prog = '~/python38/bin/python3'
+
+" Python and node paths
+let g:python3_host_prog = expand('~/python38/bin/python3')
+let g:coc_node_path = expand('~/.nvm/versions/node/v14.8.0/bin/node')
+let g:node_host_prog = expand('~/.nvm/versions/node/v14.8.0/bin/neovim-node-host')
 
 " Instant markdown
 filetype plugin indent on
@@ -78,6 +84,9 @@ set number
 
 " Highlight current cursor line
 set cursorline
+
+" Automatically update when the current file changes on disk
+set autoread
 
  "Remap docstring lookup to ctrl-shift-/
 nnoremap <BS> K
@@ -141,13 +150,13 @@ nmap <M-k> :m-2<CR>
 set rtp+=/home/pdmurray/.fzf/bin/fzf
 
 " ALE linting options
-let g:ale_linters = {
-    \'python': ['flake8', 'mypy']
-\}
+"let g:ale_linters = {
+    "\'python': ['flake8', 'mypy']
+"\}
 
-let g:ale_python_flake8_options = '--max-line-length=100'
-nmap <Leader>j :ALENext<CR>
-nmap <Leader>k :ALEPrevious<CR>
+"let g:ale_python_flake8_options = '--max-line-length=100'
+"nmap <Leader>j :ALENext<CR>
+"nmap <Leader>k :ALEPrevious<CR>
 
 " Show marks, but inherit color from gitgutter
 let g:SignatureMarkTextHLDynamic = 1
@@ -158,23 +167,24 @@ nmap <C-D> <Plug>(pydocstring)
 
 let NERDTreeMinimalUI = 1
 
-" Close the preview window after an autocomplete
-let g:ycm_autoclose_preview_window_after_completion = 1
+"" Close the preview window after an autocomplete
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"
+"" Ultisnips+YCM+Supertab compatibility
+"let g:ycm_key_list_select_completion=["<tab>"]
+"let g:ycm_key_list_previous_completion=["<S-tab>"]
+"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+"let g:UltiSnipsExpandTrigger="<nop>"
+"let g:ulti_expand_or_jump_res = 0
+"function! <SID>ExpandSnippetOrReturn()
+"  let snippet = UltiSnips#ExpandSnippetOrJump()
+"  if g:ulti_expand_or_jump_res > 0
+"    return snippet
+"  else
+"    return "\<CR>"
+"  endif
+"endfunction
+"inoremap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "\<CR>"
 
-" Ultisnips+YCM+Supertab compatibility
-let g:ycm_key_list_select_completion=["<tab>"]
-let g:ycm_key_list_previous_completion=["<S-tab>"]
-
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
-let g:UltiSnipsExpandTrigger="<nop>"
-let g:ulti_expand_or_jump_res = 0
-function! <SID>ExpandSnippetOrReturn()
-  let snippet = UltiSnips#ExpandSnippetOrJump()
-  if g:ulti_expand_or_jump_res > 0
-    return snippet
-  else
-    return "\<CR>"
-  endif
-endfunction
-inoremap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "\<CR>"
