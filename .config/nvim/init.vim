@@ -16,12 +16,14 @@ Plug 'kshenoy/vim-signature'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'rrethy/vim-illuminate'
 Plug 'guns/xterm-color-table.vim'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'scrooloose/nerdcommenter'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " Themes
 Plug 'ronny/birds-of-paradise.vim'
 Plug 'jacoborus/tender.vim'
-Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-Plug 'scrooloose/nerdcommenter'
 
 " Git Integration
 Plug 'airblade/vim-gitgutter'
@@ -64,6 +66,7 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__$']
 nnoremap <C-b> :NERDTreeToggle<CR>
 nmap <C-n> :TagbarToggle<CR>
 
+" Control+/ to toggle comment status
 imap <C-_> <Esc><plug>NERDCommenterTogglei
 vmap <C-_> <plug>NERDCommenterTogglegv
 nmap <C-_> <plug>NERDCommenterToggle
@@ -119,7 +122,7 @@ imap  <C-w>
 highlight EndOfBuffer ctermfg=235
 
 " Clear last search highlighting
-nmap <M-/> :let @/=""<CR>
+nmap <silent> <M-/> :let @/=""<CR>
 
 " Make ; start fzf :Lines
 nmap ; :Lines<CR>
