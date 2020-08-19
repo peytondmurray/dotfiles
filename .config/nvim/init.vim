@@ -49,6 +49,9 @@ let g:node_host_prog = expand('~/.nvm/versions/node/v14.8.0/bin/neovim-node-host
 " Instant markdown
 filetype plugin indent on
 
+" Case sensitive searching only when caps used
+set smartcase
+
 " Use spaces instead of tabs
 set expandtab
 set tabstop=4
