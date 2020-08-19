@@ -27,19 +27,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
-" Linting
-"Plug 'w0rp/ale'
-"Plug 'scrooloose/syntastic'
-
 " Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
-"Plug 'sirver/ultisnips'
-"Plug 'peytondmurray/vim-snippets'
-"Plug 'majutsushi/tagbar'
-"Plug 'xolox/vim-easytags'
-"Plug 'xolox/vim-misc'
-"Plug 'ervandew/supertab'
 
 " Initialize plugin system
 call plug#end()
@@ -167,24 +156,20 @@ nmap <C-D> <Plug>(pydocstring)
 
 let NERDTreeMinimalUI = 1
 
-"" Close the preview window after an autocomplete
-"let g:ycm_autoclose_preview_window_after_completion = 1
-"
-"" Ultisnips+YCM+Supertab compatibility
-"let g:ycm_key_list_select_completion=["<tab>"]
-"let g:ycm_key_list_previous_completion=["<S-tab>"]
-"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
-"let g:UltiSnipsExpandTrigger="<nop>"
-"let g:ulti_expand_or_jump_res = 0
-"function! <SID>ExpandSnippetOrReturn()
-"  let snippet = UltiSnips#ExpandSnippetOrJump()
-"  if g:ulti_expand_or_jump_res > 0
-"    return snippet
-"  else
-"    return "\<CR>"
-"  endif
-"endfunction
-"inoremap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "\<CR>"
+" COC Config
+" Map <tab> to trigger completion and to move to next item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
 
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
+
+nnoremap <silent> ge <Plug>(coc-definition)
+nnoremap <silent> gs :split<CR><Plug>(coc-definition)
+nnoremap <silent> gv :vsplit<CR><Plug>(coc-definition)
