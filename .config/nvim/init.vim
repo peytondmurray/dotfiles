@@ -179,3 +179,5 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 nnoremap <silent> ge <Plug>(coc-definition)
 nnoremap <silent> gs :split<CR><Plug>(coc-definition)
 nnoremap <silent> gv :vsplit<CR><Plug>(coc-definition)
+nmap gj <Plug>(coc-diagnostic-next)
+nmap gk <Plug>(coc-diagnostic-prev)
