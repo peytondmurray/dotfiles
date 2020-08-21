@@ -5,9 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Import colors from wal
-${HOME}/.cache/wal/colors.sh
-
 python () { /home/pdmurray/python38/bin/python3 $@; }
 pip () { /home/pdmurray/python38/bin/pip3 $@; }
 alias exa='exa -la --group-directories-first'
