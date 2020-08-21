@@ -17,9 +17,9 @@ Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'rrethy/vim-illuminate'
 Plug 'guns/xterm-color-table.vim'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 " Themes
 Plug 'ronny/birds-of-paradise.vim'
@@ -181,3 +181,18 @@ nnoremap <silent> gs :split<CR><Plug>(coc-definition)
 nnoremap <silent> gv :vsplit<CR><Plug>(coc-definition)
 nmap gj <Plug>(coc-diagnostic-next)
 nmap gk <Plug>(coc-diagnostic-prev)
+
+" Markdown preview
+let g:mkdp_auto_start = 1
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {},
+    \ 'flowchart_diagrams': {},
+    \ 'content_editable': v:false
+    \ }
