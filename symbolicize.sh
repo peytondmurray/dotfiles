@@ -1,15 +1,28 @@
 #!/bin/bash
 
 # symbolicize.sh
-# Recursively iterate through the dotfiles in `./`; if a corresponding dotfile
-# already exists in $HOME, delete it and put a symbolic link to the dotfile
-# in `./`. If it doesn't exist in $HOME, ask the user about making a symbolic
-# link anyway, creating the required directory structure as necessary.
-
+# Iterate through the top level in `./`; if a corresponding item already exists
+# in $HOME, delete it and put a symbolic link to the corresponding item in `./`.
+# If it doesn't exist, make a symbolic link, creating required directories
+# as necessary.
 
 if [[ $# > 0 ]]; then
 	echo "Dry run:";
 fi
+
+for item in $(ls -A ./); do
+
+    if [[ -e $HOME/$item ]]; then
+		echo "${HOME}/${fname}->${pwd}/${fname}";
+
+
+		if [[ $# == 0 ]]; then
+			rm ${HOME}/${fname} 2>/dev/null;
+			ln -sf $(pwd)/${fname} ${HOME}/${fname};
+		fi
+
+
+
 
 for item in $(find ./ -type f ! -path './.git/*' ! -path './symbolicize.sh' ! -path './.gitignore'); do
 	# Strip the './' from the files found in the current directory
