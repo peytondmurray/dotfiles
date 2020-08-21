@@ -23,7 +23,7 @@ for item in $(find ./ -type f ! -path './.git/*' ! -path './symbolicize.sh' ! -p
 		# Don't replace if any arguments are passed to the script; this is a dry run
 		if [[ $# == 0 ]]; then
 			rm ${HOME}/${fname} 2>/dev/null;
-			ln -s $(pwd)/${fname} ${HOME}/${fname};
+			ln -sf $(pwd)/${fname} ${HOME}/${fname};
 		fi
 
 	# If the file doesn't exist in $HOME, ask the user about making a symbolic link anyway,
@@ -35,7 +35,7 @@ for item in $(find ./ -type f ! -path './.git/*' ! -path './symbolicize.sh' ! -p
 			if [[ $# == 0 ]]; then
 				echo "Making directory $(dirname ${HOME}/${fname})"
 				mkdir -pv $(dirname ${HOME}/${fname});
-				ln -s $(pwd)/${fname} ${HOME}/${fname};
+				ln -sf $(pwd)/${fname} ${HOME}/${fname};
 			fi
 		fi
 	fi
