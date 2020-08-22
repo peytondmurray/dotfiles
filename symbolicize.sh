@@ -6,7 +6,9 @@
 # If it doesn't exist, make a symbolic link, creating required directories
 # as necessary.
 
-ignores=$(sed '/^#/d' ./symbolicize.conf)
+# Ignore any lines that start with `#` or only have blank space in them.
+# Store the rest for later.
+ignores=$(sed '/^#/d; /^\s*$/d' ./symbolicize.conf)
 
 DRY=0
 while getopts "yd" option; do
@@ -18,8 +20,7 @@ while getopts "yd" option; do
     esac
 done
 
-
-for item in $(ls -A ./); do
+for item in $(find ./ -type f | grep -Fv ${ignores}); do
 
     # If the item is not in the ignore list, make a link
     if [[ ${ignores} != *"${item}"* ]]; then
