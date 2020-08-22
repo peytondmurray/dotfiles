@@ -20,7 +20,7 @@ while getopts "yd" option; do
     esac
 done
 
-for item in $(find ./ -type f | grep -Fv "${ignores}"); do
+for item in $(find ./ -type f,l | grep -Fv "${ignores}"); do
 
     # If the item is not in the ignore list, make a link
     if [[ ${ignores} != *"${item}"* ]]; then
