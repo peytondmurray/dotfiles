@@ -49,6 +49,14 @@ let g:node_host_prog = expand('~/.nvm/versions/node/v14.8.0/bin/neovim-node-host
 " Instant markdown
 filetype plugin indent on
 
+" Better display for messages
+set cmdheight=2
+
+" Diagnostic messaging
+set updatetime=300
+
+set signcolumn=yes
+
 " Case sensitive searching only when caps used
 set smartcase
 
