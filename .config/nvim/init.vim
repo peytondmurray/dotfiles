@@ -152,16 +152,8 @@ nnoremap s "_d
 nmap <M-j> :m+1<CR>
 nmap <M-k> :m-2<CR>
 
+" fzf support
 set rtp+=/home/pdmurray/.fzf/bin/fzf
-
-" ALE linting options
-"let g:ale_linters = {
-    "\'python': ['flake8', 'mypy']
-"\}
-
-"let g:ale_python_flake8_options = '--max-line-length=100'
-"nmap <Leader>j :ALENext<CR>
-"nmap <Leader>k :ALEPrevious<CR>
 
 " Show marks, but inherit color from gitgutter
 let g:SignatureMarkTextHLDynamic = 1
@@ -186,9 +178,9 @@ inoremap <silent><expr> <TAB>
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
-nnoremap <silent> ge <Plug>(coc-definition)
-nnoremap <silent> gs :split<CR><Plug>(coc-definition)
-nnoremap <silent> gv :vsplit<CR><Plug>(coc-definition)
+nmap <silent> ge <Plug>(coc-definition)
+nmap <silent> gs :split<CR><Plug>(coc-definition)
+nmap <silent> gv :vsplit<CR><Plug>(coc-definition)
 nmap gj <Plug>(coc-diagnostic-next)
 nmap gk <Plug>(coc-diagnostic-prev)
 
