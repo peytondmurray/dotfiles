@@ -28,6 +28,13 @@ def load_ignore(path):
 
 
 def get_args():
+    """Get the command line arguments.
+
+    Returns
+    -------
+    argparse.ArgumentParser
+        Arguments specified on the command line.
+    """
 
     parser = argparse.ArgumentParser(description='Load dotfile symlinks.')
     parser.add_argument(
@@ -39,6 +46,9 @@ def get_args():
         '-d', '--dry', help="Dry run: don't write any symlinks.", action='store_true'
     )
     parser.add_argument('-l', '--list', help="List available configs.", action='store_true')
+    parser.add_argument(
+        '-a', '--ask', help="Ask before overwriting.", action='store_true', default=False
+    )
 
     if len(sys.argv) == 1:
         parser.print_help()
@@ -82,15 +92,41 @@ def filter_items(items, ignore):
     return filtered
 
 
-def symlink(items, dry=False):
+def symlink(items, dry=False, prompt=False):
+    """Generate the symlinks for the specified items.
+
+    Parameters
+    ----------
+    items : list of pathlib.Path
+        List of paths to symlink to
+    dry : bool
+        If True, don't write any symlinks; only print where they would be written.
+    prompt : bool
+        If True, prompt before overwriting existing paths.
+    """
+    home = pathlib.Path.home()
+    cwd = pathlib.Path.cwd()
 
     for item in items:
-        link = pathlib.Path.home() / item
-        target = pathlib.Path.cwd() / item
+        link = home / item
+        target = cwd / item
         print(f'\t{link} -> {target}')
 
         if not dry:
-            link.link_to(target)
+            if link.exists():
+                if prompt:
+                    # Ask before overwriting
+                    response = None
+                    while response not in ['y', 'n', '']:
+                        response = input(f'{link} exists. Replace? [Y/n]: ').lower()
+
+                    # If the user doesn't want to replace the link, move on to the next one
+                    if response == 'n':
+                        continue
+
+                link.unlink()
+
+            link.symlink_to(target)
 
     return
 
@@ -109,10 +145,11 @@ def main():
     ignore = load_ignore('./.syignore')
     items = filter_items(pathlib.Path('./').glob('**/*'), ignore)
 
-    symlink(items, arguments.dry)
+    symlink(items, arguments.dry, arguments.ask)
     print("Done!")
 
     return
+
 
 if __name__ == "__main__":
     main()
