@@ -6,7 +6,6 @@ import re
 import pprint
 import textwrap
 
-
 def load_config(path):
 
     with open(path, 'r') as f:
@@ -111,8 +110,8 @@ def symlink(items, dry=False, prompt=False, config_paths=None):
     cwd = pathlib.Path.cwd()
 
     for item in items:
-        if item in config_paths:
-            link = home / config_paths[item]
+        if str(item) in config_paths:
+            link = home / config_paths[str(item)]
         else:
             link = home / item
 
@@ -133,7 +132,10 @@ def symlink(items, dry=False, prompt=False, config_paths=None):
 
                 link.unlink()
 
-            link.symlink_to(target)
+            try:
+                link.symlink_to(target)
+            except FileNotFoundError:
+                print(f"{link} doesn't exist; skipping.")
 
     return
 

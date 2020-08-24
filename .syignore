@@ -1,6 +1,7 @@
 # Ignores; one item per line
 # Blank lines and line starting with '#' are ignored
 
+__pycache__/
 .git/
 .gitignore
 .gitmodules
