@@ -1,6 +1,4 @@
 " Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
 Plug 'vim-airline/vim-airline'
@@ -123,9 +121,12 @@ highlight illuminatedWord ctermfg=0 ctermbg=6
 let mapleader=","
 
 " Strip trailing whitespace on save; remove blank line at end of file
-autocmd BufWritePre * :%s/\s\+$//e
-autocmd BufWritePre * :%s#\($\n\s*\)\+\%$##
+function BeforeSave()
+    :%s/\s\+$//e
+    :%s/\($\n\s*\)\+\%$//e
+endfunction
 
+autocmd BufWritePre * call BeforeSave()
 " Ctrl+BS to delete word backwards
 imap <C-BS> <C-w>
 imap  <C-w>

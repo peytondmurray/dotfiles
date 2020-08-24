@@ -1,0 +1,4 @@
+laptop:
+    .screenlayout/laptop_default.sh: .screenlayout/default.sh
+desktop:
+    .screenlayout/desktop_default.sh: .screenlayout/default.sh
