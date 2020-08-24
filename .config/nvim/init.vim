@@ -122,8 +122,9 @@ highlight illuminatedWord ctermfg=0 ctermbg=6
 
 let mapleader=","
 
-" Strip trailing whitespace on save
+" Strip trailing whitespace on save; remove blank line at end of file
 autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * :%s#\($\n\s*\)\+\%$##
 
 " Ctrl+BS to delete word backwards
 imap <C-BS> <C-w>

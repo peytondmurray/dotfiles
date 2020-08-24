@@ -10,15 +10,19 @@
 # Store the rest for later.
 ignores=$(sed '/^#/d; /^\s*$/d' ./symbolicize.conf)
 
+
+
 DRY=0
-while getopts "yd" option; do
-    case $option in
-        d)
-            echo "Dry run."
-            DRY=1
-            ;;
-    esac
+CONFIG=''
+for var in "$@"; do
+    if [[ $var == '-d' ]]; then
+        DRY=1
+    else
+        CONFIG="$var"
+    fi
 done
+
+special_targets=$(jq -r ".${CONFIG} | keys | @sh" ./swapconfig.json)
 
 for item in $(find ./ -type f,l | grep -Fv "${ignores}"); do
 
