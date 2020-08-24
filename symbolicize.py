@@ -52,6 +52,7 @@ def get_args():
 
     if len(sys.argv) == 1:
         parser.print_help()
+        sys.exit()
 
     return parser.parse_args()
 
@@ -92,7 +93,7 @@ def filter_items(items, ignore):
     return filtered
 
 
-def symlink(items, dry=False, prompt=False):
+def symlink(items, dry=False, prompt=False, config_paths=None):
     """Generate the symlinks for the specified items.
 
     Parameters
@@ -104,11 +105,17 @@ def symlink(items, dry=False, prompt=False):
     prompt : bool
         If True, prompt before overwriting existing paths.
     """
+    if config_paths is None:
+        config_paths = {}
     home = pathlib.Path.home()
     cwd = pathlib.Path.cwd()
 
     for item in items:
-        link = home / item
+        if item in config_paths:
+            link = home / config_paths[item]
+        else:
+            link = home / item
+
         target = cwd / item
         print(f'\t{link} -> {target}')
 
@@ -131,6 +138,21 @@ def symlink(items, dry=False, prompt=False):
     return
 
 
+def print_configs(config_file, config):
+    """Print the current config file and the associated config dict.
+
+    Parameters
+    ----------
+    config_file : str
+        Config file path
+    config : dict
+        Configuration dictionary read from the contents at config_file
+    """
+    print(f"Configs available from {config_file}:")
+    print(textwrap.indent(pprint.pformat(config), prefix='\t'))
+    return
+
+
 def main():
 
     config_file = './syconfig.yaml'
@@ -139,13 +161,18 @@ def main():
     config = load_config(config_file)
 
     if arguments.list:
-        print(f"Configs available from {config_file}:")
-        print(textwrap.indent(pprint.pformat(config), prefix='\t'))
+        print_configs(config_file, config)
+        return
+
+    if arguments.config not in config:
+        print(f'Invalid config specified: {arguments.config}')
+        print_configs(config_file, config)
+        return
 
     ignore = load_ignore('./.syignore')
     items = filter_items(pathlib.Path('./').glob('**/*'), ignore)
 
-    symlink(items, arguments.dry, arguments.ask)
+    symlink(items, arguments.dry, arguments.ask, config_paths=config[arguments.config])
     print("Done!")
 
     return
