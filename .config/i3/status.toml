@@ -47,10 +47,17 @@ format = "{1m}"
 
 [[block]]
 block = "nvidia_gpu"
-label = "GTX 1080 Ti"
+label = "GPU"
 show_memory = true
 show_clocks = true
 interval = 1
+
+#[[block]]
+#block = "temperature"
+#collapsed = false
+#interval = 10
+#format = "{min}° min, {max}° max, {average}° avg"
+#chip = "*-isa-*"
 
 [[block]]
 block = "net"
@@ -65,5 +72,4 @@ block = "sound"
 [[block]]
 block = "time"
 interval = 60
-format = "%a %d/%m %R"
-
+format = "%Y-%m-%d %H:%M"
