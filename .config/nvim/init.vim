@@ -75,9 +75,11 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__$']
 nnoremap <C-b> :NERDTreeToggle<CR>
 nmap <C-n> :TagbarToggle<CR>
 
-" Control+/ to toggle comment status
+" Control+/ to toggle comment status; visual mode uses gbv instead of gv,
+" defined below to avoid conflict with "go to definition in vertical split"
+" command
 imap <C-_> <Esc><plug>NERDCommenterTogglei
-vmap <C-_> <plug>NERDCommenterTogglegv
+vmap <C-_> <plug>NERDCommenterTogglegbv
 nmap <C-_> <plug>NERDCommenterToggle
 
 " Show line numbers
@@ -178,11 +180,24 @@ inoremap <silent><expr> <TAB>
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
+" Remap original gv keybinding to gbv
+nnoremap <silent> gbv gv
 nmap <silent> ge <Plug>(coc-definition)
 nmap <silent> gs :split<CR><Plug>(coc-definition)
 nmap <silent> gv :vsplit<CR><Plug>(coc-definition)
 nmap gj <Plug>(coc-diagnostic-next)
 nmap gk <Plug>(coc-diagnostic-prev)
+
+" Use <BS> to show siimple hover type documentation in preview window
+nnoremap <silent> <M-BS> :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " Markdown preview
 let g:mkdp_auto_start = 1

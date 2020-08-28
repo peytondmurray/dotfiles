@@ -258,4 +258,5 @@ bar {
 
 exec --no-startup-id picom
 exec --no-startup-id pasystray
+exec --no-startup-id nm-applet
 exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/pebbles_stones_dark_152025_3840x2160.jpg
