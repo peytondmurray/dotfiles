@@ -1,3 +1,4 @@
+import os
 import sys
 import argparse
 import pathlib
@@ -6,10 +7,25 @@ import re
 import pprint
 import textwrap
 
+
 def load_config(path):
 
     with open(path, 'r') as f:
-        return yaml.load(f, Loader=yaml.SafeLoader)
+        raw_config = yaml.load(f, Loader=yaml.SafeLoader)
+
+    config = {}
+
+    for key, values in raw_config.items():
+        matches = [s for s in re.findall(r'\w+', key) if s]
+        if len(matches) > 1:
+            for match in matches:
+                config[match] = {k.format(match): v for k, v in values.items()}
+
+        else:
+            config[matches[0]] = values
+
+
+    return config
 
 
 def load_ignore(path):
@@ -119,7 +135,7 @@ def symlink(items, dry=False, prompt=False, config_paths=None):
         print(f'\t{link} -> {target}')
 
         if not dry:
-            if link.exists():
+            if link.exists() or link.is_symlink():
                 if prompt:
                     # Ask before overwriting
                     response = None
@@ -131,6 +147,8 @@ def symlink(items, dry=False, prompt=False, config_paths=None):
                         continue
 
                 link.unlink()
+                if link.exists():
+                    os.remove(str(link))
 
             try:
                 link.symlink_to(target)

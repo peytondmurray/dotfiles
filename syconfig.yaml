@@ -1,8 +1,4 @@
-laptop:
-    .screenlayout/laptop_default.sh: .screenlayout/default.sh
-    .config/i3/laptop_config: .config/i3/config
-    .config/i3/laptop_status.toml: .config/i3/status.toml
-desktop:
-    .screenlayout/desktop_default.sh: .screenlayout/default.sh
-    .config/i3/desktop_config: .config/i3/config
-    .config/i3/desktop_status.toml: .config/i3/status.toml
+laptop, desktop:
+    .screenlayout/{}_default.sh: .screenlayout/default.sh
+    .config/i3/{}_config: .config/i3/config
+    .config/i3/{}_status.toml: .config/i3/status.toml
