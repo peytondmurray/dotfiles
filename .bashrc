@@ -8,6 +8,7 @@
 python () { /home/pdmurray/python38/bin/python3 $@; }
 pip () { /home/pdmurray/python38/bin/pip3 $@; }
 alias exa='exa -la --group-directories-first'
+alias ex='exa'
 alias ll='exa'
 alias du='du -h'
 alias df='df -h'
