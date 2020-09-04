@@ -70,6 +70,12 @@ use_bits = false
 block = "sound"
 
 [[block]]
+block = "custom"
+command = "~/.config/vpn_state.sh"
+interval = 30
+on_click = "~/.config/vpn_toggle.sh"
+
+[[block]]
 block = "time"
 interval = 60
 format = "%Y-%m-%d %H:%M"
