@@ -62,7 +62,7 @@ interval = 1
 [[block]]
 block = "net"
 device = "wlo1"
-format = "{ip} {ipv6} {speed_down} {speed_up}"
+format = "{ip} {ssid} {speed_down} {speed_up}"
 interval = 5
 use_bits = false
 
@@ -70,10 +70,15 @@ use_bits = false
 block = "sound"
 
 [[block]]
-block = "custom"
-command = "~/.config/vpn_state.sh"
-interval = 30
-on_click = "~/.config/vpn_toggle.sh"
+block = "battery"
+driver = "upower"
+format = "{percentage}% {time}"
+
+#[[block]]
+#block = "custom"
+#command = "~/.config/vpn_state.sh"
+#interval = 30
+#on_click = "~/.config/vpn_toggle.sh"
 
 [[block]]
 block = "time"
