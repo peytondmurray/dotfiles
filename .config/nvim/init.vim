@@ -19,6 +19,9 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
+" Color any RGB colors
+Plug 'lilydjwg/colorizer'
+
 " Themes
 Plug 'ronny/birds-of-paradise.vim'
 Plug 'jacoborus/tender.vim'
@@ -33,7 +36,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Initialize plugin system
 call plug#end()
 
+" Enable 24bit true color
+set termguicolors
+
+syntax enable
 colorscheme tender
+
 let g:airline_theme = 'tender'
 
 " Show indent guidelines by default
@@ -52,7 +60,6 @@ set cmdheight=2
 
 " Diagnostic messaging
 set updatetime=300
-
 set signcolumn=yes
 
 " Case sensitive searching only when caps used

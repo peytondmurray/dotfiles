@@ -1,5 +1,8 @@
-theme = "solarized-dark"
-icons = "awesome"
+[theme]
+file = "/home/pdmurray/.config/i3/theme.toml"
+
+[icons]
+name = "awesome"
 
 [[block]]
 block = "pacman"
