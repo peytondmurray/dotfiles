@@ -1,0 +1,11 @@
+[Unit]
+Description=Restart the VPN on wake from sleep.
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=forking
+ExecStart=%h/.config/restart_vpn.sh
+
+[Install]
+WantedBy=multi-user.target
