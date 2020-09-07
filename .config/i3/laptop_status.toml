@@ -1,5 +1,14 @@
-theme = "solarized-dark"
-icons = "awesome"
+[theme]
+name = "slick"
+[theme.overrides]
+separator = ""
+separator_bg = "auto"
+alternating_tint_bg = "#111111"
+
+[icons]
+name = "awesome5"
+[icons.overrides]
+net_wired = ""
 
 [[block]]
 block = "pacman"

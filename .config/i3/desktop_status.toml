@@ -1,8 +1,14 @@
 [theme]
-file = "/home/pdmurray/.config/i3/theme.toml"
+name = "slick"
+[theme.overrides]
+separator = ""
+separator_bg = "auto"
+alternating_tint_bg = "#111111"
 
 [icons]
-name = "awesome"
+name = "awesome5"
+[icons.overrides]
+net_wired = ""
 
 [[block]]
 block = "pacman"
