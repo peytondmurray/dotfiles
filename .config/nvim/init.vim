@@ -55,9 +55,6 @@ let g:node_host_prog = expand('~/.nvm/versions/node/v14.8.0/bin/neovim-node-host
 " Instant markdown
 filetype plugin indent on
 
-" Better display for messages
-set cmdheight=2
-
 " Diagnostic messaging
 set updatetime=300
 set signcolumn=yes
@@ -85,6 +82,8 @@ nmap <C-n> :TagbarToggle<CR>
 " Control+/ to toggle comment status; visual mode uses gbv instead of gv,
 " defined below to avoid conflict with "go to definition in vertical split"
 " command
+nnoremap gbv gv
+
 imap <C-_> <Esc><plug>NERDCommenterTogglei
 vmap <C-_> <plug>NERDCommenterTogglegbv
 nmap <C-_> <plug>NERDCommenterToggle
@@ -220,3 +219,6 @@ let g:mkdp_preview_options = {
     \ 'flowchart_diagrams': {},
     \ 'content_editable': v:false
     \ }
+
+" Automatically wrap at 80 characters for .md
+au BufRead,BufNewFile *.md setlocal textwidth=80
