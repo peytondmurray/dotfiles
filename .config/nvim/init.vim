@@ -36,9 +36,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Initialize plugin system
 call plug#end()
 
-" Enable 24bit true color
-set termguicolors
-
 syntax enable
 colorscheme tender
 
@@ -126,6 +123,9 @@ highlight VertSplit ctermfg=Brown ctermbg=Black
 " Make the currently selected word a different color
 highlight illuminatedWord ctermfg=0 ctermbg=6
 
+" Make tildes at end of file invisible
+highlight EndOfBuffer ctermfg=235
+
 let mapleader=","
 
 " Strip trailing whitespace on save; remove blank line at end of file
@@ -138,9 +138,6 @@ autocmd BufWritePre * call BeforeSave()
 " Ctrl+BS to delete word backwards
 imap <C-BS> <C-w>
 imap  <C-w>
-
-" Make tildes at end of file invisible
-highlight EndOfBuffer ctermfg=235
 
 " Clear last search highlighting
 nmap <silent> <M-/> :let @/=""<CR>
