@@ -221,3 +221,6 @@ let g:mkdp_preview_options = {
 
 " Automatically wrap at 80 characters for .md
 au BufRead,BufNewFile *.md setlocal textwidth=80
+
+" Gdiffsplit opens vertically
+set splitopt+=vertical
