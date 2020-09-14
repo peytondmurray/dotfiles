@@ -223,4 +223,4 @@ let g:mkdp_preview_options = {
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
 " Gdiffsplit opens vertically
-set splitopt+=vertical
+set diffopt+=vertical
