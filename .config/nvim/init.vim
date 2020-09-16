@@ -102,6 +102,8 @@ nnoremap <BS> K
 " Shift+HJKL to move a lot in normal mode
 nnoremap J 30j
 nnoremap K 30k
+vnoremap J 30j
+vnoremap K 30k
 
 " Ctrl+HJKL to move between windows
 nnoremap <C-J> <C-W><C-J>
