@@ -34,6 +34,7 @@ fi
 
 export I3RS_GITHUB_TOKEN=703ec011228af58e6199ff928281d00f9e5fb372
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_QPA_PLATFORMTHEME=qt5ct
 /home/pdmurray/.screenlayout/default.sh
 setxkbmap -variant altgr-intl
 xbindkeys &
