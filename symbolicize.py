@@ -24,7 +24,6 @@ def load_config(path):
         else:
             config[matches[0]] = values
 
-
     return config
 
 
@@ -135,6 +134,9 @@ def symlink(items, dry=False, prompt=False, config_paths=None):
         print(f'\t{link} -> {target}')
 
         if not dry:
+            if not link.parents[0].exists():
+                link.parents[0].mkdir(parents=True)
+
             if link.exists() or link.is_symlink():
                 if prompt:
                     # Ask before overwriting
