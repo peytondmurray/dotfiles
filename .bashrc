@@ -34,7 +34,7 @@ export LD_LIBRARY_PATH=/home/pdmurray/python38/lib:$LD_LIBRARY_PATH
 export VISUAL=nvim
 export EDITOR=nvim
 export FONTCONFIG_PATH=/etc/fonts
-export TERM=xterm
+export TERM=xterm-kitty
 export MICRO_TRUECOLOR=1
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
