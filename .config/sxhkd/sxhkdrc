@@ -137,3 +137,6 @@ super + F7
 
 super + F8
     ~/.config/scripts/volume_change.sh +5%
+
+super + BackSpace
+    systemctl suspend
