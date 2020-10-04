@@ -43,5 +43,5 @@ setxkbmap -variant altgr-intl
 xbindkeys &
 xset dpms 7200 7200 7200
 xset s 7200 7200
-xset r rate 200 60
+xset r rate 300 60
 nvidia-settings -l

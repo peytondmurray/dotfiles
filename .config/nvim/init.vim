@@ -25,6 +25,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'lilydjwg/colorizer'
 
 " Themes
+Plug 'morhetz/gruvbox'
 Plug 'ronny/birds-of-paradise.vim'
 Plug 'jacoborus/tender.vim'
 
@@ -39,9 +40,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 syntax enable
-colorscheme tender
+set termguicolors
+colorscheme gruvbox
 
-let g:airline_theme = 'tender'
+let g:gruvbox_contrast = 'hard'
+let g:airline_theme = 'gruvbox'
 
 " Show indent guidelines by default
 let g:indent_guides_enable_on_vim_startup = 1
@@ -128,7 +131,7 @@ highlight VertSplit ctermfg=Brown ctermbg=Black
 highlight illuminatedWord ctermfg=0 ctermbg=6
 
 " Make tildes at end of file invisible
-highlight EndOfBuffer ctermfg=235
+highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 
 let mapleader=","
 
