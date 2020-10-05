@@ -127,7 +127,7 @@ super + Print
     flameshot gui
 
 super + Pause
-    ~/.config/brightness_toggle.sh
+    ~/.config/scripts/brightness_toggle.sh
 
 super + F6
     ~/.config/scripts/mute.sh
