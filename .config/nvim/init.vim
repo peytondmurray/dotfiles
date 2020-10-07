@@ -43,11 +43,14 @@ syntax enable
 set termguicolors
 colorscheme gruvbox
 
-let g:gruvbox_contrast = 'hard'
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast_light = 'hard'
 let g:airline_theme = 'gruvbox'
 
 " Show indent guidelines by default
 let g:indent_guides_enable_on_vim_startup = 1
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=bg
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#303030
 
 " Python and node paths
 let g:python3_host_prog = expand('~/python38/bin/python3')
