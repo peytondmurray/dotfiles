@@ -22,3 +22,4 @@ pgrep -x picom > /dev/null || picom &
 pgrep -x pasystray > /dev/null || pasystray &
 feh --bg-fill ~/.config/wallpapers/pebbles_stones_dark_152025_3840x2160.jpg
 pgrep -x polybar > /dev/null || polybar -r -c ~/.config/polybar/config.ini main
+pgrep -x nm-applet || nm-applet &

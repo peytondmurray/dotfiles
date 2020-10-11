@@ -20,6 +20,7 @@ alias dmenu='demnu_run -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15"
 alias vectivate='source vectivate'
 alias kmon='kmon -u'
 alias rm='trash-put'
+alias rg='rg -S'
 
 export PATH=/home/pdmurray/python37/bin:$PATH
 export PATH=/home/pdmurray/python38/bin:$PATH

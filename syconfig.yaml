@@ -3,3 +3,5 @@ laptop, desktop:
     .config/i3/{}_config: .config/i3/config
     .config/i3/{}_status.toml: .config/i3/status.toml
     .config/bspwm/{}_bspwmrc: .config/bspwm/bspwmrc
+    .config/polybar/{}_config.ini: .config/polybar/config.ini
+    .config/polybar/{}_modules.ini: .config/polybar/modules.ini
