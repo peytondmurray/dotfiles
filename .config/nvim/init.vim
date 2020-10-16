@@ -75,6 +75,9 @@ set autoindent
 set smartindent
 set smarttab
 
+" Map alt+. to repeat last macro
+:map <M-.> @@
+
 " Automatically open a NERDTree on startup
 autocmd vimenter * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' | NERDTree | endif
 
