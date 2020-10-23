@@ -36,6 +36,9 @@ Plug 'tpope/vim-fugitive'
 " Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Vim-be-good game
+Plug 'ThePrimeagen/vim-be-good'
+
 " Initialize plugin system
 call plug#end()
 
@@ -157,6 +160,7 @@ nmap <silent> <M-/> :let @/=""<CR>
 
 " Make ; start fzf :Lines
 nmap ; :Lines<CR>
+nmap  :Files<CR>
 
 " Tab/Shift+Tab to indent/dedent
 imap <S-Tab> <C-d>
