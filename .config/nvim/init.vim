@@ -4,8 +4,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -20,6 +18,17 @@ Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Plug 'raimondi/delimitmate'
+
+" Fix CursorHold performance
+Plug 'antoinemadec/FixCursorHold.nvim'
+
+" File explorer
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/nerdfont.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+Plug 'lambdalisue/glyph-palette.vim'
+Plug 'lambdalisue/fern-git-status.vim'
 
 " Color any RGB colors
 Plug 'lilydjwg/colorizer'
@@ -81,14 +90,8 @@ set smarttab
 " Map alt+. to repeat last macro
 :map <M-.> @@
 
-" Automatically open a NERDTree on startup
-autocmd vimenter * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' | NERDTree | endif
-
-" Ignore python bytecode
-let NERDTreeIgnore = ['\.pyc$', '__pycache__$']
-
-nnoremap <C-b> :NERDTreeToggle<CR>
-nmap <C-n> :TagbarToggle<CR>
+" Fix writing to buffer all the time
+let g:cursorhold_updatetime = 100
 
 " Control+/ to toggle comment status; visual mode uses gbv instead of gv,
 " defined below to avoid conflict with "go to definition in vertical split"
@@ -200,7 +203,7 @@ inoremap <silent><expr> <TAB>
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
-" Remap original gv keybinding to gbv
+" Remap original gv keybinding to gbv so it doesn't conflict
 nnoremap <silent> gbv gv
 nmap <silent> ge <Plug>(coc-definition)
 nmap <silent> gs :split<CR><Plug>(coc-definition)
@@ -239,3 +242,37 @@ au BufRead,BufNewFile *.md setlocal textwidth=80
 
 " Gdiffsplit opens vertically
 set diffopt+=vertical
+
+" Fern
+" Open Fern with Ctrl+b
+nnoremap <C-b> :Fern . -toggle -drawer<CR>
+
+" Disable the default keybindings for fern
+let g:fern#disable_default_mappings = 1
+
+" Enable fern icons
+let g:fern#renderer = "nerdfont"
+
+" Special keybindings when fern is opened
+function! FernInit() abort
+  nmap <buffer><expr>
+        \ <Plug>(fern-my-open-expand-collapse)
+        \ fern#smart#leaf(
+        \   "\<Plug>(fern-action-open:select)",
+        \   "\<Plug>(fern-action-expand)",
+        \   "\<Plug>(fern-action-collapse)",
+        \ )
+  nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
+  nmap <buffer> n <Plug>(fern-action-new-path)
+  nmap <buffer> h <Plug>(fern-action-hidden-toggle)j
+  nmap <buffer> r <Plug>(fern-action-reload)
+  nmap <buffer> s <Plug>(fern-action-open:split)
+  nmap <buffer> v <Plug>(fern-action-open:vsplit)
+  nmap <buffer> h <Plug>(fern-action-leave)
+  nmap <buffer> l <Plug>(fern-action-enter)
+endfunction
+
+augroup FernGroup
+  autocmd!
+  autocmd FileType fern call FernInit()
+augroup END
