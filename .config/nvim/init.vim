@@ -222,6 +222,9 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Map rn to rename a symbol
+nmap rn <Plug>(coc-rename)
+
 " Markdown preview
 let g:mkdp_auto_start = 1
 let g:mkdp_preview_options = {
