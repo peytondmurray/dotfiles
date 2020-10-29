@@ -31,7 +31,7 @@ Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 
 " Color any RGB colors
-Plug 'lilydjwg/colorizer'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " Themes
 Plug 'morhetz/gruvbox'
@@ -55,6 +55,9 @@ let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_contrast_light = 'hard'
 let g:airline_theme = 'gruvbox'
 colorscheme gruvbox
+
+" Highlight colors
+let g:Hexokinase_highlighters = ['virtual']
 
 " Show indent guidelines by default
 let g:indent_guides_enable_on_vim_startup = 1
@@ -263,7 +266,7 @@ function! FernInit() abort
         \   "\<Plug>(fern-action-collapse)",
         \ )
   nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> n <Plug>(fern-action-new-path)
+  nmap <buffer> m <Plug>(fern-action-new-path)
   nmap <buffer> h <Plug>(fern-action-hidden-toggle)j
   nmap <buffer> r <Plug>(fern-action-reload)
   nmap <buffer> s <Plug>(fern-action-open:split)
