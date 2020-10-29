@@ -45,9 +45,6 @@ Plug 'tpope/vim-fugitive'
 " Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Vim-be-good game
-Plug 'ThePrimeagen/vim-be-good'
-
 " Initialize plugin system
 call plug#end()
 
@@ -221,6 +218,9 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+" Map rn to rename a symbol
+nmap rn <Plug>(coc-rename)
 
 " Markdown preview
 let g:mkdp_auto_start = 1
