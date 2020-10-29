@@ -50,11 +50,11 @@ call plug#end()
 
 syntax enable
 set termguicolors
-colorscheme gruvbox
 
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_contrast_light = 'hard'
 let g:airline_theme = 'gruvbox'
+colorscheme gruvbox
 
 " Show indent guidelines by default
 let g:indent_guides_enable_on_vim_startup = 1
