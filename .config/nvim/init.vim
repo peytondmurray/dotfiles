@@ -45,9 +45,6 @@ Plug 'tpope/vim-fugitive'
 " Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Vim-be-good game
-Plug 'ThePrimeagen/vim-be-good'
-
 " Initialize plugin system
 call plug#end()
 
