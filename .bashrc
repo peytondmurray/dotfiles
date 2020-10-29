@@ -13,7 +13,7 @@ alias ll='exa'
 alias du='du -h'
 alias df='df -h'
 alias sudo='sudo '
-alias yay='yay --color=auto'
+alias paru='paru --color=auto'
 alias pacman='pacman --color=auto'
 alias grep='grep --color=auto'
 alias dmenu='demnu_run -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15"'
@@ -86,7 +86,6 @@ bakylwtxtblk="\[\e[30;43m\]"
 bakblktxtylw="\[\e[33;40m\]"
 
 # Reset
-# txtrst="$(tput sgr 0 2>/dev/null || echo '\e[0m')"  # Text Reset
 txtrst="\[\e[0m\]"
 
 
@@ -159,10 +158,6 @@ pipupdate() {
     else
 	    pip install -U $(echo "${outdated}" | tail -n +3 | awk '{print $1}' | awk 'ORS=" "')
     fi
-}
-
-vpn() {
-    sudo protonvpn d; sudo protonvpn c -f
 }
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
