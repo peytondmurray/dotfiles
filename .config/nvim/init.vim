@@ -14,7 +14,7 @@ Plug 'kshenoy/vim-signature'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'rrethy/vim-illuminate'
 Plug 'guns/xterm-color-table.vim'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+"Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
@@ -248,10 +248,14 @@ set diffopt+=vertical
 
 " Fern
 " Open Fern with Ctrl+b
-nnoremap <C-b> :Fern . -toggle -drawer<CR>
+nnoremap <silent> <C-b> :Fern . -toggle -drawer<CR>
 
 " Disable the default keybindings for fern
 let g:fern#disable_default_mappings = 1
+
+" Hide python bytecode and git files
+"let g:fern#default_hidden = 1
+let g:fern#default_exclude = '^\%(\.git\|__pycache__/\|\.pyc\)$'
 
 " Enable fern icons
 let g:fern#renderer = "nerdfont"
