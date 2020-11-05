@@ -9,16 +9,17 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'osyo-manga/vim-over'
 Plug 'kshenoy/vim-signature'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'rrethy/vim-illuminate'
 Plug 'guns/xterm-color-table.vim'
-"Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'raimondi/delimitmate'
+
+" Convenient window swapping
+Plug 'wesq3/vim-windowswap'
 
 " Fix CursorHold performance
 Plug 'antoinemadec/FixCursorHold.nvim'
@@ -138,9 +139,6 @@ set splitright
 
 " Make orange bar for vertical splits
 highlight VertSplit ctermfg=Brown ctermbg=Black
-
-" Make the currently selected word a different color
-highlight illuminatedWord ctermfg=0 ctermbg=6
 
 " Make tildes at end of file invisible
 highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
@@ -283,3 +281,9 @@ augroup FernGroup
   autocmd!
   autocmd FileType fern call FernInit()
 augroup END
+
+" Remap windowswap keybindings
+let g:windowswap_map_keys = 0 "prevent default bindings
+nnoremap <silent> y :call WindowSwap#MarkWindowSwap()<CR>
+nnoremap <silent> p :call WindowSwap#DoWindowSwap()<CR>
+nnoremap <silent> w :call WindowSwap#EasyWindowSwap()<CR>
