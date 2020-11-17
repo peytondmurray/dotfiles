@@ -227,9 +227,9 @@ bindsym $mod+Ctrl+r mode "$mode_gaps"
 bindsym $mod+BackSpace mode "sleep"
 
 # Volume
-bindsym $mod+F8 exec /home/pdmurray/.config/volumescripts/volume_change.sh +5%
-bindsym $mod+F7 exec /home/pdmurray/.config/volumescripts/volume_change.sh -5%
-bindsym $mod+F6 exec /home/pdmurray/.config/volumescripts/mute.sh
+bindsym $mod+F8 exec /home/pdmurray/.config/scripts/volume_change.sh +5%
+bindsym $mod+F7 exec /home/pdmurray/.config/scripts/volume_change.sh -5%
+bindsym $mod+F6 exec /home/pdmurray/.config/scripts/mute.sh
 
 # Brightness toggle
 bindsym Pause exec ~/.config/brightness_toggle.sh
