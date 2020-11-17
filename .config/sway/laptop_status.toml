@@ -50,12 +50,12 @@ block = "load"
 interval = 1
 format = "{1m}"
 
-#[[block]]
-#block = "nvidia_gpu"
-#label = "GPU"
-#show_memory = true
-#show_clocks = true
-#interval = 1
+[[block]]
+block = "nvidia_gpu"
+label = "GPU"
+show_memory = true
+show_clocks = true
+interval = 1
 
 #[[block]]
 #block = "temperature"
@@ -66,13 +66,24 @@ format = "{1m}"
 
 [[block]]
 block = "net"
-device = "enp6s0"
-format = "{ip} {ipv6} {speed_down} {speed_up}"
+device = "wlo1"
+format = "{ip} {ssid} {speed_down} {speed_up}"
 interval = 5
 use_bits = false
 
 [[block]]
 block = "sound"
+
+[[block]]
+block = "battery"
+driver = "upower"
+format = "{percentage}% {time}"
+
+#[[block]]
+#block = "custom"
+#command = "~/.config/vpn_state.sh"
+#interval = 30
+#on_click = "~/.config/vpn_toggle.sh"
 
 [[block]]
 block = "time"

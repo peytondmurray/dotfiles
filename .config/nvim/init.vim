@@ -15,7 +15,7 @@ Plug 'rrethy/vim-illuminate'
 Plug 'guns/xterm-color-table.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'raimondi/delimitmate'
 
 " Convenient window swapping
