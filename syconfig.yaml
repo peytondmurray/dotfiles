@@ -1,7 +1,0 @@
-laptop, desktop:
-    .screenlayout/{}_default.sh: .screenlayout/default.sh
-    .config/sway/{}_config: .config/sway/config
-    .config/sway/{}_status.toml: .config/sway/status.toml
-    .config/bspwm/{}_bspwmrc: .config/bspwm/bspwmrc
-    .config/polybar/{}_config.ini: .config/polybar/config.ini
-    .config/polybar/{}_modules.ini: .config/polybar/modules.ini
