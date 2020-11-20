@@ -2,29 +2,25 @@ import os
 import sys
 import argparse
 import pathlib
-import yaml
+import toml
 import re
 import pprint
 import textwrap
+from collections import defaultdict
 
 
 def load_config(path):
 
     with open(path, 'r') as f:
-        raw_config = yaml.load(f, Loader=yaml.SafeLoader)
+        raw_config = toml.load(f)
 
-    config = {}
+    configs = defaultdict(dict)
 
-    for key, values in raw_config.items():
-        matches = [s for s in re.findall(r'\w+', key) if s]
-        if len(matches) > 1:
-            for match in matches:
-                config[match] = {k.format(match): v for k, v in values.items()}
+    for platform in raw_config['platforms']:
+        for template, target in raw_config['templates'].items():
+            configs[platform][template.format(platform)] = target
 
-        else:
-            config[matches[0]] = values
-
-    return config
+    return dict(configs)
 
 
 def load_ignore(path):
@@ -177,7 +173,7 @@ def print_configs(config_file, config):
 
 def main():
 
-    config_file = './syconfig.yaml'
+    config_file = './syconfig.toml'
     arguments = get_args()
 
     config = load_config(config_file)
