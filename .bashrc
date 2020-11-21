@@ -161,10 +161,30 @@ pipupdate() {
 }
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-source /usr/share/nvm/init-nvm.sh
 
+# Lazily load nvm, otherwise bash startup takes much longer
+nvm() {
+    unset -f nvm
+    source /usr/share/nvm/init-nvm.sh
+    nvm "$@"
+}
+
+node() {
+    unset -f node
+    source /usr/share/nvm/init-nvm.sh
+    node "$@"
+}
+
+npm() {
+    unset -f npm
+    source /usr/share/nvm/init-nvm.sh
+    npm "$@"
+}
 PATH="/home/pdmurray/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/pdmurray/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/pdmurray/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/pdmurray/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/pdmurray/perl5"; export PERL_MM_OPT;
+
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+    . /usr/share/bash-completion/bash_completion
