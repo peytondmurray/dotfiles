@@ -15,7 +15,6 @@ Plug 'rrethy/vim-illuminate'
 Plug 'guns/xterm-color-table.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Vimjas/vim-python-pep8-indent'
-"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'raimondi/delimitmate'
 
 " Convenient window swapping
@@ -240,6 +239,10 @@ let g:mkdp_preview_options = {
 
 " Automatically wrap at 80 characters for .md
 au BufRead,BufNewFile *.md setlocal textwidth=80
+
+" Wrap at 100 for python
+au BufRead,BufNewFile *.py setlocal textwidth=100
+
 
 " Gdiffsplit opens vertically
 set diffopt+=vertical
