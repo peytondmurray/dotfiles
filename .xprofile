@@ -45,3 +45,4 @@ xset r rate 300 60
 source ~/.screenlayout/default.sh
 setxkbmap -variant altgr-intl
 xbindkeys &
+nvidia-settings -l
