@@ -8,6 +8,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'kshenoy/vim-signature'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
@@ -16,6 +17,7 @@ Plug 'guns/xterm-color-table.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'raimondi/delimitmate'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " Convenient window swapping
 Plug 'wesq3/vim-windowswap'
@@ -223,7 +225,6 @@ endfunction
 nmap rn <Plug>(coc-rename)
 
 " Markdown preview
-let g:mkdp_auto_start = 1
 let g:mkdp_preview_options = {
     \ 'mkit': {},
     \ 'katex': {},
@@ -305,3 +306,10 @@ function! SwapBG() abort
 endfunction
 
 command! SwapBg call SwapBG()
+
+" Easy align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
