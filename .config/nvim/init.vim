@@ -19,6 +19,10 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'raimondi/delimitmate'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
+" Select blocks of python text
+Plug 'kana/vim-textobj-user'
+Plug 'bps/vim-textobj-python'
+
 " Convenient window swapping
 Plug 'wesq3/vim-windowswap'
 
