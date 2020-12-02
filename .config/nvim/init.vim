@@ -294,20 +294,20 @@ nnoremap <silent> w :call WindowSwap#EasyWindowSwap()<CR>
 
 " Swap light and dark colorschemes
 function! SwapBG() abort
-    if &bg ==# "dark"
+    if &bg == "dark"
         set bg=light
         autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#ebdbb2
-        hi IndentGuidesEven guibg=#ebdbb2
+        highlight IndentGuidesEven guibg=#ebdbb2
+        highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
     else
         set bg=dark
         autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#303030
-        hi IndentGuidesEven guibg=#303030
+        highlight IndentGuidesEven guibg=#303030
+        highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
     endif
 endfunction
-
 command! SwapBg call SwapBG()
 
-" Easy align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
