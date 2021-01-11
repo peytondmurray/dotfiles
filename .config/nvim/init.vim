@@ -19,6 +19,9 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'raimondi/delimitmate'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
+" Autoformatting
+Plug 'Chiel92/vim-autoformat'
+
 " Select blocks of python text
 Plug 'kana/vim-textobj-user'
 Plug 'bps/vim-textobj-python'
@@ -50,6 +53,7 @@ Plug 'tpope/vim-fugitive'
 
 " Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'liuchengxu/vista.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -99,14 +103,13 @@ set smarttab
 " Fix writing to buffer all the time
 let g:cursorhold_updatetime = 100
 
-" Control+/ to toggle comment status; visual mode uses gbv instead of gv,
-" defined below to avoid conflict with "go to definition in vertical split"
-" command
-nnoremap gbv gv
-
+" Control+/ to toggle comment status
 imap <C-_> <Esc><plug>NERDCommenterTogglei
 vmap <C-_> <plug>NERDCommenterTogglegbv
 nmap <C-_> <plug>NERDCommenterToggle
+
+" Override JS
+let g:NERDCustomDelimiters = { 'javascript': { 'left': '// ' } }
 
 " Show line numbers
 set number
@@ -317,3 +320,26 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" How each level is indented and what to prepend.
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+
+" Executive used when opening vista sidebar without specifying it.
+" See all the avaliable executives via `:echo g:vista#executives`.
+let g:vista_default_executive = 'coc'
+
+" To enable fzf's preview window set g:vista_fzf_preview.
+" The elements of g:vista_fzf_preview will be passed as arguments to fzf#vim#with_preview()
+" For example:
+let g:vista_fzf_preview = ['right:50%']
+
+nnoremap <silent>  :Vista!!<CR>
+
+" Python formatter
+let g:formatterpath = ['/home/ubuntu/python38/bin/black']
+
+nnoremap <silent> gbq gq
+nnoremap gq :Autoformat<CR>
+
+" Call Prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile

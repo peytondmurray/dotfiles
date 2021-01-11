@@ -4,7 +4,8 @@
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Args": [
-        "--max-line-length=100"
+        "--max-line-length=100",
+        "--ignore=E231"
     ],
     "diagnostic.checkCurrentLine": true,
     "markdownlint.config": {
