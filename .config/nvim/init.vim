@@ -75,9 +75,9 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=bg
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#303030
 
 " Python and node paths
-let g:python3_host_prog = expand('~/python38/bin/python3')
-let g:coc_node_path = expand('~/.nvm/versions/node/v14.8.0/bin/node')
-let g:node_host_prog = expand('~/.nvm/versions/node/v14.8.0/bin/neovim-node-host')
+let g:python3_host_prog = expand('~/python39/bin/python3')
+let g:coc_node_path = expand('~/.nvm/versions/node/v15.5.1/bin/node')
+let g:node_host_prog = expand('~/.nvm/versions/node/v15.5.1/bin/neovim-node-host')
 
 " Instant markdown
 filetype plugin indent on

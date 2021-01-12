@@ -5,8 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-python () { /home/pdmurray/python38/bin/python3 $@; }
-pip () { /home/pdmurray/python38/bin/pip3 $@; }
+python () { /home/pdmurray/python39/bin/python3 $@; }
+pip () { /home/pdmurray/python39/bin/pip3 $@; }
 alias exa='exa -la --group-directories-first'
 alias ex='exa'
 alias ll='exa'
@@ -23,8 +23,8 @@ alias kmon='kmon -u'
 alias rm='trash-put'
 alias rg='rg -S'
 
-export PATH=/home/pdmurray/python37/bin:$PATH
-export PATH=/home/pdmurray/python38/bin:$PATH
+
+export PATH=/home/pdmurray/python39/bin:$PATH
 export PATH=/home/pdmurray/.gem/ruby/2.7.0/bin:$PATH
 export PATH=/home/pdmurray/go/bin:$PATH
 export PATH=/home/pdmurray/.local/bin:$PATH
@@ -32,7 +32,7 @@ export PATH=/home/pdmurray/bin:$PATH
 export PATH=/home/pdmurray/.cargo/bin:$PATH
 export PATH=/home/pdmurray/.config/scripts:$PATH
 
-export LD_LIBRARY_PATH=/home/pdmurray/python38/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/home/pdmurray/python39/lib:$LD_LIBRARY_PATH
 
 export VISUAL=nvim
 export EDITOR=nvim
