@@ -9,7 +9,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'Yggdroot/indentLine'
 Plug 'kshenoy/vim-signature'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'rrethy/vim-illuminate'
@@ -43,6 +43,7 @@ Plug 'lambdalisue/fern-git-status.vim'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " Themes
+Plug 'ayu-theme/ayu-vim'
 Plug 'morhetz/gruvbox'
 Plug 'ronny/birds-of-paradise.vim'
 Plug 'jacoborus/tender.vim'
@@ -63,16 +64,12 @@ set termguicolors
 
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_contrast_light = 'hard'
-let g:airline_theme = 'gruvbox'
-colorscheme gruvbox
+"let g:airline_theme = 'gruvbox'
+let ayucolor="dark"
+colorscheme ayu
 
 " Highlight colors
 let g:Hexokinase_highlighters = ['virtual']
-
-" Show indent guidelines by default
-let g:indent_guides_enable_on_vim_startup = 1
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=bg
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#303030
 
 " Python and node paths
 let g:python3_host_prog = expand('~/python39/bin/python3')
@@ -149,7 +146,7 @@ set splitright
 highlight VertSplit ctermfg=Brown ctermbg=Black
 
 " Make tildes at end of file invisible
-highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+"highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 
 let mapleader=","
 
@@ -303,13 +300,9 @@ nnoremap <silent> w :call WindowSwap#EasyWindowSwap()<CR>
 function! SwapBG() abort
     if &bg == "dark"
         set bg=light
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#ebdbb2
-        highlight IndentGuidesEven guibg=#ebdbb2
         highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
     else
         set bg=dark
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#303030
-        highlight IndentGuidesEven guibg=#303030
         highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
     endif
 endfunction
@@ -343,3 +336,6 @@ nnoremap gq :Autoformat<CR>
 
 " Call Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" Set indent marker options
+let g:indentLine_char = '|'
