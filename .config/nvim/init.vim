@@ -19,6 +19,9 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'raimondi/delimitmate'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
+" neovim IN THE BROWSER
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
 " Autoformatting
 Plug 'Chiel92/vim-autoformat'
 

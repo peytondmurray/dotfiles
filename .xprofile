@@ -47,3 +47,4 @@ source ~/.screenlayout/default.sh
 setxkbmap -variant altgr-intl
 xbindkeys &
 nvidia-settings -l
+nvim --headless "+call firenvim#install(0) | q"
