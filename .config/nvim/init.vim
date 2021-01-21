@@ -338,7 +338,7 @@ let g:vista_fzf_preview = ['right:50%']
 nnoremap <silent>  :Vista!!<CR>
 
 " Python formatter
-let g:formatterpath = ['/home/ubuntu/python38/bin/black']
+let g:formatterpath = ['/home/ubuntu/python39/bin/black']
 
 nnoremap <silent> gbq gq
 nnoremap gq :Autoformat<CR>
