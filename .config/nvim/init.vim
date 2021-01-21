@@ -71,13 +71,15 @@ let g:gruvbox_contrast_light = 'hard'
 let ayucolor="dark"
 colorscheme ayu
 
+highlight illuminatedWord ctermbg=4 guibg=#444444
+
 " Highlight colors
 let g:Hexokinase_highlighters = ['virtual']
 
 " Python and node paths
 let g:python3_host_prog = expand('~/python39/bin/python3')
-let g:coc_node_path = expand('~/.nvm/versions/node/v15.5.1/bin/node')
-let g:node_host_prog = expand('~/.nvm/versions/node/v15.5.1/bin/neovim-node-host')
+let g:coc_node_path = expand('~/.nvm/versions/node/v15.6.0/bin/node')
+let g:node_host_prog = expand('~/.nvm/versions/node/v15.6.0/bin/neovim-node-host')
 
 " Instant markdown
 filetype plugin indent on
@@ -120,7 +122,7 @@ set cursorline
 " Automatically update when the current file changes on disk
 set autoread
 
- "Remap docstring lookup to ctrl-shift-/
+""Remap docstring lookup to ctrl-shift-/
 nnoremap <BS> K
 
 " Shift+HJKL to move a lot in normal mode
@@ -148,10 +150,10 @@ set splitright
 " Make orange bar for vertical splits
 highlight VertSplit ctermfg=Brown ctermbg=Black
 
-" Make tildes at end of file invisible
-"highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+" Remove tildes at the end of the buffer
+let &fcs='eob: '
 
-let mapleader=","
+let mapleader=" "
 
 " Strip trailing whitespace on save; remove blank line at end of file
 function BeforeSave()
@@ -198,14 +200,14 @@ let NERDTreeMinimalUI = 1
 " COC Config
 " Map <tab> to trigger completion and to move to next item
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
@@ -217,15 +219,19 @@ nmap <silent> gv :vsplit<CR><Plug>(coc-definition)
 nmap gj <Plug>(coc-diagnostic-next)
 nmap gk <Plug>(coc-diagnostic-prev)
 
+" Remap original gf keybinding so it doesn't conflict
+nnoremap <silent> gof gf
+nmap gf <Plug>(coc-fix-current)
+
 " Use <BS> to show siimple hover type documentation in preview window
 nnoremap <silent> <M-BS> :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
 endfunction
 
 " Map rn to rename a symbol
@@ -271,26 +277,26 @@ let g:fern#renderer = "nerdfont"
 
 " Special keybindings when fern is opened
 function! FernInit() abort
-  nmap <buffer><expr>
+    nmap <buffer><expr>
         \ <Plug>(fern-my-open-expand-collapse)
         \ fern#smart#leaf(
         \   "\<Plug>(fern-action-open:select)",
         \   "\<Plug>(fern-action-expand)",
         \   "\<Plug>(fern-action-collapse)",
         \ )
-  nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> m <Plug>(fern-action-new-path)
-  nmap <buffer> zh <Plug>(fern-action-hidden-toggle)
-  nmap <buffer> r <Plug>(fern-action-reload)
-  nmap <buffer> s <Plug>(fern-action-open:split)
-  nmap <buffer> v <Plug>(fern-action-open:vsplit)
-  nmap <buffer> h <Plug>(fern-action-leave)
-  nmap <buffer> l <Plug>(fern-action-enter)
+    nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
+    nmap <buffer> m <Plug>(fern-action-new-path)
+    nmap <buffer> zh <Plug>(fern-action-hidden-toggle)
+    nmap <buffer> r <Plug>(fern-action-reload)
+    nmap <buffer> s <Plug>(fern-action-open:split)
+    nmap <buffer> v <Plug>(fern-action-open:vsplit)
+    nmap <buffer> h <Plug>(fern-action-leave)
+    nmap <buffer> l <Plug>(fern-action-enter)
 endfunction
 
 augroup FernGroup
-  autocmd!
-  autocmd FileType fern call FernInit()
+    autocmd!
+    autocmd FileType fern call FernInit()
 augroup END
 
 " Remap windowswap keybindings
@@ -305,8 +311,8 @@ function! SwapBG() abort
         set bg=light
         highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
     else
-        set bg=dark
-        highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+       set bg=dark
+       highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
     endif
 endfunction
 command! SwapBg call SwapBG()
