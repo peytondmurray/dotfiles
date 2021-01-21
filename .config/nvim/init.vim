@@ -122,6 +122,9 @@ set cursorline
 " Automatically update when the current file changes on disk
 set autoread
 
+" Don't wrap long lines
+set nowrap
+
 ""Remap docstring lookup to ctrl-shift-/
 nnoremap <BS> K
 
@@ -148,7 +151,7 @@ set splitbelow
 set splitright
 
 " Make orange bar for vertical splits
-highlight VertSplit ctermfg=Brown ctermbg=Black
+highlight VertSplit guifg=Orange
 
 " Remove tildes at the end of the buffer
 let &fcs='eob: '
