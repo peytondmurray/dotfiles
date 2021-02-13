@@ -18,6 +18,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'raimondi/delimitmate'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'lukhio/vim-mapping-conflicts'
 
 " Debugging
 Plug 'puremourning/vimspector'
@@ -31,6 +32,7 @@ Plug 'Chiel92/vim-autoformat'
 " Select blocks of python text
 Plug 'kana/vim-textobj-user'
 Plug 'bps/vim-textobj-python'
+Plug 'michaeljsmith/vim-indent-object'
 
 " Convenient window swapping
 Plug 'wesq3/vim-windowswap'
@@ -93,6 +95,8 @@ set signcolumn=yes
 " Case sensitive searching only when caps used
 set ignorecase
 set smartcase
+set inccommand="nosplit"
+set incsearch
 
 " Use spaces instead of tabs
 set expandtab
@@ -128,7 +132,7 @@ set autoread
 " Don't wrap long lines
 set nowrap
 
-""Remap docstring lookup to ctrl-shift-/
+"Remap docstring lookup to ctrl-shift-/
 nnoremap <BS> K
 
 " Shift+HJKL to move a lot in normal mode
@@ -159,6 +163,7 @@ highlight VertSplit guifg=Orange
 " Remove tildes at the end of the buffer
 let &fcs='eob: '
 
+nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 " Strip trailing whitespace on save; remove blank line at end of file
@@ -201,7 +206,6 @@ let g:SignatureMarkTextHLDynamic = 1
 let g:pydocstring_formatter = 'numpy'
 nmap <C-D> <Plug>(pydocstring)
 
-let NERDTreeMinimalUI = 1
 
 " COC Config
 " Map <tab> to trigger completion and to move to next item
@@ -218,18 +222,17 @@ inoremap <silent><expr> <TAB>
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " Remap original gv keybinding to gbv so it doesn't conflict
-nnoremap <silent> gbv gv
-nmap <silent> ge <Plug>(coc-definition)
-nmap <silent> gs :split<CR><Plug>(coc-definition)
-nmap <silent> gv :vsplit<CR><Plug>(coc-definition)
-nmap gj <Plug>(coc-diagnostic-next)
-nmap gk <Plug>(coc-diagnostic-prev)
+nmap <leader>e <Plug>(coc-definition)
+nmap <leader>s :split<CR><Plug>(coc-definition)
+nmap <leader>v :vsplit<CR><Plug>(coc-definition)
+nmap <leader>j <Plug>(coc-diagnostic-next)
+nmap <leader>k <Plug>(coc-diagnostic-prev)
 
 " Remap original gf keybinding so it doesn't conflict
 nnoremap <silent> gof gf
 nmap gf <Plug>(coc-fix-current)
 
-" Use <BS> to show siimple hover type documentation in preview window
+" Use <BS> to show simple hover type documentation in preview window
 nnoremap <silent> <M-BS> :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
@@ -354,3 +357,6 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " Set indent marker options
 let g:indentLine_char = '|'
+
+let g:vimspector_enable_mappings = 'HUMAN'
+let g:vimspector_install_gadgets = [ 'CodeLLDB' ]

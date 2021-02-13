@@ -20,6 +20,6 @@ bspc rule -a Screenkey manage=off
 
 pgrep -x picom > /dev/null || picom &
 pgrep -x pasystray > /dev/null || pasystray &
-feh --bg-fill ~/.config/wallpapers/pebbles_stones_dark_152025_3840x2160.jpg
+feh --bg-fill ~/.config/wallpapers/4k-wallpaper-beautiful-close-up-1418116.jpg
 killall -q polybar; polybar -r -c ~/.config/polybar/config.ini main &
 pgrep -x nm-applet || nm-applet &
