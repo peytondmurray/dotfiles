@@ -82,7 +82,7 @@ highlight illuminatedWord ctermbg=4 guibg=#444444
 let g:Hexokinase_highlighters = ['virtual']
 
 " Python and node paths
-let g:python3_host_prog = expand('~/python39/bin/python3')
+let g:python3_host_prog = expand('~/.pyenv/versions/3.9.1/bin/python')
 let g:coc_node_path = expand('~/.nvm/versions/node/v15.6.0/bin/node')
 let g:node_host_prog = expand('~/.nvm/versions/node/v15.6.0/bin/neovim-node-host')
 
@@ -360,3 +360,5 @@ let g:indentLine_char = '|'
 
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_install_gadgets = [ 'CodeLLDB' ]
+
+au FileType python setlocal formatprg=autopep8\ -
