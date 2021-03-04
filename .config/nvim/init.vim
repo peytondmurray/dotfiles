@@ -63,6 +63,7 @@ Plug 'tpope/vim-fugitive'
 " Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'liuchengxu/vista.vim'
+Plug 'honza/vim-snippets'
 
 " Initialize plugin system
 call plug#end()
@@ -219,9 +220,13 @@ inoremap <silent><expr> <TAB>
     \ <SID>check_back_space() ? "\<TAB>" :
     \ coc#refresh()
 
+inoremap <silent><expr> <S-TAB>
+    \ pumvisible() ? "\<C-p>" : "\<C-h>"
+
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
-" Remap original gv keybinding to gbv so it doesn't conflict
+let g:coc_snippet_next = '<tab>'
+
 nmap <leader>e <Plug>(coc-definition)
 nmap <leader>s :split<CR><Plug>(coc-definition)
 nmap <leader>v :vsplit<CR><Plug>(coc-definition)

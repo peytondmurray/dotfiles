@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "~/python39/bin/python3",
+    "python.pythonPath": "/home/pdmurray/.pyenv/versions/3.9.1/bin/python",
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
