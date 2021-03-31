@@ -374,3 +374,6 @@ au FileType python setlocal formatprg=autopep8\ -
 " Use xelatex instead of pdflatex
 let g:livepreview_engine = 'xelatex'
 let g:livepreview_previewer = 'evince'
+
+" Python docstrings
+let g:pydocstring_doq_path = '~/.pyenv/shims/doq'

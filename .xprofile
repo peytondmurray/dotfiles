@@ -45,6 +45,7 @@ xset dpms 7200 7200 7200
 xset s 7200 7200
 xset r rate 300 60
 source ~/.screenlayout/default.sh
-setxkbmap -variant altgr-intl
 xbindkeys &
 nvidia-settings -l
+sleep 5
+setxkbmap -variant altgr-intl
