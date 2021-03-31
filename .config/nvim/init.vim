@@ -20,6 +20,9 @@ Plug 'raimondi/delimitmate'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'lukhio/vim-mapping-conflicts'
 
+" LaTeX live preview
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+
 " Debugging
 Plug 'puremourning/vimspector'
 
@@ -367,3 +370,7 @@ let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_install_gadgets = [ 'CodeLLDB' ]
 
 au FileType python setlocal formatprg=autopep8\ -
+
+" Use xelatex instead of pdflatex
+let g:livepreview_engine = 'xelatex'
+let g:livepreview_previewer = 'evince'
