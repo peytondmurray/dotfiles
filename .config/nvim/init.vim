@@ -184,8 +184,8 @@ imap  <C-w>
 " Clear last search highlighting
 nmap <silent> <M-/> :let @/=""<CR>
 
-" Make ; start fzf :Lines
-nmap ; :Lines<CR>
+" Make ; start ripgrep
+nmap ; :Rg<CR>
 nmap  :Files<CR>
 
 " Tab/Shift+Tab to indent/dedent
@@ -235,10 +235,7 @@ nmap <leader>s :split<CR><Plug>(coc-definition)
 nmap <leader>v :vsplit<CR><Plug>(coc-definition)
 nmap <leader>j <Plug>(coc-diagnostic-next)
 nmap <leader>k <Plug>(coc-diagnostic-prev)
-
-" Remap original gf keybinding so it doesn't conflict
-nnoremap <silent> gof gf
-nmap gf <Plug>(coc-fix-current)
+nmap <leader>f <Plug>(coc-fix-current)
 
 " Use <BS> to show simple hover type documentation in preview window
 nnoremap <silent> <M-BS> :call <SID>show_documentation()<CR>
