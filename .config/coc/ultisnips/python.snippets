@@ -1,0 +1,52 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+snippet pdb
+import pdb; pdb.set_trace()
+endsnippet
+snippet bpdb
+import bpdb; bpdb.set_trace()
+endsnippet
+snippet ipdb
+import ipdb; ipdb.set_trace()
+endsnippet
+snippet iem
+__import__('IPython').embed()
+endsnippet
+snippet rpdb
+import rpdb; rpdb.set_trace()
+endsnippet
+snippet wdb
+import wdb; wdb.set_trace()
+endsnippet
+snippet ptpython
+__import__('ptpython.repl', fromlist=('repl')).embed(globals(), locals(), vi_mode=${1:False}, history_filename=${2:None})
+endsnippet
+snippet pudb
+import pudb; pudb.set_trace()
+endsnippet
+snippet pudbr
+import pudb.remote; pudb.remote.set_trace()
+endsnippet
