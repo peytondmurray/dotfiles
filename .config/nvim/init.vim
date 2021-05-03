@@ -369,7 +369,7 @@ let g:indentLine_char = '|'
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_install_gadgets = [ 'CodeLLDB' ]
 
-au FileType python setlocal formatprg=autopep8\ -
+"au FileType python setlocal formatprg=autopep8\ -
 
 " Use xelatex instead of pdflatex
 let g:livepreview_engine = 'xelatex'

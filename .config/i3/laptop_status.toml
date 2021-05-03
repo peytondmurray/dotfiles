@@ -26,10 +26,6 @@ aur_command = "yay -Qua"
 #label = ""
 
 [[block]]
-block = "github"
-format = "{total}|{author}|{comment}|{mention}|{review_requested}"
-
-[[block]]
 block = "disk_space"
 path = "/"
 alias = "/"
@@ -53,13 +49,6 @@ interval = 1
 block = "load"
 interval = 1
 format = "{1m}"
-
-[[block]]
-block = "nvidia_gpu"
-label = "GPU"
-show_memory = true
-show_clocks = true
-interval = 1
 
 #[[block]]
 #block = "temperature"
