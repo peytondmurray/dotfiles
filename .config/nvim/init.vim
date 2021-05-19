@@ -80,7 +80,7 @@ let g:gruvbox_contrast_light = 'hard'
 let ayucolor="dark"
 colorscheme ayu
 
-highlight illuminatedWord ctermbg=4 guibg=#444444
+highlight illuminatedWord ctermbg=4 guibg=#93ccea
 
 " Highlight colors
 let g:Hexokinase_highlighters = ['virtual']
