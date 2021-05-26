@@ -26,9 +26,6 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 " Debugging
 Plug 'puremourning/vimspector'
 
-" neovim IN THE BROWSER
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-
 " Autoformatting
 Plug 'Chiel92/vim-autoformat'
 
@@ -331,10 +328,9 @@ function! SwapBG() abort
 endfunction
 command! SwapBg call SwapBG()
 
-" Start interactive EasyAlign in visual mode (e.g. vipga)
+" Start interactive EasyAlign in visual mode (e.g. vipga) and motion/text
+" object (e.g. gaip)
 xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
 " How each level is indented and what to prepend.
@@ -349,6 +345,7 @@ let g:vista_default_executive = 'coc'
 " For example:
 let g:vista_fzf_preview = ['right:50%']
 
+" Open symbol tree
 nnoremap <silent>  :Vista!!<CR>
 
 " Python formatter

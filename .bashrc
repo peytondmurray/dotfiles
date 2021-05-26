@@ -21,7 +21,6 @@ alias kmon='kmon -u'
 alias rm='trash-put'
 alias rg='rg -S'
 
-
 export PATH=/home/pdmurray/.gem/ruby/2.7.0/bin:$PATH
 export PATH=/home/pdmurray/go/bin:$PATH
 export PATH=/home/pdmurray/.local/bin:$PATH
@@ -35,6 +34,26 @@ export FONTCONFIG_PATH=/etc/fonts
 export TERM=xterm-kitty
 export MICRO_TRUECOLOR=1
 export RANGER_LOAD_DEFAULT_RC=FALSE
+
+ssh() {
+    TERM=xterm-256color command ssh $@
+}
+
+colors() {
+    awk 'BEGIN{
+        s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
+        for (colnum = 0; colnum<77; colnum++) {
+            r = 255-(colnum*255/76);
+            g = (colnum*510/76);
+            b = (colnum*255/76);
+            if (g>255) g = 510-g;
+            printf "\033[48;2;%d;%d;%dm", r,g,b;
+            printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;
+            printf "%s\033[0m", substr(s,colnum+1,1);
+        }
+        printf "\n";
+    }'
+}
 
 ### Colors ###
 
