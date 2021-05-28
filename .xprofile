@@ -49,3 +49,7 @@ xbindkeys &
 nvidia-settings -l
 sleep 5
 setxkbmap -variant altgr-intl
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
