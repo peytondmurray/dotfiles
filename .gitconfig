@@ -2,7 +2,7 @@
 	email = peynmurray@gmail.com
 	name = pdmurray
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -10,3 +10,13 @@
 	required = true
 [pull]
 	rebase = false
+[delta]
+    plus-style = "syntax #012800"
+    minus-style = "syntax #340001"
+    syntax-theme = Monokai Extended
+    navigate = true
+    side-by-side = true
+    line-numbers = true
+
+[interactive]
+    diffFilter = delta --color-only
