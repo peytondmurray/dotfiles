@@ -35,6 +35,8 @@ export TERM=xterm-kitty
 export MICRO_TRUECOLOR=1
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
+eval "$(ssh-agent)" > /dev/null
+
 ssh() {
     TERM=xterm-256color command ssh $@
 }

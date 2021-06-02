@@ -19,6 +19,7 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'raimondi/delimitmate'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'lukhio/vim-mapping-conflicts'
+Plug 'folke/which-key.nvim'
 
 " LaTeX live preview
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
@@ -61,6 +62,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 " Completion
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'liuchengxu/vista.vim'
 Plug 'honza/vim-snippets'
@@ -205,6 +207,7 @@ let g:SignatureMarkTextHLDynamic = 1
 
 " Use numpydoc docstrings
 let g:pydocstring_formatter = 'numpy'
+let g:pydocstring_doq_path = '~/.pyenv/shims/doq'
 nmap <C-D> <Plug>(pydocstring)
 
 
@@ -216,12 +219,12 @@ function! s:check_back_space() abort
 endfunction
 
 inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ coc#refresh()
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
 
 inoremap <silent><expr> <S-TAB>
-    \ pumvisible() ? "\<C-p>" : "\<C-h>"
+            \ pumvisible() ? "\<C-p>" : "\<C-h>"
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
@@ -233,6 +236,7 @@ nmap <leader>v :vsplit<CR><Plug>(coc-definition)
 nmap <leader>j <Plug>(coc-diagnostic-next)
 nmap <leader>k <Plug>(coc-diagnostic-prev)
 nmap <leader>f <Plug>(coc-fix-current)
+nmap <leader>n <Plug>(coc-rename)
 
 " Use <BS> to show simple hover type documentation in preview window
 nnoremap <silent> <M-BS> :call <SID>show_documentation()<CR>
@@ -245,29 +249,25 @@ function! s:show_documentation()
     endif
 endfunction
 
-" Map rn to rename a symbol
-nmap rn <Plug>(coc-rename)
-
 " Markdown preview
 let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'sequence_diagrams': {},
-    \ 'flowchart_diagrams': {},
-    \ 'content_editable': v:false
-    \ }
+            \ 'mkit': {},
+            \ 'katex': {},
+            \ 'uml': {},
+            \ 'maid': {},
+            \ 'disable_sync_scroll': 0,
+            \ 'sync_scroll_type': 'middle',
+            \ 'hide_yaml_meta': 1,
+            \ 'sequence_diagrams': {},
+            \ 'flowchart_diagrams': {},
+            \ 'content_editable': v:false
+            \ }
 
 " Automatically wrap at 80 characters for .md
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
 " Wrap at 100 for python
 au BufRead,BufNewFile *.py setlocal textwidth=100
-
 
 " Gdiffsplit opens vertically
 set diffopt+=vertical
@@ -289,12 +289,12 @@ let g:fern#renderer = "nerdfont"
 " Special keybindings when fern is opened
 function! FernInit() abort
     nmap <buffer><expr>
-        \ <Plug>(fern-my-open-expand-collapse)
-        \ fern#smart#leaf(
-        \   "\<Plug>(fern-action-open:select)",
-        \   "\<Plug>(fern-action-expand)",
-        \   "\<Plug>(fern-action-collapse)",
-        \ )
+                \ <Plug>(fern-my-open-expand-collapse)
+                \ fern#smart#leaf(
+                \   "\<Plug>(fern-action-open:select)",
+                \   "\<Plug>(fern-action-expand)",
+                \   "\<Plug>(fern-action-collapse)",
+                \ )
     nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
     nmap <buffer> m <Plug>(fern-action-new-path)
     nmap <buffer> zh <Plug>(fern-action-hidden-toggle)
@@ -322,16 +322,16 @@ function! SwapBG() abort
         set bg=light
         highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
     else
-       set bg=dark
-       highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+        set bg=dark
+        highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
     endif
 endfunction
 command! SwapBg call SwapBG()
 
 " Start interactive EasyAlign in visual mode (e.g. vipga) and motion/text
 " object (e.g. gaip)
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+xmap <leader>a <Plug>(EasyAlign)
+nmap <leader>a <Plug>(EasyAlign)
 
 " How each level is indented and what to prepend.
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
@@ -348,11 +348,9 @@ let g:vista_fzf_preview = ['right:50%']
 " Open symbol tree
 nnoremap <silent>  :Vista!!<CR>
 
-" Python formatter
-let g:formatterpath = ['/home/ubuntu/python39/bin/black']
-
-nnoremap <silent> gbq gq
-nnoremap gq :Autoformat<CR>
+" Autoformatting
+nnoremap <silent> <leader>q :Autoformat<CR>
+vnoremap <silent> <leader>q :Autoformat<CR>
 
 " Call Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -369,5 +367,23 @@ let g:vimspector_install_gadgets = [ 'CodeLLDB' ]
 let g:livepreview_engine = 'xelatex'
 let g:livepreview_previewer = 'evince'
 
-" Python docstrings
-let g:pydocstring_doq_path = '~/.pyenv/shims/doq'
+" Tree-sitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+    enable = true,
+    },
+incremental_selection = {
+enable = true,
+},
+    indent = {
+    enable = true
+    }
+}
+EOF
+
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
+" WhichKey
+set timeoutlen=200
