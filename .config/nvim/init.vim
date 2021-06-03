@@ -208,8 +208,7 @@ let g:SignatureMarkTextHLDynamic = 1
 " Use numpydoc docstrings
 let g:pydocstring_formatter = 'numpy'
 let g:pydocstring_doq_path = '~/.pyenv/shims/doq'
-nmap <C-D> <Plug>(pydocstring)
-
+nmap <leader>d <Plug>(pydocstring)
 
 " COC Config
 " Map <tab> to trigger completion and to move to next item
