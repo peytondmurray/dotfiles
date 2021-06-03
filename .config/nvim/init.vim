@@ -79,7 +79,7 @@ let g:gruvbox_contrast_light = 'hard'
 let ayucolor="dark"
 colorscheme ayu
 
-highlight illuminatedWord ctermbg=4 guibg=#93ccea
+highlight illuminatedWord ctermbg=4 guibg=#233551
 
 " Highlight colors
 let g:Hexokinase_highlighters = ['virtual']
@@ -328,8 +328,7 @@ function! SwapBG() abort
 endfunction
 command! SwapBg call SwapBG()
 
-" Start interactive EasyAlign in visual mode (e.g. vipga) and motion/text
-" object (e.g. gaip)
+" Set EasyAlign hotkeys
 xmap <leader>a <Plug>(EasyAlign)
 nmap <leader>a <Plug>(EasyAlign)
 
@@ -371,19 +370,20 @@ let g:livepreview_previewer = 'evince'
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
     highlight = {
-    enable = true,
+        enable = true,
     },
-incremental_selection = {
-enable = true,
-},
+    incremental_selection = {
+        enable = true,
+    },
     indent = {
-    enable = true
+        enable = true
     }
 }
 EOF
 
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
+set nofoldenable
 
 " WhichKey
 set timeoutlen=200
