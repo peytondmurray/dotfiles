@@ -30,11 +30,6 @@ Plug 'puremourning/vimspector'
 " Autoformatting
 Plug 'Chiel92/vim-autoformat'
 
-" Select blocks of python text
-Plug 'kana/vim-textobj-user'
-Plug 'bps/vim-textobj-python'
-Plug 'michaeljsmith/vim-indent-object'
-
 " Convenient window swapping
 Plug 'wesq3/vim-windowswap'
 
@@ -61,8 +56,11 @@ Plug 'jacoborus/tender.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
-" Completion
+" Tree-sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+
+" Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'liuchengxu/vista.vim'
 Plug 'honza/vim-snippets'
@@ -383,6 +381,42 @@ EOF
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    textobjects = {
+        select = {
+            enable = true,
+            keymaps = {
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@class.outer",
+                ["ic"] = "@class.inner",
+            },
+        },
+        move = {
+            enable = true,
+            set_jumps = true,
+            goto_next_start = {
+                ["]m"] = "@function.outer",
+                ["]]"] = "@class.outer",
+            },
+            goto_next_end = {
+                ["]M"] = "@function.outer",
+                ["]["] = "@class.outer",
+            },
+            goto_previous_start = {
+                ["[m"] = "@function.outer",
+                ["[["] = "@class.outer",
+            },
+            goto_previous_end = {
+                ["[M"] = "@function.outer",
+                ["[]"] = "@class.outer",
+            },
+        },
+    },
+}
+EOF
 
 " WhichKey
 set timeoutlen=200
