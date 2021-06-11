@@ -24,3 +24,4 @@ feh --bg-fill ~/.config/wallpapers/4k-wallpaper-beautiful-close-up-1418116.jpg
 killall -q polybar; polybar -r -c ~/.config/polybar/config.ini main &
 pgrep -x nm-applet || nm-applet &
 pgrep -x dunst || dunst &
+pgrep -x conky || conky &
