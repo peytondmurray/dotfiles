@@ -15,7 +15,7 @@ Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'rrethy/vim-illuminate'
 Plug 'guns/xterm-color-table.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'Vimjas/vim-python-pep8-indent'
+"Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'raimondi/delimitmate'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'lukhio/vim-mapping-conflicts'
@@ -182,8 +182,8 @@ imap  <C-w>
 nmap <silent> <M-/> :let @/=""<CR>
 
 " Make ; start ripgrep
-nmap ; :Rg<CR>
-nmap  :Files<CR>
+nmap <leader>; :Rg<CR>
+nmap <leader>p :Files<CR>
 
 " Tab/Shift+Tab to indent/dedent
 imap <S-Tab> <C-d>
