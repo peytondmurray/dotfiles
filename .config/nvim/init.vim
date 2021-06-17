@@ -65,6 +65,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'liuchengxu/vista.vim'
 Plug 'honza/vim-snippets'
 
+" Browser-to-neovim
+Plug 'subnut/nvim-ghost.nvim', {'do': ':call nvim_ghost#installer#install()'}
+
 " Initialize plugin system
 call plug#end()
 
