@@ -1,5 +1,6 @@
 [theme]
 name = "slick"
+
 [theme.overrides]
 separator = ""
 separator_bg = "auto"
@@ -38,8 +39,8 @@ alert = 10.0
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{Mup}%"
-format_swap = "{SUp}%"
+format_mem = "{mem_used_percents}%"
+format_swap = "{swap_used_percents}%"
 
 [[block]]
 block = "cpu"
@@ -69,7 +70,6 @@ block = "net"
 device = "enp6s0"
 format = "{ip} {ipv6} {speed_down} {speed_up}"
 interval = 5
-use_bits = false
 
 [[block]]
 block = "sound"
