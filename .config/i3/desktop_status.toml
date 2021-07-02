@@ -1,5 +1,6 @@
 [theme]
 name = "slick"
+
 [theme.overrides]
 separator = ""
 separator_bg = "auto"
@@ -9,21 +10,6 @@ alternating_tint_bg = "#111111"
 name = "awesome5"
 [icons.overrides]
 net_wired = ""
-
-[[block]]
-block = "pacman"
-interval = 600
-format = "{pacman} + {aur} = {both} updates available"
-format_singular = "{both} update available"
-format_up_to_date = "system up to date"
-critical_updates_regex = "(linux |linux-lts|linux-zen)"
-# aur_command should output available updates to stdout (ie behave as echo -ne "update\n")
-aur_command = "yay -Qua"
-
-#[[block]]
-#block = "bluetooth"
-#mac = "A0:8A:F5:B8:01:FD"
-#label = ""
 
 [[block]]
 block = "disk_space"
@@ -38,8 +24,8 @@ alert = 10.0
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{Mup}%"
-format_swap = "{SUp}%"
+format_mem = "{mem_used_percents}%"
+format_swap = "{swap_used_percents}%"
 
 [[block]]
 block = "cpu"
@@ -50,26 +36,11 @@ block = "load"
 interval = 1
 format = "{1m}"
 
-#[[block]]
-#block = "nvidia_gpu"
-#label = "GPU"
-#show_memory = true
-#show_clocks = true
-#interval = 1
-
-#[[block]]
-#block = "temperature"
-#collapsed = false
-#interval = 10
-#format = "{min}° min, {max}° max, {average}° avg"
-#chip = "*-isa-*"
-
 [[block]]
 block = "net"
 device = "enp6s0"
 format = "{ip} {ipv6} {speed_down} {speed_up}"
 interval = 5
-use_bits = false
 
 [[block]]
 block = "sound"
