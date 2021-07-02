@@ -209,7 +209,7 @@ let g:pydocstring_doq_path = '~/.pyenv/shims/doq'
 nmap <leader>d <Plug>(pydocstring)
 
 " Disable Ultisnips keybindings
-let g:UltiSnipsExpandTrigger = "<NUL>"
+let g:UltiSnipsExpandTrigger = "<CR>"
 let g:UltiSnipsListSnippets = "<NUL>"
 let g:UltiSnipsJumpForwardTrigger = "<NUL>"
 let g:UltiSnipsJumpBackwardTrigger = "<NUL>"
