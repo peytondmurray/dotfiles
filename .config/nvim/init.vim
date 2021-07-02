@@ -9,7 +9,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'Yggdroot/indentLine'
 Plug 'kshenoy/vim-signature'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'rrethy/vim-illuminate'
@@ -19,6 +18,7 @@ Plug 'raimondi/delimitmate'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'lukhio/vim-mapping-conflicts'
 Plug 'folke/which-key.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua'}
 
 " LaTeX live preview
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
