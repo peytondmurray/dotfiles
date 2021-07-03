@@ -33,7 +33,6 @@ export VISUAL=nvim
 export EDITOR=nvim
 export FONTCONFIG_PATH=/etc/fonts
 export TERM=xterm-kitty
-export MICRO_TRUECOLOR=1
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
 eval "$(ssh-agent)" > /dev/null
