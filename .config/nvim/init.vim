@@ -9,7 +9,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'Yggdroot/indentLine'
 Plug 'kshenoy/vim-signature'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'rrethy/vim-illuminate'
@@ -19,6 +18,7 @@ Plug 'raimondi/delimitmate'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'lukhio/vim-mapping-conflicts'
 Plug 'folke/which-key.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua'}
 
 " LaTeX live preview
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
@@ -214,6 +214,17 @@ let g:UltiSnipsListSnippets = "<NUL>"
 let g:UltiSnipsJumpForwardTrigger = "<NUL>"
 let g:UltiSnipsJumpBackwardTrigger = "<NUL>"
 
+let g:ulti_expand_or_jump_res = 0
+function! <SID>ExpandSnippetOrReturn()
+    let snippet = UltiSnips#ExpandSnippetOrJump()
+    if g:ulti_expand_or_jump_res > 0
+        return snippet
+    else
+        return "\<CR>"
+    endif
+endfunction
+inoremap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "\<CR>"
+
 " LSP Config
 lua << EOF
 local nvim_lsp = require('lspconfig')
@@ -261,6 +272,9 @@ nvim_lsp["pylsp"].setup{
         plugins = {
             flake8 = {
                 enabled = true
+            },
+            pydocstyle = {
+                enabled = false
             }
         }
     }
