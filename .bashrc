@@ -151,7 +151,7 @@ generate_git_ps1() {
 }
 
 get_venv() {
-	echo "${bakblktxtylw}$(echo ${VIRTUAL_ENV} | awk -F'/' '{print $NF}')${txtrst}"
+    [[ -z "${VIRTUAL_ENV}" ]] && echo "" || echo "${bakblktxtylw}[$(echo ${VIRTUAL_ENV} | awk -F'/' '{print $NF}')]${txtrst}"
 }
 
 set_ps1() {
