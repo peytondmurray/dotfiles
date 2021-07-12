@@ -5,6 +5,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
 Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -18,7 +19,7 @@ Plug 'raimondi/delimitmate'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'lukhio/vim-mapping-conflicts'
 Plug 'folke/which-key.nvim'
-Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua'}
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 " LaTeX live preview
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
@@ -58,13 +59,20 @@ Plug 'tpope/vim-fugitive'
 " Tree-sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'nvim-treesitter/playground'
 
 " Completion
 Plug 'neovim/nvim-lspconfig'
+Plug 'glepnir/lspsaga.nvim'
 Plug 'hrsh7th/nvim-compe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
+" Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -182,16 +190,18 @@ imap  <C-w>
 nmap <silent> <M-/> :let @/=""<CR>
 
 " Make ; start ripgrep
-nmap <leader>; :Rg<CR>
-nmap <leader>p :Files<CR>
+"nmap <leader>; :Rg<CR>
+"nmap <leader>p :Files<CR>
+"
+" Find files using Telescope command-line sugar.
+nnoremap <leader>p <cmd>Telescope find_files<cr>
+nnoremap <leader>; <cmd>Telescope live_grep<cr>
+
 
 " Tab/Shift+Tab to indent/dedent
 imap <S-Tab> <C-d>
 vnoremap <S-Tab> <gv
 vnoremap <Tab> >gv
-
-" Make s act like d, except it won't save anything to the register
-nnoremap s "_d
 
 " Alt+JK to move line down/up by one row
 nmap <M-j> :m+1<CR>
@@ -342,6 +352,9 @@ vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+local saga = require('lspsaga')
+saga.init_lsp_saga()
 EOF
 
 set completeopt=menuone,noselect
