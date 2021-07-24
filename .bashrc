@@ -217,3 +217,5 @@ for SB in $(echo "$PATH" | grep ':*/[^:]*sbin' -o)
 do
   export PATH="${PATH/$SB}:${SB#:}"
 done
+
+alias luamake=/home/pdmurray/.config/nvim/lua-language-server/3rd/luamake/luamake

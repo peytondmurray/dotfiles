@@ -190,14 +190,18 @@ imap  <C-w>
 " Clear last search highlighting
 nmap <silent> <M-/> :let @/=""<CR>
 
-" Make ; start ripgrep
-"nmap <leader>; :Rg<CR>
-"nmap <leader>p :Files<CR>
-"
 " Find files using Telescope command-line sugar.
 nnoremap <leader>p <cmd>Telescope find_files<cr>
 nnoremap <leader>; <cmd>Telescope live_grep<cr>
+nnoremap <leader>/ <cmd>Telescope current_buffer_fuzzy_find<cr>
 
+lua << EOF
+require('telescope').setup{
+    colorscheme = {
+        enable_preview = true,
+    }
+}
+EOF
 
 " Tab/Shift+Tab to indent/dedent
 imap <S-Tab> <C-d>
@@ -470,16 +474,6 @@ require('nvim-treesitter.configs').setup {
     indent = {
         enable = true
     }
-}
-EOF
-
-" tree-sitter config
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-set nofoldenable
-
-lua <<EOF
-require('nvim-treesitter.configs').setup {
     textobjects = {
         select = {
             enable = true,
@@ -513,6 +507,12 @@ require('nvim-treesitter.configs').setup {
     },
 }
 EOF
+
+" tree-sitter config
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set nofoldenable
+
 
 " WhichKey
 set timeoutlen=200
