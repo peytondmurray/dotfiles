@@ -28,7 +28,7 @@ require('packer').startup(function()
     use 'lukhio/vim-mapping-conflicts'
 
     -- Show a popup menu of keybindings when you press a button and wait for a bit
-    use {'folke/which-key.nvim', config = require('which-key').setup{} }
+    use {'folke/which-key.nvim', config = require('which-key').setup{}}
 
     -- Symbols browser
     use 'simrat39/symbols-outline.nvim'
@@ -40,20 +40,27 @@ require('packer').startup(function()
     use 'kana/vim-textobj-user'
 
     -- Neovim in the browser
-    use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
+    use {'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end}
 
     -- Window motions: windows can be yanked/pasted
     use 'wesq3/vim-windowswap'
 
     -- Colorschemes
-    use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+    use {'npxbr/gruvbox.nvim', requires = {'rktjmp/lush.nvim'}}
+    use 'Mofiqul/dracula.nvim'
 
     -- Colorize hex codes
     use 'norcalli/nvim-colorizer.lua'
 
     -- Git Integration
-    use 'airblade/vim-gitgutter'
-    use 'tpope/vim-fugitive'
+    -- use 'tpope/vim-fugitive'
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = require('gitsigns').setup{
+            current_line_blame = true,
+            word_diff = true,
+        }
+    }
 
     -- Telescope----
     use 'nvim-lua/popup.nvim'
@@ -65,7 +72,7 @@ require('packer').startup(function()
     use 'glepnir/lspsaga.nvim'
     use 'hrsh7th/nvim-compe'
     use 'L3MON4D3/LuaSnip'
-    use "rafamadriz/friendly-snippets"
+    use 'rafamadriz/friendly-snippets'
 
     -- Tree-sitter
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
@@ -89,7 +96,7 @@ require('lsp')
 
 -- Kommentary
 require('kommentary.config').configure_language(
-    "default",
+    'default',
     {prefer_single_line_comments = true}
 )
 
@@ -99,10 +106,10 @@ require('colorizer').setup()
 -- NvimTree
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
 vim.g.nvim_tree_bindings = {
-    { key = {"<CR>", "e"},                  cb = tree_cb("edit") },
-    { key = 'l',                            cb = tree_cb("cd") },
-    { key = "v",                            cb = tree_cb("vsplit") },
-    { key = "s",                            cb = tree_cb("split") },
-    { key = "t",                            cb = tree_cb("tabnew") },
-    { key = "h",                            cb = tree_cb("dir_up") },
+    { key = {'<CR>', 'e'},                  cb = tree_cb('edit') },
+    { key = 'l',                            cb = tree_cb('cd') },
+    { key = 'v',                            cb = tree_cb('vsplit') },
+    { key = 's',                            cb = tree_cb('split') },
+    { key = 't',                            cb = tree_cb('tabnew') },
+    { key = 'h',                            cb = tree_cb('dir_up') },
 }
