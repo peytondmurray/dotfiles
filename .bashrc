@@ -162,10 +162,15 @@ set_ps1() {
 PROMPT_COMMAND=set_ps1
 
 git() {
-	if [[ "$#" == 1 && "$1" == "log" && "$(git rev-parse --abbrev-ref HEAD)" != "master" ]]; then
-		command git log master.. -n 20 --pretty="%C(Yellow)%h %C(reset)%ad %C(Green)%<(12,trunc) %cr %C(reset) %<(20,trunc)%C(Cyan)%an %C(reset)%s" --date=short --no-merges
-	elif [[ "$1" == "log" && "$(git rev-parse --abbrev-ref HEAD)" == "master" ]]; then
-		command git log -n 20 --pretty="%C(Yellow)%h %C(reset)%ad %C(Green)%<(12,trunc) %cr %C(reset) %<(20,trunc)%C(Cyan)%an %C(reset)%s" --date=short --no-merges
+    if [[ "$#" == 1 && "$1" == "log" ]]; then
+        local branch="$(command git rev-parse --abbrev-ref HEAD 2>/dev/null)"
+        if [[ ! -z "${branch}" ]]; then
+            if [[ (${branch} != "master" || ${branch} != "main") ]]; then
+                command git log -n 20 --pretty="%C(Yellow)%h %C(reset)%ad %C(Green)%<(12,trunc) %cr %C(reset) %<(20,trunc)%C(Cyan)%an %C(reset)%s" --date=short --no-merges
+            else
+                command git log ${branch}.. -n 20 --pretty="%C(Yellow)%h %C(reset)%ad %C(Green)%<(12,trunc) %cr %C(reset) %<(20,trunc)%C(Cyan)%an %C(reset)%s" --date=short --no-merges
+            fi
+        fi
 	else
 		command git $@
 	fi
@@ -200,6 +205,13 @@ npm() {
     source /usr/share/nvm/init-nvm.sh
     npm "$@"
 }
+
+yarn() {
+    unset -f yarn
+    source /usr/share/nvm/init-nvm.sh
+    yarn "$@"
+}
+
 PATH="/home/pdmurray/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/pdmurray/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/pdmurray/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;

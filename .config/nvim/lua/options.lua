@@ -60,6 +60,8 @@ vim.o.wildoptions='pum'
 vim.o.pumblend = 20
 vim.o.winblend = 20
 
+vim.o.textwidth = 100
+
 -- Firenvim
 vim.g.firenvim_config = {
     globalSettings = {alt = 'all'},
@@ -90,5 +92,8 @@ vim.cmd('colorscheme gruvbox')
 vim.cmd('highlight Vertsplit guifg=Orange')
 vim.cmd('highlight illuminatedWord ctermbg=4 guibg=#233551')
 vim.cmd('filetype plugin indent on')
-
 vim.cmd([[autocmd BufWritePre * lua StripWhitespace()]])
+
+-- Set textwidth for markdown and python
+vim.cmd([[autocmd BufRead,BufNewFile *.md setlocal textwidth=80]])
+vim.cmd([[autocmd BufRead,BufNewFile *.py setlocal textwidth=100]])

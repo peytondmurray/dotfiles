@@ -53,14 +53,13 @@ require('packer').startup(function()
     use 'norcalli/nvim-colorizer.lua'
 
     -- Git Integration
-    -- use 'tpope/vim-fugitive'
     use {
         'lewis6991/gitsigns.nvim',
         config = require('gitsigns').setup{
             current_line_blame = true,
-            word_diff = true,
         }
     }
+    use 'sindrets/diffview.nvim'
 
     -- Telescope----
     use 'nvim-lua/popup.nvim'
@@ -78,6 +77,7 @@ require('packer').startup(function()
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'nvim-treesitter/playground'
+
 end)
 
 require('utils')
@@ -113,3 +113,5 @@ vim.g.nvim_tree_bindings = {
     { key = 't',                            cb = tree_cb('tabnew') },
     { key = 'h',                            cb = tree_cb('dir_up') },
 }
+
+require('diffview').setup()

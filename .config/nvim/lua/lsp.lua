@@ -60,6 +60,8 @@ nvim_lsp['sumneko_lua'].setup {
     }
 }
 
+nvim_lsp['tsserver'].setup{}
+
 require('compe').setup {
     enabled = true;
     autocomplete = true;
