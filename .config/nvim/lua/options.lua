@@ -50,7 +50,7 @@ vim.o.diffopt = vim.o.diffopt .. ',vertical'
 vim.g.indentLine_char = '|'
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-vim.o.shortmess = 'I'
+vim.o.shortmess = 'IFa'
 
 -- which-key
 vim.o.timeoutlen = 500
@@ -88,7 +88,7 @@ vim.g.nvim_tree_ignore = {
     '.ipynb_checkpoints',
 }
 
-vim.cmd('colorscheme gruvbox')
+vim.cmd('colorscheme tokyonight')
 vim.cmd('highlight Vertsplit guifg=Orange')
 vim.cmd('highlight illuminatedWord ctermbg=4 guibg=#233551')
 vim.cmd('filetype plugin indent on')

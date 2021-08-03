@@ -60,8 +60,16 @@ vim.api.nvim_set_keymap('n', '<leader>i', '<cmd>lua vim.lsp.buf.hover()<CR>', op
 vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>k', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>j', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>l', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+--vim.api.nvim_set_keymap('n', '<leader>l', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>h', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+
+-- Lua
+vim.api.nvim_set_keymap("n", "<leader>ll", "<cmd>Trouble<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>lw", "<cmd>Trouble lsp_workspace_diagnostics<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>ld", "<cmd>Trouble lsp_document_diagnostics<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>lt", "<cmd>Trouble loclist<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>lq", "<cmd>Trouble quickfix<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>lr", "<cmd>Trouble lsp_references<cr>", opts)
 
 -- vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 -- vim.api.nvim_set_keymap('n', '<leader>u', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
@@ -89,7 +97,7 @@ vim.api.nvim_set_keymap('n', '<leader>c', '<Plug>kommentary_line_default', {sile
 vim.api.nvim_set_keymap("x", "<leader>c", "<Plug>kommentary_visual_default", {silent = true})
 
 -- Symbols outline
-vim.api.nvim_set_keymap('n', '<leader>x', '<cmd>SymbolsOutline<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>m', '<cmd>SymbolsOutline<CR>', opts)
 
 -- NvimTree
 vim.api.nvim_set_keymap('n', '<leader>z', '<cmd>NvimTreeToggle<CR>', opts)

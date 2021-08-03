@@ -23,6 +23,7 @@ alias rg='rg -S'
 alias aesvpn='openconnect vpn.aes.com/scc002 --servercert pin-sha256:8FytlQi7EjBIbvTDVyCnhcBY4Or3YlXP1VaImo5asOI= --user=qs.pmurray.c -v --reconnect-timeout=100 -s "`which vpn-slice` 10.247.11.22 qhub.ouraes.com"'
 alias less='less -R'
 alias tree='tree -C'
+alias cdd='cd ~/Desktop/workspace'
 
 export PATH=/home/pdmurray/.gem/ruby/2.7.0/bin:$PATH
 export PATH=/home/pdmurray/go/bin:$PATH

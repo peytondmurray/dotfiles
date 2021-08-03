@@ -48,9 +48,13 @@ require('packer').startup(function()
     -- Colorschemes
     use {'npxbr/gruvbox.nvim', requires = {'rktjmp/lush.nvim'}}
     use 'Mofiqul/dracula.nvim'
+    use 'folke/tokyonight.nvim'
 
     -- Colorize hex codes
     use 'norcalli/nvim-colorizer.lua'
+
+    -- Markdown with glow
+    use {"npxbr/glow.nvim", run = "GlowInstall"}
 
     -- Git Integration
     use {
@@ -65,6 +69,19 @@ require('packer').startup(function()
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
+
+    -- Lua
+    use {
+      "folke/trouble.nvim",
+      requires = "kyazdani42/nvim-web-devicons",
+      config = function()
+        require("trouble").setup {
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        }
+      end
+    }
 
     -- Completion
     use 'neovim/nvim-lspconfig'
