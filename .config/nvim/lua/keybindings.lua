@@ -52,25 +52,18 @@ vim.api.nvim_set_keymap('n', '<leader>/', '<cmd>Telescope current_buffer_fuzzy_f
 -- Pydocstring
 vim.api.nvim_set_keymap('n', '<leader>d', '<Plug>(pydocstring)', opts)
 
--- LSP keybinds
+-- LSP
 vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>v', '<cmd>vs<cr><cmd>lua vim.lsp.buf.definition()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>s', '<cmd>sp<cr><cmd>lua vim.lsp.buf.definition()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>i', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>k', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>j', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
---vim.api.nvim_set_keymap('n', '<leader>l', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>h', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+-- vim.api.nvim_set_keymap('n', '<leader>i', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+-- vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+-- vim.api.nvim_set_keymap('n', '<leader>k', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+-- vim.api.nvim_set_keymap('n', '<leader>j', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+-- --vim.api.nvim_set_keymap('n', '<leader>l', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+-- vim.api.nvim_set_keymap('n', '<leader>h', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 
--- Lua
-vim.api.nvim_set_keymap("n", "<leader>ll", "<cmd>Trouble<cr>", opts)
-vim.api.nvim_set_keymap("n", "<leader>lw", "<cmd>Trouble lsp_workspace_diagnostics<cr>", opts)
-vim.api.nvim_set_keymap("n", "<leader>ld", "<cmd>Trouble lsp_document_diagnostics<cr>", opts)
-vim.api.nvim_set_keymap("n", "<leader>lt", "<cmd>Trouble loclist<cr>", opts)
-vim.api.nvim_set_keymap("n", "<leader>lq", "<cmd>Trouble quickfix<cr>", opts)
-vim.api.nvim_set_keymap("n", "<leader>lr", "<cmd>Trouble lsp_references<cr>", opts)
-
+-- Unused keybindings
 -- vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 -- vim.api.nvim_set_keymap('n', '<leader>u', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 -- vim.api.nvim_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
@@ -80,6 +73,23 @@ vim.api.nvim_set_keymap("n", "<leader>lr", "<cmd>Trouble lsp_references<cr>", op
 -- vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 -- vim.api.nvim_set_keymap('n', '<leader>y', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
 -- vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+
+-- LSP Saga
+vim.api.nvim_set_keymap('n', '<leader>h', "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
+vim.api.nvim_set_keymap('v', '<leader>h', "<cmd>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
+vim.api.nvim_set_keymap('n', '<leader>I', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
+vim.api.nvim_set_keymap('n', '<leader>i', "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
+vim.api.nvim_set_keymap('n', '<leader>n', "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
+vim.api.nvim_set_keymap('n', '<leader>k', "<cmd>lua require('lspsaga.diagnostic').lsp_jump_diagnostic_prev()<CR>", opts)
+vim.api.nvim_set_keymap('n', '<leader>j', "<cmd>lua require('lspsaga.diagnostic').lsp_jump_diagnostic_next()<CR>", opts)
+
+-- Lua
+vim.api.nvim_set_keymap("n", "<leader>ll", "<cmd>Trouble<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>lw", "<cmd>Trouble lsp_workspace_diagnostics<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>ld", "<cmd>Trouble lsp_document_diagnostics<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>lt", "<cmd>Trouble loclist<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>lq", "<cmd>Trouble quickfix<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>lr", "<cmd>Trouble lsp_references<cr>", opts)
 
 -- Navigate around completion popup
 vim.api.nvim_set_keymap('i', '<Tab>', 'v:lua.tab_complete()', {expr = true})

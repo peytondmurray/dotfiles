@@ -129,3 +129,6 @@ require('compe').setup {
 
 -- Load snippets given by friendly-snippets
 require('luasnip/loaders/from_vscode').lazy_load()
+
+local saga = require('lspsaga')
+saga.init_lsp_saga()

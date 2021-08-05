@@ -8,6 +8,7 @@ require('packer').startup(function()
     use 'kyazdani42/nvim-web-devicons'
     use 'junegunn/vim-easy-align'
 
+    -- File browser
     use 'kyazdani42/nvim-tree.lua'
 
     -- Toggle, display, and navigate marks
@@ -95,6 +96,8 @@ require('packer').startup(function()
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'nvim-treesitter/playground'
 
+    use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
+
 end)
 
 require('utils')
@@ -132,3 +135,12 @@ vim.g.nvim_tree_bindings = {
 }
 
 require('diffview').setup()
+
+require('bufferline').setup{
+    options = {
+        diagnostics = "nvim_lsp",
+        diagnostics_indicator = function(count)
+          return "("..count..")"
+        end,
+    }
+}
