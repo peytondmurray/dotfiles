@@ -32,6 +32,7 @@ vim.o.fillchars = 'eob: '
 vim.g.SignatureMarkTextHLDynamic = 1
 
 -- Use numpydoc docstrings
+vim.g.pydocstring_enable_mapping = false
 vim.g.pydocstring_formatter = 'numpy'
 vim.g.pydocstring_doq_path = '~/.pyenv/shims/doq'
 
