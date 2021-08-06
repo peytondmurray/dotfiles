@@ -50,7 +50,8 @@ vim.api.nvim_set_keymap('n', '<leader>;', '<cmd>Telescope live_grep<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>/', '<cmd>Telescope current_buffer_fuzzy_find<CR>', opts)
 
 -- Pydocstring
-vim.api.nvim_set_keymap('n', '<leader>d', '<Plug>(pydocstring)', opts)
+vim.api.nvim_set_keymap('n', '<leader>dd', '<cmd>Pydocstring<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>df', '<cmd>PydocstringFormat<CR>', opts)
 
 -- LSP
 vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)

@@ -62,6 +62,9 @@ vim.o.winblend = 20
 
 vim.o.textwidth = 100
 
+-- Don't redraw the window when executing commands that haven't been typed
+vim.g.lazyredraw = true
+
 -- Firenvim
 vim.g.firenvim_config = {
     globalSettings = {alt = 'all'},
@@ -97,3 +100,29 @@ vim.cmd([[autocmd BufWritePre * lua StripWhitespace()]])
 -- Set textwidth for markdown and python
 vim.cmd([[autocmd BufRead,BufNewFile *.md setlocal textwidth=80]])
 vim.cmd([[autocmd BufRead,BufNewFile *.py setlocal textwidth=100]])
+
+-- disable builtin vim plugins
+local disabled_built_ins = {
+    "netrw",
+    "netrwPlugin",
+    "netrwSettings",
+    "netrwFileHandlers",
+    "gzip",
+    "zip",
+    "zipPlugin",
+    "tar",
+    "tarPlugin",
+    "getscript",
+    "getscriptPlugin",
+    "vimball",
+    "vimballPlugin",
+    "2html_plugin",
+    "logipat",
+    "rrhelper",
+    "spellfile_plugin",
+    "matchit"
+}
+
+for _, plugin in pairs(disabled_built_ins) do
+    vim.g["loaded_" .. plugin] = 1
+end

@@ -18,7 +18,7 @@ require('packer').startup(function()
     -- Toggle, display, and navigate marks
     use 'kshenoy/vim-signature'
 
-    use {'heavenshell/vim-pydocstring', keys = {'<leader>d'}}
+    use 'heavenshell/vim-pydocstring'
 
     -- Highlight same words as currently hovered word
     use 'rrethy/vim-illuminate'
@@ -26,7 +26,6 @@ require('packer').startup(function()
     -- Comment a line, selection, or motion
     use {
         'b3nj5m1n/kommentary',
-        keys = {'<leader>c'},
         config = function()
             require('kommentary.config').configure_language(
                 'default',
@@ -92,14 +91,6 @@ require('packer').startup(function()
     use 'nvim-lua/plenary.nvim'
     use {
         'nvim-telescope/telescope.nvim',
-        keys = {'<leader>;', '<leader>p', '<leader>/'},
-        config = function()
-            require('telescope').setup{
-                colorscheme = {
-                    enable_preview = true,
-                }
-            }
-        end
     }
 
     -- Trouble
@@ -143,3 +134,8 @@ require('options')
 require('keybindings')
 require('treesitter')
 require('lsp')
+require('telescope').setup{
+    colorscheme = {
+        enable_preview = true,
+    }
+}
