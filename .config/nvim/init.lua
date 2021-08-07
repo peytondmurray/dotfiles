@@ -35,7 +35,7 @@ require('packer').startup(function()
     }
 
     -- Automatically create bracket pairs, etc
-    use {'windwp/nvim-autopairs', run = function() require('nvim-autopairs').setup() end}
+    use {'windwp/nvim-autopairs', run = require('nvim-autopairs').setup() }
 
     -- Check mapping conflicts with :CheckMappingConflicts
     use {'lukhio/vim-mapping-conflicts', cmd = 'CheckMappingConflicts'}
@@ -111,21 +111,6 @@ require('packer').startup(function()
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'nvim-treesitter/playground'
-
-    use {
-        'akinsho/nvim-bufferline.lua',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function()
-            require('bufferline').setup{
-                options = {
-                    diagnostics = "nvim_lsp",
-                    diagnostics_indicator = function(count)
-                      return "("..count..")"
-                    end,
-                }
-            }
-        end
-    }
 
 end)
 
