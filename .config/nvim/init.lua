@@ -2,11 +2,10 @@ require('packer').startup(function()
 
     use 'wbthomason/packer.nvim'
 
-    use 'dstein64/vim-startuptime'
     use {'glepnir/galaxyline.nvim', branch = 'main', config = function() require('statusline') end}
     use 'ryanoasis/vim-devicons'
     use 'kyazdani42/nvim-web-devicons'
-    use {'junegunn/vim-easy-align', keys = {'ga'}}
+    use 'junegunn/vim-easy-align'
 
     -- File browser
     use {
@@ -18,7 +17,10 @@ require('packer').startup(function()
     -- Toggle, display, and navigate marks
     use 'kshenoy/vim-signature'
 
-    use 'heavenshell/vim-pydocstring'
+    use {
+        'heavenshell/vim-pydocstring',
+        cmd = {"Pydocstring", "PydocstringFormat"}
+    }
 
     -- Highlight same words as currently hovered word
     use 'rrethy/vim-illuminate'
@@ -35,7 +37,7 @@ require('packer').startup(function()
     }
 
     -- Automatically create bracket pairs, etc
-    use {'windwp/nvim-autopairs', run = require('nvim-autopairs').setup() }
+    use {'windwp/nvim-autopairs', config = require('nvim-autopairs').setup() }
 
     -- Check mapping conflicts with :CheckMappingConflicts
     use {'lukhio/vim-mapping-conflicts', cmd = 'CheckMappingConflicts'}
@@ -51,6 +53,7 @@ require('packer').startup(function()
 
     -- User-defined text objects
     use 'kana/vim-textobj-user'
+    use 'kana/vim-textobj-line'
 
     -- Neovim in the browser
     use {'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end}
@@ -59,8 +62,8 @@ require('packer').startup(function()
     use {'wesq3/vim-windowswap', keys = {'<C-W>'}}
 
     -- Colorschemes
-    --[[ use {'npxbr/gruvbox.nvim', requires = {'rktjmp/lush.nvim'}}
-    use 'Mofiqul/dracula.nvim' ]]
+    -- use {'npxbr/gruvbox.nvim', requires = {'rktjmp/lush.nvim'}}
+    -- use 'Mofiqul/dracula.nvim'
     use 'folke/tokyonight.nvim'
 
     -- Colorize hex codes
@@ -73,7 +76,8 @@ require('packer').startup(function()
     }
 
     -- Markdown with glow
-    use {"npxbr/glow.nvim", run = "GlowInstall"}
+    use {"npxbr/glow.nvim", run = "GlowInstall", cmd = "Glow"}
+    use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
 
     -- Git Integration
     use {
@@ -84,7 +88,13 @@ require('packer').startup(function()
             }
         end
     }
-    use {'sindrets/diffview.nvim', config = function() require('diffview').setup() end}
+    use {
+        'sindrets/diffview.nvim',
+        config = function() require('diffview').setup() end,
+        cmd = {
+            "DiffviewOpen"
+        }
+    }
 
     -- Telescope
     use 'nvim-lua/popup.nvim'
@@ -97,7 +107,11 @@ require('packer').startup(function()
     use {
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
-        config = function() require("trouble").setup{} end
+        config = function() require("trouble").setup{} end,
+        cmd = {
+            "Trouble",
+            "TroubleToggle"
+        }
     }
 
     -- Completion
@@ -110,7 +124,7 @@ require('packer').startup(function()
     -- Tree-sitter
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use 'nvim-treesitter/nvim-treesitter-textobjects'
-    use 'nvim-treesitter/playground'
+    use {'nvim-treesitter/playground', cmd = "TSPlaygroundToggle"}
 
 end)
 
