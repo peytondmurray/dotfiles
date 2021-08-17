@@ -77,7 +77,6 @@ require('packer').startup(function()
 
     -- Markdown with glow
     use {"npxbr/glow.nvim", run = "GlowInstall", cmd = "Glow"}
-    use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
 
     -- Git Integration
     use {
@@ -85,6 +84,7 @@ require('packer').startup(function()
         config = function()
             require('gitsigns').setup{
                 current_line_blame = true,
+                keymaps = {},
             }
         end
     }
