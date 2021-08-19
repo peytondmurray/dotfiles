@@ -7,6 +7,12 @@ require('packer').startup(function()
     use 'kyazdani42/nvim-web-devicons'
     use 'junegunn/vim-easy-align'
 
+   use {
+       'kkoomen/vim-doge',
+       run = function() vim.fn['doge#install']() end,
+       cmd = {"DogeGenerate", "DogeCreateDocStandard"},
+   }
+
     -- File browser
     use {
         'kyazdani42/nvim-tree.lua',
