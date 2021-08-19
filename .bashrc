@@ -167,7 +167,7 @@ git() {
     if [[ "$#" == 1 && "$1" == "log" ]]; then
         local branch="$(command git rev-parse --abbrev-ref HEAD 2>/dev/null)"
         if [[ ! -z "${branch}" ]]; then
-            if [[ (${branch} != "master" || ${branch} != "main") ]]; then
+            if [[ (${branch} == "master" || ${branch} == "main" || ${branch} == "dev") ]]; then
                 command git log -n 20 --pretty="%C(Yellow)%h %C(reset)%ad %C(Green)%<(12,trunc) %cr %C(reset) %<(20,trunc)%C(Cyan)%an %C(reset)%s" --date=short --no-merges
             else
                 command git log ${branch}.. -n 20 --pretty="%C(Yellow)%h %C(reset)%ad %C(Green)%<(12,trunc) %cr %C(reset) %<(20,trunc)%C(Cyan)%an %C(reset)%s" --date=short --no-merges
