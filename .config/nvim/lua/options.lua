@@ -129,3 +129,4 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 vim.g.doge_enable_mappings = false
+vim.g.doge_doc_standard_python = 'numpy'

@@ -28,37 +28,37 @@ nvim_lsp["pylsp"].setup {
         }
     }
 }
--- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
-local user = vim.fn.expand('$USER')
-local sumneko_root_path = "/home/" .. user .. "/.config/nvim/lua-language-server"
-local sumneko_binary = "/home/" .. user .. "/.config/nvim/lua-language-server/bin/Linux/lua-language-server"
-nvim_lsp['sumneko_lua'].setup {
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-    settings = {
-        Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
-                -- Setup your lua path
-                path = vim.split(package.path, ';')
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = {'vim', 'use'}
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                --library = {[vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true},
-                library = vim.api.nvim_get_runtime_file('', true),
-                maxPreload = 2000,
-	            preloadFileSize = 1000,
-            },
-            telemetry = {
-                enable = false
-            }
-        }
-    }
-}
+-- -- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
+-- local user = vim.fn.expand('$USER')
+-- local sumneko_root_path = "/home/" .. user .. "/.config/nvim/lua-language-server"
+-- local sumneko_binary = "/home/" .. user .. "/.config/nvim/lua-language-server/bin/Linux/lua-language-server"
+-- nvim_lsp['sumneko_lua'].setup {
+--     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+--     settings = {
+--         Lua = {
+--             runtime = {
+--                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+--                 version = 'LuaJIT',
+--                 -- Setup your lua path
+--                 path = vim.split(package.path, ';')
+--             },
+--             diagnostics = {
+--                 -- Get the language server to recognize the `vim` global
+--                 globals = {'vim', 'use'}
+--             },
+--             workspace = {
+--                 -- Make the server aware of Neovim runtime files
+--                 --library = {[vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true},
+--                 library = vim.api.nvim_get_runtime_file('', true),
+--                 maxPreload = 2000,
+-- 	            preloadFileSize = 1000,
+--             },
+--             telemetry = {
+--                 enable = false
+--             }
+--         }
+--     }
+-- }
 
 nvim_lsp['tsserver'].setup{}
 
@@ -104,6 +104,10 @@ nvim_lsp['efm'].setup{
         }
     }
 }
+
+nvim_lsp['terraformls'].setup{}
+
+nvim_lsp['rust_analyzer'].setup{}
 
 require('compe').setup {
     enabled = true;
