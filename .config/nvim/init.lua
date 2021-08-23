@@ -10,7 +10,6 @@ require('packer').startup(function()
    use {
        'kkoomen/vim-doge',
        run = function() vim.fn['doge#install']() end,
-       cmd = {"DogeGenerate", "DogeCreateDocStandard"},
    }
 
     -- File browser
