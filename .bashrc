@@ -168,9 +168,9 @@ git() {
         local branch="$(command git rev-parse --abbrev-ref HEAD 2>/dev/null)"
         if [[ ! -z "${branch}" ]]; then
             if [[ (${branch} == "master" || ${branch} == "main" || ${branch} == "dev") ]]; then
-                command git log -n 20 --pretty="%C(Yellow)%h %C(reset)%ad %C(Green)%<(12,trunc) %cr %C(reset) %<(20,trunc)%C(Cyan)%an %C(reset)%s" --date=short --no-merges
+                git logg
             else
-                command git log ${branch}.. -n 20 --pretty="%C(Yellow)%h %C(reset)%ad %C(Green)%<(12,trunc) %cr %C(reset) %<(20,trunc)%C(Cyan)%an %C(reset)%s" --date=short --no-merges
+                git logg ${branch}..
             fi
         fi
 	else
@@ -212,6 +212,13 @@ yarn() {
     unset -f yarn
     source /usr/share/nvm/init-nvm.sh
     yarn "$@"
+}
+
+killwine() {
+    echo $(ps -ef | egrep 'wineserver|winedevice.exe')
+    killall -s 9 wineserver
+    killall -s 9 winedevice.exe
+    echo $(ps -ef | egrep 'wineserver|winedevice.exe')
 }
 
 PATH="/home/pdmurray/perl5/bin${PATH:+:${PATH}}"; export PATH;

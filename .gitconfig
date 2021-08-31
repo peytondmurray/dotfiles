@@ -3,6 +3,12 @@
 	name = pdmurray
 [core]
 	pager = delta
+[pretty]
+    prettynice = "%C(Yellow)%h %C(reset)%ad %C(Green)%<(12,trunc) %cr %C(reset) %<(20,trunc)%C(Cyan)%an %C(reset)%s"
+[format]
+    pretty = prettynice
+[alias]
+    logg = log --pretty=prettynice -n 20 --date=short --no-merges
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
