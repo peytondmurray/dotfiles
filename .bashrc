@@ -166,16 +166,21 @@ PROMPT_COMMAND=set_ps1
 git() {
     if [[ "$#" == 1 && "$1" == "log" ]]; then
         local branch="$(command git rev-parse --abbrev-ref HEAD 2>/dev/null)"
+        local default_branch="$(get_git_default_branch)"
         if [[ ! -z "${branch}" ]]; then
-            if [[ (${branch} == "master" || ${branch} == "main" || ${branch} == "dev") ]]; then
+            if [[ ${branch} == ${default_branch} ]]; then
                 git logg
             else
-                git logg ${branch}..
+                git logg ${default_branch}..
             fi
         fi
 	else
 		command git $@
 	fi
+}
+
+get_git_default_branch() {
+    echo $(git branch -rl '*/HEAD' | rev | cut -d/ -f1 | rev)
 }
 
 pipupdate() {

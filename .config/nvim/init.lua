@@ -54,7 +54,14 @@ require('packer').startup(function()
     use {'simrat39/symbols-outline.nvim', cmd = {'SymbolsOutline', 'SymbolsOutlineOpen', 'SymbolsOutlineClose'}}
 
     -- Indent guides
-    use 'lukas-reineke/indent-blankline.nvim'
+    use {
+        'lukas-reineke/indent-blankline.nvim',
+        config = function()
+            require('indent_blankline').setup{
+                show_current_context = true
+            }
+        end
+    }
 
     -- User-defined text objects
     use 'kana/vim-textobj-user'
