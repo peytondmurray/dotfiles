@@ -221,3 +221,7 @@ bar {
 
 exec_always swaybg -m fill -i /home/pdmurray/.config/wallpapers/pebbles_stones_dark_152025_3840x2160.jpg
 exec_always /home/pdmurray/.pyenv/shims/autotiling
+
+input type:keyboard {
+    xkb_layout us(altgr-intl)
+}
