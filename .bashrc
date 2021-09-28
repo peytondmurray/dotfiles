@@ -26,7 +26,7 @@ alias less='less -R'
 alias tree='tree -C'
 alias cdd='cd ~/Desktop/workspace'
 
-export PATH=/home/pdmurray/.gem/ruby/2.7.0/bin:$PATH
+export PATH=/home/pdmurray/.gem/ruby/3.0.0/bin:$PATH
 export PATH=/home/pdmurray/go/bin:$PATH
 export PATH=/home/pdmurray/.local/bin:$PATH
 export PATH=/home/pdmurray/bin:$PATH

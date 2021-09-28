@@ -114,4 +114,5 @@ map("x", "<leader>c", "<Plug>kommentary_visual_default", {silent = true})
 map('n', '<leader>m', '<cmd>SymbolsOutline<CR>', opts)
 
 -- NvimTree
-map('n', '<leader>z', '<cmd>NvimTreeToggle<CR>', opts)
+-- map('n', '<leader>z', '<cmd>NvimTreeToggle<CR>', opts)
+map('n', '<leader>z', '<cmd>CHADopen<CR>', opts)

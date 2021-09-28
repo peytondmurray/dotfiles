@@ -13,10 +13,17 @@ require('packer').startup(function()
    }
 
     -- File browser
+    -- Currently broken
+    -- use {
+    --     'kyazdani42/nvim-tree.lua',
+    --     cmd = { "NvimTreeToggle", "NvimTreeClose" },
+    --     config = function () require('nvimtree') end,
+    -- }
     use {
-        'kyazdani42/nvim-tree.lua',
-        cmd = { "NvimTreeToggle", "NvimTreeClose" },
-        config = function () require('nvimtree') end,
+        'ms-jpq/chadtree',
+        branch = 'chad',
+        run = 'python -m chadtree deps',
+        cmd = 'CHADopen'
     }
 
     -- Toggle, display, and navigate marks
@@ -148,5 +155,6 @@ require('lsp')
 require('telescope').setup{
     colorscheme = {
         enable_preview = true,
-    }
+    },
+    winblend = 20
 }

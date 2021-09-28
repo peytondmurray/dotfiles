@@ -130,3 +130,22 @@ end
 
 vim.g.doge_enable_mappings = false
 vim.g.doge_doc_standard_python = 'numpy'
+
+vim.g.chadtree_settings = {
+    ignore = {
+        name_exact = {
+            ".mypy_cache",
+            ".gitignore",
+            "__pycache__",
+            ".git",
+            "node_modules",
+        },
+        name_glob = {".*"}
+    },
+    keymap = {
+        v_split = {"v"},
+        h_split = {"s"},
+        toggle_hidden = {"."},
+
+    }
+}
