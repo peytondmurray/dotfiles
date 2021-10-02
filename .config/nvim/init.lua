@@ -23,7 +23,7 @@ require('packer').startup(function()
         'ms-jpq/chadtree',
         branch = 'chad',
         run = 'python -m chadtree deps',
-        cmd = 'CHADopen'
+        cmd = {'CHADopen', 'CHADdeps', 'CHADhelp'}
     }
 
     -- Toggle, display, and navigate marks
@@ -114,6 +114,7 @@ require('packer').startup(function()
             "DiffviewOpen"
         }
     }
+    use 'tpope/vim-fugitive'
 
     -- Telescope
     use 'nvim-lua/popup.nvim'
