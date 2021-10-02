@@ -157,5 +157,11 @@ require('telescope').setup{
     colorscheme = {
         enable_preview = true,
     },
-    winblend = 20
+    winblend = 20,
+    defaults = {
+        file_ignore_patterns = {
+            'node_modules/',
+            'yarn.lock'
+        }
+    }
 }
