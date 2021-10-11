@@ -3,6 +3,10 @@ local opts = {noremap = true, silent = true}
 
 local map = vim.api.nvim_set_keymap
 
+-- Disable ex mode
+map('n', 'Q', '<nop>', opts)
+map('n', 'q:', '<nop>', opts)
+
 -- Set leader to spacebar
 map('n', '<space>', '<nop>', opts)
 vim.g.mapleader = ' '
