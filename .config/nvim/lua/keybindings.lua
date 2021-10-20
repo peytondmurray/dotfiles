@@ -120,3 +120,15 @@ map('n', '<leader>m', '<cmd>SymbolsOutline<CR>', opts)
 -- NvimTree
 -- map('n', '<leader>z', '<cmd>NvimTreeToggle<CR>', opts)
 map('n', '<leader>z', '<cmd>CHADopen<CR>', opts)
+
+-- Debugger
+map('n', '<F5>', '<cmd>lua require"dap".continue()<CR>', opts)
+map('n', '<F6>', '<cmd>lua require"dap".step_over()<CR>', opts)
+map('n', '<F7>', '<cmd>lua require"dap".step_into()<CR>', opts)
+map('n', '<F8>', '<cmd>lua require"dap".step_out()<CR>', opts)
+map('n', '<F9>', '<cmd>lua require"dap".toggle_breakpoint()<CR>', opts)
+-- map('n', '<leader>dsbr', '<cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>', opts)
+-- map('n', '<leader>dsbm', '<cmd>lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>', opts)
+map('n', '<F10>', '<cmd>lua require"dap".repl.open()<CR>', opts)
+-- map('n', '<leader>dl', '<cmd>lua require"dap".repl.run_last()<CR>', opts)
+map('n', '<F12>', '<cmd>lua require("dapui").toggle()<CR>', opts)

@@ -12,6 +12,11 @@ require('packer').startup(function()
        run = function() vim.fn['doge#install']() end,
    }
 
+   -- DAP
+   use 'mfussenegger/nvim-dap'
+   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+
+
     -- File browser
     -- Currently broken
     -- use {
@@ -136,7 +141,7 @@ require('packer').startup(function()
 
     -- Completion
     use 'neovim/nvim-lspconfig'
-    use 'glepnir/lspsaga.nvim'
+    use 'tami5/lspsaga.nvim'
     use 'hrsh7th/nvim-compe'
     use 'L3MON4D3/LuaSnip'
     use 'rafamadriz/friendly-snippets'
@@ -153,6 +158,7 @@ require('options')
 require('keybindings')
 require('treesitter')
 require('lsp')
+require('dapconfig')
 require('telescope').setup{
     colorscheme = {
         enable_preview = true,

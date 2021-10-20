@@ -105,6 +105,8 @@ nvim_lsp['efm'].setup{
     }
 }
 
+nvim_lsp['clangd'].setup{}
+
 nvim_lsp['terraformls'].setup{}
 
 nvim_lsp['rust_analyzer'].setup{}
