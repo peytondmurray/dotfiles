@@ -92,7 +92,8 @@ vim.g.nvim_tree_ignore = {
     '.ipynb_checkpoints',
 }
 
-vim.cmd('colorscheme tokyonight')
+-- vim.cmd('colorscheme tokyonight')
+vim.cmd('colorscheme gruvbox')
 vim.cmd('highlight Vertsplit guifg=Orange')
 vim.cmd('highlight illuminatedWord ctermbg=4 guibg=#233551')
 vim.cmd('filetype plugin indent on')

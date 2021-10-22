@@ -86,7 +86,7 @@ require('packer').startup(function()
     use {'wesq3/vim-windowswap', keys = {'<C-W>'}}
 
     -- Colorschemes
-    -- use {'npxbr/gruvbox.nvim', requires = {'rktjmp/lush.nvim'}}
+    use {'npxbr/gruvbox.nvim', requires = {'rktjmp/lush.nvim'}}
     -- use 'Mofiqul/dracula.nvim'
     use 'folke/tokyonight.nvim'
 
