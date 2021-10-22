@@ -85,9 +85,24 @@ require('packer').startup(function()
     -- Window motions: windows can be yanked/pasted
     use {'wesq3/vim-windowswap', keys = {'<C-W>'}}
 
+    -- Dim inactive windows
+    use {
+        'sunjon/shade.nvim',
+        config = function()
+            require'shade'.setup({
+                overlay_opacity = 50,
+                opacity_step = 1,
+                keys = {
+                    brightness_up    = '<C-Up>',
+                    brightness_down  = '<C-Down>',
+                    toggle           = '<Leader>s',
+                }
+            })
+        end
+    }
     -- Colorschemes
-    use {'npxbr/gruvbox.nvim', requires = {'rktjmp/lush.nvim'}}
     -- use 'Mofiqul/dracula.nvim'
+    use 'EdenEast/nightfox.nvim'
     use 'folke/tokyonight.nvim'
 
     -- Colorize hex codes
