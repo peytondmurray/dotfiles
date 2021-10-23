@@ -156,7 +156,6 @@ require('packer').startup(function()
 
     -- Completion
     use 'neovim/nvim-lspconfig'
-    use 'tami5/lspsaga.nvim'
     use 'hrsh7th/nvim-compe'
     use 'L3MON4D3/LuaSnip'
     use 'rafamadriz/friendly-snippets'

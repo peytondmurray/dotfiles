@@ -136,5 +136,37 @@ require('compe').setup {
 -- Load snippets given by friendly-snippets
 require('luasnip/loaders/from_vscode').lazy_load()
 
-local saga = require('lspsaga')
-saga.init_lsp_saga()
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+    vim.lsp.handlers.signature_help,
+    { border = 'single' }
+)
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+    vim.lsp.handlers.hover,
+    {border = 'single'}
+)
+
+vim.diagnostic.config({
+    underline = true,
+    update_in_insert = false,
+    virtual_text = {
+        spacing = 4,
+        source = 'always',
+        severity = {
+            min = vim.diagnostic.severity.HINT,
+        },
+        -- todo: icons for diagnostics?
+        --[[ format = function(diagnostic)
+            if diagnostic.severity == vim.diagnostic.severity.ERROR then
+                return string.format('E: %s', diagnostic.message)
+            end
+            return diagnostic.message
+        end, ]]
+    },
+    signs = true,
+    severity_sort = true,
+    float = {
+        show_header = false,
+        source = 'always',
+        border = 'single',
+    },
+})
