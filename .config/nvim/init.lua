@@ -185,3 +185,4 @@ require('telescope').setup{
         }
     }
 }
+require('styles')
