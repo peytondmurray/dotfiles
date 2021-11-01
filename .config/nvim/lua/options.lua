@@ -82,16 +82,6 @@ vim.g.firenvim_config = {
 
 vim.g.kommentary_create_default_mappings = false
 
-vim.g.nvim_tree_ignore = {
-    '.git',
-    'node_modules',
-    '.cache',
-    '__pycache__',
-    '.pytest_cache',
-    '.mypy_cache',
-    '.ipynb_checkpoints',
-}
-
 -- vim.cmd('colorscheme tokyonight')
 vim.cmd('colorscheme nightfox')
 vim.cmd('highlight Vertsplit guifg=Orange')
@@ -130,22 +120,3 @@ end
 
 vim.g.doge_enable_mappings = false
 vim.g.doge_doc_standard_python = 'numpy'
-
-vim.g.chadtree_settings = {
-    ignore = {
-        name_exact = {
-            ".mypy_cache",
-            ".gitignore",
-            "__pycache__",
-            ".git",
-            "node_modules",
-        },
-        name_glob = {".*"}
-    },
-    keymap = {
-        v_split = {"v"},
-        h_split = {"s"},
-        toggle_hidden = {"."},
-
-    }
-}
