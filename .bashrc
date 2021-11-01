@@ -21,7 +21,6 @@ alias kmon='kmon -u'
 alias rm='trash-put'
 alias rg='rg -S'
 alias aesvpn='openconnect vpn.aes.com/scc002 --servercert pin-sha256:8FytlQi7EjBIbvTDVyCnhcBY4Or3YlXP1VaImo5asOI= --user=qs.pmurray.c -v --reconnect-timeout=100 -s "`which vpn-slice` 10.247.11.22 qhub.ouraes.com"'
-#sudo openconnect  vpn.aes.com/scc002 --servercert pin-sha256:8FytlQi7EjBIbvTDVyCnhcBY4Or3YlXP1VaImo5asOI= --user=qs.kpevey.c -v --reconnect-timeout=100 -s "$(which vpn-slice) qhub.ouraes.com app.clearml.qhub.ouraes.com files.clearml.qhub.ouraes.com api.clearml.qhub.ouraes.com"
 alias less='less -R'
 alias tree='tree -C'
 alias cdd='cd ~/Desktop/workspace'
@@ -158,7 +157,7 @@ get_venv() {
 }
 
 set_ps1() {
-	export PS1="[\u@\h ${bldwht}\w${txtrst}]$(get_venv)$(generate_git_ps1)$ "
+	export PS1="[${bldwht}\w${txtrst}]$(get_venv)$(generate_git_ps1)$ "
 }
 
 PROMPT_COMMAND=set_ps1
