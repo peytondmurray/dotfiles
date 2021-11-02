@@ -5,6 +5,13 @@ local map = vim.api.nvim_set_keymap
 
 -- Disable ex mode
 map('n', 'Q', '<nop>', opts)
+map('n', 'QQ', '<cmd>w<CR>', opts)
+map('n', 'QW', '<cmd>wq<CR>', opts)
+map('n', 'QE', '<cmd>wqa<CR>', opts)
+map('n', 'QS', '<cmd>q<CR>', opts)
+map('n', 'QD', '<cmd>qa<CR>', opts)
+map('n', 'QF', '<cmd>q!<CR>', opts)
+map('n', 'QG', '<cmd>qa!<CR>', opts)
 map('n', 'q:', '<nop>', opts)
 
 -- Set leader to spacebar
