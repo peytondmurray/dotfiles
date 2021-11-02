@@ -210,7 +210,7 @@ bar {
 
 exec_always --no-startup-id feh --bg-fill /home/pdmurray/.config/wallpapers/pebbles_stones_dark_152025_3840x2160.jpg
 exec_always pgrep -x autotiling || /home/pdmurray/.pyenv/shims/autotiling &
-exec_always pgrep -x picom > /dev/null || picom &
+# exec_always pgrep -x picom > /dev/null || picom &
 exec_always pgrep -x pasystray > /dev/null || pasystray &
 exec_always pgrep -x nm-applet || nm-applet &
 exec_always pgrep -x dunst || dunst &
