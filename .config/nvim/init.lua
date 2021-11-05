@@ -2,7 +2,12 @@ require('packer').startup(function()
 
     use 'wbthomason/packer.nvim'
 
-    use {'glepnir/galaxyline.nvim', branch = 'main', config = function() require('statusline') end}
+    -- use { 'famiu/feline.nvim', branch = 'develop' }
+    use({
+        "nvim-lualine/lualine.nvim",
+        config = function() require('statusline') end,
+        wants = "nvim-web-devicons",
+    })
     use 'ryanoasis/vim-devicons'
     use 'kyazdani42/nvim-web-devicons'
     use 'junegunn/vim-easy-align'
@@ -180,3 +185,4 @@ require('telescope').setup{
 }
 require('styles')
 require('tree')
+require('statusline')
