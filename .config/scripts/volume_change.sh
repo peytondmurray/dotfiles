@@ -1,6 +1,10 @@
 #/bin/bash
 
-for SINK in `pacmd list-sinks | grep 'index:' | cut -b12-`
+for SINK in `pamixer --list-sinks | sed '1d' | awk '{print $1}'`
 do
-	pactl set-sink-volume $SINK $1
+    if [[ ${1::1} == '+' ]]; then
+	    pamixer --sink ${SINK} -i ${1:1:-1}
+    else
+	    pamixer --sink ${SINK} -d ${1:1:-1}
+    fi
 done

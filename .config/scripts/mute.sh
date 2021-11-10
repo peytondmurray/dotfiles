@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for SINK in `pacmd list-sinks | grep 'index:' | cut -b12-`
+for SINK in `pamixer --list-sinks | sed '1d' | awk '{print $1}'`
 do
-	pactl set-sink-mute $SINK toggle
+    pamixer --sink ${SINK} -t
 done

@@ -175,9 +175,9 @@ bindsym $mod+F8 exec /home/pdmurray/.config/scripts/volume_change.sh +5%
 bindsym $mod+F7 exec /home/pdmurray/.config/scripts/volume_change.sh -5%
 bindsym $mod+F6 exec /home/pdmurray/.config/scripts/mute.sh
 
-bindsym XF86AudioRaiseVolume exec /home/pdmurray/.config/scripts/volume_change.sh +5%
-bindsym XF86AudioLowerVolume exec /home/pdmurray/.config/scripts/volume_change.sh -5%
-bindsym XF86AudioMute exec pactl /home/pdmurray/.config/scripts/mute.sh
+# bindsym XF86AudioRaiseVolume exec /home/pdmurray/.config/scripts/volume_change.sh +5%
+# bindsym XF86AudioLowerVolume exec /home/pdmurray/.config/scripts/volume_change.sh -5%
+# bindsym XF86AudioMute exec pactl /home/pdmurray/.config/scripts/mute.sh
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
@@ -208,9 +208,9 @@ bar {
     }
 }
 
+exec pgrep -x picom > /dev/null || picom &
 exec_always --no-startup-id feh --bg-fill /home/pdmurray/.config/wallpapers/pebbles_stones_dark_152025_3840x2160.jpg
 exec_always pgrep -x autotiling || /home/pdmurray/.pyenv/shims/autotiling &
-# exec_always pgrep -x picom > /dev/null || picom &
 exec_always pgrep -x pasystray > /dev/null || pasystray &
 exec_always pgrep -x nm-applet || nm-applet &
 exec_always pgrep -x dunst || dunst &
