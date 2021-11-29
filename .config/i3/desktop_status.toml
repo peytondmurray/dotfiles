@@ -42,8 +42,8 @@ device = "enp6s0"
 format = "{ip} {ipv6} {speed_down} {speed_up}"
 interval = 5
 
-[[block]]
-block = "sound"
+# [[block]]
+# block = "sound"
 
 [[block]]
 block = "time"

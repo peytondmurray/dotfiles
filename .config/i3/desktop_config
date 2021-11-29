@@ -215,5 +215,6 @@ exec_always pgrep -x pasystray > /dev/null || pasystray &
 exec_always pgrep -x nm-applet || nm-applet &
 exec_always pgrep -x dunst || dunst &
 exec_always pgrep -x conky || conky &
+exec_always pgrep -x udiskie || udiskie &
 
 for_window [title="Origin"] floating enable

@@ -245,3 +245,7 @@ do
 done
 
 alias luamake=/home/pdmurray/.config/nvim/lua-language-server/3rd/luamake/luamake
+
+lutris() {
+    PYENV_VERSION=system command lutris
+}

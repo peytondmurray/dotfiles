@@ -32,7 +32,6 @@ require('packer').startup(function()
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
-        -- cmd = { "NvimTreeToggle", "NvimTreeClose" },
     }
 
     -- Toggle, display, and navigate marks
@@ -58,7 +57,7 @@ require('packer').startup(function()
     }
 
     -- Automatically create bracket pairs, etc
-    use {'windwp/nvim-autopairs', config = require('nvim-autopairs').setup() }
+    use {'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end }
 
     -- Check mapping conflicts with :CheckMappingConflicts
     use {'lukhio/vim-mapping-conflicts', cmd = 'CheckMappingConflicts'}
@@ -178,16 +177,16 @@ require('treesitter')
 require('lsp')
 require('dapconfig')
 require('telescope').setup{
-    colorscheme = {
-        enable_preview = true,
-    },
-    winblend = 20,
-    defaults = {
-        file_ignore_patterns = {
-            'node_modules/',
-            'yarn.lock'
-        }
-    }
+   colorscheme = {
+       enable_preview = true,
+   },
+   winblend = 20,
+   defaults = {
+       file_ignore_patterns = {
+           'node_modules/',
+           'yarn.lock'
+       }
+   }
 }
 require('styles')
 require('tree')
