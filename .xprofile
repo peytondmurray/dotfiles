@@ -39,7 +39,10 @@ fi
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export QT_FONT_DPI=120
 export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORM=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=sway
 
 xset dpms 7200 7200 7200
 xset s 7200 7200
@@ -55,5 +58,3 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
 export PATH=${HOME}/bin:${PATH}
-
-/usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr

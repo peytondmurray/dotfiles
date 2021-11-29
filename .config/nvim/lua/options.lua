@@ -36,7 +36,9 @@ vim.g.pydocstring_enable_mapping = false
 vim.g.pydocstring_formatter = 'numpy'
 vim.g.pydocstring_doq_path = '~/.pyenv/shims/doq'
 
-vim.o.background = "dark" -- or "light" for light mode
+-- vim.o.background = "dark" -- or "light" for light mode
+vim.o.background = "light" -- or "light" for light mode
+vim.g.tokyonight_style = "day" -- or "light" for light mode
 
 vim.o.foldmethod = 'expr'
 vim.o.foldexpr = vim.fn['nvim_treesitter#foldexpr']()

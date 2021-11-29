@@ -225,3 +225,7 @@ exec_always /home/pdmurray/.pyenv/shims/autotiling
 input type:keyboard {
     xkb_layout us(altgr-intl)
 }
+
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec_always /usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr

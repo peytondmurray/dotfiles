@@ -12,10 +12,16 @@ require('packer').startup(function()
     use 'kyazdani42/nvim-web-devicons'
     use 'junegunn/vim-easy-align'
 
-   use {
-       'kkoomen/vim-doge',
-       run = function() vim.fn['doge#install']() end,
-   }
+    use {
+        "luukvbaal/stabilize.nvim",
+        config = function() require("stabilize").setup() end
+    }
+
+    -- Automatic docstring generation
+    use {
+        'kkoomen/vim-doge',
+        run = function() vim.fn['doge#install']() end,
+    }
 
    -- DAP
    use 'mfussenegger/nvim-dap'
