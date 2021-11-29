@@ -45,7 +45,7 @@ vim.o.foldexpr = vim.fn['nvim_treesitter#foldexpr']()
 vim.o.foldenable = false
 
 -- Show completion menu even if only one option is available; don't select by default
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = 'menuone,noselect,preview'
 
 -- Gdiffsplit opens vertically
 vim.o.diffopt = vim.o.diffopt .. ',vertical'
@@ -88,7 +88,7 @@ vim.g.kommentary_create_default_mappings = false
 vim.cmd('colorscheme nightfox')
 vim.cmd('highlight Vertsplit guifg=Orange')
 vim.cmd('filetype plugin indent on')
-vim.cmd([[autocmd BufWritePre * lua StripWhitespace()]])
+vim.cmd([[autocmd BufWritePre * lua require('luautils').StripWhitespace()]])
 
 -- Set textwidth for markdown and python
 vim.cmd([[autocmd BufRead,BufNewFile *.md setlocal textwidth=80]])

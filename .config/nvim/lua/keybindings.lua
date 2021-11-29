@@ -98,13 +98,6 @@ map("n", "<leader>lt", "<cmd>Trouble loclist<cr>", opts)
 map("n", "<leader>lq", "<cmd>Trouble quickfix<cr>", opts)
 map("n", "<leader>lr", "<cmd>Trouble lsp_references<cr>", opts)
 
--- Navigate around completion popup
-map('i', '<Tab>', 'v:lua.tab_complete()', {expr = true})
-map('s', '<Tab>', 'v:lua.tab_complete()', {expr = true})
-map('i', '<S-Tab>', 'v:lua.s_tab_complete()', {expr = true})
-map('s', '<S-Tab>', 'v:lua.s_tab_complete()', {expr = true})
-map('i', '<CR>', 'v:lua.expand_cr()', {expr = true})
-
 -- EasyAlign
 map("x", "<leader>a", "<Plug>(EasyAlign)", {silent = true})
 map("n", "<leader>a", "<Plug>(EasyAlign)", {silent = true})

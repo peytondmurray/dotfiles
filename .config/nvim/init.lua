@@ -159,8 +159,10 @@ require('packer').startup(function()
 
     -- Completion
     use 'neovim/nvim-lspconfig'
-    use 'hrsh7th/nvim-compe'
+    use 'hrsh7th/nvim-cmp'
     use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
+    use 'hrsh7th/cmp-nvim-lsp'
     use 'rafamadriz/friendly-snippets'
 
     -- Tree-sitter
@@ -170,7 +172,7 @@ require('packer').startup(function()
 
 end)
 
-require('utils')
+-- require('luautils')
 require('options')
 require('keybindings')
 require('treesitter')

@@ -1,5 +1,7 @@
+local M = {}
+
 -- Strip trailing whitespace on save; remove blank line at end of file
-StripWhitespace = function()
+function M.StripWhitespace()
     vim.cmd('%s/\\s\\+$//e')
     vim.cmd('%s/\\($\\n\\s*\\)\\+\\%$//e')
 end
@@ -21,7 +23,7 @@ end
 -- Use (shift-)tab to:
 --- move to prev/next item in completion/snippet menu
 --- insert a simple tab
-_G.tab_complete = function()
+function M.TabComplete()
     if vim.fn.pumvisible() == 1 then
         return ReplaceTC('<C-n>')
     elseif require('luasnip').expand_or_jumpable() then
@@ -33,7 +35,7 @@ _G.tab_complete = function()
     end
 end
 
-_G.s_tab_complete = function()
+function M.STabComplete()
     if vim.fn.pumvisible() == 1 then
         return ReplaceTC('<C-p>')
     elseif require('luasnip').jumpable(-1) then
@@ -46,9 +48,11 @@ end
 -- Use <CR> to:
 -- expand a snippet
 -- insert a simple tab
-_G.expand_cr = function()
+function M.ExpandCR()
     if require('luasnip').expand_or_jumpable() then
         return ReplaceTC('<Plug>luasnip-expand-or-jump')
     end
     return ReplaceTC('<CR>')
 end
+
+return M

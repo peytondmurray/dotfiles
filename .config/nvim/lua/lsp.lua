@@ -1,66 +1,74 @@
 local nvim_lsp = require('lspconfig')
+local luasnip = require('luasnip')
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {
-        'documentation',
-        'detail',
-        'additionalTextEdits',
-    }
-}
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-
-nvim_lsp["pylsp"].setup {
-    capabilities = capabilities,
-    flags = {
-        debounce_text_changes = 150
+local cmp = require('cmp')
+cmp.setup{
+    snippet = {
+        expand = function(args)
+            luasnip.lsp_expand(args.body)
+        end,
     },
-    cmd = { 'pylsp' },
-    settings = {
-        configurationSources = {'flake8'},
-        plugins = {
-            flake8 = {
-                enabled = true
-            },
-            pydocstyle = {
-                enabled = false
-            }
-        }
-    }
+    mapping = {
+        ['<C-p>'] = cmp.mapping.select_prev_item(),
+        ['<C-n>'] = cmp.mapping.select_next_item(),
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.close(),
+        ['<CR>'] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        },
+        ['<Tab>'] = function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            else
+                fallback()
+            end
+        end,
+        ['<S-Tab>'] = function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end,
+    },
+    sources = require('cmp').config.sources{
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+        { name = 'buffer' },
+    },
 }
--- -- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
--- local user = vim.fn.expand('$USER')
--- local sumneko_root_path = "/home/" .. user .. "/.config/nvim/lua-language-server"
--- local sumneko_binary = "/home/" .. user .. "/.config/nvim/lua-language-server/bin/Linux/lua-language-server"
--- nvim_lsp['sumneko_lua'].setup {
---     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
---     settings = {
---         Lua = {
---             runtime = {
---                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
---                 version = 'LuaJIT',
---                 -- Setup your lua path
---                 path = vim.split(package.path, ';')
---             },
---             diagnostics = {
---                 -- Get the language server to recognize the `vim` global
---                 globals = {'vim', 'use'}
---             },
---             workspace = {
---                 -- Make the server aware of Neovim runtime files
---                 --library = {[vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true},
---                 library = vim.api.nvim_get_runtime_file('', true),
---                 maxPreload = 2000,
--- 	            preloadFileSize = 1000,
---             },
---             telemetry = {
---                 enable = false
---             }
---         }
+
+
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- capabilities.textDocument.completion.completionItem.resolveSupport = {
+--     properties = {
+--         'documentation',
+--         'detail',
+--         'additionalTextEdits',
 --     }
 -- }
 
-nvim_lsp['tsserver'].setup{}
+nvim_lsp['pylsp'].setup{
+    capabilities = capabilities,
+    flags = {
+        debounce_text_changes = 150
+    }
+}
+
+
+nvim_lsp['tsserver'].setup{
+    capabilities = capabilities,
+}
 
 local eslint = {
     lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT} --rule 'prettier/prettier: false'",
@@ -102,35 +110,20 @@ nvim_lsp['efm'].setup{
             javascript = {eslint},
             typescript = {eslint}
         }
-    }
+    },
+    capabilities = capabilities,
 }
 
-nvim_lsp['clangd'].setup{}
+nvim_lsp['clangd'].setup{
+    capabilities = capabilities,
+}
 
-nvim_lsp['terraformls'].setup{}
+nvim_lsp['terraformls'].setup{
+    capabilities = capabilities,
+}
 
-nvim_lsp['rust_analyzer'].setup{}
-
-require('compe').setup {
-    enabled = true;
-    autocomplete = true;
-    debug = false;
-    min_length = 1;
-    preselect = 'enable';
-    throttle_time = 80;
-    source_timeout = 200;
-    incomplete_delay = 400;
-    max_abbr_width = 100;
-    max_kind_width = 100;
-    max_menu_width = 100;
-    documentation = true;
-    source = {
-        path = true;
-        buffer = true;
-        nvim_lsp = true;
-        ultisnips = true;
-        luasnip = true;
-    };
+nvim_lsp['rust_analyzer'].setup{
+    capabilities = capabilities,
 }
 
 -- Load snippets given by friendly-snippets
@@ -144,28 +137,3 @@ vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
     vim.lsp.handlers.hover,
     {border = 'single'}
 )
-
---[[ vim.lsp.diagnostic.config({
-    underline = true,
-    update_in_insert = false,
-    virtual_text = {
-        spacing = 4,
-        source = 'always',
-        severity = {
-            min = vim.lsp.diagnostic.severity.HINT,
-        },
-        format = function(diagnostic)
-            if diagnostic.severity == vim.diagnostic.severity.ERROR then
-                return string.format('E: %s', diagnostic.message)
-            end
-            return diagnostic.message
-        end,
-    },
-    signs = true,
-    severity_sort = true,
-    float = {
-        show_header = false,
-        source = 'always',
-        border = 'single',
-    },
-}) ]]
