@@ -9,3 +9,4 @@ platforms = ["laptop", "desktop"]
 ".config/bspwm/{}_bspwmrc" = ".config/bspwm/bspwmrc"
 ".config/polybar/{}_config.ini" = ".config/polybar/config.ini"
 ".config/polybar/{}_modules.ini" = ".config/polybar/modules.ini"
+".xprofile_{}" = ".xprofile"
