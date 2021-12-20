@@ -257,3 +257,7 @@ alias luamake=/home/pdmurray/.config/nvim/lua-language-server/3rd/luamake/luamak
 lutris() {
     PYENV_VERSION=system command lutris
 }
+
+calibre() {
+    PYENV_VERSION=system command calibre
+}

@@ -2,7 +2,6 @@ require('packer').startup(function()
 
     use 'wbthomason/packer.nvim'
 
-    -- use { 'famiu/feline.nvim', branch = 'develop' }
     use({
         "nvim-lualine/lualine.nvim",
         config = function() require('statusline') end,
@@ -16,6 +15,8 @@ require('packer').startup(function()
         "luukvbaal/stabilize.nvim",
         config = function() require("stabilize").setup() end
     }
+
+    use 'jxnblk/vim-mdx-js'
 
     -- Automatic docstring generation
     use {
