@@ -179,7 +179,15 @@ git() {
 }
 
 get_git_default_branch() {
-    echo $(git branch -rl '*/HEAD' | rev | cut -d/ -f1 | rev)
+    # Check if there's a default branch name
+    branch=$(command git rev-parse --abbrev-ref origin/HEAD)
+    if [[ $? == 0 ]]; then
+        echo ${branch} | cut -c8-
+    else
+        # If not, retrieve the new default branch name
+        command git remote set-head origin -a
+        echo $(command git rev-parse --abbrev-ref origin/HEAD) | cut -c8-
+    fi
 }
 
 pipupdate() {
