@@ -58,7 +58,15 @@ require('packer').startup(function()
     }
 
     -- Automatically create bracket pairs, etc
-    use {'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end }
+    use {
+        "steelsojka/pears.nvim",
+        config = function() require("pears").setup(
+            function(conf)
+                conf.expand_on_enter(true)
+            end
+            ) end
+    }
+    use 'windwp/nvim-ts-autotag'
 
     -- Check mapping conflicts with :CheckMappingConflicts
     use {'lukhio/vim-mapping-conflicts', cmd = 'CheckMappingConflicts'}

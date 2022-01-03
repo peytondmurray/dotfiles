@@ -1,4 +1,7 @@
 require('nvim-treesitter.configs').setup {
+    autotag = {
+        enable = true,
+    },
     highlight = {
         enable = true,
     },
@@ -6,7 +9,8 @@ require('nvim-treesitter.configs').setup {
         enable = true,
     },
     indent = {
-        enable = false,
+        enable = true,
+        disable = { "python" }
     },
     autopairs = {
         enable = true

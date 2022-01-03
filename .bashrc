@@ -12,7 +12,7 @@ alias du='du -h'
 alias df='df -h'
 alias ip='ip -c'
 alias sudo='sudo '
-alias paru='paru --color=always --sudoloop'
+alias paru='paru --color=always --devel'
 alias pacman='pacman --color=always'
 alias grep='grep --color=always'
 alias dmenu='demnu_run -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15"'
@@ -191,11 +191,15 @@ get_git_default_branch() {
 }
 
 pipupdate() {
-    local outdated=$(pip list --outdated)
-    if [[ -z "${outdated/ //}" ]]; then
-        echo "All packages up to date."
+    if [[ $(pyenv version | awk '{print $1}') == 'system' ]]; then
+        echo "pyenv version is set to system. Cannot continue."
     else
-	    pip install -U $(echo "${outdated}" | tail -n +3 | awk '{print $1}' | awk 'ORS=" "')
+        local outdated=$(pip list --outdated)
+        if [[ -z "${outdated/ //}" ]]; then
+            echo "All packages up to date."
+        else
+            pip install -U $(echo "${outdated}" | tail -n +3 | awk '{print $1}' | awk 'ORS=" "')
+        fi
     fi
 }
 
