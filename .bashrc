@@ -27,7 +27,6 @@ alias cdd='cd ~/Desktop/workspace'
 
 export PATH=/home/pdmurray/.gem/ruby/3.0.0/bin:$PATH
 export PATH=/home/pdmurray/go/bin:$PATH
-export PATH=/home/pdmurray/.local/bin:$PATH
 export PATH=/home/pdmurray/bin:$PATH
 export PATH=/home/pdmurray/.cargo/bin:$PATH
 export PATH=/home/pdmurray/.config/scripts:$PATH
@@ -265,3 +264,12 @@ lutris() {
 calibre() {
     PYENV_VERSION=system command calibre
 }
+
+ebook-convert() {
+    PYENV_VERSION=system command ebook-convert
+}
+
+
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
+# END_KITTY_SHELL_INTEGRATION

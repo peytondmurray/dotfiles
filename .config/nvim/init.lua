@@ -24,9 +24,9 @@ require('packer').startup(function()
         run = function() vim.fn['doge#install']() end,
     }
 
-   -- DAP
-   use 'mfussenegger/nvim-dap'
-   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    -- DAP
+    use 'mfussenegger/nvim-dap'
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
 
     -- File browser
@@ -97,21 +97,6 @@ require('packer').startup(function()
     -- Window motions: windows can be yanked/pasted
     use {'wesq3/vim-windowswap', keys = {'<C-W>'}}
 
-    -- Dim inactive windows
-    use {
-        'sunjon/shade.nvim',
-        config = function()
-            require'shade'.setup({
-                overlay_opacity = 50,
-                opacity_step = 1,
-                keys = {
-                    brightness_up    = '<C-Up>',
-                    brightness_down  = '<C-Down>',
-                    toggle           = '<Leader>s',
-                }
-            })
-        end
-    }
     -- Colorschemes
     -- use 'Mofiqul/dracula.nvim'
     use 'EdenEast/nightfox.nvim'
