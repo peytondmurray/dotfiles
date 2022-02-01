@@ -236,6 +236,10 @@ killwine() {
     echo $(ps -ef | egrep 'wineserver|winedevice.exe')
 }
 
+shot() {
+    flameshot gui
+}
+
 PATH="/home/pdmurray/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/pdmurray/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/pdmurray/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
@@ -258,15 +262,15 @@ done
 alias luamake=/home/pdmurray/.config/nvim/lua-language-server/3rd/luamake/luamake
 
 lutris() {
-    PYENV_VERSION=system command lutris
+    PYENV_VERSION=system command lutris $@
 }
 
 calibre() {
-    PYENV_VERSION=system command calibre
+    PYENV_VERSION=system command calibre $@
 }
 
 ebook-convert() {
-    PYENV_VERSION=system command ebook-convert
+    PYENV_VERSION=system command ebook-convert $@
 }
 
 
