@@ -111,9 +111,6 @@ require('packer').startup(function()
         end
     }
 
-    -- Markdown with glow
-    use {"npxbr/glow.nvim", run = "GlowInstall", cmd = "Glow"}
-
     -- Git Integration
     use {
         'lewis6991/gitsigns.nvim',
@@ -163,6 +160,9 @@ require('packer').startup(function()
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use {'nvim-treesitter/playground', cmd = "TSPlaygroundToggle"}
+
+    -- Python
+    use 'vimjas/vim-python-pep8-indent'
 
 end)
 
