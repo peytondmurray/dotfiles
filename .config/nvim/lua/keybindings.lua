@@ -64,9 +64,7 @@ map('n', '<leader>;', '<cmd>Telescope live_grep<CR>', opts)
 map('n', '<leader>/', '<cmd>Telescope current_buffer_fuzzy_find<CR>', opts)
 
 -- Pydocstring
-map('n', '<leader>dd', '<cmd>Pydocstring<CR>', opts)
-map('n', '<leader>df', '<cmd>PydocstringFormat<CR>', opts)
-map('n', '<leader>do', '<cmd>DogeGenerate<CR>', opts)
+map("n", "<Leader>dg", ":lua require('neogen').generate()<CR>", opts)
 
 -- LSP
 map('n', '<leader>e', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)

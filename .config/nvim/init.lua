@@ -18,11 +18,23 @@ require('packer').startup(function()
 
     use 'jxnblk/vim-mdx-js'
 
-    -- Automatic docstring generation
     use {
-        'kkoomen/vim-doge',
-        run = function() vim.fn['doge#install']() end,
+        "danymat/neogen",
+        config = function()
+            require('neogen').setup {
+                enabled = true,
+                languages = {
+                    python = {
+                        template = {
+                            annotation_convention = 'numpydoc'
+                        }
+                    }
+                }
+            }
+        end,
+        requires = "nvim-treesitter/nvim-treesitter"
     }
+
 
     -- DAP
     use 'mfussenegger/nvim-dap'
@@ -37,11 +49,6 @@ require('packer').startup(function()
 
     -- Toggle, display, and navigate marks
     use 'kshenoy/vim-signature'
-
-    use {
-        'heavenshell/vim-pydocstring',
-        cmd = {"Pydocstring", "PydocstringFormat"}
-    }
 
     -- Highlight same words as currently hovered word
     use 'rrethy/vim-illuminate'
