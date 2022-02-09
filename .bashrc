@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias exa='exa -la --group-directories-first'
+alias exa='exa -la --group-directories-first --sort=extension --git'
 alias ex='exa'
 alias ll='exa'
 alias du='du -h'
@@ -20,7 +20,6 @@ alias vectivate='source vectivate'
 alias kmon='kmon -u'
 alias rm='trash-put'
 alias rg='rg -S'
-alias aesvpn='openconnect vpn.aes.com/scc002 --servercert pin-sha256:8FytlQi7EjBIbvTDVyCnhcBY4Or3YlXP1VaImo5asOI= --user=qs.pmurray.c -v --reconnect-timeout=100 -s "`which vpn-slice` 10.247.11.22 qhub.ouraes.com"'
 alias less='less -R'
 alias tree='tree -C'
 alias cdd='cd ~/Desktop/workspace'
