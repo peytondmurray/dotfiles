@@ -248,16 +248,6 @@ PERL_MM_OPT="INSTALL_BASE=/home/pdmurray/perl5"; export PERL_MM_OPT;
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
     . /usr/share/bash-completion/bash_completion
 
-# Load pyenv automatically
-eval "$(pyenv init -)"
-
-# move all paths ending in 'sbin' to the back of PATH
-# This is needed because pyenv fails to find the system python otherwise
-for SB in $(echo "$PATH" | grep ':*/[^:]*sbin' -o)
-do
-  export PATH="${PATH/$SB}:${SB#:}"
-done
-
 alias luamake=/home/pdmurray/.config/nvim/lua-language-server/3rd/luamake/luamake
 
 lutris() {
@@ -271,6 +261,16 @@ calibre() {
 ebook-convert() {
     PYENV_VERSION=system command ebook-convert $@
 }
+
+# Load pyenv automatically
+eval "$(pyenv init -)"
+
+# move all paths ending in 'sbin' to the back of PATH
+# This is needed because pyenv fails to find the system python otherwise
+for SB in $(echo "$PATH" | grep ':*/[^:]*sbin' -o)
+do
+  export PATH="${PATH/$SB}:${SB#:}"
+done
 
 
 # BEGIN_KITTY_SHELL_INTEGRATION

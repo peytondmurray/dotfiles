@@ -121,3 +121,6 @@ map('n', '<F11>', '<cmd>lua require"dap".repl.open()<CR>', opts)
 map('n', '<F12>', '<cmd>lua require("dapui").toggle()<CR>=', opts)
 -- map('n', '<leader>dl', '<cmd>lua require"dap".repl.run_last()<CR>', opts)
 -- map('n', '<leader>dsbm', '<cmd>lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>', opts)
+
+-- Set filetype to terminal
+map('n', '<leader>t', '<cmd>setl filetype=terminal<CR>', opts)

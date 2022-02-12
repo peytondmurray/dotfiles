@@ -118,6 +118,14 @@ require('packer').startup(function()
         end
     }
 
+    -- Add ANSI escape sequence support
+    use {
+        'norcalli/nvim-terminal.lua',
+        config = function()
+            require('terminal').setup()
+        end
+    }
+
     -- Git Integration
     use {
         'lewis6991/gitsigns.nvim',
@@ -162,6 +170,10 @@ require('packer').startup(function()
     use 'saadparwaiz1/cmp_luasnip'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'rafamadriz/friendly-snippets'
+    use {
+        'ray-x/lsp_signature.nvim',
+        config = function() require('lsp_signature').setup() end
+    }
 
     -- Tree-sitter
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
