@@ -8,6 +8,9 @@ vim.o.smarttab = true
 
 vim.o.termguicolors = true
 
+-- Disable "Press Enter to continue nag alerts"
+vim.o.cmdheight = 2
+
 -- Diagnostic messaging
 vim.o.signcolumn = 'yes'
 

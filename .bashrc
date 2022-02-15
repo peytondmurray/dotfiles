@@ -22,7 +22,6 @@ alias rm='trash-put'
 alias rg='rg -S'
 alias less='less -R'
 alias tree='tree -C'
-alias cdd='cd ~/Desktop/workspace'
 
 export PATH=/home/pdmurray/.gem/ruby/3.0.0/bin:$PATH
 export PATH=/home/pdmurray/go/bin:$PATH
@@ -237,6 +236,10 @@ killwine() {
 
 shot() {
     flameshot gui
+}
+
+cdd() {
+    cd ~/Desktop/workspace/$@
 }
 
 PATH="/home/pdmurray/perl5/bin${PATH:+:${PATH}}"; export PATH;
