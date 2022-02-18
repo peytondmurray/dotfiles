@@ -1,15 +1,8 @@
 [theme]
-name = "slick"
-
-[theme.overrides]
-separator = ""
-separator_bg = "auto"
-alternating_tint_bg = "#111111"
+name = "nord-dark"
 
 [icons]
 name = "awesome5"
-[icons.overrides]
-net_wired = ""
 
 [[block]]
 block = "disk_space"
@@ -38,7 +31,7 @@ format = "{1m}"
 
 [[block]]
 block = "net"
-device = "enp6s0"
+device = "enp7s0"
 format = "{ip} {ipv6} {speed_down} {speed_up}"
 interval = 5
 
