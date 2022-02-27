@@ -1,7 +1,7 @@
 set $mod Mod4
 
 # Monitor configuration
-output HDMI-A-0 pos 0 0
+output HDMI-A-0 mode 3840x2160@60Hz pos 0 0
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -200,7 +200,9 @@ bar {
 exec_always swaybg -m fill -i /home/pdmurray/.config/wallpapers/pebbles_stones_dark_152025_3840x2160.jpg
 
 input type:keyboard {
-    xkb_layout us(altgr-intl)
+    xkb_layout "us,fi,ru"
+    xkb_variant "altgr-intl,,,"
+    xkb_options "grp:win_space_toggle"
 }
 
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway

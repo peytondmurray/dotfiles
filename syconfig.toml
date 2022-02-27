@@ -10,3 +10,4 @@ platforms = ["laptop", "desktop"]
 ".config/polybar/{}_config.ini" = ".config/polybar/config.ini"
 ".config/polybar/{}_modules.ini" = ".config/polybar/modules.ini"
 ".xprofile_{}" = ".xprofile"
+".config/waybar/{}_config" = ".config/waybar/config"
