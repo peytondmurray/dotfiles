@@ -1,0 +1,211 @@
+set $mod Mod4
+
+# Monitor configuration
+output HDMI-A-0 pos 0 0
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+#font pango:monospace 8
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+font pango: SpaceMono Regular 11
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec kitty
+
+# kill focused window
+bindsym $mod+w kill
+
+bindsym $mod+d exec dmenu_run
+bindsym $mod+shift+escape exec swaymsg exit
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+Control+l split h
+
+# split in vertical orientation
+bindsym $mod+Control+j split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+m fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+s floating enable
+bindsym $mod+t floating disable
+
+# resize like bspwm
+set $dx 80
+bindsym $mod+alt+h resize grow left $dx px
+bindsym $mod+alt+j resize grow down $dx px
+bindsym $mod+alt+k resize grow up $dx px
+bindsym $mod+alt+l resize grow right $dx px
+bindsym $mod+shift+alt+h resize shrink right $dx px
+bindsym $mod+shift+alt+j resize shrink up $dx px
+bindsym $mod+shift+alt+k resize shrink down $dx px
+bindsym $mod+shift+alt+l resize shrink left $dx px
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws0 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0
+
+set $fg #FFFFFF
+set $bg #000000
+set $red #FF0000
+set $wht1 #0088CC
+
+# Class                     border  backgr. text    indicator   child_border
+client.focused              $fg     $fg     $fg     $wht1         $fg
+client.focused_inactive     $bg     $bg     $bg     $bg         $bg
+client.unfocused            $bg     $bg     $bg     $bg         $bg
+client.urgent               $red    $bg     $bg     $bg         $bg
+client.placeholder          $bg     $bg     $bg     $bg         $bg
+client.background           $bg
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+mode "sleep"
+{
+	bindsym Return mode "default"; exec systemctl suspend
+	bindsym Escape mode "default"
+}
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+bindsym $mod+Ctrl+r mode "$mode_gaps"
+bindsym $mod+BackSpace mode "sleep"
+
+# Volume
+bindsym $mod+F8 exec /home/pdmurray/.config/scripts/volume_change.sh +5%
+bindsym $mod+F7 exec /home/pdmurray/.config/scripts/volume_change.sh -5%
+bindsym $mod+F6 exec /home/pdmurray/.config/scripts/mute.sh
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+
+# Brightness toggle
+bindsym Pause exec ~/.config/brightness_toggle.sh
+
+bindsym Print exec "grim"
+
+# borders
+default_border pixel 4
+
+# gaps
+gaps inner 10
+gaps outer 5
+
+bar {
+    swaybar_command waybar
+}
+
+exec_always swaybg -m fill -i /home/pdmurray/.config/wallpapers/pebbles_stones_dark_152025_3840x2160.jpg
+
+input type:keyboard {
+    xkb_layout us(altgr-intl)
+}
+
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec_always /usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr
+
+exec_always pgrep -x udiskie || udiskie &
+exec_always pgrep -x autotiling || /home/pdmurray/.pyenv/shims/autotiling &
