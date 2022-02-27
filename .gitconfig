@@ -28,3 +28,5 @@
     diffFilter = delta --color-only
 [branch]
 	autosetuprebase = always
+[advice]
+	detachedHead = false

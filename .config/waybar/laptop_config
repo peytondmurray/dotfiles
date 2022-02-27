@@ -4,7 +4,11 @@
     "height": 30,
 
     "modules-left": ["sway/workspaces"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "battery#bat2", "clock", "tray"],
+    "modules-right": ["sway/language", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "battery#bat2", "clock", "tray"],
+
+    "sway/language": {
+        "format": "{short} {variant}"
+    },
 
     "tray": {
         "spacing": 10

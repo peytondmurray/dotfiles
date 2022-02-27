@@ -208,10 +208,8 @@ bar {
 }
 
 exec_always swaybg -m fill -i /home/pdmurray/.config/wallpapers/pebbles_stones_dark_152025_3840x2160.jpg
-
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec_always /usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr
-
 exec_always pgrep -x udiskie || udiskie &
 exec_always pgrep -x autotiling || /home/pdmurray/.pyenv/shims/autotiling &

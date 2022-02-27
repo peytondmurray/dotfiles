@@ -4,6 +4,14 @@ set $mod Mod4
 output eDP-1 pos 0 0
 output HDMI-A-1 disable
 
+input type:keyboard {
+    xkb_layout "us,fi,ru"
+    xkb_variant "altgr-intl,,,"
+    xkb_options "grp:win_space_toggle"
+    repeat_delay 300
+    repeat_rate 80
+}
+
 # Touchpad configuration
 input type:touchpad {
     tap enabled
@@ -200,32 +208,12 @@ default_border pixel 4
 gaps inner 10
 gaps outer 5
 
-#bar {
-    #font pango:DejaVu Sans Mono, FontAwesome 12
-    #position bottom
-    #status_command i3status-rs ~/.config/i3/status.toml
-    #colors {
-        #separator #666666
-        #background #222222
-        #statusline #dddddd
-        #focused_workspace #0088CC #0088CC #ffffff
-        #active_workspace #333333 #333333 #ffffff
-        #inactive_workspace #333333 #333333 #888888
-        #urgent_workspace #2f343a #900000 #ffffff
-    #}
-#}
-#
 bar {
     swaybar_command waybar
 }
 
 exec_always swaybg -m fill -i /home/pdmurray/.config/wallpapers/pebbles_stones_dark_152025_3840x2160.jpg
-exec_always /home/pdmurray/.pyenv/shims/autotiling
-
-input type:keyboard {
-    xkb_layout us(altgr-intl)
-}
-
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec_always /usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr
+exec_always pgrep -x autotiling || /home/pdmurray/.pyenv/shims/autotiling &
