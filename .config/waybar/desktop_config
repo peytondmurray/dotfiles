@@ -3,11 +3,15 @@
     "position": "bottom",
     "height": 30,
 
-    "modules-left": ["sway/workspaces"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-right": ["sway/language", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "battery#bat2", "clock", "tray"],
 
     "sway/language": {
         "format": "{short} {variant}"
+    },
+
+    "sway/mode": {
+        "format": "{}"
     },
 
     "tray": {
