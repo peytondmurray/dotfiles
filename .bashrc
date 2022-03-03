@@ -265,17 +265,8 @@ ebook-convert() {
     PYENV_VERSION=system command ebook-convert $@
 }
 
-# Load pyenv automatically
-eval "$(pyenv init -)"
-
-# move all paths ending in 'sbin' to the back of PATH
-# This is needed because pyenv fails to find the system python otherwise
-for SB in $(echo "$PATH" | grep ':*/[^:]*sbin' -o)
-do
-  export PATH="${PATH/$SB}:${SB#:}"
-done
-
-
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION
+
+eval "$(pyenv init -)"
