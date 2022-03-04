@@ -180,9 +180,14 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
+mode "ringlight" {
+    bindsym $mod+p mode "default", gaps outer all minus 80, exec swaymsg output '*' bg /home/pdmurray/.config/wallpapers/pebbles_stones_dark_152025_3840x2160.jpg fill
+}
+
 bindsym $mod+r mode "resize"
 bindsym $mod+Ctrl+r mode "$mode_gaps"
 bindsym $mod+BackSpace mode "sleep"
+bindsym $mod+p mode "ringlight", gaps outer all plus 80, exec swaymsg output '*' bg '#ffffff' solid_color
 
 # Volume
 bindsym $mod+F8 exec /home/pdmurray/.config/scripts/volume_change.sh +5%
@@ -207,9 +212,9 @@ bar {
     swaybar_command waybar
 }
 
-exec_always swaybg -m fill -i /home/pdmurray/.config/wallpapers/pebbles_stones_dark_152025_3840x2160.jpg
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec_always swaymsg output '*' bg /home/pdmurray/.config/wallpapers/pebbles_stones_dark_152025_3840x2160.jpg fill
 exec_always /usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr
 exec_always pgrep -x udiskie || udiskie &
 exec_always pgrep -x autotiling || /home/pdmurray/.pyenv/shims/autotiling &
