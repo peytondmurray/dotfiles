@@ -1,3 +1,5 @@
+local cmp = require('cmp')
+
 local M = {}
 
 -- Strip trailing whitespace on save; remove blank line at end of file
@@ -31,7 +33,7 @@ function M.TabComplete()
     elseif is_prior_char_whitespace() then
         return ReplaceTC('<Tab>')
     else
-        return vim.fn['compe#complete']()
+        return cmp.complete()
     end
 end
 
