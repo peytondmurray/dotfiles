@@ -53,7 +53,6 @@ vim.o.completeopt = 'menuone,noselect,preview'
 -- Gdiffsplit opens vertically
 vim.o.diffopt = vim.o.diffopt .. ',vertical'
 
-vim.g.indentLine_char = '|'
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.o.shortmess = 'IFa'
@@ -91,11 +90,11 @@ vim.g.kommentary_create_default_mappings = false
 vim.cmd('colorscheme nightfox')
 vim.cmd('highlight Vertsplit guifg=Orange')
 vim.cmd('filetype plugin indent on')
-vim.cmd([[autocmd BufWritePre * lua require('luautils').StripWhitespace()]])
+vim.api.nvim_create_autocmd("BufWritePre", { callback = require('luautils').StripWhitespace })
 
 -- Set textwidth for markdown and python
-vim.cmd([[autocmd BufRead,BufNewFile *.md setlocal textwidth=80]])
-vim.cmd([[autocmd BufRead,BufNewFile *.py setlocal textwidth=100]])
+vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal textwidth=80", pattern = "*.md" })
+vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal textwidth=100", pattern = "*.py" })
 
 -- disable builtin vim plugins
 local disabled_built_ins = {

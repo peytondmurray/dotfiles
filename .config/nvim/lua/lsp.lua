@@ -1,5 +1,6 @@
 local nvim_lsp = require('lspconfig')
 local luasnip = require('luasnip')
+local luautils = require('luautils')
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
@@ -28,7 +29,7 @@ cmp.setup{
                     cmp.select_next_item()
                 elseif luasnip.expand_or_jumpable() then
                     luasnip.expand_or_jump()
-                elseif has_words_before() then
+                elseif luautils.has_words_before() then
                     cmp.complete()
                 else
                     fallback()

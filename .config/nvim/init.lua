@@ -8,13 +8,6 @@ require('packer').startup(function()
             "StartupTime"
         }
     }
-    use({
-        'mvllow/modes.nvim',
-        config = function()
-            vim.opt.cursorline = true
-            require('modes').setup()
-        end
-    })
 
     use({
         "nvim-lualine/lualine.nvim",
@@ -49,7 +42,6 @@ require('packer').startup(function()
         requires = "nvim-treesitter/nvim-treesitter"
     }
 
-
     -- DAP
     use 'mfussenegger/nvim-dap'
     use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
@@ -78,14 +70,9 @@ require('packer').startup(function()
         end
     }
 
-    -- Automatically create bracket pairs, etc
     use {
-        "steelsojka/pears.nvim",
-        config = function() require("pears").setup(
-            function(conf)
-                conf.expand_on_enter(true)
-            end
-            ) end
+        'windwp/nvim-autopairs',
+        config = function() require('nvim-autopairs').setup() end
     }
     use 'windwp/nvim-ts-autotag'
 
@@ -103,7 +90,10 @@ require('packer').startup(function()
         'lukas-reineke/indent-blankline.nvim',
         config = function()
             require('indent_blankline').setup{
-                show_current_context = true
+                show_current_context = true,
+                show_current_context_start = true,
+                use_treesitter = true,
+                blankline_char = '│'
             }
         end
     }
