@@ -2,6 +2,20 @@ require('packer').startup(function()
 
     use 'wbthomason/packer.nvim'
 
+    use {
+        'dstein64/vim-startuptime',
+        cmd = {
+            "StartupTime"
+        }
+    }
+    use({
+        'mvllow/modes.nvim',
+        config = function()
+            vim.opt.cursorline = true
+            require('modes').setup()
+        end
+    })
+
     use({
         "nvim-lualine/lualine.nvim",
         config = function() require('statusline') end,
@@ -107,7 +121,7 @@ require('packer').startup(function()
     -- Colorschemes
     -- use 'Mofiqul/dracula.nvim'
     use 'EdenEast/nightfox.nvim'
-    use 'folke/tokyonight.nvim'
+    -- use 'folke/tokyonight.nvim'
 
     -- Colorize hex codes
     use {
