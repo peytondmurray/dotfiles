@@ -72,7 +72,11 @@ require('packer').startup(function()
 
     use {
         'windwp/nvim-autopairs',
-        config = function() require('nvim-autopairs').setup() end
+        config = function()
+            require('nvim-autopairs').setup({
+                check_ts = true
+            })
+        end
     }
     use 'windwp/nvim-ts-autotag'
 
