@@ -219,3 +219,5 @@ exec_always /usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr
 exec_always pgrep -x udiskie || udiskie &
 exec_always pgrep -x autotiling || /home/pdmurray/.pyenv/shims/autotiling &
 exec_always pgrep -x clipman || wl-paste -t text --watch clipman store --no-persist &
+exec_always pgrep -x kdeconnectd || /usr/lib/kdeconnectd &
+exec_always pgrep -x kdeconnect-indicator || kdeconnect-indicator &
