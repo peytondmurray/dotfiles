@@ -234,10 +234,6 @@ killwine() {
     echo $(ps -ef | egrep 'wineserver|winedevice.exe')
 }
 
-shot() {
-    flameshot gui
-}
-
 cdd() {
     cd ~/Desktop/workspace/$@
 }
