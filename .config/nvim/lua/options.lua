@@ -124,3 +124,5 @@ end
 
 vim.g.doge_enable_mappings = false
 vim.g.doge_doc_standard_python = 'numpy'
+
+vim.o.laststatus = 3
