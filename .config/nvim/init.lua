@@ -10,8 +10,8 @@ require('packer').startup(function()
     }
 
     use({
-        "nvim-lualine/lualine.nvim",
-        config = function() require('statusline') end,
+        "feline-nvim/feline.nvim",
+        config = function() require('feline').setup() end,
         wants = "nvim-web-devicons",
     })
     use 'ryanoasis/vim-devicons'
@@ -214,4 +214,3 @@ require('telescope').setup{
 }
 require('styles')
 require('tree')
-require('statusline')
