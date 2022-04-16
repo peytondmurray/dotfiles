@@ -51,10 +51,6 @@ map('i', '<S-Tab>', '<C-d>', opts)
 map('v', '<S-Tab>', '<gv', opts)
 map('v', '<Tab>', '>gv', opts)
 
--- Move line up/down
-map('n', '<M-j>', '<cmd>m+1<CR>', opts)
-map('n', '<M-k>', '<cmd>m-2<CR>', opts)
-
 -- Clear last search highlighting
 map('n', '<M-/>', ':noh<CR>', opts)
 
