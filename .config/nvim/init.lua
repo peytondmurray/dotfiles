@@ -9,9 +9,16 @@ require('packer').startup(function()
         }
     }
 
+    use {
+        "SmiteshP/nvim-gps",
+        requires = "nvim-treesitter"
+    }
+
     use({
         "feline-nvim/feline.nvim",
-        config = function() require('feline').setup() end,
+        config = function()
+            require('statusline')
+        end,
         wants = "nvim-web-devicons",
     })
     use 'ryanoasis/vim-devicons'
@@ -194,7 +201,6 @@ require('packer').startup(function()
 
 end)
 
--- require('luautils')
 require('options')
 require('keybindings')
 require('treesitter')
