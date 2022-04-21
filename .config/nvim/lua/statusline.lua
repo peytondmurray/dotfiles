@@ -1,3 +1,4 @@
+local nf_palette = require('nightfox.palette').load()
 local lsp = require('feline.providers.lsp')
 local vi_mode_utils = require('feline.providers.vi_mode')
 local gps = require("nvim-gps")
@@ -8,25 +9,19 @@ local force_inactive = {
     bufnames = {}
 }
 
-local components = {
-    active = {{}, {}, {}},
-    inactive = {{}, {}, {}},
-}
-
 local colors = {
-    bg = '#282828',
-    black = '#282828',
-    yellow = '#d8a657',
-    cyan = '#89b482',
-    oceanblue = '#45707a',
-    green = '#a9b665',
-    orange = '#e78a4e',
-    violet = '#d3869b',
-    magenta = '#c14a4a',
-    white = '#a89984',
-    fg = '#a89984',
-    skyblue = '#7daea3',
-    red = '#ea6962',
+    bg = nf_palette.bg1,
+    black = nf_palette.black,
+    yellow = nf_palette.yellow,
+    cyan = nf_palette.cyan,
+    green = nf_palette.green,
+    orange = nf_palette.orange,
+    violet = nf_palette.pink,
+    magenta = nf_palette.magenta,
+    white = nf_palette.white,
+    fg = nf_palette.fg1,
+    skyblue = nf_palette.blue,
+    red = nf_palette.red,
 }
 
 local vi_mode_colors = {

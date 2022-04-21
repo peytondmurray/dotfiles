@@ -188,7 +188,11 @@ require('packer').startup(function()
     use 'rafamadriz/friendly-snippets'
     use {
         'ray-x/lsp_signature.nvim',
-        config = function() require('lsp_signature').setup() end
+        config = function() require('lsp_signature').setup() end,
+    }
+    use {
+        'j-hui/fidget.nvim',
+        config = function() require('fidget').setup() end,
     }
 
     -- Tree-sitter
