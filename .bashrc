@@ -202,31 +202,6 @@ pipupdate() {
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# Lazily load nvm, otherwise bash startup takes much longer
-nvm() {
-    unset -f nvm
-    source /usr/share/nvm/init-nvm.sh
-    nvm "$@"
-}
-
-node() {
-    unset -f node
-    source /usr/share/nvm/init-nvm.sh
-    node "$@"
-}
-
-npm() {
-    unset -f npm
-    source /usr/share/nvm/init-nvm.sh
-    npm "$@"
-}
-
-yarn() {
-    unset -f yarn
-    source /usr/share/nvm/init-nvm.sh
-    yarn "$@"
-}
-
 killwine() {
     echo $(ps -ef | egrep 'wineserver|winedevice.exe')
     killall -s 9 wineserver
@@ -266,3 +241,11 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 # END_KITTY_SHELL_INTEGRATION
 
 eval "$(pyenv init -)"
+
+export PATH="/run/user/1000/fnm_multishells/30325_1650831237890/bin":$PATH
+export FNM_MULTISHELL_PATH="/run/user/1000/fnm_multishells/30325_1650831237890"
+export FNM_VERSION_FILE_STRATEGY="local"
+export FNM_DIR="/home/pdmurray/.local/share/fnm"
+export FNM_LOGLEVEL="info"
+export FNM_NODE_DIST_MIRROR="https://nodejs.org/dist"
+export FNM_ARCH="x64"
