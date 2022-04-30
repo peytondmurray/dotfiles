@@ -241,11 +241,5 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 # END_KITTY_SHELL_INTEGRATION
 
 eval "$(pyenv init -)"
-
-export PATH="/run/user/1000/fnm_multishells/30325_1650831237890/bin":$PATH
-export FNM_MULTISHELL_PATH="/run/user/1000/fnm_multishells/30325_1650831237890"
-export FNM_VERSION_FILE_STRATEGY="local"
-export FNM_DIR="/home/pdmurray/.local/share/fnm"
-export FNM_LOGLEVEL="info"
-export FNM_NODE_DIST_MIRROR="https://nodejs.org/dist"
-export FNM_ARCH="x64"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

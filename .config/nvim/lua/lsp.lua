@@ -126,6 +126,10 @@ nvim_lsp['rust_analyzer'].setup{
     capabilities = capabilities,
 }
 
+nvim_lsp['cmake'].setup{
+    capabilities = capabilities,
+}
+
 -- Load snippets given by friendly-snippets
 require('luasnip/loaders/from_vscode').lazy_load()
 

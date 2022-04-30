@@ -14,3 +14,5 @@ export MOZ_ENABLE_WAYLAND=1
 if [[ -z "${DISPLAY}" && $(tty) == "/dev/tty1" ]]; then
     exec sway
 fi
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
