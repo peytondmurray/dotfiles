@@ -154,7 +154,7 @@ get_venv() {
 }
 
 set_ps1() {
-	export PS1="[${bldwht}\w${txtrst}]$(get_venv)$(generate_git_ps1)$ "
+	export PS1="${bldblu}[\w]${txtrst}$(get_venv)$(generate_git_ps1)${bldblu}\$${txtrst} "
 }
 
 PROMPT_COMMAND=set_ps1
