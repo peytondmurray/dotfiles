@@ -96,6 +96,8 @@ vim.api.nvim_create_autocmd("BufWritePre", { callback = require('luautils').Stri
 vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal textwidth=80", pattern = "*.md" })
 vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal textwidth=100", pattern = "*.py" })
 
+vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal tabstop=2 shiftwidth=2", pattern = "*.tsx,*.ts,*.jsx,*.js"})
+
 -- disable builtin vim plugins
 local disabled_built_ins = {
     "netrw",
