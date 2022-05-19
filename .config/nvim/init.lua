@@ -161,6 +161,10 @@ require('packer').startup(function()
     use 'tpope/vim-fugitive'
 
     -- Telescope
+    use {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'make'
+    }
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use {
@@ -211,16 +215,18 @@ require('treesitter')
 require('lsp')
 require('dapconfig')
 require('telescope').setup{
-   colorscheme = {
-       enable_preview = true,
-   },
-   winblend = 20,
-   defaults = {
-       file_ignore_patterns = {
-           'node_modules/',
-           'yarn.lock'
-       }
-   }
+    colorscheme = {
+        enable_preview = true,
+    },
+    winblend = 20,
+    defaults = {
+        file_ignore_patterns = {
+            'node_modules/',
+            'yarn.lock',
+            'compile_commands.json'
+        }
+    },
 }
+require('telescope').load_extension('fzf')
 require('styles')
 require('tree')
