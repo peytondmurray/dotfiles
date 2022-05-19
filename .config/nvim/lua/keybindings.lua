@@ -73,6 +73,7 @@ map('n', '<leader>j', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 -- --map('n', '<leader>l', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 map('n', '<leader>h', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 map('n', '<leader>u', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+map('n', '<leader>g', '<cmd>ClangdSwitchSourceHeader<CR>', opts)
 
 -- Unused keybindings
 -- map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
