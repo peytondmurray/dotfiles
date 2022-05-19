@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias exa='exa -la --group-directories-first --sort=extension --git'
+alias exa='exa -la --group-directories-first --sort=extension'
 alias ex='exa'
 alias ll='exa'
 alias du='du -h'
@@ -23,11 +23,12 @@ alias rg='rg -S'
 alias less='less -R'
 alias tree='tree -C'
 
-export PATH=/home/pdmurray/.gem/ruby/3.0.0/bin:$PATH
-export PATH=/home/pdmurray/go/bin:$PATH
-export PATH=/home/pdmurray/bin:$PATH
-export PATH=/home/pdmurray/.cargo/bin:$PATH
-export PATH=/home/pdmurray/.config/scripts:$PATH
+export PATH=$HOME/.gem/ruby/3.0.0/bin:$PATH
+export PATH=$HOME/go/bin:$PATH
+export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.config/scripts:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 export VISUAL=nvim
 export EDITOR=nvim
@@ -122,7 +123,7 @@ get_git_branch() {
 get_git_color() {
 	$(command git branch > /dev/null 2>&1)
 	if [[ "$?" == 0 ]]; then
-		local status=`command git status`
+        local status=$(command git status -uno)
 		if [[ "$(echo $status | grep 'not staged for commit' | wc -l)" == 1 ]] || [[ "$(echo $status | grep 'Untracked files:' | wc -l)" == 1 ]]; then
 			echo ${bldred};
 		elif [[ "$(echo $status | grep 'Changes to be committed: ' | wc -l)" == 1 ]]; then
