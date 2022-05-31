@@ -23,7 +23,6 @@ alias rg='rg -S'
 alias less='less -R'
 alias tree='tree -C'
 
-export PATH=$HOME/.gem/ruby/3.0.0/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH

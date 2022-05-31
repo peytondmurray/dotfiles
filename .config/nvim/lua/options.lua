@@ -44,7 +44,7 @@ vim.o.background = "light" -- or "light" for light mode
 vim.g.tokyonight_style = "day" -- or "light" for light mode
 
 vim.o.foldmethod = 'expr'
-vim.o.foldexpr = vim.fn['nvim_treesitter#foldexpr']()
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.o.foldenable = false
 
 -- Show completion menu even if only one option is available; don't select by default
@@ -97,7 +97,6 @@ vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal textwidt
 vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal textwidth=100", pattern = "*.py" })
 vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal tabstop=2 shiftwidth=2", pattern = {"*.ts", "*.js", "*.tsx", "*.jsx"} })
 vim.api.nvim_create_autocmd("FileType", { command = "set ft=typescript", pattern = {"*.tsx"} })
-
 vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal tabstop=2 shiftwidth=2", pattern = "*.tsx,*.ts,*.jsx,*.js"})
 
 -- disable builtin vim plugins
@@ -130,3 +129,5 @@ vim.g.doge_enable_mappings = false
 vim.g.doge_doc_standard_python = 'numpy'
 
 vim.o.laststatus = 3
+
+vim.o.winbar = '%f'
