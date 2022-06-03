@@ -97,7 +97,6 @@ vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal textwidt
 vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal textwidth=100", pattern = "*.py" })
 vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal tabstop=2 shiftwidth=2", pattern = {"*.ts", "*.js", "*.tsx", "*.jsx"} })
 vim.api.nvim_create_autocmd("FileType", { command = "set ft=typescript", pattern = {"*.tsx"} })
-vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal tabstop=2 shiftwidth=2", pattern = "*.tsx,*.ts,*.jsx,*.js"})
 
 -- disable builtin vim plugins
 local disabled_built_ins = {
