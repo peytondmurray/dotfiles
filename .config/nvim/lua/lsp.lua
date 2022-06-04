@@ -62,6 +62,20 @@ nvim_lsp['pylsp'].setup{
     capabilities = capabilities,
     flags = {
         debounce_text_changes = 150
+    },
+    settings = {
+        pylsp = {
+            plugins = {
+                pycodestyle = { enabled = false },
+                mccabe = { enabled = false },
+                pyflakes = { enabled = false },
+                flake8 = { enabled = true },
+            },
+            configurationSources = { 'flake8' },
+        }
+    },
+    cmd = {
+        "pylsp", "-vv"
     }
 }
 
