@@ -224,6 +224,11 @@ require('telescope').setup{
             'node_modules/',
             'yarn.lock',
             'compile_commands.json'
+        },
+    },
+    pickers = {
+        find_files = {
+            find_command = { "find", "-type", "f" }
         }
     },
 }
