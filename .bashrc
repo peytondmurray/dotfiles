@@ -22,6 +22,7 @@ alias rm='trash-put'
 alias rg='rg -S'
 alias less='less -R'
 alias tree='tree -C'
+alias trash-empty='trash-empty -f'
 
 export PATH=$HOME/go/bin:$PATH
 export PATH=$HOME/bin:$PATH
