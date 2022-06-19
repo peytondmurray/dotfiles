@@ -207,6 +207,12 @@ require('packer').startup(function()
     -- Python
     use 'vimjas/vim-python-pep8-indent'
 
+    -- Folding
+    use {
+        'kevinhwang91/nvim-ufo',
+        requires = 'kevinhwang91/promise-async'
+    }
+
 end)
 
 require('options')

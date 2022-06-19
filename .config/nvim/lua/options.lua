@@ -43,10 +43,6 @@ vim.g.pydocstring_doq_path = '~/.pyenv/shims/doq'
 vim.o.background = "light" -- or "light" for light mode
 vim.g.tokyonight_style = "day" -- or "light" for light mode
 
-vim.o.foldmethod = 'expr'
-vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.o.foldenable = false
-
 -- Show completion menu even if only one option is available; don't select by default
 vim.o.completeopt = 'menuone,noselect,preview'
 
@@ -131,3 +127,7 @@ vim.g.doge_doc_standard_python = 'numpy'
 vim.o.laststatus = 3
 
 vim.o.winbar = '%f'
+
+vim.wo.foldcolumn = '1'
+vim.wo.foldlevel = 99
+vim.wo.foldenable = true
