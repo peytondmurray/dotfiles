@@ -39,8 +39,8 @@ vim.g.pydocstring_enable_mapping = false
 vim.g.pydocstring_formatter = 'numpy'
 vim.g.pydocstring_doq_path = '~/.pyenv/shims/doq'
 
--- vim.o.background = "dark" -- or "light" for light mode
-vim.o.background = "light" -- or "light" for light mode
+vim.o.background = "dark" -- or "light" for light mode
+-- vim.o.background = "light" -- or "light" for light mode
 vim.g.tokyonight_style = "day" -- or "light" for light mode
 
 -- Show completion menu even if only one option is available; don't select by default
@@ -83,7 +83,8 @@ vim.g.firenvim_config = {
 vim.g.kommentary_create_default_mappings = false
 
 -- vim.cmd('colorscheme tokyonight')
-vim.cmd('colorscheme nightfox')
+-- vim.cmd('colorscheme nightfox')
+vim.cmd('colorscheme gruvbox')
 vim.cmd('highlight Vertsplit guifg=Orange')
 vim.cmd('filetype plugin indent on')
 vim.api.nvim_create_autocmd("BufWritePre", { callback = require('luautils').StripWhitespace })

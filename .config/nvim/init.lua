@@ -121,8 +121,9 @@ require('packer').startup(function()
 
     -- Colorschemes
     -- use 'Mofiqul/dracula.nvim'
-    use 'EdenEast/nightfox.nvim'
+    -- use 'EdenEast/nightfox.nvim'
     -- use 'folke/tokyonight.nvim'
+    use 'ellisonleao/gruvbox.nvim'
 
     -- Colorize hex codes
     use {
