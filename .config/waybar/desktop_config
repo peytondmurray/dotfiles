@@ -38,7 +38,7 @@
         "format-icons": ["", ""]
     },
     "network": {
-        "interface": "enp7s0",
+        "interface": "enp6s0",
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-linked": "{ifname} (No IP) ",
