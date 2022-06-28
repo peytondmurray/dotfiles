@@ -42,22 +42,6 @@ ssh() {
     TERM=xterm-256color command ssh $@
 }
 
-colors() {
-    awk 'BEGIN{
-        s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
-        for (colnum = 0; colnum<77; colnum++) {
-            r = 255-(colnum*255/76);
-            g = (colnum*510/76);
-            b = (colnum*255/76);
-            if (g>255) g = 510-g;
-            printf "\033[48;2;%d;%d;%dm", r,g,b;
-            printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;
-            printf "%s\033[0m", substr(s,colnum+1,1);
-        }
-        printf "\n";
-    }'
-}
-
 ### Colors ###
 
 # Regular
@@ -188,27 +172,7 @@ get_git_default_branch() {
     fi
 }
 
-pipupdate() {
-    if [[ $(pyenv version | awk '{print $1}') == 'system' ]]; then
-        echo "pyenv version is set to system. Cannot continue."
-    else
-        local outdated=$(pip list --outdated)
-        if [[ -z "${outdated/ //}" ]]; then
-            echo "All packages up to date."
-        else
-            pip install -U $(echo "${outdated}" | tail -n +3 | awk '{print $1}' | awk 'ORS=" "')
-        fi
-    fi
-}
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-killwine() {
-    echo $(ps -ef | egrep 'wineserver|winedevice.exe')
-    killall -s 9 wineserver
-    killall -s 9 winedevice.exe
-    echo $(ps -ef | egrep 'wineserver|winedevice.exe')
-}
 
 cdd() {
     cd ~/Desktop/workspace/$@
@@ -233,12 +197,6 @@ calibre() {
 
 ebook-convert() {
     PYENV_VERSION=system command ebook-convert $@
-}
-
-spoofmac() {
-    ip link set dev wlo1 down
-    macchanger -r wlo1
-    ip link set dev wlo1 up
 }
 
 # BEGIN_KITTY_SHELL_INTEGRATION

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+killwine() {
+    echo $(ps -ef | egrep 'wineserver|winedevice.exe')
+    killall -s 9 wineserver
+    killall -s 9 winedevice.exe
+    echo $(ps -ef | egrep 'wineserver|winedevice.exe')
+}

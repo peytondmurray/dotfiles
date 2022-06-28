@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [[ $(pyenv version | awk '{print $1}') == 'system' ]]; then
+    echo "pyenv version is set to system. Cannot continue."
+else
+    local outdated=$(pip list --outdated)
+    if [[ -z "${outdated/ //}" ]]; then
+        echo "All packages up to date."
+    else
+        pip install -U $(echo "${outdated}" | tail -n +3 | awk '{print $1}' | awk 'ORS=" "')
+    fi
+fi

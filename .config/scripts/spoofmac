@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ip link set dev wlo1 down
+macchanger -r wlo1
+ip link set dev wlo1 up
