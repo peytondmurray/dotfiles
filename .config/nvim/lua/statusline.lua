@@ -1,5 +1,5 @@
 -- local nf_palette = require('nightfox.palette').load()
-local palette = require('gruvbox.colors')
+local palette = require('gruvbox.palette')
 local lsp = require('feline.providers.lsp')
 local vi_mode_utils = require('feline.providers.vi_mode')
 local gps = require("nvim-gps")
