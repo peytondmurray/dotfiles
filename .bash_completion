@@ -294,10 +294,10 @@ _conda_completions() {
 
     case "${prev}" in
         mamba)
-            COMPREPLY+=($(compgen -W "clean compare config create help info init install list package remove uninstall run search update upgrade"))
+            COMPREPLY+=($(compgen -W "activate clean compare config create help info init install list package remove uninstall run search update upgrade" -- "${cur}"))
             ;;
         conda)
-            COMPREPLY+=($(compgen -W "clean compare config create help info init install list package remove uninstall run search update upgrade"))
+            COMPREPLY+=($(compgen -W "activate clean compare config create help info init install list package remove uninstall run search update upgrade" -- "${cur}"))
             ;;
         activate)
             local prefix=$(pyenv prefix)
