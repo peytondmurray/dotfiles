@@ -12,7 +12,7 @@ _volta() {
             volta)
                 cmd="volta"
                 ;;
-            
+
             completions)
                 cmd+="__completions"
                 ;;
@@ -62,7 +62,7 @@ _volta() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 *)
                     COMPREPLY=()
                     ;;
@@ -70,7 +70,7 @@ _volta() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        
+
         volta__completions)
             opts=" -f -h -V -o  --force --help --version --verbose --quiet --output  <shell> "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
@@ -78,7 +78,7 @@ _volta() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --output)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -101,7 +101,7 @@ _volta() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 *)
                     COMPREPLY=()
                     ;;
@@ -116,7 +116,7 @@ _volta() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 *)
                     COMPREPLY=()
                     ;;
@@ -131,7 +131,7 @@ _volta() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 *)
                     COMPREPLY=()
                     ;;
@@ -146,7 +146,7 @@ _volta() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --format)
                     COMPREPLY=($(compgen -W "human plain" -- "${cur}"))
                     return 0
@@ -165,7 +165,7 @@ _volta() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --format)
                     COMPREPLY=($(compgen -W "human plain" -- "${cur}"))
                     return 0
@@ -184,7 +184,7 @@ _volta() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 *)
                     COMPREPLY=()
                     ;;
@@ -199,7 +199,7 @@ _volta() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --node)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -230,7 +230,7 @@ _volta() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 *)
                     COMPREPLY=()
                     ;;
@@ -245,7 +245,7 @@ _volta() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 *)
                     COMPREPLY=()
                     ;;
@@ -260,7 +260,7 @@ _volta() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 *)
                     COMPREPLY=()
                     ;;
@@ -275,7 +275,7 @@ _volta() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 *)
                     COMPREPLY=()
                     ;;
@@ -286,4 +286,31 @@ _volta() {
     esac
 }
 
+_conda_completions() {
+    local i cur prev opts cmds
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    case "${prev}" in
+        mamba)
+            COMPREPLY+=($(compgen -W "clean compare config create help info init install list package remove uninstall run search update upgrade"))
+            ;;
+        conda)
+            COMPREPLY+=($(compgen -W "clean compare config create help info init install list package remove uninstall run search update upgrade"))
+            ;;
+        activate)
+            local prefix=$(pyenv prefix)
+            if [[ $(basename ${prefix}) == "mambaforge" ]]; then
+                local envs=$(find "${prefix}/envs" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sed 's/\n/ /')
+                COMPREPLY+=($(compgen -W "${envs}" -- "${cur}"))
+            else
+                echo "Activate a mambaforge prefix first."
+            fi
+            ;;
+    esac
+}
+
 complete -F _volta -o bashdefault -o default volta
+complete -F _conda_completions conda
+complete -F _conda_completions mamba
