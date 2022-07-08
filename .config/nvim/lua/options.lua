@@ -31,6 +31,8 @@ vim.o.splitright = true
 -- Remove ~ at end of buffer
 vim.o.fillchars = 'eob: '
 
+vim.o.scrolloff = 5
+
 -- Gitgutter
 vim.g.SignatureMarkTextHLDynamic = 1
 

@@ -134,12 +134,12 @@ generate_git_ps1() {
 	fi
 }
 
-get_venv() {
-    [[ -z "${VIRTUAL_ENV}" ]] && echo "" || echo "${bakblktxtylw}[$(echo ${VIRTUAL_ENV} | awk -F'/' '{print $NF}')]${txtrst}"
+get_conda_env() {
+    [[ -z "${CONDA_PREFIX}" ]] && echo "" || echo "${bldpur}⟦$(basename ${CONDA_PREFIX})⟧${txtrst}"
 }
 
 set_ps1() {
-	export PS1="${bldblu}[\w]${txtrst}$(get_venv)$(generate_git_ps1)${bldblu}\$${txtrst} "
+    export PS1="${bldblu}[\w]${txtrst}$(get_conda_env)$(generate_git_ps1)${bldblu}\$${txtrst} "
 }
 
 PROMPT_COMMAND=set_ps1
@@ -203,28 +203,23 @@ ebook-convert() {
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION
 
-# Have to do this to avoid interfering with $PATH for everything
-mamba() {
-    unset mamba
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('${HOME}/.pyenv/versions/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('${HOME}/.pyenv/versions/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/conda.sh"
     else
-        if [ -f "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/conda.sh" ]; then
-            . "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/conda.sh"
-        else
-            export PATH="${HOME}/.pyenv/versions/mambaforge/bin:$PATH"
-        fi
+        export PATH="${HOME}/.pyenv/versions/mambaforge/bin:$PATH"
     fi
-    unset __conda_setup
+fi
+unset __conda_setup
 
-    if [ -f "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/mamba.sh" ]; then
-        . "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/mamba.sh"
-    fi
-    # <<< conda initialize <<<
+if [ -f "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
 
-    mamba activate dev
-    mamba $@
-}
+mamba activate dev

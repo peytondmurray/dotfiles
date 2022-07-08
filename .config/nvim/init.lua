@@ -40,7 +40,7 @@ require('packer').startup(function()
                 languages = {
                     python = {
                         template = {
-                            annotation_convention = 'numpydoc'
+                            annotation_convention = 'google_docstrings'
                         }
                     }
                 }
