@@ -123,6 +123,7 @@ map('n', '<F12>', '<cmd>lua require("dapui").toggle()<CR>=', opts)
 map('n', '<leader>t', '<cmd>setl filetype=terminal<CR>', opts)
 
 -- Fugitive
-map('n', '<leader>rr', '<cmd>0Gclog<CR>', opts)
+map('n', '<leader>rr', '<cmd>DiffviewOpen<CR>', opts)
+map('n', '<leader>rl', '<cmd>0Gclog<CR>', opts)
 map('n', '<leader>rj', '<cmd>cn<CR>', opts)
 map('n', '<leader>rk', '<cmd>cp<CR>', opts)
