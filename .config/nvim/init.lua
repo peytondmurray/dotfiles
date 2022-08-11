@@ -204,6 +204,7 @@ require('packer').startup(function()
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use {'nvim-treesitter/playground', cmd = "TSPlaygroundToggle"}
+    use 'nvim-treesitter/nvim-treesitter-context'
 
     -- Python
     use 'vimjas/vim-python-pep8-indent'

@@ -199,7 +199,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 # Brightness toggle
 bindsym Pause exec ~/.config/brightness_toggle.sh
 
-bindsym Print exec "grim"
+bindsym $mod+Shift+p exec "grimshot copy screen"
 
 # borders
 default_border pixel 4

@@ -223,7 +223,3 @@ fi
 # <<< conda initialize <<<
 
 mamba activate dev
-
-# >>>> Vagrant command completion (start)
-. /opt/vagrant/embedded/gems/2.2.19/gems/vagrant-2.2.19/contrib/bash/completion.sh
-# <<<<  Vagrant command completion (end)
