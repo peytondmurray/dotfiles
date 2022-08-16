@@ -5,35 +5,32 @@ require('packer').startup(function()
     use {
         'dstein64/vim-startuptime',
         cmd = {
-            "StartupTime"
+            'StartupTime'
         }
     }
 
-    use {
-        "SmiteshP/nvim-gps",
-        requires = "nvim-treesitter/nvim-treesitter",
-    }
+    use 'SmiteshP/nvim-gps'
 
     use({
-        "feline-nvim/feline.nvim",
+        'feline-nvim/feline.nvim',
         config = function()
             require('statusline')
         end,
-        wants = "nvim-web-devicons",
+        wants = 'nvim-web-devicons',
     })
     use 'ryanoasis/vim-devicons'
     use 'kyazdani42/nvim-web-devicons'
     use 'junegunn/vim-easy-align'
 
     use {
-        "luukvbaal/stabilize.nvim",
-        config = function() require("stabilize").setup() end
+        'luukvbaal/stabilize.nvim',
+        config = function() require('stabilize').setup() end
     }
 
     use 'jxnblk/vim-mdx-js'
 
     use {
-        "danymat/neogen",
+        'danymat/neogen',
         config = function()
             require('neogen').setup {
                 enabled = true,
@@ -45,13 +42,19 @@ require('packer').startup(function()
                     }
                 }
             }
-        end,
-        requires = "nvim-treesitter/nvim-treesitter"
+        end
+    }
+
+    use {
+        'kylechui/nvim-surround',
+        config = function()
+            require('nvim-surround').setup()
+        end
     }
 
     -- DAP
     use 'mfussenegger/nvim-dap'
-    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
 
 
     -- File browser
@@ -94,7 +97,13 @@ require('packer').startup(function()
     use {'folke/which-key.nvim', config = function() require('which-key').setup{} end}
 
     -- Symbols browser
-    use {'simrat39/symbols-outline.nvim', cmd = {'SymbolsOutline', 'SymbolsOutlineOpen', 'SymbolsOutlineClose'}}
+    use {
+        'simrat39/symbols-outline.nvim',
+        cmd = {'SymbolsOutline', 'SymbolsOutlineOpen', 'SymbolsOutlineClose'},
+        config = function()
+            require('symbols-outline').setup()
+        end
+    }
 
     -- Indent guides
     use {
@@ -128,7 +137,7 @@ require('packer').startup(function()
     -- Colorize hex codes
     use {
         'norcalli/nvim-colorizer.lua',
-        event = "BufReadPre",
+        event = 'BufReadPre',
         config = function()
             require('colorizer').setup()
         end
@@ -156,7 +165,7 @@ require('packer').startup(function()
         'sindrets/diffview.nvim',
         config = function() require('diffview').setup() end,
         cmd = {
-            "DiffviewOpen"
+            'DiffviewOpen'
         }
     }
     use 'tpope/vim-fugitive'
@@ -170,17 +179,6 @@ require('packer').startup(function()
     use 'nvim-lua/plenary.nvim'
     use {
         'nvim-telescope/telescope.nvim',
-    }
-
-    -- Trouble
-    use {
-        "folke/trouble.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
-        config = function() require("trouble").setup{} end,
-        cmd = {
-            "Trouble",
-            "TroubleToggle"
-        }
     }
 
     -- Completion
@@ -209,12 +207,6 @@ require('packer').startup(function()
     -- Python
     use 'vimjas/vim-python-pep8-indent'
 
-    -- Folding
-    -- use {
-    --     'kevinhwang91/nvim-ufo',
-    --     requires = 'kevinhwang91/promise-async'
-    -- }
-
 end)
 
 require('options')
@@ -236,7 +228,7 @@ require('telescope').setup{
     },
     pickers = {
         find_files = {
-            find_command = { "find", "-type", "f" }
+            find_command = { 'find', '-type', 'f' }
         }
     },
 }
