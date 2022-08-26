@@ -61,6 +61,8 @@ map('n', '<leader>/', '<cmd>Telescope current_buffer_fuzzy_find<CR>', opts)
 
 -- Pydocstring
 map("n", "<Leader>dg", ":lua require('neogen').generate()<CR>", opts)
+map("n", "<Leader>don", ":lua require('neogen').generate({ annotation_convention = { python = 'numpydoc' }})<CR>", opts)
+map("n", "<Leader>dog", ":lua require('neogen').generate({ annotation_convention = { python = 'google_docstrings' }})<CR>", opts)
 
 -- LSP
 map('n', '<leader>e', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)

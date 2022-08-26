@@ -178,6 +178,10 @@ cdd() {
     cd ~/Desktop/workspace/$@
 }
 
+cds() {
+    cd $(python -c "import site; print(site.getsitepackages()[0])")
+}
+
 PATH="/home/pdmurray/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/pdmurray/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/pdmurray/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
