@@ -35,6 +35,7 @@ export EDITOR=nvim
 export FONTCONFIG_PATH=/etc/fonts
 export TERM=xterm-kitty
 export RANGER_LOAD_DEFAULT_RC=FALSE
+export NUMPY_EXPERIMENTAL_DTYPE_API=1
 
 eval "$(ssh-agent)" > /dev/null
 
