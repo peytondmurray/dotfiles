@@ -24,6 +24,8 @@ alias less='less -R'
 alias tree='tree -C'
 alias trash-empty='trash-empty -f'
 
+export NUMPY_EXPERIMENTAL_DTYPE_API=1
+
 export PATH=$HOME/go/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
