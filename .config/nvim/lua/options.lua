@@ -95,7 +95,6 @@ vim.api.nvim_create_autocmd("BufWritePre", { callback = require('luautils').Stri
 vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal textwidth=80", pattern = "*.md" })
 vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal textwidth=100", pattern = "*.py" })
 vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal tabstop=2 shiftwidth=2", pattern = {"*.ts", "*.js", "*.tsx", "*.jsx", "*.html.j2", "*.html"} })
-vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "set ft=typescript", pattern = {"*.tsx"} })
 vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "set filetype=htmldjango", pattern = {"*.html.j2"} })
 
 -- disable builtin vim plugins
