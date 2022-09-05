@@ -197,6 +197,9 @@ require('packer').startup(function()
         'j-hui/fidget.nvim',
         config = function() require('fidget').setup() end,
     }
+    use 'simrat39/rust-tools.nvim'
+    use 'jose-elias-alvarez/typescript.nvim'
+    use 'p00f/clangd_extensions.nvim'
 
     -- Tree-sitter
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
