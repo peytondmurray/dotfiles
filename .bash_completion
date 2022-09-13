@@ -294,18 +294,20 @@ _conda_completions() {
 
     case "${prev}" in
         mamba)
-            COMPREPLY+=($(compgen -W "activate clean compare config create help info init install list package remove uninstall run search update upgrade" -- "${cur}"))
+            COMPREPLY+=($(compgen -W "activate clean compare config create deactivate help info init install list package remove uninstall run search update upgrade" -- "${cur}"))
             ;;
         conda)
-            COMPREPLY+=($(compgen -W "activate clean compare config create help info init install list package remove uninstall run search update upgrade" -- "${cur}"))
+            COMPREPLY+=($(compgen -W "activate clean compare config create deactivate help info init install list package remove uninstall run search update upgrade" -- "${cur}"))
             ;;
         activate)
-            local prefix=$(pyenv prefix)
-            if [[ $(basename ${prefix}) == "mambaforge" ]]; then
+            local active=$(mamba info --json | jq '.active_prefix_name')
+            if [[ $(echo -n $active | grep -Eq '^(null|base)$'; echo $?) ]]; then
+                echo "Activate a non-base mamba environment first."
+            else if [[ $(pyenv version | awk '{print $1}') == 'system' ]]; then
+                echo "pyenv isn't pointing at mambaforge. Do pyenv activate mambaforge first."
+            else
                 local envs=$(find "${prefix}/envs" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sed 's/\n/ /')
                 COMPREPLY+=($(compgen -W "${envs}" -- "${cur}"))
-            else
-                echo "Activate a mambaforge prefix first."
             fi
             ;;
     esac
