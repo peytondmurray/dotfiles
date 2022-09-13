@@ -300,13 +300,12 @@ _conda_completions() {
             COMPREPLY+=($(compgen -W "activate clean compare config create deactivate help info init install list package remove uninstall run search update upgrade" -- "${cur}"))
             ;;
         activate)
-            local active=$(mamba info --json | jq '.active_prefix_name')
-            if [[ $(echo -n $active | grep -Eq '^(null|base)$'; echo $?) ]]; then
-                echo "Activate a non-base mamba environment first."
-            else if [[ $(pyenv version | awk '{print $1}') == 'system' ]]; then
-                echo "pyenv isn't pointing at mambaforge. Do pyenv activate mambaforge first."
+            if [[ $(pyenv version | awk '{print $1}' | grep -Eq 'mambaforge'; echo $?) == 1 ]]; then
+                echo -e "\npyenv isn't pointing at mambaforge. Do pyenv activate mambaforge first."
+            elif [[ -z $CONDA_PREFIX && $(basename ${CONDA_PREFIX}) ]]; then
+                echo -e "\nActivate a non-base mamba environment first. Active environment: ${active}"
             else
-                local envs=$(find "${prefix}/envs" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sed 's/\n/ /')
+                local envs=$(find "$(pyenv prefix)/envs" -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
                 COMPREPLY+=($(compgen -W "${envs}" -- "${cur}"))
             fi
             ;;
