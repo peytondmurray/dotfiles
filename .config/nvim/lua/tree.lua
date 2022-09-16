@@ -38,9 +38,11 @@ require('nvim-tree').setup {
         }
     },
     view = {
+        adaptive_size = true,
         width = 30,
         height = 30,
         hide_root_folder = false,
         side = 'left',
     },
+    sort_by = "extension",
 }

@@ -29,6 +29,7 @@ export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.config/scripts:$PATH
 export PATH=$HOME/.local/bin:$PATH
+export PATH=/usr/lib/emscripten:$PATH
 
 export VISUAL=nvim
 export EDITOR=nvim
