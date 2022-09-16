@@ -84,11 +84,14 @@ nvim_lsp['pylsp'].setup{
     }
 }
 
-
-nvim_lsp['tsserver'].setup{
-    capabilities = capabilities,
-}
-require('typescript').setup()
+-- nvim_lsp['tsserver'].setup{
+--     capabilities = capabilities,
+-- }
+require('typescript').setup({
+    server = {
+        capabilities = capabilities
+    }
+})
 
 local eslint = {
     lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT} --rule 'prettier/prettier: false'",
@@ -134,10 +137,8 @@ nvim_lsp['efm'].setup{
     capabilities = capabilities,
 }
 
+-- When using clangd_extensions, you don't need to set up rust-analyzer
 require('clangd_extensions').setup()
--- nvim_lsp['clangd'].setup{
---     capabilities = capabilities,
--- }
 
 nvim_lsp['terraformls'].setup{
     capabilities = capabilities,
@@ -145,9 +146,6 @@ nvim_lsp['terraformls'].setup{
 
 -- When using rust-tools, you don't need to set up rust-analyzer
 require('rust-tools').setup()
--- nvim_lsp['rust_analyzer'].setup{
---     capabilities = capabilities,
--- }
 
 
 nvim_lsp['cmake'].setup{
