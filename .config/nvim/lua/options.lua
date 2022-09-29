@@ -97,6 +97,13 @@ vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal textwidt
 vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal tabstop=2 shiftwidth=2", pattern = {"*.ts", "*.js", "*.tsx", "*.jsx", "*.html.j2", "*.html", "*.css", "*.json"} })
 vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "set filetype=htmldjango", pattern = {"*.html.j2"} })
 
+
+-- function format_json()
+--     vim.fn.eval(string.format("python -c 'import json; json.dumps(json.load("%s"))'", vim.api.nvim_buf_get_name(0)))
+-- end
+
+-- vim.api.nvim_create_autocmd("BufWritePre", { callback = format_json, pattern = {"*.json"}})
+
 -- disable builtin vim plugins
 local disabled_built_ins = {
     "netrw",
