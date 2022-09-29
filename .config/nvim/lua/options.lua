@@ -85,8 +85,8 @@ vim.g.firenvim_config = {
 vim.g.kommentary_create_default_mappings = false
 
 -- vim.cmd('colorscheme tokyonight')
--- vim.cmd('colorscheme nightfox')
-vim.cmd('colorscheme gruvbox')
+vim.cmd('colorscheme nightfox')
+-- vim.cmd('colorscheme gruvbox')
 vim.cmd('highlight Vertsplit guifg=Orange')
 vim.cmd('filetype plugin indent on')
 vim.api.nvim_create_autocmd("BufWritePre", { callback = require('luautils').StripWhitespace })

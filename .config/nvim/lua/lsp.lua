@@ -128,10 +128,11 @@ nvim_lsp['efm'].setup{
         return vim.fn.getcwd()
     end,
     settings = {
-        rootMarkers = {".eslintrc.js", ".git/"},
+        rootMarkers = {".eslintrc.*", ".git/"},
         languages = {
             javascript = {eslint},
-            typescript = {eslint}
+            typescript = {eslint},
+            typescriptreact = {eslint},
         }
     },
     capabilities = capabilities,

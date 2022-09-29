@@ -1,5 +1,5 @@
--- local nf_palette = require('nightfox.palette').load()
-local palette = require('gruvbox.palette')
+local nf_palette = require('nightfox.palette').load()
+-- local palette = require('gruvbox.palette')
 local lsp = require('feline.providers.lsp')
 local vi_mode_utils = require('feline.providers.vi_mode')
 local gps = require("nvim-gps")
@@ -10,34 +10,35 @@ local force_inactive = {
     bufnames = {}
 }
 
--- local colors = {
---     bg = nf_palette.bg1,
---     black = nf_palette.black,
---     yellow = nf_palette.yellow,
---     cyan = nf_palette.cyan,
---     green = nf_palette.green,
---     orange = nf_palette.orange,
---     violet = nf_palette.pink,
---     magenta = nf_palette.magenta,
---     white = nf_palette.white,
---     fg = nf_palette.fg1,
---     skyblue = nf_palette.blue,
---     red = nf_palette.red,
--- }
 local colors = {
-    bg = palette.dark0,
-    black = palette.dark0_hard,
-    yellow = palette.bright_yellow,
-    cyan = palette.bright_blue,
-    green = palette.bright_green,
-    orange = palette.bright_orange,
-    violet = palette.bright_purple,
-    magenta = palette.faded_purple,
-    white = palette.light0,
-    fg = palette.light4,
-    skyblue = palette.bright_aqua,
-    red = palette.bright_red,
+    bg = nf_palette.bg1,
+    black = nf_palette.black,
+    yellow = nf_palette.yellow,
+    cyan = nf_palette.cyan,
+    green = nf_palette.green,
+    orange = nf_palette.orange,
+    violet = nf_palette.pink,
+    magenta = nf_palette.magenta,
+    white = nf_palette.white,
+    fg = nf_palette.fg1,
+    skyblue = nf_palette.blue,
+    red = nf_palette.red,
 }
+
+-- local colors = {
+--     bg = palette.dark0,
+--     black = palette.dark0_hard,
+--     yellow = palette.bright_yellow,
+--     cyan = palette.bright_blue,
+--     green = palette.bright_green,
+--     orange = palette.bright_orange,
+--     violet = palette.bright_purple,
+--     magenta = palette.faded_purple,
+--     white = palette.light0,
+--     fg = palette.light4,
+--     skyblue = palette.bright_aqua,
+--     red = palette.bright_red,
+-- }
 
 local vi_mode_colors = {
     NORMAL = 'green',

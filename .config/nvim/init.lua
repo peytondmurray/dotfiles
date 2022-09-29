@@ -130,9 +130,16 @@ require('packer').startup(function()
 
     -- Colorschemes
     -- use 'Mofiqul/dracula.nvim'
-    -- use 'EdenEast/nightfox.nvim'
+    use 'EdenEast/nightfox.nvim'
     -- use 'folke/tokyonight.nvim'
-    use 'ellisonleao/gruvbox.nvim'
+    -- use {
+    --     'ellisonleao/gruvbox.nvim',
+    --     config = function()
+    --         require('gruvbox').setup({
+    --             italic = false
+    --         })
+    --     end
+    -- }
 
     -- Colorize hex codes
     use {
