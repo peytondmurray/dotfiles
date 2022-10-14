@@ -138,3 +138,5 @@ vim.o.winbar = '%f'
 vim.wo.foldcolumn = '1'
 vim.wo.foldlevel = 99
 vim.wo.foldenable = true
+
+vim.g.loaded_python3_provider = 0

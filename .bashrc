@@ -195,6 +195,10 @@ cdd() {
     cd ~/Desktop/workspace/$@
 }
 
+cdt() {
+    cd ~/Desktop/telescope/$@
+}
+
 cds() {
     cd $(python -c "import site; print(site.getsitepackages()[0])")
 }
