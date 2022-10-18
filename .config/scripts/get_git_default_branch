@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Check if there's a default branch name
+branch=$(command git rev-parse --abbrev-ref origin/HEAD 2>/dev/null | cut -c8-)
+if [[ $? == 0 ]]; then
+    echo ${branch}
+else
+    # If not, retrieve the new default branch name and try again
+    command git remote set-head origin -a
+    command git rev-parse --abbrev-ref origin/HEAD 2>/dev/null | cut -c8-
+fi

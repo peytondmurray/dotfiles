@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Get the current branch; replace HEAD with 'detached'
+command git rev-parse --abbrev-ref HEAD 2>/dev/null | sed 's/HEAD/detached/'

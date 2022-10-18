@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Can't use a custom format in for-each-ref :roll_eyes:
+default=$(get_git_default_branch)
+
+format_table() {
+    echo 'Ahead|Behind|Branch|Last Commit|Message|Author'
+    git for-each-ref --sort=-committerdate refs/heads --format='%(refname:short)|%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' --color=always --count=${count:-20} | while read line; do
+        branch=$(echo $line | awk -F '|' '{print $1}' | tr -d '*')
+        ahead=$(git rev-list --count "${1:-origin/${default}}..${branch}")
+        behind=$(git rev-list --count "${branch}..${1:-origin/${default}}")
+        colorline=$(echo $line | sed 's/^[^|]*|//')
+        echo "$ahead|$behind|$colorline" | awk -F '|' -vOFS='|' '{$5=substr($5,1,70);print $0}'
+    done
+}
+
+format_table | column -ts'|'

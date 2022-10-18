@@ -94,29 +94,26 @@ bakblktxtylw="\[\e[33;40m\]"
 txtrst="\[\e[0m\]"
 
 
-get_git_branch() {
-	local branch
-	if branch=$(command git rev-parse --abbrev-ref HEAD 2>/dev/null); then
-		if [[ "$branch" == "HEAD" ]]; then
-			branch='detached'
-		fi
+get_git_branch_ps1() {
+    local branch=$(get_git_current_branch)
+    if [[ -z ${branch} ]]; then
+        echo ""
+    else
 		echo "[${branch}]"
-	else
-		echo ""
-	fi
+    fi
 }
 
 get_git_color() {
 	$(command git branch > /dev/null 2>&1)
 	if [[ "$?" == 0 ]]; then
         local status=$(command git status -uno)
-		if [[ "$(echo $status | grep 'not staged for commit' | wc -l)" == 1 ]] || [[ "$(echo $status | grep 'Untracked files:' | wc -l)" == 1 ]]; then
-			echo ${bldred};
-		elif [[ "$(echo $status | grep 'Changes to be committed: ' | wc -l)" == 1 ]]; then
+        if $(grep -q 'not staged for commit' <<< $status) || $(grep -q 'Untracked files:' <<< $status); then
+            echo ${bldred}
+        elif $(grep -q 'Changes to be committed:' <<< $status); then
 			echo ${bldylw};
-		elif [[ "$(echo $status | grep 'Your branch is ahead of' | wc -l)" == 1 ]]; then
+        elif $(grep -q 'Your branch is ahead of' <<< $status); then
 			echo ${bldblu};
-		elif [[ "$(echo $status | grep 'nothing to commit' | wc -l)" == 1 ]]; then
+        elif $(grep -q 'nothing to commit' <<< $status); then
 			echo ${bldcyn};
 		else
 			echo ${bldwht}
@@ -127,13 +124,7 @@ get_git_color() {
 }
 
 generate_git_ps1() {
-	# Exclude the directory which lives at $HOME; this is just my dotfiles repo,
-	# and I don't want it cluttering up PS1 all the time
-	if [[ "$(command git rev-parse --show-toplevel 2>/dev/null)" != "$HOME" ]]; then
-		echo "$(get_git_color)$(get_git_branch)${txtrst}";
-	else
-		echo "";
-	fi
+	echo "$(get_git_color)$(get_git_branch_ps1)${txtrst}";
 }
 
 get_conda_env() {
@@ -148,7 +139,7 @@ PROMPT_COMMAND=set_ps1
 
 git() {
     if [[ "$#" == 1 && "$1" == "log" ]]; then
-        local branch="$(command git rev-parse --abbrev-ref HEAD 2>/dev/null)"
+        local branch="$(get_git_current_branch)"
         local default_branch="$(get_git_default_branch)"
         if [[ ! -z "${branch}" ]]; then
             if [[ ${branch} == ${default_branch} ]]; then
@@ -161,33 +152,6 @@ git() {
 		command git $@
 	fi
 }
-
-get_git_default_branch() {
-    # Check if there's a default branch name
-    branch=$(command git rev-parse --abbrev-ref origin/HEAD)
-    if [[ $? == 0 ]]; then
-        echo ${branch} | cut -c8-
-    else
-        # If not, retrieve the new default branch name
-        command git remote set-head origin -a
-        echo $(command git rev-parse --abbrev-ref origin/HEAD) | cut -c8-
-    fi
-}
-
-recentb() {
-    refbranch=$1
-    count=$2
-    git for-each-ref --sort=-committerdate refs/heads --format='%(refname:short)|%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' --color=always --count=${count:-20}
-    while read line; do
-        branch=$(echo \"$line\" | awk 'BEGIN { FS = \"|\" }; { print $1 }' | tr -d '*')
-        ahead=$(git rev-list --count \"${refbranch:-origin/master}..${branch}\")
-        behind=$(git rev-list --count \"${branch}..${refbranch:-origin/master}\")
-        colorline=$(echo \"$line\" | sed 's/^[^|]*|//')
-        echo \"$ahead|$behind|$colorline\" | awk -F'|' -vOFS='|' '{$5=substr($5,1,70)}1'
-    done
-    echo 'Ahead|Behind|Branch|Last Commit|Message|Author\n' | column -ts'|';
-}
-
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
