@@ -14,4 +14,6 @@ format_table() {
     done
 }
 
-format_table | column -ts'|'
+if [[ ! -z ${default} ]]; then
+    format_table | column -ts'|'
+fi
