@@ -84,9 +84,6 @@ nvim_lsp['pylsp'].setup{
     }
 }
 
--- nvim_lsp['tsserver'].setup{
---     capabilities = capabilities,
--- }
 require('typescript').setup({
     server = {
         capabilities = capabilities
@@ -138,7 +135,11 @@ nvim_lsp['efm'].setup{
     capabilities = capabilities,
 }
 
--- When using clangd_extensions, you don't need to set up rust-analyzer
+nvim_lsp['bashls'].setup({
+    capabilities = capabilities
+})
+
+-- When using clangd_extensions, you don't need to set up clangd
 require('clangd_extensions').setup()
 
 nvim_lsp['terraformls'].setup{
