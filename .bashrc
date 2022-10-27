@@ -1,6 +1,4 @@
-#
-# ~/.bashrc
-#
+#!/bin/bash
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -15,7 +13,6 @@ alias sudo='sudo '
 alias paru='paru --color=always --devel'
 alias pacman='pacman --color=always'
 alias grep='grep --color=always'
-alias dmenu='demnu_run -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15"'
 alias vectivate='source vectivate'
 alias kmon='kmon -u'
 alias rm='trash-put'
@@ -41,7 +38,7 @@ export NUMPY_EXPERIMENTAL_DTYPE_API=1
 eval "$(ssh-agent)" > /dev/null
 
 ssh() {
-    TERM=xterm-256color command ssh $@
+    TERM=xterm-256color command ssh "$@"
 }
 
 ### Colors ###
@@ -104,19 +101,18 @@ get_git_branch_ps1() {
 }
 
 get_git_color() {
-	$(command git branch > /dev/null 2>&1)
-	if [[ "$?" == 0 ]]; then
+	if command git branch > /dev/null 2>&1; then
         local status=$(command git status -uno)
-        if $(grep -q 'not staged for commit' <<< $status) || $(grep -q 'Untracked files:' <<< $status); then
-            echo ${bldred}
-        elif $(grep -q 'Changes to be committed:' <<< $status); then
-			echo ${bldylw};
-        elif $(grep -q 'Your branch is ahead of' <<< $status); then
-			echo ${bldblu};
-        elif $(grep -q 'nothing to commit' <<< $status); then
-			echo ${bldcyn};
+        if grep -q 'not staged for commit' <<< "$status" || grep -q 'Untracked files:' <<< "$status"; then
+            echo "${bldred}"
+        elif grep -q 'Changes to be committed:' <<< "$status"; then
+			echo "${bldylw}"
+        elif grep -q 'Your branch is ahead of' <<< "$status"; then
+			echo "${bldblu}"
+        elif grep -q 'nothing to commit' <<< "$status"; then
+			echo "${bldcyn}"
 		else
-			echo ${bldwht}
+			echo "${bldwht}"
 		fi
 	else
 		echo "";
@@ -128,10 +124,11 @@ generate_git_ps1() {
 }
 
 get_conda_env() {
-    [[ -z "${CONDA_PREFIX}" ]] && echo "" || echo "${bldpur}⟦$(basename ${CONDA_PREFIX})⟧${txtrst}"
+    [[ -z "${CONDA_PREFIX}" ]] && echo "" || echo "${bldpur}⟦$(basename "${CONDA_PREFIX}")⟧${txtrst}"
 }
 
 set_ps1() {
+    # shellcheck disable=SC2155
     export PS1="${bldblu}[\w]${txtrst}$(get_conda_env)$(generate_git_ps1)${bldblu}\$${txtrst} "
 }
 
@@ -141,30 +138,34 @@ git() {
     if [[ "$#" == 1 && "$1" == "log" ]]; then
         local branch="$(get_git_current_branch)"
         local default_branch="$(get_git_default_branch)"
-        if [[ ! -z "${branch}" ]]; then
-            if [[ ${branch} == ${default_branch} ]]; then
+        if [[ -n "${branch}" ]]; then
+            if [[ ${branch} == "${default_branch}" ]]; then
                 git logg
             else
-                git logg ${default_branch}..
+                git logg "${default_branch}.."
             fi
         fi
 	else
-		command git $@
+		command git "$@"
 	fi
 }
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 cdd() {
-    cd ~/Desktop/workspace/$@
+    cd "${HOME}/Desktop/workspace/$1" || exit
 }
 
 cdt() {
-    cd ~/Desktop/telescope/$@
+    cd "${HOME}/Desktop/telescope/$1" || exit
+}
+
+cdsp() {
+    cd "$(python -c 'import site; print(site.getsitepackages()[0])')" || exit
 }
 
 cds() {
-    cd $(python -c "import site; print(site.getsitepackages()[0])")
+    cd ~/Desktop/workspace/sandbox/ || exit
 }
 
 PATH="/home/pdmurray/perl5/bin${PATH:+:${PATH}}"; export PATH;
@@ -177,15 +178,15 @@ PERL_MM_OPT="INSTALL_BASE=/home/pdmurray/perl5"; export PERL_MM_OPT;
     . /usr/share/bash-completion/bash_completion
 
 lutris() {
-    mamba deactivate && PYENV_VERSION=system command lutris $@
+    mamba deactivate && PYENV_VERSION=system command lutris "$@"
 }
 
 calibre() {
-    mamba deactivate && PYENV_VERSION=system command calibre $@
+    mamba deactivate && PYENV_VERSION=system command calibre "$@"
 }
 
 ebook-convert() {
-    mamba deactivate && PYENV_VERSION=system command ebook-convert $@
+    mamba deactivate && PYENV_VERSION=system command ebook-convert "$@"
 }
 
 # BEGIN_KITTY_SHELL_INTEGRATION

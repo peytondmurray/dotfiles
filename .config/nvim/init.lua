@@ -141,7 +141,7 @@ require('packer').startup(function()
     --     end
     -- }
 
-    use 'tjdevries/colorbuddy.nvim'
+    use 'rktjmp/lush.nvim'
 
     -- Colorize hex codes
     use {
