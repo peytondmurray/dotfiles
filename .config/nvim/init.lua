@@ -238,11 +238,6 @@ require('telescope').setup{
             'compile_commands.json'
         },
     },
-    pickers = {
-        find_files = {
-            find_command = { 'find', '-type', 'f' }
-        }
-    },
 }
 require('telescope').load_extension('fzf')
 require('styles')

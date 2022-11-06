@@ -21,6 +21,7 @@ vim.o.inccommand = "nosplit"
 vim.o.incsearch = true
 
 vim.o.number = true
+vim.o.relativenumber = true
 vim.o.cursorline = true
 vim.o.autoread = true
 vim.o.wrap = false
