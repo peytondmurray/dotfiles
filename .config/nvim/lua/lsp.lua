@@ -9,7 +9,6 @@ capabilities.textDocument.foldingRange = {
     lineFoldingOnly = true,
 }
 
--- require('ufo').setup()
 local cmp = require('cmp')
 cmp.setup{
     snippet = {

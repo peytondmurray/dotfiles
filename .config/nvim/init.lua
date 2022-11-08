@@ -18,7 +18,7 @@ require('packer').startup(function()
         end,
         wants = 'nvim-web-devicons',
     })
-    use 'ryanoasis/vim-devicons'
+    -- use 'ryanoasis/vim-devicons'
     use 'kyazdani42/nvim-web-devicons'
     use 'junegunn/vim-easy-align'
 
