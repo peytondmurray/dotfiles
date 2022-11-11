@@ -188,6 +188,9 @@ require('packer').startup(function()
     use 'nvim-lua/plenary.nvim'
     use {
         'nvim-telescope/telescope.nvim',
+        requires = {
+            {'nvim-telescope/telescope-live-grep-args.nvim'}
+        }
     }
 
     -- Completion
@@ -240,5 +243,6 @@ require('telescope').setup{
     },
 }
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('live_grep_args')
 require('styles')
 require('tree')

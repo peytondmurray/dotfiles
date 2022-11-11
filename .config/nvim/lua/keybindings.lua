@@ -56,7 +56,7 @@ map('n', '<M-/>', ':noh<CR>', opts)
 
 -- Telescope
 map('n', '<leader>p', '<cmd>Telescope find_files<cr>', opts)
-map('n', '<leader>;', '<cmd>Telescope live_grep<CR>', opts)
+map('n', '<leader>;', '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', opts)
 map('n', '<leader>/', '<cmd>Telescope current_buffer_fuzzy_find<CR>', opts)
 
 -- Pydocstring
