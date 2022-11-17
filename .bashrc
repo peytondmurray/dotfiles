@@ -213,5 +213,6 @@ fi
 # <<< conda initialize <<<
 
 if [[ ${MAMBA_LOAD} == 1 ]]; then
+    export PYENV_VERSION=mambaforge
     mamba activate dev
 fi
