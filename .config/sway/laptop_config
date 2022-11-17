@@ -32,6 +32,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec kitty
+bindsym $mod+Shift+Return exec MAMBA_LOAD=1 kitty
 
 # kill focused window
 bindsym $mod+w kill
@@ -217,8 +218,8 @@ bar {
     swaybar_command waybar
 }
 
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+include /etc/sway/config.d/*
+exec_always pgrep -x lxpolkit || lxpolkit &
 exec_always swaymsg output '*' bg /home/pdmurray/.config/wallpapers/pebbles_stones_dark_152025_3840x2160.jpg fill
 exec_always /usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr
 exec_always pgrep -x udiskie || udiskie &

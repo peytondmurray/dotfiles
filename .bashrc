@@ -212,4 +212,6 @@ if [ -f "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
-mamba activate dev
+if [[ ${MAMBA_LOAD} == 1 ]]; then
+    mamba activate dev
+fi
