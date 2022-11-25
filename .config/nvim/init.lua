@@ -192,6 +192,7 @@ require('packer').startup(function()
             {'nvim-telescope/telescope-live-grep-args.nvim'}
         }
     }
+    use 'xiyaowong/telescope-emoji.nvim'
 
     -- Completion
     use 'neovim/nvim-lspconfig'
@@ -221,6 +222,7 @@ require('packer').startup(function()
 
     -- Python
     use 'vimjas/vim-python-pep8-indent'
+    use 'terrastruct/d2-vim'
 
 end)
 
@@ -244,5 +246,6 @@ require('telescope').setup{
 }
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('live_grep_args')
+require('telescope').load_extension('emoji')
 require('styles')
 require('tree')

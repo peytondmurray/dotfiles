@@ -58,6 +58,7 @@ map('n', '<M-/>', ':noh<CR>', opts)
 map('n', '<leader>p', '<cmd>Telescope find_files<cr>', opts)
 map('n', '<leader>;', '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', opts)
 map('n', '<leader>/', '<cmd>Telescope current_buffer_fuzzy_find<CR>', opts)
+map('n', '<leader>)', '<cmd>Telescope emoji<CR>', opts)
 
 -- Pydocstring
 map("n", "<Leader>dg", ":lua require('neogen').generate()<CR>", opts)
