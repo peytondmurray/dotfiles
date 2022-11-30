@@ -129,8 +129,9 @@ require('packer').startup(function()
     use {'wesq3/vim-windowswap', keys = {'<C-W>'}}
 
     -- Colorschemes
+    use 'savq/melange'
     -- use 'Mofiqul/dracula.nvim'
-    use 'EdenEast/nightfox.nvim'
+    -- use 'EdenEast/nightfox.nvim'
     -- use 'folke/tokyonight.nvim'
     -- use {
     --     'ellisonleao/gruvbox.nvim',

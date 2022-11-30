@@ -1,4 +1,5 @@
-local nf_palette = require('nightfox.palette').load()
+local palette = require('melange.palettes.dark')
+-- local nf_palette = require('nightfox.palette').load()
 -- local palette = require('gruvbox.palette')
 local lsp = require('feline.providers.lsp')
 local vi_mode_utils = require('feline.providers.vi_mode')
@@ -10,21 +11,55 @@ local force_inactive = {
     bufnames = {}
 }
 
+
 local colors = {
-    bg = nf_palette.bg1,
-    black = nf_palette.black,
-    yellow = nf_palette.yellow,
-    cyan = nf_palette.cyan,
-    green = nf_palette.green,
-    orange = nf_palette.orange,
-    violet = nf_palette.pink,
-    magenta = nf_palette.magenta,
-    white = nf_palette.white,
-    fg = nf_palette.fg1,
-    skyblue = nf_palette.blue,
-    red = nf_palette.red,
+    bg             = palette.a.bg,
+    fg             = palette.a.fg,
+    dark_black     = palette.a.bg,
+    dark_red       = palette.d.red,
+    dark_green     = palette.d.green,
+    dark_yellow    = palette.d.yellow,
+    dark_blue      = palette.d.blue,
+    dark_magenta   = palette.d.magenta,
+    dark_cyan      = palette.d.cyan,
+    dark_white     = palette.a.com,
+    black          = palette.a.overbg,
+    red            = palette.c.red,
+    green          = palette.c.green,
+    yellow         = palette.c.yellow,
+    blue           = palette.c.blue,
+    magenta        = palette.c.magenta,
+    cyan           = palette.c.cyan,
+    white          = palette.a.faded,
+    bright_black   = palette.a.sel,
+    bright_red     = palette.b.red,
+    bright_green   = palette.b.green,
+    bright_yellow  = palette.b.yellow,
+    bright_blue    = palette.b.blue,
+    bright_magenta = palette.b.magenta,
+    bright_cyan    = palette.b.cyan,
+    bright_white   = palette.a.fg,
+    skyblue        = palette.c.cyan,
+    violet         = palette.d.magenta,
 }
 
+-- nightfox
+-- local colors = {
+--     bg = nf_palette.bg1,
+--     black = nf_palette.black,
+--     yellow = nf_palette.yellow,
+--     cyan = nf_palette.cyan,
+--     green = nf_palette.green,
+--     orange = nf_palette.orange,
+--     violet = nf_palette.pink,
+--     magenta = nf_palette.magenta,
+--     white = nf_palette.white,
+--     fg = nf_palette.fg1,
+--     skyblue = nf_palette.blue,
+--     red = nf_palette.red,
+-- }
+
+-- gruvbox
 -- local colors = {
 --     bg = palette.dark0,
 --     black = palette.dark0_hard,
