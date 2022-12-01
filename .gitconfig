@@ -4,6 +4,7 @@
 [core]
 	pager = delta
 	excludesFile = compile_commands.json
+
 [pretty]
     prettynice = "%C(Yellow)%h %C(reset)%ad %C(Green)%<(12,trunc) %cr %C(reset) %<(20,trunc)%C(Cyan)%an %C(reset)%s"
 [format]

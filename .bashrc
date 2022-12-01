@@ -35,6 +35,12 @@ export TERM=xterm-kitty
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export NUMPY_EXPERIMENTAL_DTYPE_API=1
 
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
 eval "$(ssh-agent)" > /dev/null
 
 ssh() {
@@ -123,13 +129,20 @@ generate_git_ps1() {
 	echo "$(get_git_color)$(get_git_branch_ps1)${txtrst}";
 }
 
-get_conda_env() {
-    [[ -z "${CONDA_PREFIX}" ]] && echo "" || echo "${bldpur}⟦$(basename "${CONDA_PREFIX}")⟧${txtrst}"
+get_venv() {
+    PYENV_NAME=$(pyenv version-name)
+    if [[ "${PYENV_NAME}" == "system" ]]; then
+        echo ""
+    else
+        if [[ $(pyenv version-file) != ${HOME}/.pyenv/version ]]; then
+            echo "${bldpur}⟦${PYENV_NAME}⟧${txtrst}"
+        fi
+    fi
 }
 
 set_ps1() {
     # shellcheck disable=SC2155
-    export PS1="${bldblu}[\w]${txtrst}$(get_conda_env)$(generate_git_ps1)${bldblu}\$${txtrst} "
+    export PS1="${bldblu}[\w]${txtrst}$(get_venv)$(generate_git_ps1)${bldblu}\$${txtrst} "
 }
 
 PROMPT_COMMAND=set_ps1
@@ -193,26 +206,25 @@ ebook-convert() {
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('${HOME}/.pyenv/versions/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/conda.sh"
-    else
-        export PATH="${HOME}/.pyenv/versions/mambaforge/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-if [ -f "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/mamba.sh" ]; then
-    . "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
-
 if [[ ${MAMBA_LOAD} == 1 ]]; then
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('${HOME}/.pyenv/versions/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/conda.sh" ]; then
+            . "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/conda.sh"
+        else
+            export PATH="${HOME}/.pyenv/versions/mambaforge/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+
+    if [ -f "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/mamba.sh" ]; then
+        . "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/mamba.sh"
+    fi
+    # <<< conda initialize <<<
     export PYENV_VERSION=mambaforge
     mamba activate dev
 fi
