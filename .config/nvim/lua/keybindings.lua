@@ -54,6 +54,10 @@ map('v', '<Tab>', '>gv', opts)
 -- Clear last search highlighting
 map('n', '<M-/>', ':noh<CR>', opts)
 
+-- Quickfix list movement
+map('n', '<C-S-J>', '<cmd>cnext<CR>', opts)
+map('n', '<C-S-K>', '<cmd>cprev<CR>', opts)
+
 -- Telescope
 map('n', '<leader>p', '<cmd>Telescope find_files<cr>', opts)
 map('n', '<leader>;', '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', opts)
@@ -125,5 +129,3 @@ map('n', '<leader>t', '<cmd>setl filetype=terminal<CR>', opts)
 -- Fugitive
 map('n', '<leader>rr', '<cmd>DiffviewOpen<CR>', opts)
 map('n', '<leader>rl', '<cmd>0Gclog<CR>', opts)
-map('n', '<leader>rj', '<cmd>cn<CR>', opts)
-map('n', '<leader>rk', '<cmd>cp<CR>', opts)
