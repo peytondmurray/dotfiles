@@ -31,8 +31,8 @@ map('n', '<C-K>', '<C-W><C-K>', opts)
 map('n', '<C-L>', '<C-W><C-L>', opts)
 map('n', '<C-H>', '<C-W><C-H>', opts)
 
-map('n', '<M-C-J>', '<C-W>20-', opts)
-map('n', '<M-C-K>', '<C-W>20+', opts)
+map('n', '<M-C-J>', '<C-W>5-', opts)
+map('n', '<M-C-K>', '<C-W>5+', opts)
 map('n', '<M-C-L>', '<C-W>20>', opts)
 map('n', '<M-C-H>', '<C-W>20<', opts)
 
