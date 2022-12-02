@@ -191,15 +191,15 @@ PERL_MM_OPT="INSTALL_BASE=/home/pdmurray/perl5"; export PERL_MM_OPT;
     . /usr/share/bash-completion/bash_completion
 
 lutris() {
-    mamba deactivate && PYENV_VERSION=system command lutris "$@"
+    PYENV_VERSION=system command lutris "$@"
 }
 
 calibre() {
-    mamba deactivate && PYENV_VERSION=system command calibre "$@"
+    PYENV_VERSION=system command calibre "$@"
 }
 
 ebook-convert() {
-    mamba deactivate && PYENV_VERSION=system command ebook-convert "$@"
+    PYENV_VERSION=system command ebook-convert "$@"
 }
 
 # BEGIN_KITTY_SHELL_INTEGRATION
