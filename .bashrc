@@ -136,7 +136,7 @@ get_venv() {
     if [[ "${PYENV_NAME}" == "system" ]]; then
         echo ""
     else
-        if [[ $(pyenv version-file) != ${HOME}/.pyenv/version ]]; then
+        if [[ -n ${PYENV_VERSION} || $(pyenv version-file) != ${HOME}/.pyenv/version ]]; then
             echo "${bldpur}⟦${PYENV_NAME}⟧${txtrst}"
         fi
     fi
