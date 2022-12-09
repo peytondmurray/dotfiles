@@ -35,6 +35,14 @@ export TERM=xterm-kitty
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export NUMPY_EXPERIMENTAL_DTYPE_API=1
 
+alias nnn='nnn -de -P p'
+export NNN_OPTS="H"
+export LC_COLLATE="C" # Set hidden files on top
+export NNN_FIFO="/tmp/nnn.fifo"
+export NNN_FCOLORS="AAAAE631BBBBCCCCDDDD9999"
+export NNN_PLUG="p:preview-tui"
+export SPLIT='v'
+
 eval "$(luarocks path)"
 
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
