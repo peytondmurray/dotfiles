@@ -1,4 +1,5 @@
 local nvim_lsp = require('lspconfig')
+local configs = require("lspconfig.configs")
 local luasnip = require('luasnip')
 local luautils = require('luautils')
 
@@ -149,9 +150,19 @@ nvim_lsp['terraformls'].setup{
 require('rust-tools').setup()
 
 
-nvim_lsp['cmake'].setup{
-    capabilities = capabilities,
-}
+if not configs.neocmake then
+    configs.neocmake = {
+        default_config = {
+            cmd = { "neocmakelsp", "--stdio" },
+            filetypes = { "cmake" },
+            root_dir = function(fname)
+                return nvim_lsp.util.find_git_ancestor(fname)
+            end,
+            single_file_support = true,-- suggested
+        }
+    }
+    nvim_lsp.neocmake.setup({})
+end
 
 nvim_lsp['sumneko_lua'].setup {
   settings = {
