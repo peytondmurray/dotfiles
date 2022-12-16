@@ -30,11 +30,16 @@ map('n', '<C-J>', '<C-W><C-J>', opts)
 map('n', '<C-K>', '<C-W><C-K>', opts)
 map('n', '<C-L>', '<C-W><C-L>', opts)
 map('n', '<C-H>', '<C-W><C-H>', opts)
-
 map('n', '<M-C-J>', '<C-W>5-', opts)
 map('n', '<M-C-K>', '<C-W>5+', opts)
 map('n', '<M-C-L>', '<C-W>20>', opts)
 map('n', '<M-C-H>', '<C-W>20<', opts)
+
+-- Center view after various commands
+map('n', 'gg', 'ggzz', opts)
+map('n', 'G', 'Gzz', opts)
+map('n', 'n', 'nzz', opts)
+map('n', 'N', 'Nzz', opts)
 
 -- Alt+. to repeat last macro
 map('n', '<M-.>', '@@', opts)

@@ -74,7 +74,8 @@ nvim_lsp['pylsp'].setup{
                 pycodestyle = { enabled = false },
                 mccabe = { enabled = false },
                 pyflakes = { enabled = false },
-                flake8 = { enabled = true },
+                flake8 = { enabled = false },
+                ruff = { enabled = true }
             },
             configurationSources = { 'flake8' },
         }
