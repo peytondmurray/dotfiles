@@ -1,3 +1,5 @@
+#!/bin/bash
+
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export QT_FONT_DPI=100
 export QT_QPA_PLATFORMTHEME=breeze

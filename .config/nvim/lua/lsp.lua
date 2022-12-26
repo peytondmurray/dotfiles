@@ -63,27 +63,7 @@ cmp.setup{
 }
 
 
-nvim_lsp['pylsp'].setup{
-    capabilities = capabilities,
-    flags = {
-        debounce_text_changes = 150
-    },
-    settings = {
-        pylsp = {
-            plugins = {
-                pycodestyle = { enabled = false },
-                mccabe = { enabled = false },
-                pyflakes = { enabled = false },
-                flake8 = { enabled = false },
-                ruff = { enabled = true }
-            },
-            configurationSources = { 'flake8' },
-        }
-    },
-    cmd = {
-        "pylsp", "-vv"
-    }
-}
+nvim_lsp['ruff_lsp'].setup({})
 
 require('typescript').setup({
     server = {

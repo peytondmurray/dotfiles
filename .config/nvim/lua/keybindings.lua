@@ -1,7 +1,7 @@
 -- Keybindings
 local opts = {noremap = true, silent = true}
 
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 
 -- Disable ex mode
 map('n', 'Q', '<nop>', opts)
@@ -65,31 +65,36 @@ map('n', '<C-S-K>', '<cmd>cprev<CR>', opts)
 
 -- Telescope
 map('n', '<leader>p', '<cmd>Telescope find_files<cr>', opts)
-map('n', '<leader>;', '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', opts)
+map('n', '<leader>;', function() return require("telescope").extensions.live_grep_args.live_grep_args() end, opts)
 map('n', '<leader>/', '<cmd>Telescope current_buffer_fuzzy_find<CR>', opts)
 map('n', '<leader>)', '<cmd>Telescope emoji<CR>', opts)
 
 -- Pydocstring
-map("n", "<Leader>dg", ":lua require('neogen').generate()<CR>", opts)
-map("n", "<Leader>don", ":lua require('neogen').generate({ annotation_convention = { python = 'numpydoc' }})<CR>", opts)
-map("n", "<Leader>dog", ":lua require('neogen').generate({ annotation_convention = { python = 'google_docstrings' }})<CR>", opts)
+local function docstring(args)
+    require('neogen').generate(args)
+end
+
+map("n", "<Leader>dg",  docstring, opts)
+map("n", "<Leader>don", function() docstring({ annotation_convention = { python = 'numpydoc' }}) end, opts)
+map("n", "<Leader>dog", function() docstring({ annotation_convention = { python = 'google_docstrings' }}) end, opts)
 
 -- LSP
-map('n', '<leader>e', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-map('n', '<leader>v', '<cmd>vs<cr><cmd>lua vim.lsp.buf.definition()<CR>', opts)
-map('n', '<leader>s', '<cmd>sp<cr><cmd>lua vim.lsp.buf.definition()<CR>', opts)
-map('n', '<leader>E', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-map('n', '<leader>V', '<cmd>vs<cr><cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-map('n', '<leader>S', '<cmd>sp<cr><cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-map('n', '<leader>o', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+map('n', '<leader>e', vim.lsp.buf.definition, opts)
+map('n', '<leader>v', function() vim.cmd('vsplit'); vim.lsp.buf.definition() end, opts)
+map('n', '<leader>s', function() vim.cmd('split'); vim.lsp.buf.definition() end, opts)
+map('n', '<leader>E', vim.lsp.buf.declaration, opts)
+map('n', '<leader>V', function() vim.cmd('vsplit'); vim.lsp.buf.declaration() end, opts)
+map('n', '<leader>S', function() vim.cmd('split'); vim.lsp.buf.declaration() end, opts)
+map('n', '<leader>o', vim.lsp.buf.type_definition, opts)
 map('n', '<leader>y', "<cmd>TypescriptGoToSourceDefinition<CR>", opts)
-map('n', '<leader>i', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-map('n', '<leader>n', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-map('n', '<leader>k', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-map('n', '<leader>j', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-map('n', '<leader>h', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-map('n', '<leader>u', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+map('n', '<leader>i', vim.lsp.buf.hover, opts)
+map('n', '<leader>n', vim.lsp.buf.rename, opts)
+map('n', '<leader>k', vim.diagnostic.goto_prev, opts)
+map('n', '<leader>j', vim.diagnostic.goto_next, opts)
+map('n', '<leader>h', vim.lsp.buf.code_action, opts)
+map('n', '<leader>u', vim.lsp.buf.signature_help, opts)
 map('n', '<leader>g', '<cmd>ClangdSwitchSourceHeader<CR>', opts)
+map('n', '<leader>f', vim.diagnostic.open_float, opts)
 
 -- Unused keybindings
 -- map('n', '<leader>l', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
@@ -107,8 +112,8 @@ map("x", "<leader>a", "<Plug>(EasyAlign)", {silent = true})
 map("n", "<leader>a", "<Plug>(EasyAlign)", {silent = true})
 
 -- Kommentary
-map('n', '<leader>c', '<Plug>kommentary_line_default', {silent = true})
-map("x", "<leader>c", "<Plug>kommentary_visual_default", {silent = true})
+map('n', '<leader>c', function() require('Comment.api').toggle.linewise.current() end, {silent = true})
+map("x", "<leader>c", function() vim.api.nvim_feedkeys('', 'nx', false); require('Comment.api').toggle.linewise(vim.fn.visualmode()) end, {silent = true})
 
 -- Symbols outline
 map('n', '<leader>m', '<cmd>SymbolsOutline<CR>', opts)
