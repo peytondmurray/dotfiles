@@ -142,7 +142,7 @@ generate_git_ps1() {
 get_venv() {
     PYENV_NAME=$(pyenv version-name)
     if [[ "${PYENV_NAME}" == "system" ]]; then
-        echo ""
+        echo "${bldred}⟦${PYENV_NAME}⟧${txtrst}"
     else
         if [[ -n ${PYENV_VERSION} || $(pyenv version-file) != ${HOME}/.pyenv/version ]]; then
             echo "${bldpur}⟦${PYENV_NAME}⟧${txtrst}"
