@@ -95,13 +95,30 @@ vim.cmd('filetype plugin indent on')
 vim.api.nvim_create_autocmd("BufWritePre", { callback = require('luautils').StripWhitespace })
 
 -- Set textwidth for markdown and python
-vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal textwidth=80", pattern = "*.md" })
-vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal textwidth=100", pattern = "*.py" })
-vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "setlocal tabstop=2 shiftwidth=2", pattern = {"*.ts", "*.js", "*.tsx", "*.jsx", "*.html.j2", "*.html", "*.css", "*.json"} })
-vim.api.nvim_create_autocmd("BufRead,BufNewFile", { command = "set filetype=htmldjango", pattern = {"*.html.j2"} })
+vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal textwidth=80", pattern = "*.md" })
+vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal textwidth=100", pattern = "*.py" })
+vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal tabstop=2 shiftwidth=2", pattern = {"*.ts", "*.js", "*.tsx", "*.jsx", "*.html.j2", "*.html", "*.css", "*.json"} })
+vim.api.nvim_create_autocmd("BufEnter", { command = "set filetype=htmldjango", pattern = {"*.html.j2"} })
 
--- Format json on save; strip trailing comma
-vim.api.nvim_create_autocmd("BufWritePre", { command = [[%!jq -n -f /dev/stdin]], pattern = {"*.json"} })
+local json5_filetypes = {
+    "tsconfig.json",
+    "asv.conf.json"
+}
+vim.api.nvim_create_autocmd("BufEnter", { command = "set filetype=json5", pattern = json5_filetypes})
+
+local function reformat_if_json(excludes)
+    local function jq_reformat(opts)
+        for _, pattern in pairs(excludes) do
+            if opts.file:find(pattern) ~= nil then
+                return
+            end
+        end
+        vim.cmd([[%!jq -n -f /dev/stdin]])
+    end
+    return jq_reformat
+end
+-- -- Format json on save; strip trailing comma
+vim.api.nvim_create_autocmd("BufWritePre", { callback = reformat_if_json(json5_filetypes), pattern = {"*.json"} })
 
 -- disable builtin vim plugins
 local disabled_built_ins = {
