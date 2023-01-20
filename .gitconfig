@@ -3,7 +3,6 @@
 	name = pdmurray
 [core]
 	pager = delta
-	excludesFile = ~/.gitignore_global
 
 [pretty]
     prettynice = "%C(Yellow)%h %C(reset)%ad %C(Green)%<(12,trunc) %cr %C(reset) %<(20,trunc)%C(Cyan)%an %C(reset)%s"
