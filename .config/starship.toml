@@ -31,8 +31,9 @@ truncation_length = 3
 truncation_symbol = "…/"
 
 [python]
+symbol = "🐍"
 style = "bold black bg:#86BBD8"
-format = '[${version}(\($virtualenv\))]($style)'
+format = '[${symbol}${version}(\($virtualenv\))]($style)'
 pyenv_version_name = true
 
 [c]
