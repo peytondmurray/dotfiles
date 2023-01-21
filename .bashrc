@@ -57,106 +57,6 @@ ssh() {
     TERM=xterm-256color command ssh "$@"
 }
 
-### Colors ###
-
-# Regular
-txtblk="\[\e[0;30m\]"  # Black
-txtred="\[\e[0;31m\]"  # Red
-txtgrn="\[\e[0;32m\]"  # Green
-txtylw="\[\e[0;33m\]"  # Yellow
-txtblu="\[\e[0;34m\]"  # Blue
-txtpur="\[\e[0;35m\]"  # Purple
-txtcyn="\[\e[0;36m\]"  # Cyan
-txtwht="\[\e[0;37m\]"  # White
-
-# Bold
-bldblk="\[\e[1;30m\]"  # Black
-bldred="\[\e[1;31m\]"  # Red
-bldgrn="\[\e[1;32m\]"  # Green
-bldylw="\[\e[1;33m\]"  # Yellow
-bldblu="\[\e[1;34m\]"  # Blue
-bldpur="\[\e[1;35m\]"  # Purple
-bldcyn="\[\e[1;36m\]"  # Cyan
-bldwht="\[\e[1;37m\]"  # White
-
-# Underline
-undblk="\[\e[4;30m\]"  # Black
-undred="\[\e[4;31m\]"  # Red
-undgrn="\[\e[4;32m\]"  # Green
-undylw="\[\e[4;33m\]"  # Yellow
-undblu="\[\e[4;34m\]"  # Blue
-undpur="\[\e[4;35m\]"  # Purple
-undcyn="\[\e[4;36m\]"  # Cyan
-undwht="\[\e[4;37m\]"  # White
-
-# Background
-bakblk="\[\e[40m\]"  # Black
-bakred="\[\e[41m\]"  # Red
-bakgrn="\[\e[42m\]"  # Green
-bakylw="\[\e[43m\]"  # Yellow
-bakblu="\[\e[44m\]"  # Blue
-bakpur="\[\e[45m\]"  # Purple
-bakcyn="\[\e[46m\]"  # Cyan
-bakwht="\[\e[47m\]"  # White
-
-# Others
-bakylwtxtblk="\[\e[30;43m\]"
-bakblktxtylw="\[\e[33;40m\]"
-
-# Reset
-txtrst="\[\e[0m\]"
-
-
-get_git_branch_ps1() {
-    local branch=$(get_git_current_branch)
-    if [[ -z ${branch} ]]; then
-        echo ""
-    else
-		echo "[${branch}]"
-    fi
-}
-
-get_git_color() {
-	if command git branch > /dev/null 2>&1; then
-        local status=$(command git status -uno)
-        if grep -q 'not staged for commit' <<< "$status" || grep -q 'Untracked files:' <<< "$status"; then
-            echo "${bldred}"
-        elif grep -q 'Changes to be committed:' <<< "$status"; then
-			echo "${bldylw}"
-        elif grep -q 'Your branch is ahead of' <<< "$status"; then
-			echo "${bldblu}"
-        elif grep -q 'nothing to commit' <<< "$status"; then
-			echo "${bldcyn}"
-		else
-			echo "${bldwht}"
-		fi
-	else
-		echo "";
-	fi
-}
-
-generate_git_ps1() {
-	echo "$(get_git_color)$(get_git_branch_ps1)${txtrst}";
-}
-
-get_venv() {
-    PYENV_NAME=$(pyenv version-name)
-    if [[ "${PYENV_NAME}" == "system" ]]; then
-        echo "${bldred}⟦${PYENV_NAME}⟧${txtrst}"
-    else
-        if [[ -n ${PYENV_VERSION} || $(pyenv version-file) != ${HOME}/.pyenv/version ]]; then
-            echo "${bldpur}⟦${PYENV_NAME}⟧${txtrst}"
-        fi
-    fi
-}
-
-set_ps1() {
-    # shellcheck disable=SC2155
-    export PS1="${bldblu}[\w]${txtrst}$(get_venv)$(generate_git_ps1)${bldblu}\$${txtrst} "
-}
-
-PROMPT_COMMAND=set_ps1
-
 git() {
     if [[ "$#" == 1 && "$1" == "log" ]]; then
         local branch="$(get_git_current_branch)"
@@ -197,19 +97,11 @@ PERL_LOCAL_LIB_ROOT="/home/pdmurray/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LI
 PERL_MB_OPT="--install_base \"/home/pdmurray/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/pdmurray/perl5"; export PERL_MM_OPT;
 
-[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
-    . /usr/share/bash-completion/bash_completion
-
+# [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+#     . /usr/share/bash-completion/bash_completion
+#
 lutris() {
     PYENV_VERSION=system command lutris "$@"
-}
-
-calibre() {
-    PYENV_VERSION=system command calibre "$@"
-}
-
-ebook-convert() {
-    PYENV_VERSION=system command ebook-convert "$@"
 }
 
 # BEGIN_KITTY_SHELL_INTEGRATION
@@ -238,3 +130,5 @@ if [[ ${MAMBA_LOAD} == 1 ]]; then
     export PYENV_VERSION=mambaforge
     mamba activate dev
 fi
+
+eval "$(starship init bash)"
