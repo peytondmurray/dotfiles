@@ -1,4 +1,0 @@
-#!/bin/bash
-
-DATETIME=$(date "+%Y-%m-%d %H:%M")
-echo $(printf '<span size="large" weight="bold">%s</span>' "${DATETIME}")

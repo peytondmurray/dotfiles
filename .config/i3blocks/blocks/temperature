@@ -1,3 +1,0 @@
-#!/bin/bash
-
-echo $(printf '<span size="large" weight="bold"> %.1f</span>' $(sensors -u ${BLOCK_INSTANCE} | grep temp1_input | awk '{print $2}'))

@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if ip -o a | grep -q proton0; then
-    echo '<span foreground="#ADFF2F" size="large" weight="bold">  On </span>'
-else
-    echo '<span foreground="#FF0000" size="large" weight="bold">  Off </span>'
-fi
