@@ -7,7 +7,7 @@
     "modules-right": ["sway/language", "pulseaudio", "network", "cpu", "memory", "temperature", "clock", "tray"],
 
     "sway/language": {
-        "format": "{short} {variant}"
+        "format": "<span font_desc='Symbols Nerd Font'> </span> {short} {variant}"
     },
 
     "sway/mode": {
@@ -21,41 +21,41 @@
         "format": "{:%Y-%m-%d %H:%M}"
     },
     "cpu": {
-        "format": "{icon0} {icon1} {icon2} {icon3} {icon4} {icon5} {icon6} {icon7} {icon8} {icon9} {icon10} {icon11} {icon12} {icon13} {icon14} {icon15} {icon16} {icon17} {icon18} {icon19} {icon20} {icon21} {icon22} {icon23}",
+        "format": "<span font_desc='Symbols Nerd Font'>🖳 {icon0} {icon1} {icon2} {icon3} {icon4} {icon5} {icon6} {icon7} {icon8} {icon9} {icon10} {icon11} {icon12} {icon13} {icon14} {icon15} {icon16} {icon17} {icon18} {icon19} {icon20} {icon21} {icon22} {icon23}</span>",
         "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% <span font_desc='Symbols Nerd Font'> </span>"
     },
     "temperature": {
         "critical-threshold": 80,
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format": "{temperatureC}°C <span font_desc='Symbols Nerd Font'>{icon}</span>",
+        "format-icons": [" ", "  ", " ", " ", " "]
     },
     "network": {
         "interface": "enp6s0",
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} 🖧",
-        "format-linked": "{ifname} (No IP) 🖧",
-        "format-disconnected": "Disconnected ⚠",
+        "format-wifi": "{essid} ({signalStrength}%)  ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} <span font_desc='Symbols Nerd Font'>🖧 </span>",
+        "format-linked": "{ifname} (No IP) <span font_desc='Symbols Nerd Font'>🖧 </span>",
+        "format-disconnected": "Disconnected <span font_desc='Symbols Nerd Font'> </span>",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
-        "format": "{volume}% {icon} {format_source}",
+        "format": "{volume}% <span font_desc='Symbols Nerd Font'>{icon}</span> {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}%  ",
         "format-source-muted": "",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": ["", " ", " "]
         },
         "on-click": "pavucontrol"
     },
