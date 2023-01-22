@@ -4,7 +4,10 @@ format = """
 $directory\
 [](fg:#DA627D bg:#FCA17D)\
 $git_branch\
+$git_metrics\
 $git_status\
+$git_state\
+$git_commit\
 [](fg:#FCA17D bg:#86BBD8)\
 $python\
 $c\
@@ -28,7 +31,6 @@ $scala\
 style = "bold black bg:#DA627D"
 format = "[ $path ]($style)"
 truncation_length = 3
-truncation_symbol = "…/"
 
 [python]
 symbol = "🐍"
@@ -55,6 +57,19 @@ format = '[ $symbol ($version) ]($style)'
 symbol = ""
 style = "bold black bg:#FCA17D"
 format = '[ $symbol $branch ]($style)'
+
+[git_metrics]
+format = '([+$added]($added_style))[|](dimmed black bg:#FCA17D)([-$deleted]($deleted_style))'
+added_style = "bold green bg:#FCA17D"
+deleted_style = "bold red bg:#FCA17D"
+disabled = false
+
+[git_commit]
+style = "bold black bg:#FCA17D"
+commit_hash_length = 9
+
+[git_state]
+style = "bold black bg:#FCA17D"
 
 [git_status]
 style = "bold black bg:#FCA17D"
