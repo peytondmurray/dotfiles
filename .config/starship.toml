@@ -1,14 +1,15 @@
-# Needs ttf-ubuntu-mono-nerd font package
+# Needs ttf-ubuntu-font-family package
+# Needs ttf-nerd-fonts-symbols-2048-em-mono for symbols, with correct mappings in kitty.conf
 
 format = """
 $directory\
-[](fg:#DA627D bg:#FCA17D)\
+[](fg:cyan bg:bright-black)\
 $git_branch\
 $git_metrics\
 $git_status\
 $git_state\
 $git_commit\
-[](fg:#FCA17D bg:#86BBD8)\
+[](fg:bright-black bg:purple)\
 $python\
 $c\
 $elixir\
@@ -21,96 +22,96 @@ $nodejs\
 $nim\
 $rust\
 $scala\
-[ ](fg:#86BBD8)\
+[ ](fg:purple)\
 """
 
 # Disable the blank line at the start of the prompt
 # add_newline = false
 
 [directory]
-style = "bold black bg:#DA627D"
+style = "bold black bg:cyan"
 format = "[ $path ]($style)"
 truncation_length = 3
 
 [python]
-symbol = "🐍"
-style = "bold black bg:#86BBD8"
-format = '[${symbol}${version}(\($virtualenv\))]($style)'
+symbol = " "
+style = "bold black bg:purple"
+format = '[ ${symbol} ${version}(\($virtualenv\)) ]($style)'
 pyenv_version_name = true
 
 [c]
 symbol = " "
-style = "bg:#86BBD8"
+style = "bg:green"
 format = '[ $symbol ($version) ]($style)'
 
 [elixir]
 symbol = " "
-style = "bg:#86BBD8"
+style = "bg:green"
 format = '[ $symbol ($version) ]($style)'
 
 [elm]
 symbol = " "
-style = "bg:#86BBD8"
+style = "bg:green"
 format = '[ $symbol ($version) ]($style)'
 
 [git_branch]
-symbol = ""
-style = "bold black bg:#FCA17D"
+symbol = " "
+style = "bold bright-white bg:bright-black"
 format = '[ $symbol $branch ]($style)'
 
 [git_metrics]
-format = '([+$added]($added_style))[|](dimmed black bg:#FCA17D)([-$deleted]($deleted_style))'
-added_style = "bold green bg:#FCA17D"
-deleted_style = "bold red bg:#FCA17D"
+format = '([+$added]($added_style)[|](white bg:bright-black))([-$deleted]($deleted_style))'
+added_style = "bold green bg:bright-black"
+deleted_style = "bold red bg:bright-black"
 disabled = false
 
 [git_commit]
-style = "bold black bg:#FCA17D"
+style = "bold bright-white bg:bright-black"
 commit_hash_length = 9
 
 [git_state]
-style = "bold black bg:#FCA17D"
+style = "bold bright-white bg:bright-black"
 
 [git_status]
-style = "bold black bg:#FCA17D"
-format = '[$all_status$ahead_behind ]($style)'
+style = "bold bright-white bg:bright-black"
+format = '[ $all_status$ahead_behind ]($style)'
 
 [golang]
 symbol = " "
-style = "bg:#86BBD8"
+style = "bg:green"
 format = '[ $symbol ($version) ]($style)'
 
 [haskell]
 symbol = " "
-style = "bg:#86BBD8"
+style = "bg:green"
 format = '[ $symbol ($version) ]($style)'
 
 [java]
 symbol = " "
-style = "bg:#86BBD8"
+style = "bg:green"
 format = '[ $symbol ($version) ]($style)'
 
 [julia]
 symbol = " "
-style = "bg:#86BBD8"
+style = "bg:green"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
-symbol = ""
-style = "bg:#86BBD8"
+symbol = " "
+style = "bg:green"
 format = '[ $symbol ($version) ]($style)'
 
 [nim]
 symbol = " "
-style = "bg:#86BBD8"
+style = "bg:green"
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
-symbol = ""
-style = "bg:#86BBD8"
+symbol = " "
+style = "bg:green"
 format = '[ $symbol ($version) ]($style)'
 
 [scala]
 symbol = " "
-style = "bg:#86BBD8"
+style = "bg:green"
 format = '[ $symbol ($version) ]($style)'
