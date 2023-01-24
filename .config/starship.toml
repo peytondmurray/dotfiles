@@ -65,16 +65,16 @@ added_style = "bold green bg:bright-black"
 deleted_style = "bold red bg:bright-black"
 disabled = false
 
-[git_commit]
+[git_status]
 style = "bold bright-white bg:bright-black"
-commit_hash_length = 9
+format = '[$all_status$ahead_behind]($style)'
 
 [git_state]
 style = "bold bright-white bg:bright-black"
 
-[git_status]
+[git_commit]
 style = "bold bright-white bg:bright-black"
-format = '[ $all_status$ahead_behind ]($style)'
+commit_hash_length = 9
 
 [golang]
 symbol = " "
