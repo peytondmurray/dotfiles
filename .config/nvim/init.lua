@@ -12,6 +12,12 @@ require('packer').startup(function()
     use 'SmiteshP/nvim-gps'
 
     use({
+        "luukvbaal/statuscol.nvim",
+        config = function()
+            require("statuscol").setup()
+        end
+    })
+    use({
         'feline-nvim/feline.nvim',
         config = function()
             require('statusline')
