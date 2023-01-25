@@ -11,6 +11,7 @@ $git_state\
 $git_commit\
 [](fg:bright-black bg:purple)\
 $python\
+[](fg:purple bg:green)\
 $c\
 $elixir\
 $elm\
@@ -22,7 +23,7 @@ $nodejs\
 $nim\
 $rust\
 $scala\
-[ ](fg:purple)\
+[ ](fg:green)\
 """
 
 # Disable the blank line at the start of the prompt
@@ -98,7 +99,7 @@ format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = " "
-style = "bg:green"
+style = "bold black bg:green"
 format = '[ $symbol ($version) ]($style)'
 
 [nim]
