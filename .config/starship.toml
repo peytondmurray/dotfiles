@@ -68,13 +68,15 @@ disabled = false
 
 [git_status]
 style = "bold bright-white bg:bright-black"
-format = '[$all_status$ahead_behind]($style)'
+format = '[$all_status$ahead_behind ]($style)'
 
 [git_state]
 style = "bold bright-white bg:bright-black"
+format = '[\($state($progress_current/$progress_total)\) ]($style)'
 
 [git_commit]
 style = "bold bright-white bg:bright-black"
+format = '[\($hash$tag\)]($style)'
 commit_hash_length = 9
 
 [golang]
