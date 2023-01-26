@@ -9,9 +9,8 @@ $git_metrics\
 $git_status\
 $git_state\
 $git_commit\
-[](fg:bright-black bg:purple)\
+[](fg:bright-black bg:red)\
 $python\
-[](fg:purple bg:green)\
 $c\
 $elixir\
 $elm\
@@ -23,7 +22,7 @@ $nodejs\
 $nim\
 $rust\
 $scala\
-[ ](fg:green)\
+[ ](fg:red)\
 """
 
 # Disable the blank line at the start of the prompt
@@ -33,27 +32,6 @@ $scala\
 style = "bold black bg:cyan"
 format = "[ $path ]($style)"
 truncation_length = 3
-
-[python]
-symbol = " "
-style = "bold black bg:purple"
-format = '[ ${symbol} ${version}(\($virtualenv\)) ]($style)'
-pyenv_version_name = true
-
-[c]
-symbol = " "
-style = "bg:green"
-format = '[ $symbol ($version) ]($style)'
-
-[elixir]
-symbol = " "
-style = "bg:green"
-format = '[ $symbol ($version) ]($style)'
-
-[elm]
-symbol = " "
-style = "bg:green"
-format = '[ $symbol ($version) ]($style)'
 
 [git_branch]
 symbol = " "
@@ -79,42 +57,64 @@ style = "bold bright-white bg:bright-black"
 format = '[\($hash$tag\)]($style)'
 commit_hash_length = 9
 
+[python]
+symbol = " "
+style = "bold black fg:bright-black bg:red"
+format = '[ ${symbol} ${version}(\($virtualenv\)) ]($style)'
+pyenv_version_name = true
+
+[c]
+symbol = " "
+style = "bg:cyan"
+format = '[ $symbol ($version) ]($style)'
+
+[elixir]
+symbol = " "
+style = "bg:cyan"
+format = '[ $symbol ($version) ]($style)'
+
+[elm]
+symbol = " "
+style = "bg:cyan"
+format = '[ $symbol ($version) ]($style)'
+
+
 [golang]
 symbol = " "
-style = "bg:green"
+style = "bg:cyan"
 format = '[ $symbol ($version) ]($style)'
 
 [haskell]
 symbol = " "
-style = "bg:green"
+style = "bg:cyan"
 format = '[ $symbol ($version) ]($style)'
 
 [java]
 symbol = " "
-style = "bg:green"
+style = "bg:cyan"
 format = '[ $symbol ($version) ]($style)'
 
 [julia]
 symbol = " "
-style = "bg:green"
+style = "bg:cyan"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = " "
-style = "bold black bg:green"
+style = "bold black bg:cyan"
 format = '[ $symbol ($version) ]($style)'
 
 [nim]
 symbol = " "
-style = "bg:green"
+style = "bg:cyan"
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
 symbol = " "
-style = "bg:green"
+style = "bg:cyan"
 format = '[ $symbol ($version) ]($style)'
 
 [scala]
 symbol = " "
-style = "bg:green"
+style = "bg:cyan"
 format = '[ $symbol ($version) ]($style)'
