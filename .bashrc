@@ -99,7 +99,7 @@ PERL_MM_OPT="INSTALL_BASE=/home/pdmurray/perl5"; export PERL_MM_OPT;
 
 # [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
 #     . /usr/share/bash-completion/bash_completion
-#
+
 lutris() {
     PYENV_VERSION=system command lutris "$@"
 }
@@ -107,28 +107,5 @@ lutris() {
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION
-
-if [[ ${MAMBA_LOAD} == 1 ]]; then
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('${HOME}/.pyenv/versions/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/conda.sh" ]; then
-            . "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/conda.sh"
-        else
-            export PATH="${HOME}/.pyenv/versions/mambaforge/bin:$PATH"
-        fi
-    fi
-    unset __conda_setup
-
-    if [ -f "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/mamba.sh" ]; then
-        . "${HOME}/.pyenv/versions/mambaforge/etc/profile.d/mamba.sh"
-    fi
-    # <<< conda initialize <<<
-    export PYENV_VERSION=mambaforge
-    mamba activate dev
-fi
 
 eval "$(starship init bash)"
