@@ -213,6 +213,7 @@ bar {
     swaybar_command waybar
 }
 
+
 include /etc/sway/config.d/*
 exec_always pgrep -x lxpolkit || lxpolkit &
 exec_always swaymsg output '*' bg /home/pdmurray/.config/wallpapers/pebbles_stones_dark_152025_3840x2160.jpg fill

@@ -12,16 +12,8 @@ $git_commit\
 [](fg:bright-black bg:red)\
 $python\
 $c\
-$elixir\
-$elm\
-$golang\
-$haskell\
-$java\
-$julia\
 $nodejs\
-$nim\
 $rust\
-$scala\
 [ ](fg:red)\
 """
 
@@ -65,56 +57,15 @@ pyenv_version_name = true
 
 [c]
 symbol = " "
-style = "bg:cyan"
-format = '[ $symbol ($version) ]($style)'
-
-[elixir]
-symbol = " "
-style = "bg:cyan"
-format = '[ $symbol ($version) ]($style)'
-
-[elm]
-symbol = " "
-style = "bg:cyan"
-format = '[ $symbol ($version) ]($style)'
-
-
-[golang]
-symbol = " "
-style = "bg:cyan"
-format = '[ $symbol ($version) ]($style)'
-
-[haskell]
-symbol = " "
-style = "bg:cyan"
-format = '[ $symbol ($version) ]($style)'
-
-[java]
-symbol = " "
-style = "bg:cyan"
-format = '[ $symbol ($version) ]($style)'
-
-[julia]
-symbol = " "
-style = "bg:cyan"
+style = "bold black fg:bright-black bg:red"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = " "
-style = "bold black bg:cyan"
-format = '[ $symbol ($version) ]($style)'
-
-[nim]
-symbol = " "
-style = "bg:cyan"
+style = "bold black fg:bright-black bg:red"
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
 symbol = " "
-style = "bg:cyan"
-format = '[ $symbol ($version) ]($style)'
-
-[scala]
-symbol = " "
-style = "bg:cyan"
+style = "bold black fg:bright-black bg:red"
 format = '[ $symbol ($version) ]($style)'
