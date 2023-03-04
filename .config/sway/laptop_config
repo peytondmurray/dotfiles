@@ -2,7 +2,7 @@ set $mod Mod4
 
 # Monitor configuration
 output eDP-1 pos 0 0
-output HDMI-A-1 disable
+output DSI-1 disable
 
 input type:keyboard {
     xkb_layout "us,fi,ru"
@@ -32,7 +32,6 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec kitty
-bindsym $mod+Shift+Return exec MAMBA_LOAD=1 kitty
 
 # kill focused window
 bindsym $mod+w kill
