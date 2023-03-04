@@ -1,41 +1,47 @@
-require('packer').startup(function()
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-    use 'wbthomason/packer.nvim'
 
-    use {
-        'dstein64/vim-startuptime',
-        cmd = {
+require("lazy").setup({
+    { 'dstein64/vim-startuptime', cmd = {
             'StartupTime'
         }
-    }
+    },
 
-    use 'SmiteshP/nvim-gps'
+    'SmiteshP/nvim-gps',
 
-    use({
+    {
         "luukvbaal/statuscol.nvim",
         config = function()
             require("statuscol").setup()
         end
-    })
-    use({
+    },
+    {
         'feline-nvim/feline.nvim',
-        config = function()
-            require('statusline')
-        end,
-        wants = 'nvim-web-devicons',
-    })
-    -- use 'ryanoasis/vim-devicons'
-    use 'kyazdani42/nvim-web-devicons'
-    use 'junegunn/vim-easy-align'
+        dependencies = {'nvim-web-devicons'},
+    },
+    --  'ryanoasis/vim-devicons'
+    'kyazdani42/nvim-web-devicons',
+    'junegunn/vim-easy-align',
 
-    use {
+    {
         'luukvbaal/stabilize.nvim',
         config = function() require('stabilize').setup() end
-    }
+    },
 
-    use 'jxnblk/vim-mdx-js'
+     'jxnblk/vim-mdx-js',
 
-    use {
+     {
         'danymat/neogen',
         config = function()
             require('neogen').setup {
@@ -49,34 +55,34 @@ require('packer').startup(function()
                 }
             }
         end
-    }
+    },
 
-    use {
+    {
         'kylechui/nvim-surround',
         config = function()
             require('nvim-surround').setup()
         end
-    }
+    },
 
     -- DAP
-    use 'mfussenegger/nvim-dap'
-    use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
+    'mfussenegger/nvim-dap',
+    { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} },
 
 
     -- File browser
-    use {
+    {
         'kyazdani42/nvim-tree.lua',
-        requires = 'kyazdani42/nvim-web-devicons',
-    }
+        dependencies = {'kyazdani42/nvim-web-devicons'},
+    },
 
     -- Toggle, display, and navigate marks
-    use 'kshenoy/vim-signature'
+     'kshenoy/vim-signature',
 
     -- Highlight same words as currently hovered word
-    use 'rrethy/vim-illuminate'
+     'rrethy/vim-illuminate',
 
     -- Comment a line, selection, or motion
-    use {
+     {
         'numToStr/Comment.nvim',
         config = function()
             require('Comment').setup({
@@ -86,35 +92,35 @@ require('packer').startup(function()
                 }
             })
         end
-    }
+    },
 
-    use {
+     {
         'windwp/nvim-autopairs',
         config = function()
             require('nvim-autopairs').setup({
                 check_ts = true,
             })
         end
-    }
-    use 'windwp/nvim-ts-autotag'
+    },
+     'windwp/nvim-ts-autotag',
 
     -- Check mapping conflicts with :CheckMappingConflicts
-    use {'lukhio/vim-mapping-conflicts', cmd = 'CheckMappingConflicts'}
+     {'lukhio/vim-mapping-conflicts', cmd = 'CheckMappingConflicts'},
 
     -- Show a popup menu of keybindings when you press a button and wait for a bit
-    use {'folke/which-key.nvim', config = function() require('which-key').setup{} end}
+     {'folke/which-key.nvim', config = function() require('which-key').setup{} end},
 
     -- Symbols browser
-    use {
+     {
         'simrat39/symbols-outline.nvim',
         cmd = {'SymbolsOutline', 'SymbolsOutlineOpen', 'SymbolsOutlineClose'},
         config = function()
             require('symbols-outline').setup()
         end
-    }
+    },
 
     -- Indent guides
-    use {
+     {
         'lukas-reineke/indent-blankline.nvim',
         config = function()
             require('indent_blankline').setup{
@@ -124,24 +130,24 @@ require('packer').startup(function()
                 blankline_char = '│'
             }
         end
-    }
+    },
 
     -- User-defined text objects
-    use 'kana/vim-textobj-user'
-    use 'kana/vim-textobj-line'
+     'kana/vim-textobj-user',
+     -- 'kana/vim-textobj-line',
 
     -- Neovim in the browser
-    use {'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end}
+     {'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end},
 
     -- Window motions: windows can be yanked/pasted
-    use {'wesq3/vim-windowswap', keys = {'<C-W>'}}
+     {'wesq3/vim-windowswap', keys = {'<C-W>'}},
 
     -- Colorschemes
-    use 'savq/melange'
-    -- use 'Mofiqul/dracula.nvim'
-    -- use 'EdenEast/nightfox.nvim'
-    -- use 'folke/tokyonight.nvim'
-    -- use {
+     'savq/melange',
+    --  'Mofiqul/dracula.nvim'
+    --  'EdenEast/nightfox.nvim'
+    --  'folke/tokyonight.nvim'
+    --  {
     --     'ellisonleao/gruvbox.nvim',
     --     config = function()
     --         require('gruvbox').setup({
@@ -150,27 +156,27 @@ require('packer').startup(function()
     --     end
     -- }
 
-    use 'rktjmp/lush.nvim'
+     'rktjmp/lush.nvim',
 
     -- Colorize hex codes
-    use {
+     {
         'norcalli/nvim-colorizer.lua',
         event = 'BufReadPre',
         config = function()
             require('colorizer').setup()
         end
-    }
+    },
 
     -- Add ANSI escape sequence support
-    use {
+     {
         'norcalli/nvim-terminal.lua',
         config = function()
             require('terminal').setup()
         end
-    }
+    },
 
     -- Git Integration
-    use {
+     {
         'lewis6991/gitsigns.nvim',
         config = function()
             require('gitsigns').setup{
@@ -178,64 +184,66 @@ require('packer').startup(function()
                 keymaps = {},
             }
         end
-    }
-    use {
+    },
+     {
         'sindrets/diffview.nvim',
         config = function() require('diffview').setup() end,
         cmd = {
             'DiffviewOpen'
         }
-    }
-    use 'tpope/vim-fugitive'
+    },
+     'tpope/vim-fugitive',
 
     -- Telescope
-    use {
+    {
         'nvim-telescope/telescope-fzf-native.nvim',
-        run = 'make'
-    }
-    use 'nvim-lua/popup.nvim'
-    use 'nvim-lua/plenary.nvim'
-    use {
+        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+    },
+     'nvim-lua/popup.nvim',
+     'nvim-lua/plenary.nvim',
+     {
         'nvim-telescope/telescope.nvim',
-        requires = {
-            {'nvim-telescope/telescope-live-grep-args.nvim'}
+        dependencies = {
+            'nvim-telescope/telescope-live-grep-args.nvim'
         }
-    }
-    use 'xiyaowong/telescope-emoji.nvim'
+    },
+     'xiyaowong/telescope-emoji.nvim',
 
     -- Completion
-    use 'neovim/nvim-lspconfig'
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-buffer'
-    use 'L3MON4D3/LuaSnip'
-    use 'saadparwaiz1/cmp_luasnip'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'rafamadriz/friendly-snippets'
-    use {
+     'neovim/nvim-lspconfig',
+     'hrsh7th/nvim-cmp',
+     'hrsh7th/cmp-buffer',
+     'L3MON4D3/LuaSnip',
+     'saadparwaiz1/cmp_luasnip',
+     'hrsh7th/cmp-nvim-lsp',
+     'rafamadriz/friendly-snippets',
+     {
         'ray-x/lsp_signature.nvim',
         config = function() require('lsp_signature').setup() end,
-    }
-    use {
+    },
+     {
         'j-hui/fidget.nvim',
         config = function() require('fidget').setup() end,
-    }
-    use 'simrat39/rust-tools.nvim'
-    use 'jose-elias-alvarez/typescript.nvim'
-    use 'p00f/clangd_extensions.nvim'
+    },
+     'simrat39/rust-tools.nvim',
+     'jose-elias-alvarez/typescript.nvim',
+     'p00f/clangd_extensions.nvim',
 
     -- Tree-sitter
-    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-    use 'nvim-treesitter/nvim-treesitter-textobjects'
-    use {'nvim-treesitter/playground', cmd = "TSPlaygroundToggle"}
-    use 'nvim-treesitter/nvim-treesitter-context'
+     {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'},
+     'nvim-treesitter/nvim-treesitter-textobjects',
+     {'nvim-treesitter/playground', cmd = "TSPlaygroundToggle"},
+     'nvim-treesitter/nvim-treesitter-context',
 
     -- Python
-    use 'vimjas/vim-python-pep8-indent'
-    use 'terrastruct/d2-vim'
+     'vimjas/vim-python-pep8-indent',
+     'terrastruct/d2-vim',
 
-end)
+})
+
 
 require('options')
+require('statusline')
 require('keybindings')
 require('treesitter')
 require('lsp')
