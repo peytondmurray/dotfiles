@@ -101,7 +101,7 @@ PERL_MM_OPT="INSTALL_BASE=/home/pdmurray/perl5"; export PERL_MM_OPT;
 #     . /usr/share/bash-completion/bash_completion
 
 lutris() {
-    PYENV_VERSION=system command lutris "$@"
+    PYENV_VERSION=system vk_amdvlk command lutris "$@"
 }
 
 # BEGIN_KITTY_SHELL_INTEGRATION
