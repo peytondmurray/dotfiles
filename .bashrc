@@ -72,7 +72,9 @@ git() {
 	fi
 }
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# Requires fzf fzf-extras
+source /usr/share/fzf/fzf-extras.bash
+source /usr/share/fzf/{key-bindings,completion}.bash
 
 cdd() {
     cd "${HOME}/Desktop/workspace/$1" || exit
