@@ -4,7 +4,7 @@
     "height": 50,
 
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-right": ["sway/language", "wireplumber", "network", "cpu", "memory", "temperature", "backlight", "battery", "battery#bat2", "clock", "tray"],
+    "modules-right": ["sway/language", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "clock", "tray"],
 
     "sway/language": {
         "format": "{short} {variant}"
@@ -52,9 +52,6 @@
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
     },
     "network": {
         "interface": "wlo1*", // (Optional) To force the use of this interface
