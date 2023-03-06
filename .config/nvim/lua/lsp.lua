@@ -1,7 +1,8 @@
 local nvim_lsp = require('lspconfig')
 local configs = require("lspconfig.configs")
-local luasnip = require('luasnip')
 local luautils = require('luautils')
+local cmp = require('cmp')
+local snippy = require("snippy")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -10,11 +11,27 @@ capabilities.textDocument.foldingRange = {
     lineFoldingOnly = true,
 }
 
-local cmp = require('cmp')
+local template = {
+    sources = {
+        vscode = {
+            './friendly-snippets/snippets/'
+        }
+    },
+    output = {
+        snipmate = {
+            vim.fn.stdpath('data') .. '/site/snippets',
+        }
+    }
+}
+
+require('snippet_converter').setup({
+    templates = { template, }
+})
+
 cmp.setup{
     snippet = {
         expand = function(args)
-            luasnip.lsp_expand(args.body)
+            snippy.expand_snippet(args.body)
         end,
     },
     mapping = {
@@ -32,8 +49,8 @@ cmp.setup{
             function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
-                elseif luasnip.expand_or_jumpable() then
-                    luasnip.expand_or_jump()
+                elseif snippy.can_expand_or_advance() then
+                    snippy.expand_or_advance()
                 elseif luautils.has_words_before() then
                     cmp.complete()
                 else
@@ -46,8 +63,8 @@ cmp.setup{
             function(fallback)
                 if cmp.visible() then
                     cmp.select_prev_item()
-                elseif luasnip.jumpable(-1) then
-                    luasnip.jump(-1)
+                elseif snippy.can_jump(-1) then
+                    snippy.previous()
                 else
                     fallback()
                 end
@@ -57,8 +74,8 @@ cmp.setup{
     },
     sources = require('cmp').config.sources{
         { name = 'nvim_lsp' },
-        { name = 'luasnip' },
         { name = 'buffer' },
+        { name = 'snippy' },
     },
 }
 
@@ -130,7 +147,6 @@ nvim_lsp['terraformls'].setup{
 -- When using rust-tools, you don't need to set up rust-analyzer
 require('rust-tools').setup()
 
-
 if not configs.neocmake then
     configs.neocmake = {
         default_config = {
@@ -144,36 +160,6 @@ if not configs.neocmake then
     }
     nvim_lsp.neocmake.setup({})
 end
-
--- nvim_lsp['sumneko_lua'].setup {
---   settings = {
---     Lua = {
---       runtime = {
---         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
---         version = 'LuaJIT',
---       },
---       diagnostics = {
---         -- Get the language server to recognize the `vim` global
---         globals = {'vim'},
---       },
---       workspace = {
---         -- Make the server aware of Neovim runtime files
---         library = {
---             vim.api.nvim_get_runtime_file("", true),
---             "/home/pdmurray/.luarocks/share/lua/5.4",
---             "/usr/share/lua/5.4"
---         }
---       },
---       -- Do not send telemetry data containing a randomized but unique identifier
---       telemetry = {
---         enable = false,
---       },
---     },
---   },
--- }
-
--- Load snippets given by friendly-snippets
-require('luasnip.loaders.from_vscode').lazy_load()
 
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
     vim.lsp.handlers.signature_help,

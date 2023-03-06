@@ -11,13 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 require("lazy").setup({
-    { 'dstein64/vim-startuptime', cmd = {
-            'StartupTime'
-        }
-    },
-
     'SmiteshP/nvim-gps',
 
     {
@@ -30,7 +24,6 @@ require("lazy").setup({
         'feline-nvim/feline.nvim',
         dependencies = {'nvim-web-devicons'},
     },
-    --  'ryanoasis/vim-devicons'
     'kyazdani42/nvim-web-devicons',
     'junegunn/vim-easy-align',
 
@@ -94,7 +87,7 @@ require("lazy").setup({
         end
     },
 
-     {
+    {
         'windwp/nvim-autopairs',
         config = function()
             require('nvim-autopairs').setup({
@@ -105,13 +98,13 @@ require("lazy").setup({
      'windwp/nvim-ts-autotag',
 
     -- Check mapping conflicts with :CheckMappingConflicts
-     {'lukhio/vim-mapping-conflicts', cmd = 'CheckMappingConflicts'},
+    {'lukhio/vim-mapping-conflicts', cmd = 'CheckMappingConflicts'},
 
     -- Show a popup menu of keybindings when you press a button and wait for a bit
-     {'folke/which-key.nvim', config = function() require('which-key').setup{} end},
+    {'folke/which-key.nvim', config = function() require('which-key').setup{} end},
 
     -- Symbols browser
-     {
+    {
         'simrat39/symbols-outline.nvim',
         cmd = {'SymbolsOutline', 'SymbolsOutlineOpen', 'SymbolsOutlineClose'},
         config = function()
@@ -120,7 +113,7 @@ require("lazy").setup({
     },
 
     -- Indent guides
-     {
+    {
         'lukas-reineke/indent-blankline.nvim',
         config = function()
             require('indent_blankline').setup{
@@ -133,8 +126,13 @@ require("lazy").setup({
     },
 
     -- User-defined text objects
-     'kana/vim-textobj-user',
-     -- 'kana/vim-textobj-line',
+    'kana/vim-textobj-user',
+    {
+        "chrisgrieser/nvim-various-textobjs",
+        config = function ()
+            require("various-textobjs").setup({ useDefaultKeymaps = true })
+        end,
+    },
 
     -- Neovim in the browser
      {'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end},
@@ -156,10 +154,10 @@ require("lazy").setup({
     --     end
     -- }
 
-     'rktjmp/lush.nvim',
+    'rktjmp/lush.nvim',
 
     -- Colorize hex codes
-     {
+    {
         'norcalli/nvim-colorizer.lua',
         event = 'BufReadPre',
         config = function()
@@ -168,7 +166,7 @@ require("lazy").setup({
     },
 
     -- Add ANSI escape sequence support
-     {
+    {
         'norcalli/nvim-terminal.lua',
         config = function()
             require('terminal').setup()
@@ -176,7 +174,7 @@ require("lazy").setup({
     },
 
     -- Git Integration
-     {
+    {
         'lewis6991/gitsigns.nvim',
         config = function()
             require('gitsigns').setup{
@@ -185,64 +183,68 @@ require("lazy").setup({
             }
         end
     },
-     {
+    {
         'sindrets/diffview.nvim',
         config = function() require('diffview').setup() end,
         cmd = {
             'DiffviewOpen'
         }
     },
-     'tpope/vim-fugitive',
+    'tpope/vim-fugitive',
 
     -- Telescope
     {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
     },
-     'nvim-lua/popup.nvim',
-     'nvim-lua/plenary.nvim',
-     {
+    'nvim-lua/popup.nvim',
+    'nvim-lua/plenary.nvim',
+    {
         'nvim-telescope/telescope.nvim',
         dependencies = {
             'nvim-telescope/telescope-live-grep-args.nvim'
         }
     },
-     'xiyaowong/telescope-emoji.nvim',
+    'xiyaowong/telescope-emoji.nvim',
 
     -- Completion
-     'neovim/nvim-lspconfig',
-     'hrsh7th/nvim-cmp',
-     'hrsh7th/cmp-buffer',
-     {
-        'L3MON4D3/LuaSnip',
-        -- dependencies = {
-        --     'rafamadriz/friendly-snippets'
-        -- }
+    'neovim/nvim-lspconfig',
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-buffer',
+    {
+        'dcampos/nvim-snippy',
+        keys = {
+            { '<Tab>', mode = {'i', 'x'} },
+            'g<Tab>',
+        },
+        ft = 'snippets',
+        cmd = { 'SnippyEdit', 'SnippyReload' },
+        dependencies = {
+            'smjonas/snippet-converter.nvim'
+        }
     },
-     'saadparwaiz1/cmp_luasnip',
-     'hrsh7th/cmp-nvim-lsp',
-     {
+    'rafamadriz/friendly-snippets',
+    'saadparwaiz1/cmp_luasnip',
+    'hrsh7th/cmp-nvim-lsp',
+    {
         'ray-x/lsp_signature.nvim',
         config = function() require('lsp_signature').setup() end,
     },
-     {
+    {
         'j-hui/fidget.nvim',
         config = function() require('fidget').setup() end,
     },
-     'simrat39/rust-tools.nvim',
-     'jose-elias-alvarez/typescript.nvim',
-     'p00f/clangd_extensions.nvim',
+    'simrat39/rust-tools.nvim',
+    'jose-elias-alvarez/typescript.nvim',
+    'p00f/clangd_extensions.nvim',
 
     -- Tree-sitter
-     {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'},
-     'nvim-treesitter/nvim-treesitter-textobjects',
-     {'nvim-treesitter/playground', cmd = "TSPlaygroundToggle"},
-     'nvim-treesitter/nvim-treesitter-context',
+    {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'},
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    'nvim-treesitter/nvim-treesitter-context',
 
     -- Python
-     'vimjas/vim-python-pep8-indent',
-     'terrastruct/d2-vim',
-
+    'vimjas/vim-python-pep8-indent',
 })
 
 
@@ -250,7 +252,6 @@ require('options')
 require('statusline')
 require('keybindings')
 require('treesitter')
-require('lsp')
 require('dapconfig')
 require('telescope').setup{
     colorscheme = {
@@ -270,3 +271,4 @@ require('telescope').load_extension('live_grep_args')
 require('telescope').load_extension('emoji')
 require('styles')
 require('tree')
+require('lsp')
