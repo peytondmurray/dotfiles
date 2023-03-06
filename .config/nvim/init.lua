@@ -213,10 +213,14 @@ require("lazy").setup({
      'neovim/nvim-lspconfig',
      'hrsh7th/nvim-cmp',
      'hrsh7th/cmp-buffer',
-     'L3MON4D3/LuaSnip',
+     {
+        'L3MON4D3/LuaSnip',
+        -- dependencies = {
+        --     'rafamadriz/friendly-snippets'
+        -- }
+    },
      'saadparwaiz1/cmp_luasnip',
      'hrsh7th/cmp-nvim-lsp',
-     'rafamadriz/friendly-snippets',
      {
         'ray-x/lsp_signature.nvim',
         config = function() require('lsp_signature').setup() end,
