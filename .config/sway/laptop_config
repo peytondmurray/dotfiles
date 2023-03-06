@@ -1,7 +1,7 @@
 set $mod Mod4
 
 # Monitor configuration
-output eDP-1 pos 0 0
+output eDP-1 pos 0 0 scale 1
 output DSI-1 disable
 
 input type:keyboard {
@@ -10,6 +10,11 @@ input type:keyboard {
     xkb_options "grp:win_space_toggle"
     repeat_delay 300
     repeat_rate 80
+}
+
+# Disable the touchscreen
+input 1267:16485:ELAN9008:00_04F3:4065 {
+    events disabled
 }
 
 # Touchpad configuration
@@ -214,12 +219,12 @@ bar {
 }
 
 include /etc/sway/config.d/*
-exec_always pgrep -x lxpolkit || lxpolkit &
+exec_always pgrep -x dunst || dunst &
 exec_always swaymsg output '*' bg /home/pdmurray/.config/wallpapers/pebbles_stones_dark_152025_3840x2160.jpg fill
 exec_always /usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr
 exec_always pgrep -x udiskie || udiskie &
-exec_always pgrep -x autotiling || /home/pdmurray/.pyenv/versions/mambaforge/envs/dev/bin/autotiling &
+exec_always pgrep -x autotiling-rs || autotiling-rs &
 exec_always pgrep -x clipman || wl-paste -t text --watch clipman store --no-persist &
 exec_always pgrep -x kdeconnectd || /usr/lib/kdeconnectd &
 exec_always pgrep -x kdeconnect-indicator || kdeconnect-indicator &
-exec_always pgrep -x mullvad-vpn || mullvad-vpn
+# exec_always pgrep -x mullvad-vpn || mullvad-vpn

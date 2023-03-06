@@ -1,13 +1,19 @@
 {
     "layer": "top",
     "position": "bottom",
-    "height": 30,
+    "height": 50,
 
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-right": ["sway/language", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "battery#bat2", "clock", "tray"],
+    "modules-right": ["sway/language", "wireplumber", "network", "cpu", "memory", "temperature", "backlight", "battery", "battery#bat2", "clock", "tray"],
 
     "sway/language": {
         "format": "{short} {variant}"
+    },
+
+    "wireplumber": {
+        "format": "{volume}%",
+        "format-muted": "",
+        "on-click": "helvum"
     },
 
     "sway/mode": {
