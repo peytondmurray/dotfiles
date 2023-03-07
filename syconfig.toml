@@ -7,5 +7,5 @@ platforms = ["laptop", "desktop"]
 ".config/sway/{}_config" = ".config/sway/config"
 ".config/sway/{}_status.toml" = ".config/sway/status.toml"
 ".config/kitty/{}_kitty.conf" = ".config/kitty/kitty.conf"
-".xprofile_{}" = ".xprofile"
 ".config/waybar/{}_config" = ".config/waybar/config"
+".config/waybar/{}_style.css" = ".config/waybar/style.css"
