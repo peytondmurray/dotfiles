@@ -125,15 +125,6 @@ require("lazy").setup({
         end
     },
 
-    -- User-defined text objects
-    'kana/vim-textobj-user',
-    {
-        "chrisgrieser/nvim-various-textobjs",
-        config = function ()
-            require("various-textobjs").setup({ useDefaultKeymaps = true })
-        end,
-    },
-
     -- Neovim in the browser
     {
         'glacambre/firenvim',
@@ -246,9 +237,24 @@ require("lazy").setup({
     'p00f/clangd_extensions.nvim',
 
     -- Tree-sitter
-    {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'},
-    'nvim-treesitter/nvim-treesitter-textobjects',
+    {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        dependencies = {
+            {
+                'nvim-treesitter/nvim-treesitter',
+                build = ':TSUpdate',
+                event = { 'BufRead', 'BufNewFile', 'InsertEnter' }
+            },
+
+        },
+    },
     'nvim-treesitter/nvim-treesitter-context',
+    {
+        "chrisgrieser/nvim-various-textobjs",
+        config = function ()
+            require("various-textobjs").setup({ useDefaultKeymaps = true })
+        end,
+    },
 
     -- Python
     'vimjas/vim-python-pep8-indent',

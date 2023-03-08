@@ -224,4 +224,3 @@ exec_always pgrep -x clipman || wl-paste -t text --watch clipman store --no-pers
 exec_always pgrep -x kdeconnectd || /usr/lib/kdeconnectd &
 exec_always pgrep -x kdeconnect-indicator || kdeconnect-indicator &
 exec_always pgrep -x mullvad-vpn || mullvad-vpn
-exec_always openrgb -d "Corsair H115i PRO RGB" -p black &

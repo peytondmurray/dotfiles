@@ -1,0 +1,10 @@
+[Unit]
+Description=Disable RGB on the H115i cooler
+After=multi-user.target suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
+
+[Service]
+Type=oneshot
+ExecStart=openrgb -d "Corsair H115i PRO RGB" -p black
+
+[Install]
+WantedBy=multi-user.target suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target

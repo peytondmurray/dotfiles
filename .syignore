@@ -9,3 +9,4 @@ __pycache__/
 symbolicize.sh
 symbolicize.py
 syconfig.yaml
+.config/systemd/services/
