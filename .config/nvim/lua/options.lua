@@ -99,6 +99,7 @@ vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal textwidth=80", pat
 vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal textwidth=100", pattern = "*.py" })
 vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal tabstop=2 shiftwidth=2", pattern = {"*.ts", "*.js", "*.tsx", "*.jsx", "*.html.j2", "*.html", "*.css", "*.json"} })
 vim.api.nvim_create_autocmd("BufEnter", { command = "set filetype=htmldjango", pattern = {"*.html.j2"} })
+vim.api.nvim_create_autocmd("BufEnter", { command = "set filetype=c", pattern = { "*.c.src", "*.h.src" } })
 
 local json5_filetypes = {
     "tsconfig.json",
