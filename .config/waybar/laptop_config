@@ -27,7 +27,8 @@
         "format": "{:%Y-%m-%d %H:%M}"
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "<span font_desc='Symbols Nerd Font'>🖳 {usage}% {icon0} {icon1} {icon2} {icon3} {icon4} {icon5} {icon6} {icon7} {icon8} {icon9} {icon10} {icon11} {icon12} {icon13} {icon14} {icon15}</span>",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
         "tooltip": false
     },
     "memory": {
