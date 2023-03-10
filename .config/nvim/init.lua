@@ -12,8 +12,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    'SmiteshP/nvim-gps',
 
+    {
+        "vigoux/notifier.nvim",
+        config = function()
+            require('notifier').setup({})
+        end
+    },
     {
         "luukvbaal/statuscol.nvim",
         config = function()
@@ -32,9 +37,9 @@ require("lazy").setup({
         config = function() require('stabilize').setup() end
     },
 
-     'jxnblk/vim-mdx-js',
+    'jxnblk/vim-mdx-js',
 
-     {
+    {
         'danymat/neogen',
         config = function()
             require('neogen').setup {
@@ -135,9 +140,6 @@ require("lazy").setup({
         end
     },
 
-    -- Window motions: windows can be yanked/pasted
-    {'wesq3/vim-windowswap', keys = {'<C-W>'}},
-
     -- Colorschemes
     'savq/melange',
     --  'Mofiqul/dracula.nvim'
@@ -206,24 +208,31 @@ require("lazy").setup({
     'xiyaowong/telescope-emoji.nvim',
 
     -- Completion
+    'SmiteshP/nvim-gps',
     'neovim/nvim-lspconfig',
-    'hrsh7th/nvim-cmp',
-    'hrsh7th/cmp-buffer',
     {
-        'dcampos/nvim-snippy',
-        keys = {
-            { '<Tab>', mode = {'i', 'x'} },
-            'g<Tab>',
-        },
-        ft = 'snippets',
-        cmd = { 'SnippyEdit', 'SnippyReload' },
+        'hrsh7th/nvim-cmp',
+        event = "InsertEnter",
         dependencies = {
-            'smjonas/snippet-converter.nvim'
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'saadparwaiz1/cmp_luasnip',
+            {
+                'dcampos/nvim-snippy',
+                keys = {
+                    { '<Tab>', mode = {'i', 'x'} },
+                    'g<Tab>',
+                },
+                ft = 'snippets',
+                cmd = { 'SnippyEdit', 'SnippyReload' },
+                dependencies = {
+                    'smjonas/snippet-converter.nvim',
+                    'rafamadriz/friendly-snippets',
+                }
+            },
         }
     },
-    'rafamadriz/friendly-snippets',
-    'saadparwaiz1/cmp_luasnip',
-    'hrsh7th/cmp-nvim-lsp',
     {
         'ray-x/lsp_signature.nvim',
         config = function() require('lsp_signature').setup() end,
