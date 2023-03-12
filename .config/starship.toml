@@ -64,6 +64,7 @@ format = '[ $symbol ($version) ]($style)'
 symbol = " "
 style = "bold black fg:bright-black bg:red"
 format = '[ $symbol ($version) ]($style)'
+detect_extensions = []
 
 [rust]
 symbol = " "
