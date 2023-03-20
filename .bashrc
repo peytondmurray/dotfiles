@@ -77,19 +77,19 @@ source /usr/share/fzf/fzf-extras.bash
 source /usr/share/fzf/{key-bindings,completion}.bash
 
 cdd() {
-    cd "${HOME}/Desktop/workspace/$1" || exit
+    cd "${HOME}/Desktop/workspace/$1" || return
 }
 
 cdt() {
-    cd "${HOME}/Desktop/telescope/$1" || exit
+    cd "${HOME}/Desktop/telescope/$1" || return
 }
 
 cdsp() {
-    cd "$(python -c 'import site; print(site.getsitepackages()[0])')" || exit
+    cd "$(python -c 'import site; print(site.getsitepackages()[0])')" || return
 }
 
 cds() {
-    cd ~/Desktop/workspace/sandbox/ || exit
+    cd ~/Desktop/workspace/sandbox/ || return
 }
 
 PATH="/home/pdmurray/perl5/bin${PATH:+:${PATH}}"; export PATH;
