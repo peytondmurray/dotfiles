@@ -207,7 +207,10 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 # Brightness toggle
 bindsym Pause exec ~/.config/brightness_toggle.sh
 
-bindsym Print exec "grim"
+bindsym $mod+Shift+p exec "grimshot copy screen"
+bindsym $mod+F12 exec "mullvad reconnect"
+bindsym $mod+F11 exec "if [[ $(mullvad status) == 'Disconnected' ]]; then mullvad connect; else mullvad disconnect; fi"
+
 
 # borders
 default_border pixel 4
