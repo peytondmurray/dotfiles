@@ -19,6 +19,7 @@ alias rm='trash'
 alias rg='rg -S'
 alias less='less -R'
 alias tree='tree -C'
+alias hx='helix'
 
 export PATH=$HOME/go/bin:$PATH
 export PATH=$HOME/bin:$PATH
