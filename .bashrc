@@ -25,7 +25,6 @@ export PATH=$HOME/go/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.config/scripts:$PATH
-export PATH=$HOME/.local/bin:$PATH
 export PATH=/usr/lib/emscripten:$PATH
 
 export VISUAL=nvim
@@ -34,6 +33,7 @@ export FONTCONFIG_PATH=/etc/fonts
 export TERM=xterm-kitty
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export NUMPY_EXPERIMENTAL_DTYPE_API=1
+export DFT_DISPLAY=side-by-side-show-both
 
 alias nnn='nnn -de -P p'
 export NNN_OPTS="H"
