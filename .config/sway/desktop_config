@@ -181,14 +181,9 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-mode "ringlight" {
-    bindsym $mod+p mode "default", gaps outer all minus 80, exec swaymsg output '*' bg /home/pdmurray/.config/wallpapers/pebbles_stones_dark_152025_3840x2160.jpg fill
-}
-
 bindsym $mod+r mode "resize"
 bindsym $mod+Ctrl+r mode "$mode_gaps"
 bindsym $mod+BackSpace mode "sleep"
-bindsym $mod+p mode "ringlight", gaps outer all plus 80, exec swaymsg output '*' bg '#ffffff' solid_color
 
 # Volume
 bindsym $mod+F8 exec /home/pdmurray/.config/scripts/volume_change.sh +5%
@@ -200,7 +195,8 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 # Brightness toggle
 bindsym Pause exec ~/.config/brightness_toggle.sh
 
-bindsym $mod+Shift+p exec "grimshot copy screen"
+bindsym $mod+Shift+p exec "grimshot copy area"
+bindsym $mod+p exec "grimshot copy area"
 bindsym $mod+F12 exec "mullvad reconnect"
 bindsym $mod+F11 exec "if [[ $(mullvad status) == 'Disconnected' ]]; then mullvad connect; else mullvad disconnect; fi"
 
