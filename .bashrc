@@ -42,6 +42,7 @@ export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_FCOLORS="AAAAE631BBBBCCCCDDDD9999"
 export NNN_PLUG="p:preview-tui"
 export SPLIT='v'
+export DFT_DISPLAY='side-by-side-show-both'
 
 eval "$(luarocks path)"
 

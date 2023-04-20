@@ -152,7 +152,7 @@ bindsym $mod+Shift+r restart
 
 mode "sleep"
 {
-	bindsym Return mode "default"; exec systemctl hibernate
+	bindsym Return mode "default"; exec systemctl suspend-then-hibernate
 	bindsym Escape mode "default"
 }
 
