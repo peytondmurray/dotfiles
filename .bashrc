@@ -46,6 +46,10 @@ export DFT_DISPLAY='side-by-side-show-both'
 
 eval "$(luarocks path)"
 
+export BAZEL_LIMIT_CPUS="HOST_CPUS-1"
+export BAZEL_LIMIT_RAM="HOST_RAM*0.67"
+export BAZEL_JOBS="HOST_CPUS-4"
+
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"

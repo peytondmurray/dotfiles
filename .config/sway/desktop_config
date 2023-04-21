@@ -196,7 +196,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym Pause exec ~/.config/brightness_toggle.sh
 
 bindsym $mod+Shift+p exec "grimshot copy area"
-bindsym $mod+p exec "grimshot copy area"
+bindsym $mod+p exec "grimshot copy screen"
 bindsym $mod+F12 exec "mullvad reconnect"
 bindsym $mod+F11 exec "if [[ $(mullvad status) == 'Disconnected' ]]; then mullvad connect; else mullvad disconnect; fi"
 
