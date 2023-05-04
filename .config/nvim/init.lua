@@ -92,15 +92,7 @@ require("lazy").setup({
         end
     },
 
-    {
-        'windwp/nvim-autopairs',
-        config = function()
-            require('nvim-autopairs').setup({
-                check_ts = true,
-            })
-        end
-    },
-     'windwp/nvim-ts-autotag',
+    'windwp/nvim-ts-autotag',
 
     -- Check mapping conflicts with :CheckMappingConflicts
     {'lukhio/vim-mapping-conflicts', cmd = 'CheckMappingConflicts'},
@@ -214,10 +206,22 @@ require("lazy").setup({
         'hrsh7th/nvim-cmp',
         event = "InsertEnter",
         dependencies = {
+            {
+                'L3MON4D3/LuaSnip',
+                dependencies = {
+                    'rafamadriz/friendly-snippets',
+                }
+            },
+
+            -- cmp sources
+            'saadparwaiz1/cmp_luasnip',
+            'hrsh7th/cmp-nvim-lua',
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-cmdline',
             'hrsh7th/cmp-path',
-            'saadparwaiz1/cmp_luasnip',
+            'hrsh7th/nvim-cmp',
+            'dcampos/cmp-snippy',
             {
                 'dcampos/nvim-snippy',
                 keys = {
@@ -228,8 +232,19 @@ require("lazy").setup({
                 cmd = { 'SnippyEdit', 'SnippyReload' },
                 dependencies = {
                     'smjonas/snippet-converter.nvim',
-                    'rafamadriz/friendly-snippets',
                 }
+            },
+
+            -- Autopairing of (){}[] etc; taken from NvChad config
+            {
+                'windwp/nvim-autopairs',
+                config = function()
+                    require('nvim-autopairs').setup({
+                        check_ts = true,
+                    })
+                    local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+                    require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+                end
             },
         }
     },
