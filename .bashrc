@@ -46,9 +46,9 @@ export DFT_DISPLAY='side-by-side-show-both'
 
 eval "$(luarocks path)"
 
-export BAZEL_LIMIT_CPUS="8"
+export BAZEL_LIMIT_CPUS="4"
 export BAZEL_LIMIT_RAM="HOST_RAM*0.67"
-export BAZEL_JOBS="8"
+export BAZEL_JOBS="4"
 
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PYENV_ROOT="$HOME/.pyenv"
@@ -80,7 +80,7 @@ git() {
 
 # Requires fzf fzf-extras
 source /usr/share/fzf/fzf-extras.bash
-source /usr/share/fzf/{key-bindings,completion}.bash
+# source /usr/share/fzf/{key-bindings,completion}.bash
 
 cdd() {
     cd "${HOME}/Desktop/workspace/$1" || return
@@ -120,3 +120,7 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 # END_KITTY_SHELL_INTEGRATION
 
 eval "$(starship init bash)"
+
+# Atuin setup
+[[ -f /usr/share/bash-preexec/bash-preexec.sh ]] && source /usr/share/bash-preexec/bash-preexec.sh
+eval "$(atuin init bash)"
