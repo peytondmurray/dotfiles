@@ -2,7 +2,7 @@ import os
 import sys
 import argparse
 import pathlib
-import toml
+import tomllib
 import re
 import pprint
 import textwrap
@@ -11,8 +11,8 @@ from collections import defaultdict
 
 def load_config(path):
 
-    with open(path, 'r') as f:
-        raw_config = toml.load(f)
+    with open(path, 'rb') as f:
+        raw_config = tomllib.load(f)
 
     configs = defaultdict(dict)
 
