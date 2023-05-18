@@ -46,9 +46,9 @@ export DFT_DISPLAY='side-by-side-show-both'
 
 eval "$(luarocks path)"
 
-export BAZEL_LIMIT_CPUS="4"
-export BAZEL_LIMIT_RAM="HOST_RAM*0.67"
-export BAZEL_JOBS="4"
+# export BAZEL_LIMIT_CPUS="4"
+# export BAZEL_LIMIT_RAM="HOST_RAM*0.67"
+# export BAZEL_JOBS="4"
 
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PYENV_ROOT="$HOME/.pyenv"
@@ -57,6 +57,10 @@ eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
 eval "$(ssh-agent)" > /dev/null
+
+playbell() {
+    paplay /usr/share/sounds/freedesktop/stereo/complete.oga
+}
 
 ssh() {
     TERM=xterm-256color command ssh "$@"
