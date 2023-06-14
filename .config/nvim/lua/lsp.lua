@@ -139,6 +139,7 @@ nvim_lsp['bashls'].setup({
 })
 
 -- When using clangd_extensions, you don't need to set up clangd
+nvim_lsp['clangd'].setup({})
 require('clangd_extensions').setup()
 
 nvim_lsp['terraformls'].setup{
