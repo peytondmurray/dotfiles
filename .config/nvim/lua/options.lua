@@ -6,6 +6,8 @@ vim.o.autoindent = true
 vim.o.smartindent = true
 vim.o.smarttab = true
 
+vim.o.showmode = false
+
 vim.o.termguicolors = true
 
 -- Disable "Press Enter to continue nag alerts"

@@ -46,9 +46,7 @@ export DFT_DISPLAY='side-by-side-show-both'
 
 eval "$(luarocks path)"
 
-# export BAZEL_LIMIT_CPUS="4"
-# export BAZEL_LIMIT_RAM="HOST_RAM*0.67"
-# export BAZEL_JOBS="4"
+export BAZEL_ARGS="--local_cpu_resources=HOST_CPUS-1 --local_ram_resources=HOST_RAM*0.8"
 
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PYENV_ROOT="$HOME/.pyenv"
@@ -90,8 +88,8 @@ cdd() {
     cd "${HOME}/Desktop/workspace/$1" || return
 }
 
-cdt() {
-    cd "${HOME}/Desktop/telescope/$1" || return
+cda() {
+    cd "${HOME}/Desktop/astro/$1" || return
 }
 
 cdsp() {
@@ -104,6 +102,11 @@ cds() {
 
 pgdb() {
     gdb "$(pyenv which python)" "$@"
+}
+
+killsc() {
+    pkill --signal 9 wineserver
+    pkill --signal 9 winedevice.exe
 }
 
 PATH="/home/pdmurray/perl5/bin${PATH:+:${PATH}}"; export PATH;
