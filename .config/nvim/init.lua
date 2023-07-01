@@ -37,6 +37,7 @@ require("lazy").setup({
         config = function() require('stabilize').setup() end
     },
 
+    'glench/vim-jinja2-syntax',
     'jxnblk/vim-mdx-js',
 
     {
@@ -255,6 +256,7 @@ require("lazy").setup({
     {
         'j-hui/fidget.nvim',
         config = function() require('fidget').setup() end,
+        tag = 'legacy'
     },
     'simrat39/rust-tools.nvim',
     'jose-elias-alvarez/typescript.nvim',
