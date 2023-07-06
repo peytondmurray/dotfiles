@@ -107,6 +107,13 @@ pgdb() {
 killsc() {
     pkill --signal 9 wineserver
     pkill --signal 9 winedevice.exe
+    pkill --signal 9 Agent.exe
+    pkill --signal 9 conhost.exe
+    pkill --signal 9 rpcss.exe
+    pkill --signal 9 plugplay.exe
+    pkill --signal 9 svchost.exe
+    pkill --signal 9 tabtip.exe
+    pkill --signal 9 services.exe
 }
 
 PATH="/home/pdmurray/perl5/bin${PATH:+:${PATH}}"; export PATH;
