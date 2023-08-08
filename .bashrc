@@ -114,6 +114,7 @@ killsc() {
     pkill --signal 9 svchost.exe
     pkill --signal 9 tabtip.exe
     pkill --signal 9 services.exe
+    pkill --signal 9 explorer.exe
 }
 
 PATH="/home/pdmurray/perl5/bin${PATH:+:${PATH}}"; export PATH;
