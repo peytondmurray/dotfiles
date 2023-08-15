@@ -134,6 +134,10 @@ nvim_lsp['efm'].setup{
     capabilities = capabilities,
 }
 
+nvim_lsp['stylelint_lsp'].setup({
+    filetypes = { "css", "less", "scss", "sugarss", "wxss" }
+})
+
 nvim_lsp['bashls'].setup({
     capabilities = capabilities
 })
