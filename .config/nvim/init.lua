@@ -258,7 +258,6 @@ require("lazy").setup({
         tag = 'legacy'
     },
     'simrat39/rust-tools.nvim',
-    'jose-elias-alvarez/typescript.nvim',
     'p00f/clangd_extensions.nvim',
 
     -- Tree-sitter

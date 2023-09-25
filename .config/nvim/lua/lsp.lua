@@ -83,12 +83,6 @@ cmp.setup{
 
 nvim_lsp['ruff_lsp'].setup({})
 
-require('typescript').setup({
-    server = {
-        capabilities = capabilities
-    }
-})
-
 local eslint = {
     lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT} --rule 'prettier/prettier: false'",
     lintStdin = true,
