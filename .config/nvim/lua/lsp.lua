@@ -80,8 +80,15 @@ cmp.setup{
     },
 }
 
-
-nvim_lsp['ruff_lsp'].setup({})
+if vim.fn.executable('pylsp') == 1 then
+    nvim_lsp['pylsp'].setup({})
+end
+if vim.fn.executable('ruff-lsp') == 1 then
+    nvim_lsp['ruff_lsp'].setup({})
+end
+if vim.fn.executable('esbonio') == 1 then
+    nvim_lsp['esbonio'].setup({})
+end
 
 local eslint = {
     lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT} --rule 'prettier/prettier: false'",
