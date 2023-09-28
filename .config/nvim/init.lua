@@ -77,9 +77,6 @@ require("lazy").setup({
     -- Toggle, display, and navigate marks
      'kshenoy/vim-signature',
 
-    -- Highlight same words as currently hovered word
-     'rrethy/vim-illuminate',
-
     -- Comment a line, selection, or motion
      {
         'numToStr/Comment.nvim',
@@ -114,12 +111,14 @@ require("lazy").setup({
     {
         'lukas-reineke/indent-blankline.nvim',
         config = function()
-            require('indent_blankline').setup{
-                show_current_context = true,
-                show_current_context_start = true,
-                use_treesitter = true,
-                blankline_char = '│'
-            }
+            require('ibl').setup({
+                indent = {
+                    char = '│'
+                },
+                scope = {
+                    enabled = true,
+                }
+            })
         end
     },
 
@@ -184,12 +183,18 @@ require("lazy").setup({
     },
     'tpope/vim-fugitive',
 
+    {
+        'tzachar/local-highlight.nvim',
+        config = function()
+            require('local-highlight').setup()
+        end
+    },
+
     -- Telescope
     {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
     },
-    'nvim-lua/popup.nvim',
     'nvim-lua/plenary.nvim',
     {
         'nvim-telescope/telescope.nvim',
