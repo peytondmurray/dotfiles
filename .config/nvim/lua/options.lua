@@ -88,7 +88,8 @@ vim.g.firenvim_config = {
 
 vim.g.kommentary_create_default_mappings = false
 
-vim.cmd('colorscheme melange')
+-- vim.cmd('colorscheme melange')
+vim.cmd('colorscheme caret')
 -- vim.cmd('colorscheme tokyonight')
 -- vim.cmd('colorscheme nightfox')
 -- vim.cmd('colorscheme gruvbox')

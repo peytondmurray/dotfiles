@@ -1,4 +1,5 @@
-local palette = require('melange.palettes.dark')
+local palette = require('caret').palette
+-- local palette = require('melange.palettes.dark')
 -- local nf_palette = require('nightfox.palette').load()
 -- local palette = require('gruvbox.palette')
 local lsp = require('feline.providers.lsp')
@@ -11,37 +12,69 @@ local force_inactive = {
     bufnames = {}
 }
 
-
+local caret_colors = require('caret').get_colors()
 local colors = {
-    bg             = palette.a.bg,
-    fg             = palette.a.fg,
-    dark_black     = palette.a.bg,
-    dark_red       = palette.d.red,
-    dark_green     = palette.d.green,
-    dark_yellow    = palette.d.yellow,
-    dark_blue      = palette.d.blue,
-    dark_magenta   = palette.d.magenta,
-    dark_cyan      = palette.d.cyan,
-    dark_white     = palette.a.com,
-    black          = palette.a.overbg,
-    red            = palette.c.red,
-    green          = palette.c.green,
-    yellow         = palette.c.yellow,
-    blue           = palette.c.blue,
-    magenta        = palette.c.magenta,
-    cyan           = palette.c.cyan,
-    white          = palette.a.faded,
-    bright_black   = palette.a.sel,
-    bright_red     = palette.b.red,
-    bright_green   = palette.b.green,
-    bright_yellow  = palette.b.yellow,
-    bright_blue    = palette.b.blue,
-    bright_magenta = palette.b.magenta,
-    bright_cyan    = palette.b.cyan,
-    bright_white   = palette.a.fg,
-    skyblue        = palette.c.cyan,
-    violet         = palette.d.magenta,
+    bg             = caret_colors.bg0,
+    fg             = caret_colors.fg0,
+    dark_black     = palette.dark1,
+    dark_red       = palette.faded_red,
+    dark_green     = palette.faded_green,
+    dark_yellow    = palette.faded_yellow,
+    dark_blue      = palette.faded_blue,
+    dark_magenta   = palette.faded_purple,
+    dark_cyan      = palette.faded_aqua,
+    dark_white     = palette.light1,
+    black          = palette.black,
+    red            = palette.neutral_red,
+    green          = palette.neutral_green,
+    yellow         = palette.neutral_yellow,
+    blue           = palette.neutral_blue,
+    magenta        = palette.neutral_magenta,
+    cyan           = palette.neutral_aqua,
+    white          = palette.gray,
+    bright_black   = palette.dark3,
+    bright_red     = palette.bright_red,
+    bright_green   = palette.bright_green,
+    bright_yellow  = palette.bright_yellow,
+    bright_blue    = palette.bright_blue,
+    bright_magenta = palette.bright_purple,
+    bright_cyan    = palette.bright_aqua,
+    bright_white   = palette.light3,
+    skyblue        = palette.bright_blue,
+    violet         = palette.bright_purple,
 }
+
+
+-- local colors = {
+--     bg             = palette.a.bg,
+--     fg             = palette.a.fg,
+--     dark_black     = palette.a.bg,
+--     dark_red       = palette.d.red,
+--     dark_green     = palette.d.green,
+--     dark_yellow    = palette.d.yellow,
+--     dark_blue      = palette.d.blue,
+--     dark_magenta   = palette.d.magenta,
+--     dark_cyan      = palette.d.cyan,
+--     dark_white     = palette.a.com,
+--     black          = palette.a.overbg,
+--     red            = palette.c.red,
+--     green          = palette.c.green,
+--     yellow         = palette.c.yellow,
+--     blue           = palette.c.blue,
+--     magenta        = palette.c.magenta,
+--     cyan           = palette.c.cyan,
+--     white          = palette.a.faded,
+--     bright_black   = palette.a.sel,
+--     bright_red     = palette.b.red,
+--     bright_green   = palette.b.green,
+--     bright_yellow  = palette.b.yellow,
+--     bright_blue    = palette.b.blue,
+--     bright_magenta = palette.b.magenta,
+--     bright_cyan    = palette.b.cyan,
+--     bright_white   = palette.a.fg,
+--     skyblue        = palette.c.cyan,
+--     violet         = palette.d.magenta,
+-- }
 
 -- nightfox
 -- local colors = {

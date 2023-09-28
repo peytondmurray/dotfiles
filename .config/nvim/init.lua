@@ -133,7 +133,8 @@ require("lazy").setup({
     },
 
     -- Colorschemes
-    'savq/melange',
+    'projekt0n/caret.nvim',
+    -- 'savq/melange',
     --  'Mofiqul/dracula.nvim'
     --  'EdenEast/nightfox.nvim'
     --  'folke/tokyonight.nvim'
@@ -186,7 +187,9 @@ require("lazy").setup({
     {
         'tzachar/local-highlight.nvim',
         config = function()
-            require('local-highlight').setup()
+            require('local-highlight').setup({
+                hlgroup = 'Underlined'
+            })
         end
     },
 
