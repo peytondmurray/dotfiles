@@ -3,25 +3,25 @@
 
 format = """
 $directory\
-[](fg:cyan bg:bright-black)\
+[](fg:black bg:bright-black)\
 $git_branch\
 $git_metrics\
 $git_status\
 $git_state\
 $git_commit\
-[](fg:bright-black bg:red)\
+[](fg:bright-black bg:yellow)\
 $python\
 $c\
 $nodejs\
 $rust\
-[ ](fg:red)\
+[ ](fg:yellow)\
 """
 
 # Disable the blank line at the start of the prompt
 # add_newline = false
 
 [directory]
-style = "bold black bg:cyan"
+style = "bold bright-purple bg:black"
 format = "[ $path ]($style)"
 truncation_length = 3
 
@@ -31,9 +31,9 @@ style = "bold bright-white bg:bright-black"
 format = '[ $symbol $branch ]($style)'
 
 [git_metrics]
-format = '([+$added]($added_style)[|](white bg:bright-black))([-$deleted]($deleted_style))'
-added_style = "bold green bg:bright-black"
-deleted_style = "bold red bg:bright-black"
+format = '([+$added]($added_style)[|](bold white bg:bright-black))([-$deleted]($deleted_style))'
+added_style = "bold blue bg:bright-black"
+deleted_style = "bold yellow bg:bright-black"
 disabled = false
 
 [git_status]
@@ -51,22 +51,22 @@ commit_hash_length = 9
 
 [python]
 symbol = " "
-style = "bold black fg:bright-black bg:red"
+style = "bold black fg:bright-black bg:yellow"
 format = '[ ${symbol} ${version}(\($virtualenv\)) ]($style)'
 pyenv_version_name = true
 
 [c]
 symbol = " "
-style = "bold black fg:bright-black bg:red"
+style = "bold black fg:bright-black bg:yellow"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = " "
-style = "bold black fg:bright-black bg:red"
+style = "bold black fg:bright-black bg:yellow"
 format = '[ $symbol ($version) ]($style)'
 detect_extensions = []
 
 [rust]
 symbol = " "
-style = "bold black fg:bright-black bg:red"
+style = "bold black fg:bright-black bg:yellow"
 format = '[ $symbol ($version) ]($style)'

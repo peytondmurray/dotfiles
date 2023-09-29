@@ -26,7 +26,7 @@ require("lazy").setup({
         end
     },
     {
-        'feline-nvim/feline.nvim',
+        'nvim-lualine/lualine.nvim',
         dependencies = {'nvim-web-devicons'},
     },
     'kyazdani42/nvim-web-devicons',
@@ -133,7 +133,10 @@ require("lazy").setup({
     },
 
     -- Colorschemes
-    'projekt0n/caret.nvim',
+    {
+        'rose-pine/neovim',
+        name = 'rose-pine',
+    },
     -- 'savq/melange',
     --  'Mofiqul/dracula.nvim'
     --  'EdenEast/nightfox.nvim'
