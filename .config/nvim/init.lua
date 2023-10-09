@@ -136,6 +136,11 @@ require("lazy").setup({
     {
         'rose-pine/neovim',
         name = 'rose-pine',
+        config = function()
+            require('rose-pine').setup({
+                disable_italics = true
+            })
+        end
     },
     -- 'savq/melange',
     --  'Mofiqul/dracula.nvim'
