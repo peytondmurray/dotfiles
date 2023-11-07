@@ -301,22 +301,6 @@ require("lazy").setup({
 
     -- Line diffs
     'AndrewRadev/linediff.vim',
-
-    {
-        'epwalsh/obsidian.nvim',
-        event = { 'BufReadPre ' .. vim.fn.expand '~' .. '/Documents/Obsidian Vault/**.md' },
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            'hrsh7th/nvim-cmp',
-            'nvim-telescope/telescope.nvim',
-        },
-        opts = {
-            dir = '~/Documents/Obsidian Vault',
-            completion = {
-                nvim_cmp = true,
-            }
-        }
-    },
 })
 
 

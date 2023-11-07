@@ -132,6 +132,7 @@ nvim_lsp['efm'].setup{
             typescriptreact = {eslint},
         }
     },
+    single_file_support = true,
     capabilities = capabilities,
 }
 
