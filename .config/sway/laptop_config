@@ -232,4 +232,4 @@ exec_always pgrep -x autotiling-rs || autotiling-rs &
 exec_always pgrep -x clipman || wl-paste -t text --watch clipman store --no-persist &
 exec_always pgrep -x kdeconnectd || /usr/lib/kdeconnectd &
 exec_always pgrep -x kdeconnect-indicator || kdeconnect-indicator &
-# exec_always pgrep -x mullvad-vpn || mullvad-vpn
+exec_always pgrep -x mullvad-vpn || mullvad-vpn

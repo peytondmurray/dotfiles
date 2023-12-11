@@ -138,7 +138,12 @@ require("lazy").setup({
         name = 'rose-pine',
         config = function()
             require('rose-pine').setup({
-                disable_italics = true
+                disable_italics = true,
+                highlight_groups = {
+                    Cursor = {
+                        fg = "gold"
+                    }
+                }
             })
         end
     },

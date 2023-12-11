@@ -177,3 +177,6 @@ vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
     vim.lsp.handlers.hover,
     {border = 'single'}
 )
+
+nvim_lsp['html'].setup({})
+nvim_lsp['cssls'].setup({})
