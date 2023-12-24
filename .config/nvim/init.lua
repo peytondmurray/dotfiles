@@ -301,9 +301,6 @@ require("lazy").setup({
         end,
     },
 
-    -- Python
-    'vimjas/vim-python-pep8-indent',
-
     -- Line diffs
     'AndrewRadev/linediff.vim',
 })
