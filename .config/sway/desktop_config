@@ -27,7 +27,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec kitty
-bindsym $mod+Shift+Return exec kitty -o linux_display_server=x11
+bindsym $mod+Shift+Return exec kitty -o linux_display_server=x11 --hold echo "kitty is in X11!"
 
 # kill focused window
 bindsym $mod+w kill

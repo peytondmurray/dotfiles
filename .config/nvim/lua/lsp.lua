@@ -90,52 +90,6 @@ if vim.fn.executable('esbonio') == 1 then
     nvim_lsp['esbonio'].setup({})
 end
 
-local eslint = {
-    lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT} --rule 'prettier/prettier: false'",
-    lintStdin = true,
-    lintFormats = {"%f:%l:%c: %m"},
-    lintIgnoreExitCode = true,
-    formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
-    formatStdin = true
-}
-
-local function eslint_config_exists()
-    local eslintrc = vim.fn.glob(".eslintrc*", 0, 1)
-
-    if not vim.tbl_isempty(eslintrc) then
-        return true
-    end
-
-    if vim.fn.filereadable("package.json") then
-        if vim.fn.json_decode(vim.fn.readfile("package.json"))["eslintConfig"] then
-            return true
-        end
-    end
-
-    return false
-end
-
-nvim_lsp['efm'].setup{
-    init_options = {documentFormatting = true},
-    filetypes = {"javascript", "typescript"},
-    root_dir = function()
-        if not eslint_config_exists() then
-            return nil
-        end
-        return vim.fn.getcwd()
-    end,
-    settings = {
-        rootMarkers = {".eslintrc.*", ".git/"},
-        languages = {
-            javascript = {eslint},
-            typescript = {eslint},
-            typescriptreact = {eslint},
-        }
-    },
-    single_file_support = true,
-    capabilities = capabilities,
-}
-
 nvim_lsp['stylelint_lsp'].setup({
     filetypes = { "css", "less", "scss", "sugarss", "wxss" }
 })
@@ -180,3 +134,4 @@ vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
 
 nvim_lsp['html'].setup({})
 nvim_lsp['cssls'].setup({})
+nvim_lsp['eslint'].setup({})
