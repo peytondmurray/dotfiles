@@ -161,3 +161,5 @@ nvim_lsp['eslint'].setup{
         mode = "location"
     }
 }
+
+nvim_lsp['r_language_server'].setup({})
