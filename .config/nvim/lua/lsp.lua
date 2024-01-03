@@ -134,4 +134,30 @@ vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
 
 nvim_lsp['html'].setup({})
 nvim_lsp['cssls'].setup({})
-nvim_lsp['eslint'].setup({})
+nvim_lsp['eslint'].setup{
+    codeAction = {
+        disableRuleComment = {
+            enable = true,
+            location = "separateLine"
+        },
+        showDocumentation = {
+            enable = true
+        }
+    },
+    codeActionOnSave = {
+        enable = false,
+        mode = "all"
+    },
+    format = true,
+    nodePath = "",
+    onIgnoredFiles = "off",
+    packageManager = "yarn",
+    quiet = false,
+    rulesCustomizations = {},
+    run = "onType",
+    useESLintClass = false,
+    validate = "on",
+    workingDirectory = {
+        mode = "location"
+    }
+}
