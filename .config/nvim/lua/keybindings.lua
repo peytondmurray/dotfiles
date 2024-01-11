@@ -115,7 +115,7 @@ map('n', '<leader>c', function() require('Comment.api').toggle.linewise.current(
 map("x", "<leader>c", function() vim.api.nvim_feedkeys('', 'nx', false); require('Comment.api').toggle.linewise(vim.fn.visualmode()) end, {silent = true})
 
 -- Symbols outline
-map('n', '<leader>m', '<cmd>SymbolsOutline<CR>', opts)
+map('n', '<leader>m', '<cmd>Outline<CR>', opts)
 
 -- NvimTree
 map('n', '<leader>z', '<cmd>NvimTreeToggle<CR>', opts)

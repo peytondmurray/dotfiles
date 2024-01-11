@@ -100,11 +100,16 @@ require("lazy").setup({
 
     -- Symbols browser
     {
-        'simrat39/symbols-outline.nvim',
-        cmd = {'SymbolsOutline', 'SymbolsOutlineOpen', 'SymbolsOutlineClose'},
+        "hedyhli/outline.nvim",
         config = function()
-            require('symbols-outline').setup()
-        end
+            require("outline").setup({
+                symbols = {
+		            filter = {
+                        python = { 'Function', 'Class' },
+	                }
+                }
+            })
+        end,
     },
 
     -- Indent guides
@@ -138,7 +143,9 @@ require("lazy").setup({
         name = 'rose-pine',
         config = function()
             require('rose-pine').setup({
-                disable_italics = true,
+                styles = {
+                    italic = false
+                },
                 highlight_groups = {
                     Cursor = {
                         fg = "gold"
