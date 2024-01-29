@@ -10,7 +10,7 @@ vim.o.showmode = false
 
 vim.o.termguicolors = true
 
--- Disable "Press Enter to continue nag alerts"
+-- Disable "Press Enter to continue" nag alerts
 vim.o.cmdheight = 2
 
 -- Diagnostic messaging
@@ -151,12 +151,9 @@ for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
 end
 
-vim.g.doge_enable_mappings = false
-vim.g.doge_doc_standard_python = 'numpy'
-
 vim.o.laststatus = 3
 
-vim.o.winbar = '%f'
+vim.o.winbar = "%f"
 
 vim.wo.foldcolumn = '1'
 vim.wo.foldlevel = 99
