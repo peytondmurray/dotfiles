@@ -3,7 +3,10 @@ set $mod Mod4
 # Monitor configuration
 output HDMI-A-1 mode 3840x2160@60Hz pos 0 0
 
-input type:pointer scroll_factor 2.5
+input type:pointer {
+    scroll_factor 2.5
+    pointer_accel -1
+}
 input type:keyboard {
     xkb_layout "us,fi,ru"
     xkb_variant "altgr-intl,,,"
