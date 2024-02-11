@@ -310,6 +310,14 @@ require("lazy").setup({
 
     -- Line diffs
     'AndrewRadev/linediff.vim',
+
+    -- Typst
+    {
+        'niuiic/typst-preview.nvim',
+        dependencies = {
+            'niuiic/core.nvim'
+        }
+    },
 })
 
 
