@@ -133,7 +133,7 @@ map('n', '<F12>', '<cmd>lua require("dapui").toggle()<CR>=', opts)
 -- map('n', '<leader>dsbm', '<cmd>lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>', opts)
 
 -- Set filetype to terminal
-map('n', '<leader>t', '<cmd>setl filetype=terminal<CR>', opts)
+map('n', '<leader>t', function() require("typst-preview").preview() end, opts)
 
 -- Fugitive
 map('n', '<leader>rr', '<cmd>DiffviewOpen<CR>', opts)
