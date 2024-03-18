@@ -318,6 +318,7 @@ require("lazy").setup({
             'niuiic/core.nvim'
         }
     },
+
 })
 
 
