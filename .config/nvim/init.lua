@@ -65,7 +65,13 @@ require("lazy").setup({
 
     -- DAP
     'mfussenegger/nvim-dap',
-    { 'rcarriga/nvim-dap-ui', dependencies = {'mfussenegger/nvim-dap'} },
+    {
+        'rcarriga/nvim-dap-ui',
+        dependencies = {
+            'mfussenegger/nvim-dap',
+            'https://github.com/nvim-neotest/nvim-nio',
+        }
+    },
 
 
     -- File browser
