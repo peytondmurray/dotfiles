@@ -3,14 +3,14 @@
     "position": "bottom",
     "height": 30,
 
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-right": ["sway/language", "pulseaudio", "network", "cpu", "memory", "temperature", "clock", "tray"],
+    "modules-left": ["hyprland/workspaces", "hyprland/submap"],
+    "modules-right": ["hyprland/language", "pulseaudio", "network", "cpu", "memory", "temperature", "clock", "tray"],
 
-    "sway/language": {
+    "hyprland/language": {
         "format": "<span font_desc='Symbols Nerd Font'> </span> {short} {variant}"
     },
 
-    "sway/mode": {
+    "hyprland/submap": {
         "format": "{}"
     },
 
