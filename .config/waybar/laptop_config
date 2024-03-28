@@ -3,21 +3,21 @@
     "position": "bottom",
     "height": 50,
 
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-right": ["sway/language", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "clock", "tray"],
+    "modules-left": ["hyprland/workspaces", "hyprland/submap"],
+    "modules-right": ["hyprland/language", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "clock", "tray"],
 
-    "sway/language": {
-        "format": "{short} {variant}"
+    "hyprland/language": {
+        "format": "<span font_desc='Symbols Nerd Font'> </span> {short} {variant}"
+    },
+
+    "hyprland/submap": {
+        "format": "{}"
     },
 
     "wireplumber": {
         "format": "{volume}%",
         "format-muted": "",
         "on-click": "helvum"
-    },
-
-    "sway/mode": {
-        "format": "{}"
     },
 
     "tray": {
