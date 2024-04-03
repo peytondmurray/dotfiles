@@ -18,6 +18,9 @@ require('nvim-treesitter.configs').setup {
     },
     indent = {
         enable = true,
+        disable = {
+            "markdown",-- indentation at bullet points is worse
+        },
     },
     autopairs = {
         enable = true

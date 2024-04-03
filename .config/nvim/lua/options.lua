@@ -101,7 +101,7 @@ vim.api.nvim_create_autocmd("BufWritePre", { callback = require('luautils').Stri
 vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal textwidth=80", pattern = "*.md" })
 vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal wrap", pattern = "*.md" })
 vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal textwidth=100", pattern = "*.py" })
-vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal tabstop=2 shiftwidth=2", pattern = {"*.ts", "*.js", "*.tsx", "*.jsx", "*.html.j2", "*.html", "*.css", "*.json", "*.njk"} })
+vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal tabstop=2 shiftwidth=2", pattern = {"*.ts", "*.js", "*.tsx", "*.jsx", "*.html.j2", "*.html", "*.css", "*.json", "*.njk", ".md"} })
 vim.api.nvim_create_autocmd("BufEnter", { command = "set filetype=c", pattern = { "*.c.src", "*.h.src" } })
 vim.api.nvim_create_autocmd("BufEnter", { command = "set filetype=jinja.html", pattern = { "*.njk" } })
 
@@ -160,3 +160,5 @@ vim.wo.foldlevel = 99
 vim.wo.foldenable = true
 
 vim.g.loaded_python3_provider = 0
+
+vim.o.formatoptions = 'jcroqln'
