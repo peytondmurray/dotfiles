@@ -17,6 +17,7 @@ export GTK_THEME=Adwaita:dark
 export DISABLE_LAYER_AMD_SWITCHABLE_GRAPHICS_1=1
 ICD_DIR="/usr/share/vulkan/icd.d"
 export VK_ICD_FILENAMES="${ICD_DIR}/radeon_icd.i686.json:${ICD_DIR}/radeon_icd.x86_64.json"
+# export VK_ICD_FILENAMES="${ICD_DIR}/amd_pr_icd64.json"
 
 if [[ -z "${DISPLAY}" && $(tty) == "/dev/tty1" ]]; then
     exec Hyprland

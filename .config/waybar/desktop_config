@@ -34,7 +34,7 @@
         "format-icons": [" ", "  ", " ", " ", " "]
     },
     "network": {
-        "interface": "enp6s0",
+        "interface": "enp8s0",
         "format-wifi": "{essid} ({signalStrength}%)  ",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} <span font_desc='Symbols Nerd Font'>🖧 </span>",
         "format-linked": "{ifname} (No IP) <span font_desc='Symbols Nerd Font'>🖧 </span>",
