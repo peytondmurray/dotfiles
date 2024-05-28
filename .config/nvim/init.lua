@@ -325,6 +325,8 @@ require("lazy").setup({
         }
     },
 
+    'LhKipp/nvim-nu'
+
 })
 
 

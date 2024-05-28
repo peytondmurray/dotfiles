@@ -167,3 +167,5 @@ nvim_lsp['r_language_server'].setup({})
 nvim_lsp['typst_lsp'].setup({})
 
 nvim_lsp['tsserver'].setup({})
+
+nvim_lsp['nushell'].setup({})
