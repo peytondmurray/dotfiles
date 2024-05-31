@@ -1,6 +1,3 @@
-use ($nu.default-config-dir | path join starship.nu)
-source ($nu.default-config-dir | path join atuin.nu)
-
 alias nnn = nnn -de -P p
 alias paru = paru --color=always --devel --sudoloop
 alias ip = ip -c
@@ -39,21 +36,15 @@ def get_git_default_branch [] {
     }
 }
 
-export def --wrapped git [...args: string] {
+def --wrapped git [...args: string] {
     if (($args | length) != 0 and $args.0 == "log") {
         let branch = get_git_current_branch
         let default_branch = get_git_default_branch
 
         if $branch != "" {
-            print (["branch: ", $branch] | str join)
-            print (["Default branch: ", $default_branch] | str join)
-            print (["args: ", $args] | str join)
-            print (["$args | skip 1: ", ($args | skip 1)] | str join)
             if $branch == $default_branch {
-                print "Default branch"
                 ^git logg ...($args | skip 1)
             } else {
-                print "Not in default branch"
                 ^git logg ([$default_branch, '..'] | str join) ...($args | skip 1)
             }
         }

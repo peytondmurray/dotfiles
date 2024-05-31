@@ -90,7 +90,6 @@ load-env {
     'SPLIT': 'v',
 
     'PYENV_VIRTUALENV_DISABLE_PROMPT': '1',
-    'PYENV_ROOT': '$HOME/.pyenv',
 }
 
 $env.PATH = (
@@ -102,6 +101,8 @@ $env.PATH = (
         | prepend /usr/lib/emscripten
         | uniq
 )
+
+$env.config.shell_integration = true
 
 # Directories to search for scripts when calling source or use
 # The default for this is $nu.default-config-dir/scripts
