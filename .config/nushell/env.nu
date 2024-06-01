@@ -89,6 +89,7 @@ load-env {
     'NNN_PLUG': 'p:preview-tui',
     'SPLIT': 'v',
 
+    'CONDA_NO_PROMPT': true,
     'PYENV_VIRTUALENV_DISABLE_PROMPT': '1',
 }
 
@@ -128,4 +129,4 @@ $env.NU_PLUGIN_DIRS = [
 # $env.PATH = ($env.PATH | uniq)
 
 # To load from a custom file you can use:
-source ($nu.default-config-dir | path join 'custom.nu')
+# source ($nu.default-config-dir | path join 'custom.nu')

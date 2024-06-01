@@ -137,9 +137,9 @@ let light_theme = {
 }
 
 # External completer example
-# let carapace_completer = {|spans|
-#     carapace $spans.0 nushell ...$spans | from json
-# }
+let carapace_completer = {|spans|
+    carapace $spans.0 nushell ...$spans | from json
+}
 
 # The default config record. This is where much of your global configuration is setup.
 $env.config = {
@@ -210,7 +210,7 @@ $env.config = {
         external: {
             enable: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up may be very slow
             max_results: 100 # setting it lower can improve completion performance at the cost of omitting some options
-            completer: null # check 'carapace_completer' above as an example
+            completer: $carapace_completer # check 'carapace_completer' above as an example
         }
         use_ls_colors: true # set this to true to enable file/path/directory completions using LS_COLORS
     }
@@ -865,9 +865,69 @@ $env.config = {
     ]
 }
 
+alias nnn = nnn -de -P p
+alias paru = paru --color=always --devel --sudoloop
+alias ip = ip -c
+alias grep = grep --color=always
+alias rm = trash
+alias rg = rg -S
+alias less = less -R
+alias tree = tree -C
+alias hx = helix
+alias playbell = paplay /usr/share/sounds/freedesktop/stereo/complete.oga
+alias cdd = cd ($env.HOME | path join Desktop/workspace)
+alias cds = cd ($env.HOME | path join Desktop/workspace/sandbox)
+alias "mamba activate" = conda activate
+alias "mamba deactivate" = conda deactivate
+
+def ll [] {
+    let dirs = ls -a | where type == dir | sort-by --natural name
+    let others = ls -a | where type != dir | sort-by --natural name
+    $dirs | append $others
+}
+
+def ssh [] {
+    TERM=xterm-256color ^ssh
+}
+
+def get_git_current_branch [] {
+    let branch = ^git rev-parse --abbrev-ref HEAD | sed 's/HEAD/detached/' | complete
+    $branch.stdout | str trim
+}
+
+def get_git_default_branch [] {
+    let branch = ^git rev-parse --abbrev-ref origin/HEAD | complete
+    if $branch.exit_code == 0 {
+        if $branch.stdout == "" {
+            ^git remote set-head origin -a
+            branch = ^git rev-parse --abbrev-ref origin/HEAD | complete
+        }
+        $branch.stdout | cut -c8- | str trim
+    }
+}
+
+def --wrapped git [...args: string] {
+    if (($args | length) != 0 and $args.0 == "log") {
+        let branch = get_git_current_branch
+        let default_branch = get_git_default_branch
+
+        if $branch != "" {
+            if $branch == $default_branch {
+                ^git logg ...($args | skip 1)
+            } else {
+                ^git logg ([$default_branch, '..'] | str join) ...($args | skip 1)
+            }
+        }
+    } else {
+        ^git ...$args
+    }
+}
+
 use ($nu.default-config-dir | path join starship.nu)
 source ($nu.default-config-dir | path join atuin.nu)
 
 $env.config.hooks.env_change.PWD = (
     $env.config.hooks.env_change.PWD | append (source ($nu.default-config-dir | path join direnv.nu))
 )
+
+use ($nu.default-config-dir | path join conda.nu)

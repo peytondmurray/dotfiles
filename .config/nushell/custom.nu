@@ -9,6 +9,8 @@ alias tree = tree -C
 alias hx = helix
 alias playbell = paplay /usr/share/sounds/freedesktop/stereo/complete.oga
 alias cdd = cd ($env.HOME | path join Desktop/workspace )
+alias "mamba activate" = conda activate
+alias "mamba deactivate" = conda deactivate
 
 def ll [] {
     let dirs = ls -a | where type == dir | sort-by --natural name
