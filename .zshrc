@@ -111,6 +111,8 @@ killsc() {
     pkill --signal 9 explorer.exe
 }
 
+bindkey '^H' backward-kill-word
+
 eval "$(luarocks path)"
 eval "$(starship init zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
