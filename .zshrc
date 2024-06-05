@@ -117,6 +117,9 @@ eval "$(luarocks path)"
 eval "$(starship init zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
 
+# case insensitive path-completion 
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/pdmurray/.zshrc'
 
