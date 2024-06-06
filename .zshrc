@@ -1,5 +1,3 @@
-# plugins=(git starship direnv fd gh pip)
-
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -17,7 +15,7 @@ alias pacman='pacman --color=always'
 alias grep='grep --color=always'
 alias vectivate='source vectivate'
 alias kmon='kmon -u'
-alias rm='trash'
+alias rm='trashy put'
 alias rg='rg -S'
 alias less='less -R'
 alias tree='tree -C'
@@ -116,9 +114,10 @@ bindkey '^H' backward-kill-word
 eval "$(luarocks path)"
 eval "$(starship init zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
+eval "$(direnv hook zsh)"
 
 # case insensitive path-completion 
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/pdmurray/.zshrc'
