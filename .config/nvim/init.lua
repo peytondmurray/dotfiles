@@ -136,9 +136,8 @@ require("lazy").setup({
     -- Neovim in the browser
     {
         'glacambre/firenvim',
-        cond = not vim.g.started_by_firenvim,
+        lazy = not vim.g.started_by_firenvim,
         build = function()
-            require("lazy").load({plugins = "firenvim", wait = true})
             vim.fn['firenvim#install'](0)
         end
     },
@@ -325,8 +324,7 @@ require("lazy").setup({
         }
     },
 
-    'LhKipp/nvim-nu'
-
+    'jbyuki/venn.nvim',
 })
 
 
