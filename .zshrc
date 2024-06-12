@@ -110,6 +110,8 @@ killsc() {
 }
 
 bindkey '^H' backward-kill-word
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
 eval "$(luarocks path)"
 eval "$(starship init zsh)"
