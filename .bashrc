@@ -15,7 +15,7 @@ alias pacman='pacman --color=always'
 alias grep='grep --color=always'
 alias vectivate='source vectivate'
 alias kmon='kmon -u'
-alias rm='trash'
+alias rm='trashy put'
 alias rg='rg -S'
 alias less='less -R'
 alias tree='tree -C'
@@ -47,12 +47,6 @@ export DFT_DISPLAY='side-by-side-show-both'
 eval "$(luarocks path)"
 
 export BAZEL_ARGS="--local_cpu_resources=HOST_CPUS-4 --local_ram_resources=HOST_RAM*0.6"
-
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
 
 eval "$(ssh-agent)" > /dev/null
 
@@ -100,10 +94,6 @@ cds() {
     cd ~/Desktop/workspace/sandbox/ || return
 }
 
-pgdb() {
-    gdb "$(pyenv which python)" "$@"
-}
-
 killsc() {
     pkill --signal 9 wineserver
     pkill --signal 9 winedevice.exe
@@ -126,10 +116,6 @@ PERL_MM_OPT="INSTALL_BASE=/home/pdmurray/perl5"; export PERL_MM_OPT;
 # [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
 #     . /usr/share/bash-completion/bash_completion
 
-lutris() {
-    PYENV_VERSION=system vk_amdvlk command lutris "$@"
-}
-
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION
@@ -141,3 +127,18 @@ eval "$(starship init bash)"
 eval "$(atuin init bash --disable-up-arrow)"
 
 eval "$(direnv hook bash)"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/pdmurray/.conda/envs/conda-store/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/pdmurray/.conda/envs/conda-store/etc/profile.d/conda.sh" ]; then
+        . "/home/pdmurray/.conda/envs/conda-store/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/pdmurray/.conda/envs/conda-store/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

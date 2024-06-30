@@ -3,9 +3,9 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 fpath=(/usr/share/zsh/site-functions/ $fpath)
 
-alias exa='exa -la --group-directories-first --sort=extension'
-alias ex='exa'
-alias ll='exa'
+alias eza='eza -la --group-directories-first --sort=extension'
+alias ex='eza'
+alias ll='eza'
 alias du='du -h'
 alias df='df -h'
 alias ip='ip -c'
@@ -21,6 +21,7 @@ alias less='less -R'
 alias tree='tree -C'
 alias hx='helix'
 alias nnn='nnn -de -P p'
+alias dk-clean-all='docker stop $(docker container ls -a -q) && docker system prune -a -f --volumes'
 
 # eval "$(pyenv init --path)"
 eval "$(ssh-agent)" > /dev/null
@@ -48,6 +49,7 @@ export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.config/scripts:$PATH
 export PATH=/usr/lib/emscripten:$PATH
+export PATH=/opt/miniconda3/bin/:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
@@ -127,3 +129,10 @@ zstyle :compinstall filename '/home/pdmurray/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+autoload -Uz /usr/share/zsh/site-functions/*(.:t)
+
+# For some reason this needs to be sourced
+source /usr/share/zsh/site-functions/_pyenv
+
+eval "$(pixi completion --shell zsh)"
