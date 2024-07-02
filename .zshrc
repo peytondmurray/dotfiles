@@ -1,4 +1,3 @@
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 fpath=(/usr/share/zsh/site-functions/ $fpath)
@@ -111,6 +110,8 @@ killsc() {
     pkill --signal 9 explorer.exe
 }
 
+bindkey -e
+
 bindkey '^H' backward-kill-word
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
@@ -122,6 +123,9 @@ eval "$(direnv hook zsh)"
 
 # case insensitive path-completion 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' menu select=0
+
+bindkey '^I' complete-word
 
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/pdmurray/.zshrc'
