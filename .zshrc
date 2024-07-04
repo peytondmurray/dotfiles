@@ -2,6 +2,9 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 fpath=(/usr/share/zsh/site-functions/ $fpath)
 
+# Use emacs style editing, not vim
+bindkey -e
+
 alias eza='eza -la --group-directories-first --sort=extension'
 alias ex='eza'
 alias ll='eza'
@@ -110,11 +113,22 @@ killsc() {
     pkill --signal 9 explorer.exe
 }
 
-bindkey -e
+autoload -U promptinit
+promptinit
 
-bindkey '^H' backward-kill-word
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
+# Set up key bindings for navigating by word and subword
+bindkey '^[[1;5C' forward-word     # Ctrl+Right Arrow
+bindkey '^[[1;5D' backward-word    # Ctrl+Left Arrow
+bindkey '^[[1;3C' forward-char     # Alt+Right Arrow
+bindkey '^[[1;3D' backward-char    # Alt+Left Arrow
+
+# Bind key sequences for deleting by word
+bindkey '^[[3;5~' kill-word        # Ctrl+Delete (if supported by terminal)
+bindkey '^H' backward-kill-word    # Ctrl+Backspace (^H)
+
+# Bind key sequences for deleting by subword
+autoload -U select-word-style
+select-word-style bash
 
 eval "$(luarocks path)"
 eval "$(starship init zsh)"
