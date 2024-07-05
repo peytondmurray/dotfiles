@@ -105,9 +105,11 @@ pgdb() {
 
     version=$($(pyenv which python) -V | awk '{print $2}')
 
-    if [ -d '~/Desktop/workspace/cpython' ]; then
+    if [ ! -d "$HOME/Desktop/workspace/cpython" ]; then
+        echo "Downloading cpython source..."
+
         pushd ~/Desktop/workspace
-        gh repo clone cpython/cpython
+        gh repo clone python/cpython
         pushd cpython
         git fetch --tags
         git checkout v$version
