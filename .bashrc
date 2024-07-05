@@ -148,3 +148,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+conda activate conda-store-server-dev
+echo "Activated conda-store-server-dev"
