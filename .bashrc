@@ -44,6 +44,12 @@ export NNN_PLUG="p:preview-tui"
 export SPLIT='v'
 export DFT_DISPLAY='side-by-side-show-both'
 
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
 eval "$(luarocks path)"
 
 export BAZEL_ARGS="--local_cpu_resources=HOST_CPUS-4 --local_ram_resources=HOST_RAM*0.6"

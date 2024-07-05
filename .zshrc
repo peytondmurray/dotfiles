@@ -97,7 +97,43 @@ cds() {
 }
 
 pgdb() {
-    gdb "$(pyenv which python)" "$@"
+
+    if [ ! -e ".python-version" ]; then
+        echo "No local python environment selected. Please set a local pyenv virtualenv."
+        return 1
+    fi
+
+    version=$($(pyenv which python) -V | awk '{print $2}')
+
+    if [ -d '~/Desktop/workspace/cpython' ]; then
+        pushd ~/Desktop/workspace
+        gh repo clone cpython/cpython
+        pushd cpython
+        git fetch --tags
+        git checkout v$version
+        popd
+        popd
+    fi
+
+    if [ ! -e './.gdbinit' ]; then
+        echo "Writing .gdbinit..."
+
+        if [[ $# == 0 ]]; then
+            echo "Call this function with a local python script to debug."
+            return 1
+        fi
+
+        echo "directory $(pyenv prefix)/include/" >> .gdbinit
+        echo "directory ~/Desktop/workspace/cpython/" >> .gdbinit
+        echo "" >> .gdbinit
+        echo "file $(pyenv which python)" >> .gdbinit
+        echo "run $(pwd)/$1" >> .gdbinit
+
+        echo "Add 'directory <path-to-your-compiled-extension-source>' and any breakpoints you want to .gdbinit, then rerun pgdb."
+        return 0
+    fi
+
+    gdb
 }
 
 killsc() {

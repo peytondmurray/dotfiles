@@ -1,5 +1,6 @@
 add-auto-load-safe-path ~/.pyenv
 add-auto-load-safe-path ~/
+add-auto-load-safe-path /
 set debuginfod enabled on
 set breakpoint pending on
 # set print pretty on
