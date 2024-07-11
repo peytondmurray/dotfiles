@@ -5,6 +5,9 @@ fpath=(/usr/share/zsh/site-functions/ $fpath)
 # Use emacs style editing, not vim
 bindkey -e
 
+# Show what is effectively `ls -l` when tab completing a file
+zstyle ':completion:*' file-list true
+
 alias eza='eza -la --group-directories-first --sort=extension'
 alias ex='eza'
 alias ll='eza'
@@ -75,7 +78,9 @@ git() {
                 git logg "${default_branch}.."
             fi
         fi
-	else
+    elif [[ $1 == "tag" ]]; then
+        command git tag | sort -V
+    else
 		command git "$@"
 	fi
 }
