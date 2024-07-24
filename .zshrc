@@ -1,3 +1,4 @@
+# zmodload zsh/zprof
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 fpath=(/usr/share/zsh/site-functions/ $fpath)
@@ -187,8 +188,12 @@ bindkey '^I' complete-word
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/pdmurray/.zshrc'
 
-autoload -Uz compinit
+autoload -Uz compinit bashcompinit
 compinit
+bashcompinit
+
+complete -C "$(which aws_completer)" aws
+
 # End of lines added by compinstall
 
 autoload -Uz /usr/share/zsh/site-functions/*(.:t)
@@ -197,3 +202,4 @@ autoload -Uz /usr/share/zsh/site-functions/*(.:t)
 source /usr/share/zsh/site-functions/_pyenv
 
 eval "$(pixi completion --shell zsh)"
+# zprof
