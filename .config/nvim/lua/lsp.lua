@@ -168,4 +168,4 @@ nvim_lsp['typst_lsp'].setup({})
 
 nvim_lsp['tsserver'].setup({})
 
-nvim_lsp['nushell'].setup({})
+nvim_lsp['vale_ls'].setup({})

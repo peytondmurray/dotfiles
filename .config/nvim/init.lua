@@ -317,6 +317,10 @@ require("lazy").setup({
     'AndrewRadev/linediff.vim',
 
     'jbyuki/venn.nvim',
+    {
+        'terrastruct/d2-vim',
+        ft = { 'd2' }
+    },
 })
 
 
