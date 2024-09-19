@@ -3,16 +3,18 @@
     "position": "bottom",
     "height": 30,
 
-    "modules-left": ["hyprland/workspaces", "hyprland/submap"],
-    "modules-right": ["hyprland/language", "pulseaudio", "network", "cpu", "memory", "temperature", "clock", "tray"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-right": ["sway/language", "pulseaudio", "network", "cpu", "memory", "temperature", "clock", "tray"],
+    // "modules-left": ["hyprland/workspaces", "hyprland/submap"],
+    // "modules-right": ["hyprland/language", "pulseaudio", "network", "cpu", "memory", "temperature", "clock", "tray"],
 
-    "hyprland/language": {
-        "format": "<span font_desc='Symbols Nerd Font'> </span> {short} {variant}"
-    },
+    // "hyprland/language": {
+    //     "format": "<span font_desc='Symbols Nerd Font'> </span> {short} {variant}"
+    // },
 
-    "hyprland/submap": {
-        "format": "{}"
-    },
+    // "hyprland/submap": {
+    //     "format": "{}"
+    // },
 
     "tray": {
         "spacing": 10
