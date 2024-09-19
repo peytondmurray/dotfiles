@@ -4,15 +4,15 @@ set $mod Mod4
 output HDMI-A-1 mode 3840x2160@60Hz pos 0 0
 
 input type:pointer {
-    scroll_factor 2.5
-    pointer_accel -1
+    scroll_factor 1
+    pointer_accel -0.5
 }
 input type:keyboard {
     xkb_layout "us,fi,ru"
     xkb_variant "altgr-intl,,,"
     xkb_options "grp:win_space_toggle"
     repeat_delay 300
-    repeat_rate 80
+    repeat_rate 120
 }
 
 
@@ -201,7 +201,7 @@ bindsym Pause exec ~/.config/brightness_toggle.sh
 bindsym $mod+Shift+p exec "grimshot copy area"
 bindsym $mod+p exec "grimshot copy screen"
 bindsym $mod+F12 exec "mullvad reconnect"
-bindsym $mod+F11 exec "if [[ $(mullvad status) == 'Disconnected' ]]; then mullvad connect; else mullvad disconnect; fi"
+bindsym $mod+F11 exec "if  mullvad status | grep -qi 'disconnected'; then mullvad connect; else mullvad disconnect; fi"
 
 # borders
 default_border pixel 4

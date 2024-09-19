@@ -14,5 +14,5 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 export GTK_THEME=Adwaita:dark
 
 if [[ -z "${DISPLAY}" && $(tty) == "/dev/tty1" ]]; then
-    exec Hyprland
+    exec sway
 fi
