@@ -167,5 +167,3 @@ nvim_lsp['r_language_server'].setup({})
 nvim_lsp['typst_lsp'].setup({})
 
 nvim_lsp['ts_ls'].setup({})
-
-nvim_lsp['vale_ls'].setup({})
