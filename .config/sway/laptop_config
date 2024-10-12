@@ -8,8 +8,8 @@ input type:keyboard {
     xkb_layout "us,fi,ru"
     xkb_variant "altgr-intl,,,"
     xkb_options "grp:win_space_toggle"
-    repeat_delay 300
-    repeat_rate 80
+    repeat_delay 225
+    repeat_rate 180
 }
 
 # Disable the touchscreen
@@ -210,8 +210,7 @@ bindsym Pause exec ~/.config/brightness_toggle.sh
 bindsym $mod+Shift+p exec "grimshot copy area"
 bindsym $mod+p exec "grimshot copy screen"
 bindsym $mod+F12 exec "mullvad reconnect"
-bindsym $mod+F11 exec "if [[ $(mullvad status) == 'Disconnected' ]]; then mullvad connect; else mullvad disconnect; fi"
-
+bindsym $mod+F11 exec "if  mullvad status | grep -qi 'disconnected'; then mullvad connect; else mullvad disconnect; fi"
 
 # borders
 default_border pixel 4

@@ -160,6 +160,9 @@ killsc() {
 autoload -U promptinit
 promptinit
 
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+
 # Set up key bindings for navigating by word and subword
 bindkey '^[[1;5C' forward-word     # Ctrl+Right Arrow
 bindkey '^[[1;5D' backward-word    # Ctrl+Left Arrow
