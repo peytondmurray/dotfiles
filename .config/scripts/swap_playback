@@ -1,0 +1,28 @@
+#!/bin/bash
+
+SINKS=$(pactl list sinks | awk '/Sink #/ {sink=$2; sub("#", "", sink)} /Name:/ {name=$2} /Description:/ {description=$2; printf "%s,%s,%s\n", sink, name, description}' | column -ts ',')
+INPUTS=$(pactl list sink-inputs | awk '/Sink Input #/ {input=$3; sub("#", "", input)} /Sink:/ {output=$2} /application\.name/ {application=$3; printf "%s,%s,%s\n", input, output, application}' | column -ts ',')
+
+COMBINED_OUTPUT=$(echo "$SINKS" | grep -i 'combined' | awk '{print $1}')
+HEADPHONE_OUTPUT=$(echo "$SINKS" | grep -i 'starship' | awk '{print $1}')
+
+if [[ $1 == 'headphones' ]]; then
+    OUTPUT=$HEADPHONE_OUTPUT
+else
+    OUTPUT=$COMBINED_OUTPUT
+fi
+
+# Use a while loop to read the INPUTS line by line
+# while read -r line; do
+while read line; do
+
+    # Split the line into variables using read
+    read -r input_id output_id app <<< "$line"
+
+    pactl move-sink-input $input_id $OUTPUT;
+
+    # Sleep a bit because if you don't the output
+    # doesn't always swap. Even with 0.05...
+    sleep 0.1
+
+done <<< "$INPUTS"
