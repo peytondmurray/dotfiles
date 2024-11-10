@@ -83,8 +83,8 @@ cmp.setup{
 if vim.fn.executable('pylsp') == 1 then
     nvim_lsp['pylsp'].setup({})
 end
-if vim.fn.executable('ruff-lsp') == 1 then
-    nvim_lsp['ruff_lsp'].setup({})
+if vim.fn.executable('ruff') == 1 then
+    nvim_lsp['ruff'].setup({})
 end
 if vim.fn.executable('esbonio') == 1 then
     nvim_lsp['esbonio'].setup({})
