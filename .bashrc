@@ -18,7 +18,7 @@ alias kmon='kmon -u'
 alias rm='trashy put'
 alias rg='rg -S'
 alias less='less -R'
-alias tree='tree -C'
+alias tree='tree -C --gitignore'
 alias hx='helix'
 
 export PATH=$HOME/go/bin:$PATH
