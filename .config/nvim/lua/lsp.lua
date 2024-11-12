@@ -80,9 +80,6 @@ cmp.setup{
     },
 }
 
-if vim.fn.executable('pylsp') == 1 then
-    nvim_lsp['pylsp'].setup({})
-end
 if vim.fn.executable('ruff') == 1 then
     nvim_lsp['ruff'].setup({})
 end
