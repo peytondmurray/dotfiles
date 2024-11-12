@@ -80,6 +80,30 @@ cmp.setup{
     },
 }
 
+if vim.fn.executable('pylsp') == 1 then
+    nvim_lsp['pylsp'].setup(
+        {
+            settings = {
+                pylsp = {
+                    plugins = {
+                        pyflakes = {
+                            enabled = false
+                        },
+                        pycodestyle = {
+                            enabled = false
+                        },
+                        autopep8 = {
+                            enabled = false
+                        },
+                        flake8 = {
+                            enabled = false
+                        }
+                    }
+                }
+            }
+        }
+    )
+end
 if vim.fn.executable('ruff') == 1 then
     nvim_lsp['ruff'].setup({})
 end
