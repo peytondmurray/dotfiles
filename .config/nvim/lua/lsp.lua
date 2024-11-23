@@ -110,6 +110,9 @@ end
 if vim.fn.executable('esbonio') == 1 then
     nvim_lsp['esbonio'].setup({})
 end
+if vim.fn.executable('gopls') == 1 then
+    nvim_lsp['gopls'].setup({})
+end
 
 nvim_lsp['stylelint_lsp'].setup({
     filetypes = { "css", "less", "scss", "sugarss", "wxss" }
@@ -126,9 +129,6 @@ require('clangd_extensions').setup()
 nvim_lsp['terraformls'].setup{
     capabilities = capabilities,
 }
-
--- When using rust-tools, you don't need to set up rust-analyzer
-require('rust-tools').setup()
 
 if not configs.neocmake then
     configs.neocmake = {

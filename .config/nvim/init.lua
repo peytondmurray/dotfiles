@@ -287,7 +287,11 @@ require("lazy").setup({
         config = function() require('fidget').setup() end,
         tag = 'legacy'
     },
-    'simrat39/rust-tools.nvim',
+    {
+        'mrcjkb/rustaceanvim',
+        version = '^5', -- Recommended
+        lazy = false,   -- This plugin is already lazy
+    },
     'p00f/clangd_extensions.nvim',
 
     -- Tree-sitter
