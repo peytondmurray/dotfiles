@@ -88,6 +88,8 @@ vim.g.firenvim_config = {
 
 vim.g.kommentary_create_default_mappings = false
 
+vim.g.reformat_json_on_save = true
+
 -- vim.cmd('colorscheme melange')
 vim.cmd('colorscheme rose-pine')
 -- vim.cmd('colorscheme tokyonight')
@@ -115,16 +117,18 @@ vim.api.nvim_create_autocmd("BufEnter", { command = "set filetype=json5", patter
 
 local function reformat_if_json(excludes)
     local function jq_reformat(opts)
-        for _, pattern in pairs(excludes) do
-            if opts.file:find(pattern) ~= nil then
-                return
+        if vim.g.reformat_json_on_save then
+            for _, pattern in pairs(excludes) do
+                if opts.file:find(pattern) ~= nil then
+                    return
+                end
             end
+            vim.cmd([[%!jq -n -f /dev/stdin]])
         end
-        vim.cmd([[%!jq -n -f /dev/stdin]])
     end
     return jq_reformat
 end
--- -- Format json on save; strip trailing comma
+-- Format json on save; strip trailing comma
 vim.api.nvim_create_autocmd("BufWritePre", { callback = reformat_if_json(json5_filetypes), pattern = {"*.json"} })
 
 -- disable builtin vim plugins
@@ -164,3 +168,7 @@ vim.wo.foldenable = true
 vim.g.loaded_python3_provider = 0
 
 vim.o.formatoptions = 'jcroqln'
+
+vim.g.markdown_fenced_languages = {
+    "ts=typescript"
+}

@@ -69,8 +69,24 @@ require("lazy").setup({
         'rcarriga/nvim-dap-ui',
         dependencies = {
             'mfussenegger/nvim-dap',
-            'https://github.com/nvim-neotest/nvim-nio',
+            'nvim-neotest/nvim-nio',
         }
+    },
+    {
+        'leoluz/nvim-dap-go',
+        config = function()
+            require('dap-go').setup({
+                dap_configurations = {
+                    {
+                        type = "go",
+                        name = "Attach remote",
+                        mode = "remote",
+                        request = "attach",
+                        program = "${workspaceFolder}/main.go",
+                    },
+                  }
+            })
+        end
     },
 
 
