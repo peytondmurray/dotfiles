@@ -8,8 +8,6 @@ export XDG_SESSION_TYPE=wayland
 export MOZ_ENABLE_WAYLAND=1
 export WLR_NO_HARDWARE_CURSORS=1
 
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
 export GTK_THEME=Adwaita:dark
 
 if [[ -z "${DISPLAY}" && $(tty) == "/dev/tty1" ]]; then

@@ -60,6 +60,8 @@ export PATH=/opt/google-cloud-cli/bin/:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
 playbell() {
     paplay /usr/share/sounds/freedesktop/stereo/complete.oga
