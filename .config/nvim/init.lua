@@ -338,6 +338,9 @@ require("lazy").setup({
         'terrastruct/d2-vim',
         ft = { 'd2' }
     },
+
+    -- Discord presence
+    'andweeb/presence.nvim',
 })
 
 
