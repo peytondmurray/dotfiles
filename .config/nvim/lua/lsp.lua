@@ -184,9 +184,9 @@ nvim_lsp['eslint'].setup{
 }
 
 nvim_lsp['r_language_server'].setup({})
-
 nvim_lsp['tinymist'].setup({})
-
 nvim_lsp['ts_ls'].setup({})
-
 nvim_lsp['biome'].setup({})
+nvim_lsp['gdscript'].setup({})
+nvim_lsp['gdshader_lsp'].setup({})
+nvim_lsp['gh_actions_ls'].setup({})
