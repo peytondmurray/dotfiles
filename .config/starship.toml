@@ -11,6 +11,7 @@ $git_state\
 $git_commit\
 [](fg:bright-black bg:yellow)\
 $python\
+$conda\
 $c\
 $nodejs\
 $rust\
@@ -70,3 +71,8 @@ detect_extensions = []
 symbol = " "
 style = "bold black fg:bright-black bg:yellow"
 format = '[ $symbol ($version) ]($style)'
+
+[conda]
+symbol = "🐍"
+style = "bold black fg:bright-black bg:yellow"
+format = '[ ${symbol} ${environment} ]($style)'

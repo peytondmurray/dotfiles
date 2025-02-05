@@ -29,7 +29,6 @@ alias hx='helix'
 alias nnn='nnn -de -P p'
 alias dk-clean-all='docker stop $(docker container ls -a -q) && docker system prune -a -f --volumes'
 
-# eval "$(pyenv init --path)"
 eval "$(ssh-agent)" > /dev/null
 
 export VISUAL=nvim
@@ -158,6 +157,11 @@ killsc() {
     pkill --signal 9 tabtip.exe
     pkill --signal 9 services.exe
     pkill --signal 9 explorer.exe
+}
+
+setup-pixi() {
+    echo "watch_file pixi.lock" >> .envrc
+    echo 'eval "$(pixi shell-hook)"' >> .envrc
 }
 
 autoload -U promptinit
