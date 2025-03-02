@@ -136,20 +136,20 @@ eval "$(direnv hook bash)"
 
 pyenv activate miniconda3-latest
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/pdmurray/.conda/envs/conda-store/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/pdmurray/.conda/envs/conda-store/etc/profile.d/conda.sh" ]; then
-        . "/home/pdmurray/.conda/envs/conda-store/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/pdmurray/.conda/envs/conda-store/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# # >>> conda initialize >>>
+# # !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/home/pdmurray/.conda/envs/conda-store/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/pdmurray/.conda/envs/conda-store/etc/profile.d/conda.sh" ]; then
+#         . "/home/pdmurray/.conda/envs/conda-store/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/pdmurray/.conda/envs/conda-store/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# # <<< conda initialize <<<
 
-conda activate conda-store-server-dev
-echo "Activated conda-store-server-dev"
+# conda activate conda-store-server-dev
+# echo "Activated conda-store-server-dev"
