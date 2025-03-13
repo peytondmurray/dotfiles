@@ -172,3 +172,6 @@ vim.o.formatoptions = 'jcroqln'
 vim.g.markdown_fenced_languages = {
     "ts=typescript"
 }
+
+-- Turn on inline diagnostic messages
+vim.diagnostic.config({virtual_text = true})
