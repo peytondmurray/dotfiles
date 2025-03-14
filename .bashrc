@@ -134,18 +134,18 @@ eval "$(atuin init bash --disable-up-arrow)"
 
 eval "$(direnv hook bash)"
 
-pyenv activate miniconda3-latest
+pyenv activate miniforge3-latest
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/pdmurray/.pyenv/versions/miniconda3-latest/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/pdmurray/.pyenv/versions/miniforge3-latest/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/pdmurray/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh" ]; then
-        . "/home/pdmurray/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh"
+    if [ -f "/home/pdmurray/.pyenv/versions/miniforge3-latest/etc/profile.d/conda.sh" ]; then
+        . "/home/pdmurray/.pyenv/versions/miniforge3-latest/etc/profile.d/conda.sh"
     else
-        export PATH="/home/pdmurray/.pyenv/versions/miniconda3-latest/bin:$PATH"
+        export PATH="/home/pdmurray/.pyenv/versions/miniforge3-latest/bin:$PATH"
     fi
 fi
 unset __conda_setup
