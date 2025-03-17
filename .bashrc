@@ -150,3 +150,105 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+echo "This is a conda dev env setup."
+
+cd ~/Desktop/workspace/conda/
+_SRC=$(git rev-parse --show-toplevel)
+_DEVENV="${_SRC}/devenv"
+_PYTHON="${_PYTHON:-3.10}"
+_NAME="devenv-${_PYTHON}-c"
+_ENV="${_DEVENV}/envs/${_NAME}"
+_UPDATED="${_ENV}/.devenv-updated"
+_BASEEXE=conda
+_ENVEXE="${_ENV}/bin/conda"
+_MACH="$(uname)"
+
+updating() {
+    # check if explicitly updating or if 24 hrs since last update
+    [ ${_UPDATE} = "true" ] && return 0
+    [ -f "${_UPDATED}" ] || return 0
+    return $(( $(( $(date +%s) - $(date -r "${_UPDATED}" +%s) )) < 86400 ))
+}
+
+# create empty env if it doesn't exist
+if ! [ -d "${_ENV}" ]; then
+    echo "Creating ${_NAME}..."
+    if ! PYTHONPATH="" "${_BASEEXE}" create --yes --quiet "--prefix=${_ENV}" > /dev/null; then
+        echo "Error: failed to create ${_NAME}" 1>&2
+        return 1
+    fi
+fi
+
+# check if explicitly updating or if 24 hrs since last update
+if updating; then
+    echo "Updating ${_NAME}..."
+
+    if ! PYTHONPATH="" "${_BASEEXE}" update --yes --quiet --all > /dev/null; then
+        echo "Error: failed to update development environment" 1>&2
+        return 1
+    fi
+
+    if ! PYTHONPATH="" "${_BASEEXE}" install \
+        --yes \
+        --quiet \
+        "--prefix=${_ENV}" \
+        --override-channels \
+        --channel=defaults \
+        "--file=${_SRC}/tests/requirements.txt" \
+        "--file=${_SRC}/tests/requirements-ci.txt" \
+        "$([ "${_MACH}" = "Linux" ] && echo "--file=${_SRC}/tests/requirements-Linux.txt")" \
+        "python=${_PYTHON}" > /dev/null; then
+        echo "Error: failed to update ${_NAME}" 1>&2
+        return 1
+    fi
+
+    # update timestamp
+    touch "${_UPDATED}"
+fi
+
+# "install" conda
+# trick conda into importing from our source code and not from site-packages
+if [ -z "${PYTHONPATH+x}" ]; then
+    export PYTHONPATH="${_SRC}"
+else
+    export PYTHONPATH="${_SRC}:${PYTHONPATH}"
+fi
+
+# initialize conda command
+echo "Initializing shell integration..."
+eval "$(${_ENVEXE} shell.bash hook)" > /dev/null
+if ! [ $? = 0 ]; then
+    echo "Error: failed to initialize shell integration" 1>&2
+    return 1
+fi
+
+# activate env
+echo "Activating ${_NAME}..."
+if ! conda activate "${_ENV}" > /dev/null; then
+    echo "Error: failed to activate ${_NAME}" 1>&2
+    return 1
+fi
+
+# cleanup
+unset _ARCH
+unset _BASEEXE
+unset _CMD
+unset _DEFAULT_ARCH
+unset _DEFAULT_DEVENV
+unset _DEFAULT_DRYRUN
+unset _DEFAULT_MACH
+unset _DEFAULT_PYTHON
+unset _DEFAULT_UPDATE
+unset _DEVENV
+unset _DRYRUN
+unset _ENV
+unset _ENVEXE
+unset _INSTALLER
+unset _MACH
+unset _NAME
+unset _PYTHON
+unset _PYTHONEXE
+unset _SRC
+unset _UPDATE
+unset _UPDATED
