@@ -241,7 +241,7 @@ require("lazy").setup({
         'nvim-telescope/telescope.nvim',
         dependencies = {
             'nvim-telescope/telescope-live-grep-args.nvim'
-        }
+        },
     },
     'xiyaowong/telescope-emoji.nvim',
 
@@ -370,6 +370,20 @@ require('telescope').setup{
             'compile_commands.json'
         },
     },
+    extensions = {
+        live_grep_args = {
+            vimgrep_arguments = {
+                "rg",
+                "--color=never",
+                "--no-heading",
+                "--with-filename",
+                "--line-number",
+                "--column",
+                "--smart-case",
+                "--hidden",
+            }
+        }
+    }
 }
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('live_grep_args')
