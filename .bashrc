@@ -135,6 +135,7 @@ eval "$(atuin init bash --disable-up-arrow)"
 eval "$(direnv hook bash)"
 
 pyenv activate miniforge3-latest
+\rm -f "$(pyenv virtualenv-prefix)/etc/profile.d/mamba.sh"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -152,6 +153,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 echo "This is a conda dev env setup."
+
 
 cd ~/Desktop/workspace/conda/
 _SRC=$(git rev-parse --show-toplevel)
