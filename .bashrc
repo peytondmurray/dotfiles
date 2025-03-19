@@ -166,7 +166,7 @@ _MACH="$(uname)"
 
 updating() {
     # check if explicitly updating or if 24 hrs since last update
-    [ ${_UPDATE} = "true" ] && return 0
+    [ "${_UPDATE}" = "true" ] && return 0
     [ -f "${_UPDATED}" ] || return 0
     return $(( $(( $(date +%s) - $(date -r "${_UPDATED}" +%s) )) < 86400 ))
 }
