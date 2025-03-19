@@ -3,7 +3,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias exa='exa -la --group-directories-first --sort=extension'
+alias exa='exa -laH --group-directories-first --sort=extension'
 alias ex='exa'
 alias ll='exa'
 alias du='du -h'

@@ -9,7 +9,7 @@ bindkey -e
 # Show what is effectively `ls -l` when tab completing a file
 zstyle ':completion:*' file-list true
 
-alias eza='eza -la --group-directories-first --sort=extension'
+alias eza='eza -laH --group-directories-first --sort=extension'
 alias ex='eza'
 alias ll='eza'
 alias du='du -h'
