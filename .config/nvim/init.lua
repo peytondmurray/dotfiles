@@ -94,6 +94,13 @@ require("lazy").setup({
     {
         'kyazdani42/nvim-tree.lua',
         dependencies = {'kyazdani42/nvim-web-devicons'},
+        config = function()
+            require("nvim-tree").setup({
+                filters = {
+                    custom = { "^\\.git$" }
+                }
+            })
+        end
     },
 
     -- Toggle, display, and navigate marks
@@ -381,6 +388,7 @@ require('telescope').setup{
                 "--column",
                 "--smart-case",
                 "--hidden",
+                "--glob=!.git/",
             }
         }
     }
