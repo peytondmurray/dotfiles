@@ -44,11 +44,11 @@ export NNN_PLUG="p:preview-tui"
 export SPLIT='v'
 export DFT_DISPLAY='side-by-side-show-both'
 
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
+# export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
 
 eval "$(luarocks path)"
 
@@ -134,23 +134,23 @@ eval "$(atuin init bash --disable-up-arrow)"
 
 eval "$(direnv hook bash)"
 
-pyenv activate miniforge3-latest
-\rm -f "$(pyenv virtualenv-prefix)/etc/profile.d/mamba.sh"
+export PATH=/opt/miniforge/bin:$PATH
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/pdmurray/.pyenv/versions/miniforge3-latest/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/miniforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/pdmurray/.pyenv/versions/miniforge3-latest/etc/profile.d/conda.sh" ]; then
-        . "/home/pdmurray/.pyenv/versions/miniforge3-latest/etc/profile.d/conda.sh"
+    if [ -f "/opt/miniforge/etc/profile.d/conda.sh" ]; then
+        . "/opt/miniforge/etc/profile.d/conda.sh"
     else
-        export PATH="/home/pdmurray/.pyenv/versions/miniforge3-latest/bin:$PATH"
+        export PATH="/opt/miniforge/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
 
 echo "This is a conda dev env setup."
 
@@ -185,11 +185,6 @@ fi
 # check if explicitly updating or if 24 hrs since last update
 if updating; then
     echo "Updating ${_NAME}..."
-
-    if ! PYTHONPATH="" "${_BASEEXE}" update --yes --quiet --all > /dev/null; then
-        echo "Error: failed to update development environment" 1>&2
-        return 1
-    fi
 
     if ! PYTHONPATH="" "${_BASEEXE}" install \
         --yes \
