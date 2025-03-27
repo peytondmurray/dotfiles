@@ -26,6 +26,7 @@ export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.config/scripts:$PATH
 export PATH=/usr/lib/emscripten:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 export VISUAL=nvim
 export EDITOR=nvim
@@ -136,22 +137,22 @@ eval "$(direnv hook bash)"
 
 export PATH=/opt/miniforge/bin:$PATH
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/miniforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/miniforge/etc/profile.d/conda.sh" ]; then
-        . "/opt/miniforge/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/miniforge/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 if [[ $(pwd) == "$HOME/Desktop/workspace/conda" ]]; then
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/home/pdmurray/Desktop/workspace/conda/devenv/envs/devenv-3.10-c/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/home/pdmurray/Desktop/workspace/conda/devenv/envs/devenv-3.10-c/etc/profile.d/conda.sh" ]; then
+            . "/home/pdmurray/Desktop/workspace/conda/devenv/envs/devenv-3.10-c/etc/profile.d/conda.sh"
+        else
+            export PATH="/home/pdmurray/Desktop/workspace/conda/devenv/envs/devenv-3.10-c/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
+
     echo "Setting up conda dev environment..."
 
     _SRC=$(git rev-parse --show-toplevel)
@@ -247,5 +248,19 @@ if [[ $(pwd) == "$HOME/Desktop/workspace/conda" ]]; then
     unset _SRC
     unset _UPDATE
     unset _UPDATED
-
+else
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/opt/miniforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/opt/miniforge/etc/profile.d/conda.sh" ]; then
+            . "/opt/miniforge/etc/profile.d/conda.sh"
+        else
+            export PATH="/opt/miniforge/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
 fi
