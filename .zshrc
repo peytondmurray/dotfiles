@@ -198,11 +198,10 @@ bindkey '^I' complete-word
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/pdmurray/.zshrc'
 
+# fpath=(~/.config/zsh-completions $fpath)
 autoload -Uz compinit bashcompinit
 compinit
 bashcompinit
-
-complete -C "$(which aws_completer)" aws
 
 # End of lines added by compinstall
 

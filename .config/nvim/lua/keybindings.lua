@@ -75,8 +75,9 @@ local function docstring(args)
 end
 
 map("n", "<Leader>dg", function() docstring({ annotation_convention = { python = 'numpydoc' }}) end, opts)
-map("n", "<Leader>dr", function() docstring({ annotation_convention = { python = 'reST' }}) end, opts)
+map("n", "<Leader>dor", function() docstring({ annotation_convention = { python = 'reST' }}) end, opts)
 map("n", "<Leader>dog", function() docstring({ annotation_convention = { python = 'google_docstrings' }}) end, opts)
+map("n", "<Leader>don", function() docstring({ annotation_convention = { python = 'numpydoc' }}) end, opts)
 
 -- LSP
 map('n', '<leader>e', vim.lsp.buf.definition, opts)
