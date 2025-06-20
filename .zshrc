@@ -88,6 +88,10 @@ git() {
 	fi
 }
 
+cdc() {
+    cd "${HOME}/Desktop/workspace/codecrafters/$1" || return
+}
+
 cdd() {
     cd "${HOME}/Desktop/workspace/$1" || return
 }
@@ -101,7 +105,7 @@ cdsp() {
 }
 
 cds() {
-    cd ~/Desktop/workspace/sandbox/ || return
+    cd "${HOME}/Desktop/workspace/sandbox/" || return
 }
 
 pgdb() {
