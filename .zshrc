@@ -208,9 +208,6 @@ compinit
 bashcompinit
 
 # End of lines added by compinstall
+eval "$(pixi completion --shell zsh)"
 
 autoload -Uz /usr/share/zsh/site-functions/*(.:t)
-
-# For some reason this needs to be sourced
-source /usr/share/zsh/site-functions/_pyenv
-eval "$(pixi completion --shell zsh)"
