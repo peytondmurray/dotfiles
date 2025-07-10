@@ -137,7 +137,9 @@ eval "$(direnv hook bash)"
 
 export PATH=/opt/miniforge/bin:$PATH
 
-if [[ $(pwd) == "$HOME/Desktop/workspace/conda" ]]; then
+init_conda_dev() {
+    pushd ~/Desktop/workspace/conda || exit
+
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
     __conda_setup="$('/home/pdmurray/Desktop/workspace/conda/devenv/envs/devenv-3.10-c/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -248,6 +250,12 @@ if [[ $(pwd) == "$HOME/Desktop/workspace/conda" ]]; then
     unset _SRC
     unset _UPDATE
     unset _UPDATED
+
+    popd || exit
+}
+
+if [[ $(pwd) == "$HOME/Desktop/workspace/conda" || $(pwd) == "$HOME/Desktop/workspace/conda-declarative" ]]; then
+    init_conda_dev
 else
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
