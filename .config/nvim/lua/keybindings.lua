@@ -20,8 +20,12 @@ map('n', '<space>', '<nop>', opts)
 vim.g.mapleader = ' '
 
 -- Buffer motion
-map('n', 'J', '30j', opts)
-map('n', 'K', '30k', opts)
+function set_n_JK()
+    map('n', 'J', '30j', opts)
+    map('n', 'K', '30k', opts)
+end
+
+set_n_JK()
 map('v', 'J', '30j', opts)
 map('v', 'K', '30k', opts)
 
@@ -135,3 +139,31 @@ map('n', '<F12>', '<cmd>lua require("dapui").toggle()<CR>=', opts)
 -- Fugitive
 map('n', '<leader>rr', '<cmd>DiffviewOpen<CR>', opts)
 map('n', '<leader>rl', '<cmd>0Gclog<CR>', opts)
+
+-- venn.nvim: enable or disable keymappings
+function toggle_venn()
+    local venn_enabled = vim.inspect(vim.b.venn_enabled)
+    if venn_enabled == "nil" then
+        vim.b.venn_enabled = true
+        vim.cmd[[set cursorcolumn]]
+        vim.cmd[[setlocal ve=all]]
+
+        -- draw a line on HJKL keystokes
+        map("n", "J", "<C-v>j:VBox<CR>", opts)
+        map("n", "K", "<C-v>k:VBox<CR>", opts)
+        map("n", "L", "<C-v>l:VBox<CR>", opts)
+        map("n", "H", "<C-v>h:VBox<CR>", opts)
+        -- draw a box by pressing "f" with visual selection
+        map("v", "f", ":VBox<CR>", opts)
+    else
+        vim.b.venn_enabled = nil
+        vim.cmd[[set nocursorcolumn]]
+        vim.cmd[[setlocal ve=]]
+        set_n_JK()
+        vim.keymap.del("n", "L")
+        vim.keymap.del("n", "H")
+        vim.keymap.del("v", "f")
+    end
+end
+-- toggle keymappings for venn using <leader>v
+map('n', '<leader>b', toggle_venn, opts)
