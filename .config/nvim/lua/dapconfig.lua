@@ -38,12 +38,12 @@ prev_function_node = nil
 prev_function_name = ""
 
 -- < Retrieve the name of the function the cursor is in.
-function function_surrounding_cursor()
+function _G.function_surrounding_cursor()
     local ts_utils = require('nvim-treesitter.ts_utils')
     local current_node = ts_utils.get_node_at_cursor()
 
     if not current_node then
-        return ""
+        return "not current node"
     end
 
     local func = current_node
@@ -59,7 +59,7 @@ function function_surrounding_cursor()
     if not func then
         prev_function_node = nil
         prev_function_name = ""
-        return ""
+        return "not a function"
     end
 
     if func == prev_function_node then
