@@ -115,8 +115,8 @@ map("x", "<leader>a", "<Plug>(EasyAlign)", {silent = true})
 map("n", "<leader>a", "<Plug>(EasyAlign)", {silent = true})
 
 -- Kommentary
-map('n', '<leader>c', function() require('Comment.api').toggle.linewise.current() end, {silent = true})
-map("x", "<leader>c", function() vim.api.nvim_feedkeys('', 'nx', false); require('Comment.api').toggle.linewise(vim.fn.visualmode()) end, {silent = true})
+-- map('n', '<leader>c', function() require('Comment.api').toggle.linewise.current() end, {silent = true})
+-- map("x", "<leader>c", function() vim.api.nvim_feedkeys('', 'nx', false); require('Comment.api').toggle.linewise(vim.fn.visualmode()) end, {silent = true})
 
 -- Symbols outline
 map('n', '<leader>m', '<cmd>Outline<CR>', opts)

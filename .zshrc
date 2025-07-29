@@ -211,3 +211,12 @@ bashcompinit
 eval "$(pixi completion --shell zsh)"
 
 autoload -Uz /usr/share/zsh/site-functions/*(.:t)
+
+# Credit: https://github.com/rust-lang/rustup/blob/master/src/cli/self_update/env.sh
+case ":${PATH}:" in
+    *:"/home/pdmurray/.local/share/bob/nvim-bin":*)
+        ;;
+    *)
+        export PATH="/home/pdmurray/.local/share/bob/nvim-bin:$PATH"
+        ;;
+esac

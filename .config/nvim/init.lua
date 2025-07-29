@@ -89,7 +89,6 @@ require("lazy").setup({
         end
     },
 
-
     -- File browser
     {
         'kyazdani42/nvim-tree.lua',
@@ -105,20 +104,6 @@ require("lazy").setup({
 
     -- Toggle, display, and navigate marks
      'kshenoy/vim-signature',
-
-    -- Comment a line, selection, or motion
-     {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup({
-                mappings = {
-                    basic = false,
-                    extra = false,
-                }
-            })
-        end
-    },
-
     'windwp/nvim-ts-autotag',
 
     -- Check mapping conflicts with :CheckMappingConflicts
@@ -193,24 +178,29 @@ require("lazy").setup({
     -- }
 
     'rktjmp/lush.nvim',
-
-    -- Colorize hex codes
     {
-        'norcalli/nvim-colorizer.lua',
-        event = 'BufReadPre',
+        'echasnovski/mini.nvim',
+        version = false,
         config = function()
-            require('colorizer').setup()
+            require('mini.ai').setup()
+            require('mini.align').setup()
+            require('mini.comment').setup({
+                mappings = {
+                    comment = ' c',
+                    comment_line = ' c',
+                    comment_visual = ' c',
+                    textobject = '',
+                }
+            })
+            require('mini.pairs').setup()
+            require('mini.cursorword').setup()
+            require('mini.hipatterns').setup({
+                highlighters = {
+                    hex_color = require('mini.hipatterns').gen_highlighter.hex_color(),
+                }
+            })
         end
     },
-
-    -- Add ANSI escape sequence support
-    {
-        'norcalli/nvim-terminal.lua',
-        config = function()
-            require('terminal').setup()
-        end
-    },
-
     -- Git Integration
     {
         'lewis6991/gitsigns.nvim',
@@ -229,15 +219,6 @@ require("lazy").setup({
     },
     'tpope/vim-fugitive',
 
-    -- {
-    --     'tzachar/local-highlight.nvim',
-    --     config = function()
-    --         require('local-highlight').setup({
-    --             hlgroup = 'Underlined'
-    --         })
-    --     end
-    -- },
-
     -- Telescope
     {
         'nvim-telescope/telescope-fzf-native.nvim',
@@ -253,62 +234,37 @@ require("lazy").setup({
     'xiyaowong/telescope-emoji.nvim',
 
     -- Completion
-    'SmiteshP/nvim-gps',
+    -- https://github.com/SmiteshP/nvim-navic
     'neovim/nvim-lspconfig',
     {
-        'hrsh7th/nvim-cmp',
-        event = "InsertEnter",
+        'saghen/blink.cmp',
         dependencies = {
-            {
-                'L3MON4D3/LuaSnip',
-                dependencies = {
-                    'rafamadriz/friendly-snippets',
-                }
-            },
-
-            -- cmp sources
-            'saadparwaiz1/cmp_luasnip',
-            'hrsh7th/cmp-nvim-lua',
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-cmdline',
-            'hrsh7th/cmp-path',
-            'hrsh7th/nvim-cmp',
-            'dcampos/cmp-snippy',
-            {
-                'dcampos/nvim-snippy',
-                keys = {
-                    { '<Tab>', mode = {'i', 'x'} },
-                    'g<Tab>',
+            'rafamadriz/friendly-snippets'
+        },
+        -- version = '1.*',
+        opts = {
+            keymap = { preset = 'enter' },
+            completion = { documentation = { auto_show = false } },
+            sources = {
+                default = {'lazydev', 'lsp', 'path', 'snippets', 'buffer'},
+                providers = {
+                    lazydev = {
+                        name = "LazyDev",
+                        module = "lazydev.integrations.blink",
+                        score_offset = 100,
+                    },
                 },
-                ft = 'snippets',
-                cmd = { 'SnippyEdit', 'SnippyReload' },
-                dependencies = {
-                    'smjonas/snippet-converter.nvim',
-                }
-            },
-
-            -- Autopairing of (){}[] etc; taken from NvChad config
-            {
-                'windwp/nvim-autopairs',
-                config = function()
-                    require('nvim-autopairs').setup({
-                        check_ts = true,
-                    })
-                    local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-                    require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
-                end
             },
         }
     },
+    'folke/lazydev.nvim',
     {
         'ray-x/lsp_signature.nvim',
         config = function() require('lsp_signature').setup() end,
     },
     {
         'j-hui/fidget.nvim',
-        config = function() require('fidget').setup() end,
-        tag = 'legacy'
+        tags = '*'
     },
     {
         'mrcjkb/rustaceanvim',
@@ -325,71 +281,6 @@ require("lazy").setup({
         end
     },
     'p00f/clangd_extensions.nvim',
-
-    -- AI
-    {
-          "yetone/avante.nvim",
-        event = "VeryLazy",
-        version = false, -- Never set this value to "*"! Never!
-        opts = {
-            -- add any opts here
-            -- for example
-            provider = "openai",
-            providers = {
-                openai = {
-                    endpoint = "https://api.openai.com/v1",
-                    model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
-                    extra_request_body = {
-                      timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
-                      temperature = 0.75,
-                      max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-                      --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
-                    },
-                },
-            },
-        },
-        -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-        build = "make",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "stevearc/dressing.nvim",
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-
-            --- The below dependencies are optional,
-            "echasnovski/mini.pick", -- for file_selector provider mini.pick
-            "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-            "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-            "ibhagwan/fzf-lua", -- for file_selector provider fzf
-            "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-            "zbirenbaum/copilot.lua", -- for providers='copilot'
-            {
-                -- support for image pasting
-                "HakonHarnes/img-clip.nvim",
-                event = "VeryLazy",
-                opts = {
-                    -- recommended settings
-                    default = {
-                        embed_image_as_base64 = false,
-                        prompt_for_file_name = false,
-                        drag_and_drop = {
-                            insert_mode = true,
-                        },
-                        -- required for Windows users
-                        use_absolute_path = true,
-                    },
-                },
-            },
-            {
-                -- Make sure to set this up properly if you have lazy=true
-                -- 'MeanderingProgrammer/render-markdown.nvim',
-                -- opts = {
-                --     file_types = { "markdown", "Avante" },
-                -- },
-                -- ft = { "markdown", "Avante" },
-            },
-        },
-    },
 
     -- Tree-sitter
     {
