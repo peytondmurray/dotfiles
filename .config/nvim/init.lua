@@ -241,10 +241,17 @@ require("lazy").setup({
         dependencies = {
             'rafamadriz/friendly-snippets'
         },
-        -- version = '1.*',
+        version = '1.*',
         opts = {
-            keymap = { preset = 'enter' },
-            completion = { documentation = { auto_show = false } },
+            keymap = {
+                preset = 'enter',
+
+                ['<C-k>'] = { 'select_prev', 'fallback_to_mappings' },
+                ['<C-j>'] = { 'select_next', 'fallback_to_mappings' },
+                ['<Esc>'] = { 'cancel', 'fallback' },
+                ['<CR>'] = { 'select_and_accept', 'fallback_to_mappings' },
+            },
+            completion = { documentation = { auto_show = true } },
             sources = {
                 default = {'lazydev', 'lsp', 'path', 'snippets', 'buffer'},
                 providers = {
