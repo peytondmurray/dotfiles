@@ -69,6 +69,7 @@ vim.o.winblend = 20
 
 vim.o.textwidth = 100
 vim.o.colorcolumn = '+1'
+vim.cmd('highlight ColorColumn ctermbg=lightgrey guibg=lightgrey')
 
 -- Don't redraw the window when executing commands that haven't been typed
 vim.g.lazyredraw = true
