@@ -68,6 +68,7 @@ vim.o.pumblend = 20
 vim.o.winblend = 20
 
 vim.o.textwidth = 100
+vim.o.colorcolumn = '+1'
 
 -- Don't redraw the window when executing commands that haven't been typed
 vim.g.lazyredraw = true
@@ -104,7 +105,7 @@ vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal textwidth=80", pat
 vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal textwidth=88", pattern = {"*.typ"}})
 vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal formatoptions+=t", pattern = {"*.typ"}})
 vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal wrap", pattern = {"*.md", "*.typ"} })
-vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal textwidth=100", pattern = "*.py" })
+vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal textwidth=88", pattern = "*.py" })
 vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal tabstop=2 shiftwidth=2", pattern = {"*.ts", "*.js", "*.tsx", "*.jsx", "*.html.j2", "*.html", "*.css", "*.json", "*.njk", ".md"} })
 vim.api.nvim_create_autocmd("BufEnter", { command = "set filetype=c", pattern = { "*.c.src", "*.h.src" } })
 vim.api.nvim_create_autocmd("BufEnter", { command = "set filetype=jinja.html", pattern = { "*.njk" } })
