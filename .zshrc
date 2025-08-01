@@ -3,7 +3,11 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 fpath=(/usr/share/zsh/site-functions/ $fpath)
 
-source ~/.env
+if [ -f ~/.env ]; then
+    set -a
+    source ~/.env
+    set +a
+fi
 
 # Use emacs style editing, not vim
 bindkey -e
