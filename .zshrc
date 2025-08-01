@@ -3,6 +3,8 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 fpath=(/usr/share/zsh/site-functions/ $fpath)
 
+source ~/.env
+
 # Use emacs style editing, not vim
 bindkey -e
 
