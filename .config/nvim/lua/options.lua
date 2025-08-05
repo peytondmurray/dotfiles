@@ -88,8 +88,6 @@ vim.g.firenvim_config = {
     }
 }
 
-vim.g.kommentary_create_default_mappings = false
-
 vim.g.reformat_json_on_save = true
 
 -- vim.cmd('colorscheme melange')
@@ -97,7 +95,7 @@ vim.cmd('colorscheme rose-pine')
 -- vim.cmd('colorscheme tokyonight')
 -- vim.cmd('colorscheme nightfox')
 -- vim.cmd('colorscheme gruvbox')
-vim.cmd('highlight Vertsplit guifg=Orange')
+vim.cmd('highlight VertSplit guifg=LightRed')
 vim.cmd('filetype plugin indent on')
 vim.api.nvim_create_autocmd("BufWritePre", { callback = require('luautils').StripWhitespace })
 
@@ -125,7 +123,7 @@ local function reformat_if_json(excludes)
                     return
                 end
             end
-            vim.cmd([[%!jq .]])
+            vim.cmd([[%!jq . --indent 2]])
         end
     end
     return jq_reformat

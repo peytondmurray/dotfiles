@@ -4,6 +4,9 @@ local opts = {noremap = true, silent = true}
 local map = vim.keymap.set
 
 -- Disable ex mode
+map('n', 'gQ', '<nop>', opts)
+
+-- Bind Q operations to file save/save all/quit
 map('n', 'Q', '<nop>', opts)
 map('n', 'QQ', '<cmd>w<CR>', opts)
 map('n', 'QW', '<cmd>wq<CR>', opts)
