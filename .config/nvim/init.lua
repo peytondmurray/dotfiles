@@ -231,7 +231,6 @@ require("lazy").setup({
             'nvim-telescope/telescope-live-grep-args.nvim'
         },
     },
-    'xiyaowong/telescope-emoji.nvim',
 
     -- Completion
     -- https://github.com/SmiteshP/nvim-navic
@@ -239,7 +238,12 @@ require("lazy").setup({
     {
         'saghen/blink.cmp',
         dependencies = {
-            'rafamadriz/friendly-snippets'
+            'rafamadriz/friendly-snippets',
+            {
+                'allaman/emoji.nvim',
+                -- config = function() require("emoji").setup({enable_cmp_integration = true}) end
+            },
+            'saghen/blink.compat',
         },
         version = '1.*',
         opts = {
@@ -253,13 +257,25 @@ require("lazy").setup({
             },
             completion = { documentation = { auto_show = true } },
             sources = {
-                default = {'lazydev', 'lsp', 'path', 'snippets', 'buffer'},
+                default = {'emoji', 'lazydev', 'lsp', 'path', 'snippets', 'buffer'},
                 providers = {
                     lazydev = {
                         name = "LazyDev",
                         module = "lazydev.integrations.blink",
                         score_offset = 100,
                     },
+                    emoji = {
+                        name = "emoji",
+                        module = "blink.compat.source",
+                        -- overwrite kind of suggestion
+                        transform_items = function(ctx, items)
+                            local kind = require("blink.cmp.types").CompletionItemKind.Text
+                            for i = 1, #items do
+                                items[i].kind = kind
+                            end
+                            return items
+                        end,
+                    }
                 },
             },
         }
