@@ -118,6 +118,7 @@ nvim_lsp['biome'].setup({})
 nvim_lsp['gdscript'].setup({})
 nvim_lsp['gdshader_lsp'].setup({})
 nvim_lsp['gh_actions_ls'].setup({})
+vim.lsp.enable('gopls')
 
 -- Workaround for rust-analyzer bug
 -- https://github.com/neovim/neovim/issues/30985#issuecomment-2447329525
