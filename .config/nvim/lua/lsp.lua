@@ -32,15 +32,6 @@ if vim.fn.executable('pylsp') == 1 then
         }
     )
 end
-if vim.fn.executable('ruff') == 1 then
-    nvim_lsp['ruff'].setup({})
-end
-if vim.fn.executable('esbonio') == 1 then
-    nvim_lsp['esbonio'].setup({})
-end
-if vim.fn.executable('gopls') == 1 then
-    nvim_lsp['gopls'].setup({})
-end
 
 nvim_lsp['stylelint_lsp'].setup({
     filetypes = { "css", "less", "scss", "sugarss", "wxss" }
@@ -118,7 +109,10 @@ nvim_lsp['biome'].setup({})
 nvim_lsp['gdscript'].setup({})
 nvim_lsp['gdshader_lsp'].setup({})
 nvim_lsp['gh_actions_ls'].setup({})
+vim.lsp.enable('ruff')
 vim.lsp.enable('gopls')
+vim.lsp.enable('golangci_lint_ls')
+vim.lsp.enable('esbonio')
 
 -- Workaround for rust-analyzer bug
 -- https://github.com/neovim/neovim/issues/30985#issuecomment-2447329525
