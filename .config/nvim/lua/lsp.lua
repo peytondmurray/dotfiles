@@ -110,6 +110,17 @@ nvim_lsp['gdscript'].setup({})
 nvim_lsp['gdshader_lsp'].setup({})
 nvim_lsp['gh_actions_ls'].setup({})
 vim.lsp.enable('ruff')
+
+vim.lsp.config('gopls', {
+    settings = {
+        gopls = {
+            analyses = {
+                unusedvariable = false,
+            }
+        }
+    }
+})
+
 vim.lsp.enable('gopls')
 vim.lsp.enable('golangci_lint_ls')
 vim.lsp.enable('esbonio')
