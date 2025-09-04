@@ -2,6 +2,7 @@
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 fpath=(/usr/share/zsh/site-functions/ $fpath)
+fpath=(~/.config/zsh-completions/ $fpath)
 
 if [ -f ~/.env ]; then
     set -a
