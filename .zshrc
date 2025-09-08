@@ -13,6 +13,8 @@ fi
 # Use emacs style editing, not vim
 bindkey -e
 
+setopt correct
+
 # Show what is effectively `ls -l` when tab completing a file
 zstyle ':completion:*' file-list true
 
