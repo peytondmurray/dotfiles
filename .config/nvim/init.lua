@@ -291,17 +291,8 @@ require("lazy").setup({
     },
     {
         'mrcjkb/rustaceanvim',
-        version = '^5', -- Recommended
+        version = '^6', -- Recommended
         lazy = false,   -- This plugin is already lazy
-        config = function()
-            vim.g.rustaceanvim = {
-                server = {
-                    ra_multiplex = {
-                        enable = false,
-                    }
-                },
-            }
-        end
     },
     'p00f/clangd_extensions.nvim',
 
