@@ -123,7 +123,7 @@ local function reformat_if_json(excludes)
                     return
                 end
             end
-            vim.cmd([[%!jq . --indent 2]])
+            vim.cmd([[%!bash -c 'cat | jq --indent 2 -n -f /dev/stdin']])
         end
     end
     return jq_reformat
