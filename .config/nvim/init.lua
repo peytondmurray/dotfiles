@@ -82,7 +82,7 @@ require("lazy").setup({
                         name = "Attach remote",
                         mode = "remote",
                         request = "attach",
-                        program = "${workspaceFolder}/main.go",
+                        -- program = "${workspaceFolder}/main.go",
                     },
                   }
             })
