@@ -327,6 +327,14 @@ require("lazy").setup({
 
     -- Discord presence
     'andweeb/presence.nvim',
+
+    -- AI
+    {
+        "olimorris/codecompanion.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+    },
 })
 
 

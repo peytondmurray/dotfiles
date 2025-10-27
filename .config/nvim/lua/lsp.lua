@@ -96,6 +96,7 @@ vim.lsp.config('gopls', {
 vim.lsp.enable('gopls')
 vim.lsp.enable('golangci_lint_ls')
 vim.lsp.enable('esbonio')
+vim.lsp.enable('fortls')
 
 -- Workaround for rust-analyzer bug
 -- https://github.com/neovim/neovim/issues/30985#issuecomment-2447329525
