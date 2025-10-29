@@ -1,6 +1,5 @@
-local nvim_lsp = require('lspconfig')
-local configs = require("lspconfig.configs")
-local luautils = require('luautils')
+-- When using clangd_extensions, you don't need to set up clangd
+require('clangd_extensions').setup()
 
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 capabilities.textDocument.foldingRange = {
@@ -8,81 +7,43 @@ capabilities.textDocument.foldingRange = {
     lineFoldingOnly = true,
 }
 
-if vim.fn.executable('pylsp') == 1 then
-    nvim_lsp['pylsp'].setup(
-        {
-            settings = {
-                pylsp = {
-                    plugins = {
-                        pyflakes = {
-                            enabled = false
-                        },
-                        pycodestyle = {
-                            enabled = false
-                        },
-                        autopep8 = {
-                            enabled = false
-                        },
-                        flake8 = {
-                            enabled = false
-                        }
-                    }
+vim.lsp.config('pylsp', {
+    settings = {
+        pylsp = {
+            plugins = {
+                pyflakes = {
+                    enabled = false
+                },
+                pycodestyle = {
+                    enabled = false
+                },
+                autopep8 = {
+                    enabled = false
+                },
+                flake8 = {
+                    enabled = false
                 }
             }
         }
-    )
-end
-
-nvim_lsp['stylelint_lsp'].setup({
+    }
+})
+vim.lsp.config('stylelint_lsp', {
     filetypes = { "css", "less", "scss", "sugarss", "wxss" }
 })
-
-nvim_lsp['bashls'].setup({
+vim.lsp.config('bashls', {
     capabilities = capabilities
 })
-
--- When using clangd_extensions, you don't need to set up clangd
-nvim_lsp['clangd'].setup({})
-require('clangd_extensions').setup()
-
-nvim_lsp['terraformls'].setup{
+vim.lsp.config('terraformls', {
     capabilities = capabilities,
-}
-
-if not configs.neocmake then
-    configs.neocmake = {
-        default_config = {
-            cmd = { "neocmakelsp", "--stdio" },
-            filetypes = { "cmake" },
-            root_dir = function(fname)
-                return nvim_lsp.util.find_git_ancestor(fname)
-            end,
-            single_file_support = true,-- suggested
-        }
+    default_config = {
+        cmd = { "neocmakelsp", "--stdio" },
+        filetypes = { "cmake" },
+        root_dir = function(fname)
+            return nvim_lsp.util.find_git_ancestor(fname)
+        end,
+        single_file_support = true,-- suggested
     }
-    nvim_lsp.neocmake.setup({})
-end
-
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-    vim.lsp.handlers.signature_help,
-    { border = 'single' }
-)
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-    vim.lsp.handlers.hover,
-    {border = 'single'}
-)
-
-nvim_lsp['html'].setup({})
-nvim_lsp['cssls'].setup({})
-nvim_lsp['r_language_server'].setup({})
-nvim_lsp['tinymist'].setup({})
-nvim_lsp['ts_ls'].setup({})
-nvim_lsp['gdscript'].setup({})
-nvim_lsp['gdshader_lsp'].setup({})
-nvim_lsp['gh_actions_ls'].setup({})
-vim.lsp.enable('ruff')
-vim.lsp.enable('biome')
-
+})
 vim.lsp.config('gopls', {
     settings = {
         gopls = {
@@ -93,6 +54,27 @@ vim.lsp.config('gopls', {
     }
 })
 
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+    vim.lsp.handlers.signature_help,
+    { border = 'single' }
+)
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+    vim.lsp.handlers.hover,
+    {border = 'single'}
+)
+
+vim.lsp.enable('neocmake')
+vim.lsp.enable('pylsp')
+vim.lsp.enable('html')
+vim.lsp.enable('cssls')
+vim.lsp.enable('r_language_server')
+vim.lsp.enable('tinymist')
+vim.lsp.enable('ts_ls')
+vim.lsp.enable('gdscript')
+vim.lsp.enable('gdshader_lsp')
+vim.lsp.enable('gh_actions_ls')
+vim.lsp.enable('ruff')
+vim.lsp.enable('biome')
 vim.lsp.enable('gopls')
 vim.lsp.enable('golangci_lint_ls')
 vim.lsp.enable('esbonio')
