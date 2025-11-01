@@ -1,0 +1,8 @@
+# ${UserConfigDir}/carapace/overlays/git.yaml
+name: git
+commands:
+  - name: checkout
+    description: Display remote refs
+    completion:
+      positional:
+        - ["$carapace.tools.git.RemoteBranchNames"]

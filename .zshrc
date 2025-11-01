@@ -105,6 +105,10 @@ cdd() {
     cd "${HOME}/Desktop/workspace/$1" || return
 }
 
+cdv() {
+    cdd && cd CV/ || return
+}
+
 cda() {
     cd "${HOME}/Desktop/astro/$1" || return
 }
