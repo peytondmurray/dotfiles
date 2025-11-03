@@ -110,7 +110,10 @@ require("lazy").setup({
     {'lukhio/vim-mapping-conflicts', cmd = 'CheckMappingConflicts'},
 
     -- Show a popup menu of keybindings when you press a button and wait for a bit
-    {'folke/which-key.nvim', config = function() require('which-key').setup{} end},
+    {
+        'folke/which-key.nvim',
+        event = "VeryLazy",
+    },
 
     -- Symbols browser
     {
@@ -334,6 +337,21 @@ require("lazy").setup({
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
+        config = function()
+            require('codecompanion').setup({
+                strategies = {
+                    chat = {
+                        adapter = "openai",
+                    },
+                    inline = {
+                        adapter = "openai",
+                    },
+                    cmd = {
+                        adapter = "openai",
+                    }
+                }
+            })
+	end
     },
 })
 
