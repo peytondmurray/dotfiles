@@ -198,6 +198,8 @@ bindkey '^[[1;3D' backward-char    # Alt+Left Arrow
 bindkey '^[[3;5~' kill-word        # Ctrl+Delete (if supported by terminal)
 bindkey '^H' backward-kill-word    # Ctrl+Backspace (^H)
 
+bindkey '^[[Z' reverse-menu-complete # Move back one item in completion menus
+
 # Bind key sequences for deleting by subword
 autoload -U select-word-style
 select-word-style bash
