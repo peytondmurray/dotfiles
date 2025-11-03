@@ -6,3 +6,9 @@ commands:
     completion:
       positional:
         - ["$carapace.tools.git.RemoteBranchNames"]
+  - name: pull
+    description: Display remote refs
+    completion:
+      positional:
+        - []
+        - ["$carapace.tools.git.RemoteBranchNames"]
