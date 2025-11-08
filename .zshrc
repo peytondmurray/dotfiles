@@ -102,6 +102,10 @@ cdc() {
     cd "${HOME}/Desktop/workspace/codecrafters/$1" || return
 }
 
+cdi() {
+    cds && cd interviews || return
+}
+
 cdd() {
     cd "${HOME}/Desktop/workspace/$1" || return
 }
