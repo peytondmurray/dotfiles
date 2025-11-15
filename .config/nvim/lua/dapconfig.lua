@@ -92,18 +92,18 @@ function _G.function_surrounding_cursor()
     return prev_function_name
 end
 
-dap.configurations.rust = {
-    {
-        name = "Test current function",
-        type = "codelldb",
-        request = "launch",
-        program = "cargo",
-        cwd = "${workspaceFolder}",
-        stopOnEntry = false,
-        args = {"test", function_surrounding_cursor()},
-        runInTerminal = false,
-    },
-}
+-- dap.configurations.rust = {
+--     {
+--         name = "Test current function",
+--         type = "codelldb",
+--         request = "launch",
+--         program = "cargo",
+--         cwd = "${workspaceFolder}",
+--         stopOnEntry = false,
+--         args = {"test", function_surrounding_cursor()},
+--         runInTerminal = false,
+--     },
+-- }
 
 dap.configurations.c = dap.configurations.cpp
 

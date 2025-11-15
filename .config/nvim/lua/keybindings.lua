@@ -1,11 +1,11 @@
 -- Keybindings
 local opts = {noremap = true, silent = true}
 
-function map(mode, lhs, rhs, opts, desc)
-    if opts ~= nil and desc ~= nil then
-        opts["desc"] = desc
+function map(mode, lhs, rhs, options, desc)
+    if options ~= nil and desc ~= nil then
+        options["desc"] = desc
     end
-    vim.keymap.set(mode, lhs, rhs, opts)
+    vim.keymap.set(mode, lhs, rhs, options)
 end
 
 -- Disable ex mode
@@ -38,8 +38,8 @@ map('v', 'J', '30j', opts, "jump 30 lines down")
 map('v', 'K', '30k', opts, "jump 30 lines up")
 
 -- Window motion
-map('n', '<C-J>', '<C-W><C-J>', opts, "Move to the window below")
-map('n', '<C-K>', '<C-W><C-K>', opts, "Move to the window above")
+-- map('n', '<C-J>', '<C-W><C-J>', opts, "Move to the window below")
+-- map('n', '<C-K>', '<C-W><C-K>', opts, "Move to the window above")
 map('n', '<C-L>', '<C-W><C-L>', opts, "Move to the window right")
 map('n', '<C-H>', '<C-W><C-H>', opts, "Move to the window left")
 map('n', '<M-C-J>', '<C-W>5-', opts, "Decrease window height")
@@ -74,6 +74,16 @@ map('n', '<M-/>', ':noh<CR>', opts, "Clear last search highlight")
 -- Quickfix list movement
 map('n', '<C-S-J>', '<cmd>cnext<CR>', opts, "Jump to next quickfix item")
 map('n', '<C-S-K>', '<cmd>cprev<CR>', opts, "Jump to previous quickfix item")
+
+-- map('c', '<C-j>', '<C-n>', opts)
+-- map('c', '<C-k>', '<C-p>', opts)
+map('c', '<C-j>', function()
+  return vim.fn.wildmenumode() > 0 and '<C-n>' or '<C-j>'
+end, { expr = true, noremap = true })
+
+map('c', '<C-k>', function()
+  return vim.fn.wildmenumode() > 0 and '<C-p>' or '<C-k>'
+end, { expr = true, noremap = true })
 
 -- Telescope
 map('n', '<leader>p', '<cmd>Telescope find_files<cr>', opts, "Find files")
