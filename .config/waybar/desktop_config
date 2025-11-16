@@ -3,10 +3,8 @@
     "position": "bottom",
     "height": 30,
 
-    // "modules-left": ["sway/workspaces", "sway/mode"],
-    // "modules-right": ["sway/language", "pulseaudio", "network", "cpu", "memory", "temperature", "clock", "tray"],
     "modules-left": ["hyprland/workspaces", "hyprland/submap"],
-    "modules-right": ["hyprland/language", "pulseaudio", "network", "cpu", "memory", "temperature", "clock", "tray"],
+    "modules-right": ["hyprland/language", "pulseaudio", "network", "cpu", "memory", "temperature", "custom/nvidia", "clock", "tray"],
 
     "hyprland/language": {
         "format": "<span font_desc='Symbols Nerd Font'> </span> {short} {variant}"
@@ -24,20 +22,24 @@
         "timezones": ["America/Los_Angeles"],
     },
     "cpu": {
-        "format": "<span font_desc='Symbols Nerd Font'>🖳 {icon0} {icon1} {icon2} {icon3} {icon4} {icon5} {icon6} {icon7} {icon8} {icon9} {icon10} {icon11} {icon12} {icon13} {icon14} {icon15} {icon16} {icon17} {icon18} {icon19} {icon20} {icon21} {icon22} {icon23}</span>",
+        "format": "<span font_desc='Symbols Nerd Font'>🖳 {icon0} {icon1} {icon2} {icon3} {icon4} {icon5} {icon6} {icon7} {icon8} {icon9} {icon10} {icon11} {icon12} {icon13} {icon14} {icon15} {icon16} {icon17} {icon18} {icon19} {icon20} {icon21} {icon22} {icon23} {icon24} {icon25} {icon26} {icon27} {icon28} {icon29} {icon30} {icon31}</span>",
         "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
         "tooltip": false
     },
+    "custom/nvidia": {
+        "exec": "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\), \\([0-9]\\+\\)/GPU: \\1%    \\2°C/g'",
+        "format": "{} 🖥️",
+        "interval": 2
+    },
     "memory": {
-        "format": "{}% <span font_desc='Symbols Nerd Font'> </span>"
+        "format": "{}% <span font_desc='Symbols Nerd Font'>󰍛 </span>"
     },
     "temperature": {
         "critical-threshold": 80,
-        "format": "{temperatureC}°C <span font_desc='Symbols Nerd Font'>{icon}</span>",
-        "format-icons": [" ", "  ", " ", " ", " "]
+        "format": "{temperatureC}°C <span font_desc='Symbols Nerd Font'> </span>",
     },
     "network": {
-        "interface": "enp8s0",
+        "interface": "enp7s0",
         "format-wifi": "{essid} ({signalStrength}%)  ",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} <span font_desc='Symbols Nerd Font'>🖧 </span>",
         "format-linked": "{ifname} (No IP) <span font_desc='Symbols Nerd Font'>🖧 </span>",
