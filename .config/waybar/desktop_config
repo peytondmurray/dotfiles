@@ -37,6 +37,7 @@
     "temperature": {
         "critical-threshold": 80,
         "format": "{temperatureC}°C <span font_desc='Symbols Nerd Font'> </span>",
+        "hwmon-path": "/sys/class/hwmon/hwmon4/temp5_input",
     },
     "network": {
         "interface": "enp7s0",
