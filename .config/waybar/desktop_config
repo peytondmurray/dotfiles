@@ -27,17 +27,17 @@
         "tooltip": false
     },
     "custom/nvidia": {
-        "exec": "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\), \\([0-9]\\+\\)/GPU: \\1%    \\2°C/g'",
-        "format": "{} 🖥️",
+        "exec": "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\), \\([0-9]\\+\\)/GPU: \\1% 🖥️ \\2°C/g'",
+        "format": "{}  ",
         "interval": 2
     },
     "memory": {
-        "format": "{}% <span font_desc='Symbols Nerd Font'>󰍛 </span>"
+        "format": "MEM: {}% <span font_desc='Symbols Nerd Font'>󰍛 </span>"
     },
     "temperature": {
         "critical-threshold": 80,
-        "format": "{temperatureC}°C <span font_desc='Symbols Nerd Font'> </span>",
-        "hwmon-path": "/sys/class/hwmon/hwmon4/temp5_input",
+        "format": "CPU: {temperatureC}°C <span font_desc='Symbols Nerd Font'> </span>",
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
     },
     "network": {
         "interface": "enp7s0",

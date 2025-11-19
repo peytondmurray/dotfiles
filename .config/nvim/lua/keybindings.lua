@@ -38,8 +38,8 @@ map('v', 'J', '30j', opts, "jump 30 lines down")
 map('v', 'K', '30k', opts, "jump 30 lines up")
 
 -- Window motion
--- map('n', '<C-J>', '<C-W><C-J>', opts, "Move to the window below")
--- map('n', '<C-K>', '<C-W><C-K>', opts, "Move to the window above")
+map('n', '<C-J>', '<C-W><C-J>', opts, "Move to the window below")
+map('n', '<C-K>', '<C-W><C-K>', opts, "Move to the window above")
 map('n', '<C-L>', '<C-W><C-L>', opts, "Move to the window right")
 map('n', '<C-H>', '<C-W><C-H>', opts, "Move to the window left")
 map('n', '<M-C-J>', '<C-W>5-', opts, "Decrease window height")
