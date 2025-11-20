@@ -291,28 +291,6 @@ require("lazy").setup({
         lazy = false,   -- This plugin is already lazy
     },
 
-    -- Rust lifetime visualization
-    {
-        'cordx56/rustowl',
-        version = '*', -- Latest stable version
-        build = 'cargo binstall rustowl',
-        lazy = false, -- This plugin is already lazy
-        opts = {
-            client = {
-                on_attach = function(_, buffer)
-                    vim.keymap.set(
-                        'n',
-                        '<leader>x',
-                        function()
-                            require('rustowl').toggle(buffer)
-                        end,
-                        { buffer = buffer, desc = 'Toggle RustOwl' }
-                    )
-                end
-            },
-        },
-    },
-
     'p00f/clangd_extensions.nvim',
 
     -- Tree-sitter
