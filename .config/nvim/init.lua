@@ -192,7 +192,7 @@ require("lazy").setup({
                     hex_color = require('mini.hipatterns').gen_highlighter.hex_color(),
                 }
             })
-            require('mini.notify')
+            require('mini.notify').setup()
         end
     },
     -- Git Integration

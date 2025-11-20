@@ -7,7 +7,24 @@ capabilities.textDocument.foldingRange = {
     lineFoldingOnly = true,
 }
 
+function pixi_toml_exists(fname)
+   local f=io.open(fname, "r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
+-- If you open nvim in a directory that contains pixi.toml or pixi.lock, use pixi to start
+-- pylsp/ruff
+function get_python_lsp_command(...)
+    local arg = {...}
+    if pixi_toml_exists("pixi.toml") or pixi_toml_exists("pixi.lock") then
+        return {'pixi', 'run', unpack(arg)}
+    else
+        return arg
+    end
+end
+
 vim.lsp.config('pylsp', {
+    cmd = get_python_lsp_command('pylsp'),
     settings = {
         pylsp = {
             plugins = {
@@ -26,6 +43,9 @@ vim.lsp.config('pylsp', {
             }
         }
     }
+})
+vim.lsp.config('ruff', {
+    cmd = get_python_lsp_command('ruff', 'server')
 })
 vim.lsp.config('stylelint_lsp', {
     filetypes = { "css", "less", "scss", "sugarss", "wxss" }
