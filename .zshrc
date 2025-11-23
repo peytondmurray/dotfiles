@@ -44,32 +44,29 @@ export VISUAL=nvim
 export EDITOR=nvim
 export FONTCONFIG_PATH=/etc/fonts
 export TERM=xterm-kitty
-export RANGER_LOAD_DEFAULT_RC=FALSE
-export NUMPY_EXPERIMENTAL_DTYPE_API=1
-export DFT_DISPLAY=side-by-side-show-both
-export NNN_OPTS="H"
+export DFT_DISPLAY='side-by-side-show-both'
 export LC_COLLATE="C" # Set hidden files on top
-export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_FCOLORS="AAAAE631BBBBCCCCDDDD9999"
+export NNN_FIFO="/tmp/nnn.fifo"
+export NNN_OPTS="H"
 export NNN_PLUG="p:preview-tui"
 export SPLIT='v'
-export DFT_DISPLAY='side-by-side-show-both'
-export BAZEL_ARGS="--local_cpu_resources=HOST_CPUS-4 --local_ram_resources=HOST_RAM*0.6"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 
-export PATH=$HOME/go/bin:$PATH
-export PATH=$HOME/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.config/scripts:$PATH
 export PATH=$HOME/.pixi/bin:$PATH
-export PATH=/usr/lib/emscripten:$PATH
+export PATH=$HOME/bin:$PATH
+export PATH=$HOME/go/bin:$PATH
 export PATH=/opt/google-cloud-cli/bin/:$PATH
+export PATH=/usr/lib/emscripten:$PATH
+export VOLTA_HOME="$HOME/.volta"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 playbell() {
     paplay /usr/share/sounds/freedesktop/stereo/complete.oga
@@ -165,24 +162,6 @@ pgdb() {
     fi
 
     gdb
-}
-
-killsc() {
-    pkill --signal 9 wineserver
-    pkill --signal 9 winedevice.exe
-    pkill --signal 9 Agent.exe
-    pkill --signal 9 conhost.exe
-    pkill --signal 9 rpcss.exe
-    pkill --signal 9 plugplay.exe
-    pkill --signal 9 svchost.exe
-    pkill --signal 9 tabtip.exe
-    pkill --signal 9 services.exe
-    pkill --signal 9 explorer.exe
-}
-
-setup-pixi() {
-    echo "watch_file pixi.lock" >> .envrc
-    echo 'eval "$(pixi shell-hook)"' >> .envrc
 }
 
 autoload -U promptinit

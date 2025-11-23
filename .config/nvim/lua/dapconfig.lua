@@ -3,7 +3,8 @@ local dap = require('dap')
 dap.adapters.codelldb = {
     type = 'executable',
     command = 'codelldb',
-    name = 'lldb'
+    name = 'lldb',
+    initCommands = {"command source ${env:HOME}/.lldbinit"},
 }
 
 vim.fn.sign_define(
@@ -104,6 +105,36 @@ end
 --         runInTerminal = false,
 --     },
 -- }
+
+
+local function rust_detect_bin()
+    local name = vim.fn.trim(
+        vim.fn.system(
+            "cargo metadata --format-version 1 --no-deps | jq -r '.packages[0].name'"
+        )
+    )
+  return vim.fn.getcwd() .. "/target/debug/" .. name
+end
+
+dap.configurations.rust = {
+    {
+        name = "Debug current binary (with args)",
+        type = "codelldb",
+        request = "launch",
+        program = rust_detect_bin,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = function()
+            local input = vim.fn.input('Args: ')
+
+            -- Split the input on spaces into table
+            if input == '' then
+                return {}
+            end
+            return vim.split(input, ' ', { trimempty = true })
+        end,
+    },
+}
 
 dap.configurations.c = dap.configurations.cpp
 
