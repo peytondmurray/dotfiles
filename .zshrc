@@ -39,6 +39,7 @@ alias nnn='nnn -de -P p'
 alias dk-clean-all='docker stop $(docker container ls -a -q) && docker system prune -a -f --volumes'
 
 eval "$(ssh-agent)" > /dev/null
+ssh-add -q
 
 export VISUAL=nvim
 export EDITOR=nvim
