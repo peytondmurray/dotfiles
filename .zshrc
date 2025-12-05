@@ -53,10 +53,10 @@ export NNN_OPTS="H"
 export NNN_PLUG="p:preview-tui"
 export SPLIT='v'
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export VOLTA_HOME="$HOME/.volta"
 
 
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.config/scripts:$PATH
 export PATH=$HOME/.pixi/bin:$PATH
@@ -64,7 +64,7 @@ export PATH=$HOME/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 export PATH=/opt/google-cloud-cli/bin/:$PATH
 export PATH=/usr/lib/emscripten:$PATH
-export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"

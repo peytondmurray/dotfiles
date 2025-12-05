@@ -29,8 +29,8 @@ vim.g.mapleader = ' '
 
 -- Buffer motion
 function set_n_JK()
-    map('n', 'J', '30j', opts, "jump 30 lines down")
-    map('n', 'K', '30k', opts, "jump 30 lines up")
+    map('n', 'J', '30jzz', opts, "jump 30 lines down")
+    map('n', 'K', '30kzz', opts, "jump 30 lines up")
 end
 
 set_n_JK()
