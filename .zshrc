@@ -88,7 +88,7 @@ git() {
                 git logg "${default_branch}.."
             fi
         fi
-    elif [[ $1 == "tag" ]]; then
+    elif [[ $1 == "tag" && $# == 1 ]]; then
         command git tag | sort -V
     else
 		command git "$@"
