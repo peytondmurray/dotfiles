@@ -4,7 +4,10 @@ dap.adapters.codelldb = {
     type = 'executable',
     command = 'codelldb',
     name = 'lldb',
-    initCommands = {"command source ${env:HOME}/.lldbinit"},
+    -- initCommands = {"command source ${env:HOME}/.lldbinit"},
+    -- preRunCommands = {
+    --     "command script import ~/.config/rust_prettifier_for_lldb.py"
+    -- }
 }
 
 vim.fn.sign_define(

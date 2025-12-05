@@ -175,3 +175,9 @@ vim.g.markdown_fenced_languages = {
 
 -- Turn on inline diagnostic messages
 vim.diagnostic.config({virtual_text = true})
+
+vim.g.rustaceanvim = {
+    dap = {
+        load_rust_types = true,
+    }
+}

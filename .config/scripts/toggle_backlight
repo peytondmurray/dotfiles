@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if pgrep swaybg; then
+    killall swaybg
+else
+    swaybg -c "#FFFFFF" &
+fi
