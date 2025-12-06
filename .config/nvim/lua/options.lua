@@ -48,7 +48,7 @@ vim.o.background = "dark" -- or "light" for light mode
 vim.g.tokyonight_style = "day" -- or "light" for light mode
 
 -- Show completion menu even if only one option is available; don't select by default
-vim.o.completeopt = 'menuone,noselect,preview'
+vim.o.completeopt = 'menuone,noinsert,noselect,preview'
 vim.o.wildmenu = true
 vim.o.wildmode = 'longest:full,full'
 

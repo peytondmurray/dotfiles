@@ -91,15 +91,12 @@ map('n', '<leader>;', function() return require("telescope").extensions.live_gre
 map('n', '<leader>/', '<cmd>Telescope current_buffer_fuzzy_find<CR>', opts, "Fuzzy find in buffer")
 map('n', '<leader>)', '<cmd>Telescope emoji<CR>', opts, "Pick emoji")
 
--- Pydocstring
-local function docstring(args)
-    require('neogen').generate(args)
-end
-
-map("n", "<Leader>dg", function() docstring({ annotation_convention = { python = 'numpydoc' }}) end, opts, "Generate docstring")
-map("n", "<Leader>dor", function() docstring({ annotation_convention = { python = 'reST' }}) end, opts, "Generate reST docstring")
-map("n", "<Leader>dog", function() docstring({ annotation_convention = { python = 'google_docstrings' }}) end, opts, "Generate Google docstring")
-map("n", "<Leader>don", function() docstring({ annotation_convention = { python = 'numpydoc' }}) end, opts, "Generate Numpydoc docstring")
+-- Docstrings
+local doc = require('neogen').generate
+map("n", "<Leader>dg", function() doc({ annotation_convention = { python = 'numpydoc' }}) end, opts, "Generate docstring")
+map("n", "<Leader>dor", function() doc({ annotation_convention = { python = 'reST' }}) end, opts, "Generate reST docstring")
+map("n", "<Leader>dog", function() doc({ annotation_convention = { python = 'google_docstrings' }}) end, opts, "Generate Google docstring")
+map("n", "<Leader>don", function() doc({ annotation_convention = { python = 'numpydoc' }}) end, opts, "Generate Numpydoc docstring")
 
 -- LSP
 map('n', '<leader>e', vim.lsp.buf.definition, opts, "Go to definition")

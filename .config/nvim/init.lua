@@ -260,10 +260,32 @@ require("lazy").setup({
 
                 ['<C-k>'] = { 'select_prev', 'fallback_to_mappings' },
                 ['<C-j>'] = { 'select_next', 'fallback_to_mappings' },
-                ['<Esc>'] = { 'cancel', 'fallback' },
-                ['<CR>'] = { 'select_and_accept', 'fallback_to_mappings' },
+
+                -- This makes Esc act like it works in insert mode normally, except it _also_
+                -- closes the completion menu.
+                -- Any blink.cmp keymap that returns false or nil will cause blink.cmp to call the
+                -- next keymap. 'fallback' is needed to return Esc to the default keybinding used
+                -- outside of the completion menu.
+                ['<Esc>'] = {
+                    function(cmp)
+                        cmp.cancel()
+                        return nil
+                    end,
+                    'fallback'
+                },
+                ['<CR>'] = { 'accept', 'fallback_to_mappings' },
             },
-            completion = { documentation = { auto_show = true } },
+            completion = {
+                documentation = {
+                    auto_show = true
+                },
+                list = {
+                    selection = {
+                        preselect = false,
+                        auto_insert = true,
+                    }
+                }
+            },
             sources = {
                 default = {'emoji', 'lazydev', 'lsp', 'path', 'snippets', 'buffer'},
                 providers = {
