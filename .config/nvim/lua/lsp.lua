@@ -1,6 +1,3 @@
--- When using clangd_extensions, you don't need to set up clangd
-require('clangd_extensions').setup()
-
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
@@ -99,6 +96,7 @@ vim.lsp.enable('gopls')
 vim.lsp.enable('golangci_lint_ls')
 vim.lsp.enable('esbonio')
 vim.lsp.enable('fortls')
+vim.lsp.enable('clangd')
 
 -- -- Workaround for rust-analyzer bug
 -- -- https://github.com/neovim/neovim/issues/30985#issuecomment-2447329525
