@@ -1,11 +1,15 @@
 -- Keybindings
 local opts = {noremap = true, silent = true}
 
-function map(mode, lhs, rhs, options, desc)
-    if options ~= nil and desc ~= nil then
-        options["desc"] = desc
+local function map(mode, lhs, rhs, options, desc)
+    local new_opts = {}
+    if options then
+        new_opts = vim.tbl_extend("force", new_opts, options)
+        if desc then
+            new_opts["desc"] = desc
+        end
     end
-    vim.keymap.set(mode, lhs, rhs, options)
+    vim.keymap.set(mode, lhs, rhs, new_opts)
 end
 
 -- Disable ex mode
@@ -27,7 +31,7 @@ map('n', 'q:', '<nop>', opts)
 map('n', '<space>', '<nop>', opts, "leader")
 vim.g.mapleader = ' '
 
--- Buffer motion
+-- Buffer motion. Set in a function so that it can be reset upon leaving venn mode
 function set_n_JK()
     map('n', 'J', '30jzz', opts, "jump 30 lines down")
     map('n', 'K', '30kzz', opts, "jump 30 lines up")
@@ -75,8 +79,7 @@ map('n', '<M-/>', ':noh<CR>', opts, "Clear last search highlight")
 map('n', '<C-S-J>', '<cmd>cnext<CR>', opts, "Jump to next quickfix item")
 map('n', '<C-S-K>', '<cmd>cprev<CR>', opts, "Jump to previous quickfix item")
 
--- map('c', '<C-j>', '<C-n>', opts)
--- map('c', '<C-k>', '<C-p>', opts)
+-- Remap <C-j>/<C-k> to move through options in completion menus
 map('c', '<C-j>', function()
   return vim.fn.wildmenumode() > 0 and '<C-n>' or '<C-j>'
 end, { expr = true, noremap = true })
@@ -104,7 +107,6 @@ map('n', '<leader>v', function() vim.cmd('vsplit'); vim.lsp.buf.definition() end
 map('n', '<leader>s', function() vim.cmd('split'); vim.lsp.buf.definition() end, opts, "Go to definition (hsplit)")
 map('n', '<leader>E', vim.lsp.buf.declaration, opts, "Go to declaration")
 map('n', '<leader>o', vim.lsp.buf.type_definition, opts, "Go to type definition")
-map('n', '<leader>y', function() vim.cmd('TypescriptGoToSourceDefinition') end, opts, "Go to Typescript source definition")
 map('n', '<leader>i', vim.lsp.buf.hover, opts, "Show hover information")
 map('n', '<leader>n', vim.lsp.buf.rename, opts, "Rename symbol")
 map('n', '<leader>k', vim.diagnostic.goto_prev, opts, "Go to previous diagnostic")
@@ -136,14 +138,14 @@ map('n', '<leader>m', '<cmd>Outline<CR>', opts, "Toggle symbols outline")
 map('n', '<leader>z', '<cmd>NvimTreeToggle<CR>', opts, "Toggle file tree")
 
 -- Debugger
-map('n', '<F5>', '<cmd>lua require"dap".continue()<CR>', opts, "Continue/start debug session")
-map('n', '<F6>', '<cmd>lua require"dap".step_over()<CR>', opts, "Step over")
-map('n', '<F7>', '<cmd>lua require"dap".step_into()<CR>', opts, "Step into")
-map('n', '<F8>', '<cmd>lua require"dap".step_out()<CR>', opts, "Step out")
-map('n', '<F9>', '<cmd>lua require"dap".toggle_breakpoint()<CR>', opts, "Toggle breakpoint")
-map('n', '<F10>', '<cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>', opts, "Set conditional breakpoint")
-map('n', '<F11>', '<cmd>lua require"dap".repl.open()<CR>', opts, "Open debug REPL")
-map('n', '<F12>', '<cmd>lua require("dapui").toggle()<CR>=', opts, "Toggle DAP UI")
+map('n', '<F5>', function() require'dap'.continue() end, opts, "Continue/start debug session")
+map('n', '<F6>', function() require'dap'.step_over() end, opts, "Step over")
+map('n', '<F7>', function() require'dap'.step_into() end, opts, "Step into")
+map('n', '<F8>', function() require'dap'.step_out() end, opts, "Step out")
+map('n', '<F9>', function() require'dap'.toggle_breakpoint() end, opts, "Toggle breakpoint")
+map('n', '<F10>', function() require'dap'.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end, opts, "Set conditional breakpoint")
+map('n', '<F11>', function() require'dap'.repl.open() end, opts, "Open debug REPL")
+map('n', '<F12>', function() require("dapui").toggle() end, opts, "Toggle DAP UI")
 
 -- map('n', '<leader>dl', '<cmd>lua require"dap".repl.run_last()<CR>', opts)
 -- map('n', '<leader>dsbm', '<cmd>lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>', opts)
@@ -180,3 +182,7 @@ function toggle_venn()
 end
 -- toggle keymappings for venn using <leader>v
 map('n', '<leader>b', toggle_venn, opts, "Toggle venn diagram mode")
+
+-- AI
+map({'n', 'v'}, '<leader>tc', function() require('codecompanion').chat() end, opts, 'Open CodeCompanionChat')
+map({'n', 'v'}, '<leader>ti', function() require('codecompanion').inline() end, opts, 'Run CodeCompanion inline')

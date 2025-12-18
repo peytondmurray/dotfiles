@@ -364,27 +364,50 @@ require("lazy").setup({
     -- AI
     {
         "olimorris/codecompanion.nvim",
-        version = "v17.33.0",
+        version = "^v18.0.0",
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
         config = function()
-            require('codecompanion').setup({
-                strategies = {
-                    chat = {
-                        adapter = "openai",
+            require("codecompanion").setup({
+                adapters = {
+                    acp = {
+                        opts = {
+                            show_presets = false,
+                        },
+                        codex = function()
+                            return require("codecompanion.adapters").extend("codex", {
+                                defaults = {
+                                    auth_method = "chatgpt",
+                                },
+                            })
+                        end,
                     },
-                    inline = {
-                        adapter = "openai",
+                    http = {
+                        opts = {
+                            show_presets = false,
+                        },
                     },
-                    cmd = {
-                        adapter = "openai",
-                    }
-                }
-            })
-	end
-    },
+                },
 
+                -- HTTP adapters only for inline/cmd/background to explicitly disable copilot
+                interactions = {
+                  chat = {
+                    adapter = "codex",
+                  },
+                  inline = {
+                    adapter = "openai",
+                  },
+                  cmd = {
+                    adapter = "openai",
+                  },
+                  background = {
+                    adapter = "openai",
+                  },
+                },
+            })
+        end,
+    },
 })
 
 
