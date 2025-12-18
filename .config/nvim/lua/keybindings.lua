@@ -184,5 +184,5 @@ end
 map('n', '<leader>b', toggle_venn, opts, "Toggle venn diagram mode")
 
 -- AI
-map({'n', 'v'}, '<leader>tc', function() require('codecompanion').chat() end, opts, 'Open CodeCompanionChat')
-map({'n', 'v'}, '<leader>ti', function() require('codecompanion').inline() end, opts, 'Run CodeCompanion inline')
+map({'n', 'v'}, '<leader>tc', '<cmd>CodeCompanionChat<CR>', opts, 'Open CodeCompanionChat')
+map({'n', 'v'}, '<leader>ti', '<cmd>CodeCompanion<CR>', opts, 'Run CodeCompanion inline')
