@@ -58,6 +58,12 @@ require("lazy").setup({
         end
     },
 
+    "hat0uma/csvview.nvim",
+    {
+        "esmuellert/vscode-diff.nvim",
+        dependencies = { "MunifTanjim/nui.nvim" },
+        cmd = "CodeDiff",
+    },
     {
         'kylechui/nvim-surround',
         config = function()
@@ -184,6 +190,12 @@ require("lazy").setup({
     --     end
     -- }
 
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+    },
+
     'rktjmp/lush.nvim',
     {
         'echasnovski/mini.nvim',
@@ -199,7 +211,6 @@ require("lazy").setup({
                     textobject = '',
                 }
             })
-            require('mini.pairs').setup()
             require('mini.cursorword').setup()
             require('mini.hipatterns').setup({
                 highlighters = {
