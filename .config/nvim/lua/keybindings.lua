@@ -154,6 +154,10 @@ map('n', '<F12>', function() require("dapui").toggle() end, opts, "Toggle DAP UI
 map('n', '<leader>rr', '<cmd>DiffviewOpen<CR>', opts, "Open Diffview")
 map('n', '<leader>rl', '<cmd>0Gclog<CR>', opts, "Show file commit history")
 
+-- Git Link
+map('n', "<leader>ru", function() require("git-link.main").copy_line_url() end, opts, "Copy code link to clipboard")
+map('n', "<leader>ro", function() require("git-link.main").open_line_url() end, opts, "Open code link in browser")
+
 -- venn.nvim: enable or disable keymappings
 function toggle_venn()
     local venn_enabled = vim.inspect(vim.b.venn_enabled)

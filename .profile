@@ -10,5 +10,5 @@ export MOZ_ENABLE_WAYLAND=1
 export GTK_THEME=Adwaita:dark
 
 if [[ -z "${DISPLAY}" && $(tty) == "/dev/tty1" ]]; then
-    exec start-hyprland
+   exec start-hyprland
 fi

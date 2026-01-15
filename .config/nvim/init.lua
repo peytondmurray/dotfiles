@@ -419,6 +419,7 @@ require("lazy").setup({
             })
         end,
     },
+    "juacker/git-link.nvim",
 })
 
 
