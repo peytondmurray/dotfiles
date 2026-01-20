@@ -386,6 +386,13 @@ require("lazy").setup({
                         opts = {
                             show_presets = false,
                         },
+                        gemini_cli = function()
+                            return require("codecompanion.adapters").extend("gemini_cli", {
+                                defaults = {
+                                    auth_method = "oauth-personal",
+                                },
+                            })
+                        end,
                         codex = function()
                             return require("codecompanion.adapters").extend("codex", {
                                 defaults = {
@@ -403,18 +410,22 @@ require("lazy").setup({
 
                 -- HTTP adapters only for inline/cmd/background to explicitly disable copilot
                 interactions = {
-                  chat = {
-                    adapter = "codex",
-                  },
-                  inline = {
-                    adapter = "openai",
-                  },
-                  cmd = {
-                    adapter = "openai",
-                  },
-                  background = {
-                    adapter = "openai",
-                  },
+                    chat = {
+                        adapter = "gemini_cli",
+                        model = "gemini-3-pro-preview",
+                    },
+                    inline = {
+                        adapter = "gemini_cli",
+                        model = "gemini-3-pro-preview",
+                    },
+                    cmd = {
+                        adapter = "gemini_cli",
+                        model = "gemini-3-pro-preview",
+                    },
+                    background = {
+                        adapter = "gemini_cli",
+                        model = "gemini-3-pro-preview",
+                    },
                 },
             })
         end,
