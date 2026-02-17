@@ -13,11 +13,12 @@ end
 -- pylsp/ruff
 function get_python_lsp_command(...)
     local arg = {...}
-    if pixi_toml_exists("pixi.toml") or pixi_toml_exists("pixi.lock") then
-        return {'pixi', 'run', unpack(arg)}
-    else
-        return arg
-    end
+    -- if pixi_toml_exists("pixi.toml") or pixi_toml_exists("pixi.lock") then
+    --     return {'pixi', 'run', unpack(arg)}
+    -- else
+    --     return arg
+    -- end
+    return arg
 end
 
 vim.lsp.config('pylsp', {

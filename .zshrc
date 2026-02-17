@@ -145,24 +145,34 @@ pgdb() {
     fi
 
     if [ ! -e './.gdbinit' ]; then
-        echo "Writing .gdbinit..."
-
         if [[ $# == 0 ]]; then
             echo "Call this function with a local python script to debug."
             return 1
         fi
 
+        echo "Writing .gdbinit..."
         echo "directory $(pyenv prefix)/include/" >> .gdbinit
         echo "directory ~/Desktop/workspace/cpython/" >> .gdbinit
         echo "" >> .gdbinit
         echo "file $(pyenv which python)" >> .gdbinit
-        echo "run $(pwd)/$1" >> .gdbinit
+        echo "run" >> .gdbinit
 
         echo "Add 'directory <path-to-your-compiled-extension-source>' and any breakpoints you want to .gdbinit, then rerun pgdb."
         return 0
     fi
 
-    gdb
+    if
+
+    filename=$(basename -- "$1")
+    extension="${filename##*.}"
+
+    if [[ extension == ".py" ]]; then
+        gdb --args ${@:2}
+    elif [[ filename == "pytest" ]]; then
+        gdb --args -m ${@:2}
+    else
+        gdb
+    fi
 }
 
 autoload -U promptinit
