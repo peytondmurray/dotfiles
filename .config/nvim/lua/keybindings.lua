@@ -101,6 +101,8 @@ map("n", "<Leader>dor", function() doc({ annotation_convention = { python = 'reS
 map("n", "<Leader>dog", function() doc({ annotation_convention = { python = 'google_docstrings' }}) end, opts, "Generate Google docstring")
 map("n", "<Leader>don", function() doc({ annotation_convention = { python = 'numpydoc' }}) end, opts, "Generate Numpydoc docstring")
 
+map('n', '<leader>dd', function() vim.cmd('Doculus') end, opts)
+
 -- LSP
 map('n', '<leader>e', vim.lsp.buf.definition, opts, "Go to definition")
 map('n', '<leader>v', function() vim.cmd('vsplit'); vim.lsp.buf.definition() end, opts, "Go to definition (vsplit)")

@@ -96,7 +96,7 @@ git() {
 }
 
 cdc() {
-    cd "${HOME}/Desktop/workspace/codecrafters/$1" || return
+    cd "${HOME}/dev/codecrafters/$1" || return
 }
 
 cdl() {
@@ -104,7 +104,7 @@ cdl() {
 }
 
 cdd() {
-    cd "${HOME}/Desktop/workspace/$1" || return
+    cd "${HOME}/dev/$1" || return
 }
 
 cdv() {
@@ -120,7 +120,7 @@ cdsp() {
 }
 
 cds() {
-    cd "${HOME}/Desktop/workspace/sandbox/" || return
+    cd "${HOME}/dev/sandbox/" || return
 }
 
 pgdb() {
@@ -132,10 +132,10 @@ pgdb() {
 
     version=$($(pyenv which python) -V | awk '{print $2}')
 
-    if [ ! -d "$HOME/Desktop/workspace/cpython" ]; then
+    if [ ! -d "$HOME/dev/cpython" ]; then
         echo "Downloading cpython source..."
 
-        pushd ~/Desktop/workspace
+        pushd ~/dev
         gh repo clone python/cpython
         pushd cpython
         git fetch --tags
@@ -152,7 +152,7 @@ pgdb() {
 
         echo "Writing .gdbinit..."
         echo "directory $(pyenv prefix)/include/" >> .gdbinit
-        echo "directory ~/Desktop/workspace/cpython/" >> .gdbinit
+        echo "directory ~/dev/cpython/" >> .gdbinit
         echo "" >> .gdbinit
         echo "file $(pyenv which python)" >> .gdbinit
         echo "run" >> .gdbinit
@@ -236,6 +236,6 @@ export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
 
-# export PATH=$HOME/Desktop/workspace/araki/target/debug:$PATH
+# export PATH=$HOME/dev/araki/target/debug:$PATH
 # # Araki configuration
 # eval $(araki shell generate zsh)

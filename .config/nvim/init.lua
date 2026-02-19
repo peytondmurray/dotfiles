@@ -431,6 +431,14 @@ require("lazy").setup({
         end,
     },
     "juacker/git-link.nvim",
+
+    {
+        "doculus.nvim",
+        dir = "~/dev/doculus.nvim/",
+        config = function()
+            require("doculus").setup()
+        end,
+    },
 })
 
 

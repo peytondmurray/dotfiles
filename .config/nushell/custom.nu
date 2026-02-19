@@ -8,7 +8,7 @@ alias less = less -R
 alias tree = tree -C
 alias hx = helix
 alias playbell = paplay /usr/share/sounds/freedesktop/stereo/complete.oga
-alias cdd = cd ($env.HOME | path join Desktop/workspace )
+alias cdd = cd ($env.HOME | path join dev )
 alias "mamba activate" = conda activate
 alias "mamba deactivate" = conda deactivate
 

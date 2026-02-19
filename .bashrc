@@ -86,7 +86,7 @@ source /usr/share/fzf/fzf-extras.bash
 # source /usr/share/fzf/{key-bindings,completion}.bash
 
 cdd() {
-    cd "${HOME}/Desktop/workspace/$1" || return
+    cd "${HOME}/dev/$1" || return
 }
 
 cda() {
@@ -98,7 +98,7 @@ cdsp() {
 }
 
 cds() {
-    cd ~/Desktop/workspace/sandbox/ || return
+    cd ~/dev/sandbox/ || return
 }
 
 killsc() {
