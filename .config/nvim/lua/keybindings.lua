@@ -32,7 +32,7 @@ map('n', '<space>', '<nop>', opts, "leader")
 vim.g.mapleader = ' '
 
 -- Buffer motion. Set in a function so that it can be reset upon leaving venn mode
-function set_n_JK()
+local function set_n_JK()
     map('n', 'J', '30jzz', opts, "jump 30 lines down")
     map('n', 'K', '30kzz', opts, "jump 30 lines up")
 end
@@ -109,8 +109,8 @@ map('n', '<leader>E', vim.lsp.buf.declaration, opts, "Go to declaration")
 map('n', '<leader>o', vim.lsp.buf.type_definition, opts, "Go to type definition")
 map('n', '<leader>i', vim.lsp.buf.hover, opts, "Show hover information")
 map('n', '<leader>n', vim.lsp.buf.rename, opts, "Rename symbol")
-map('n', '<leader>k', vim.diagnostic.goto_prev, opts, "Go to previous diagnostic")
-map('n', '<leader>j', vim.diagnostic.goto_next, opts, "Go to next diagnostic")
+map('n', '<leader>k', function() vim.diagnostic.jump({count=-1, float=true}) end, opts, "Go to previous diagnostic")
+map('n', '<leader>j', function() vim.diagnostic.jump({count=1, float=true}) end, opts, "Go to next diagnostic")
 map('n', '<leader>h', vim.lsp.buf.code_action, opts, "Show code actions")
 map('n', '<leader>u', vim.lsp.buf.signature_help, opts, "Show signature help")
 map('n', '<leader>g', function() vim.cmd('ClangdSwitchSourceHeader') end, opts, "Switch source/header (Clangd)")
@@ -159,7 +159,7 @@ map('n', "<leader>ru", function() require("git-link.main").copy_line_url() end, 
 map('n', "<leader>ro", function() require("git-link.main").open_line_url() end, opts, "Open code link in browser")
 
 -- venn.nvim: enable or disable keymappings
-function toggle_venn()
+local function toggle_venn()
     local venn_enabled = vim.inspect(vim.b.venn_enabled)
     if venn_enabled == "nil" then
         vim.b.venn_enabled = true

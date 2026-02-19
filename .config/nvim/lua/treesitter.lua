@@ -10,6 +10,7 @@ require('nvim-treesitter.configs').setup {
             'njk'
         }
     },
+    ensure_installed = { 'html' },
     highlight = {
         enable = true,
     },
