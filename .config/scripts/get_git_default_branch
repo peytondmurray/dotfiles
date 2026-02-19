@@ -3,6 +3,12 @@
 # Check if there's a default branch name
 branch=$(command git rev-parse --abbrev-ref origin/HEAD 2>/dev/null)
 
+if [[ $? != 0 ]]; then
+    # The command failed; the user might need to fetch origin. Try again before failing.
+    git fetch origin
+    branch=$(command git rev-parse --abbrev-ref origin/HEAD 2>/dev/null)
+fi
+
 if [[ $? == 0 ]]; then
     # This is a git repo
 
