@@ -386,6 +386,13 @@ require("lazy").setup({
                         opts = {
                             show_presets = false,
                         },
+                        claude_code = function ()
+                            return require("codecompanion.adapters").extend("claude_code", {
+                                env = {
+                                    CLAUDE_CODE_OAUTH_TOKEN = "CLAUDE_CODE_OAUTH_TOKEN_NVIM"
+                                }
+                            })
+                        end,
                         gemini_cli = function()
                             return require("codecompanion.adapters").extend("gemini_cli", {
                                 defaults = {
@@ -411,20 +418,20 @@ require("lazy").setup({
                 -- HTTP adapters only for inline/cmd/background to explicitly disable copilot
                 interactions = {
                     chat = {
-                        adapter = "gemini_cli",
-                        model = "gemini-3-pro-preview",
+                        adapter = "claude_code",
+                        model = "claude-opus-4-6",
                     },
                     inline = {
-                        adapter = "gemini_cli",
-                        model = "gemini-3-pro-preview",
+                        adapter = "claude_code",
+                        model = "claude-opus-4-6",
                     },
                     cmd = {
-                        adapter = "gemini_cli",
-                        model = "gemini-3-pro-preview",
+                        adapter = "claude_code",
+                        model = "claude-opus-4-6",
                     },
                     background = {
-                        adapter = "gemini_cli",
-                        model = "gemini-3-pro-preview",
+                        adapter = "claude_code",
+                        model = "claude-opus-4-6",
                     },
                 },
             })
