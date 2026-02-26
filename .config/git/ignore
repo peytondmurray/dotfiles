@@ -3,3 +3,5 @@ compile_commands.json
 .python-version
 .envrc
 .gitattributes
+
+**/.claude/
