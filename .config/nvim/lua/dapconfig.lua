@@ -1,5 +1,101 @@
 local dap = require('dap')
 
+-- Setup the adapter
+dap.adapters["pwa-node"] = {
+    type = "server",
+    host = "localhost",
+    port = "${port}",
+    executable = {
+        command = "node",
+        args = { "/usr/lib/js-debug/dapDebugServer.js" , "${port}" },
+    },
+}
+
+-- Alias "node" to "pwa-node"
+dap.adapters["node"] = function(cb, config)
+    if config.type == "node" then
+        config.type = "pwa-node"
+    end
+    local a = dap.adapters["pwa-node"]
+    if type(a) == "function" then
+        a(cb, config)
+    else
+        cb(a)
+    end
+end
+
+-- Debug configurations for JS/TS
+local js_filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" }
+for _, ft in ipairs(js_filetypes) do
+    dap.configurations[ft] = {
+        -- Attach to running Node.js process
+        {
+            type = "pwa-node",
+            request = "attach",
+            name = "Attach to Node.js",
+            port = 9229,
+            address = "localhost",
+            localRoot = vim.fn.getcwd(),
+            remoteRoot = "/usr/src/app",
+            cwd = vim.fn.getcwd(),
+            sourceMaps = true,
+            protocol = "inspector",
+        },
+        -- Debug Mocha tests
+        {
+            type = "pwa-node",
+            request = "launch",
+            name = "Debug Mocha Tests",
+            program = "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            args = {
+                "--require",
+                "ts-node/register/transpile-only",
+                "--require",
+                "source-map-support/register",
+                "--reporter",
+                "spec",
+                "--colors",
+                "${workspaceFolder}/tests/unit/**/*.[tj]s",
+            },
+            cwd = vim.fn.getcwd(),
+            runtimeExecutable = "node",
+            internalConsoleOptions = "openOnSessionStart",
+            skipFiles = { "<node_internals>/**" },
+            sourceMaps = true,
+            protocol = "inspector",
+        },
+        -- Debug Jest tests
+        {
+            type = "pwa-node",
+            request = "launch",
+            name = "Debug Jest Tests",
+            program = "${workspaceFolder}/node_modules/jest/bin/jest.js",
+            args = { "--runInBand", "--no-cache", "${relativeFile}" },
+            cwd = "${workspaceFolder}",
+            runtimeExecutable = "node",
+            console = "integratedTerminal",
+            internalConsoleOptions = "neverOpen",
+            sourceMaps = true,
+            skipFiles = { "<node_internals>/**" },
+        },
+        -- Debug Vitest tests
+        {
+            type = "pwa-node",
+            request = "launch",
+            name = "Debug Vitest Tests",
+            program = "${workspaceFolder}/node_modules/vitest/vitest.mjs",
+            args = { "run", "${relativeFile}" },
+            cwd = "${workspaceFolder}",
+            runtimeExecutable = "node",
+            console = "integratedTerminal",
+            internalConsoleOptions = "neverOpen",
+            sourceMaps = true,
+            skipFiles = { "<node_internals>/**" },
+            autoAttachChildProcesses = true,
+        },
+    }
+end
+
 dap.adapters.codelldb = {
     type = 'executable',
     command = 'codelldb',
