@@ -109,6 +109,9 @@ vim.api.nvim_create_autocmd("BufEnter", { command = "setlocal tabstop=2 shiftwid
 vim.api.nvim_create_autocmd("BufEnter", { command = "set filetype=c", pattern = { "*.c.src", "*.h.src" } })
 vim.api.nvim_create_autocmd("BufEnter", { command = "set filetype=jinja.html", pattern = { "*.njk" } })
 
+-- Treat .lrp files as plain text instead of tarfiles
+vim.filetype.add({ extension = { lrp = "text" } })
+
 local json5_filetypes = {
     "tsconfig.json",
     "asv.conf.json"
