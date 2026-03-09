@@ -236,6 +236,10 @@ export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
 
-# export PATH=$HOME/dev/araki/target/debug:$PATH
-# # Araki configuration
-# eval $(araki shell generate zsh)
+# pnpm
+export PNPM_HOME="/home/pdmurray/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
