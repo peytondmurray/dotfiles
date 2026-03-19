@@ -286,6 +286,18 @@ require("lazy").setup({
                 },
                 ['<CR>'] = { 'accept', 'fallback_to_mappings' },
             },
+
+            cmdline = {
+                enabled = true,
+                keymap = {
+                    preset = 'enter',
+                    ['<C-k>'] = { 'select_prev', 'fallback_to_mappings' },
+                    ['<C-j>'] = { 'select_next', 'fallback_to_mappings' },
+                    ['<Tab>'] = { 'select_next', 'fallback_to_mappings' },
+                    ['<S-Tab>'] = { 'select_prev', 'fallback_to_mappings' },
+                },
+                completion = { menu = { auto_show = true } },
+            },
             completion = {
                 documentation = {
                     auto_show = true
@@ -295,7 +307,7 @@ require("lazy").setup({
                         preselect = false,
                         auto_insert = true,
                     }
-                }
+                },
             },
             sources = {
                 default = {'emoji', 'lazydev', 'lsp', 'path', 'snippets', 'buffer'},
