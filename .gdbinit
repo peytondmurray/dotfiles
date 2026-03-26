@@ -2395,3 +2395,16 @@ python import sys; sys.modules['readline'] = None
 # Local Variables:
 # mode: python
 # End:
+
+# Show the dashboard after changing or displaying stack frame
+define hookpost-up
+  dashboard
+end
+
+define hookpost-down
+  dashboard
+end
+
+define hookpost-frame
+  dashboard
+end

@@ -108,6 +108,26 @@ vim.lsp.config('lua_ls', {
     },
 })
 
+local function get_clangd_cmd()
+    local compile_commands_dir = nil
+    local result = vim.fn.systemlist('fd -t f -I -d 3 compile_commands.json')
+    if #result > 0 then
+        -- Get the directory containing compile_commands.json
+        compile_commands_dir = vim.fn.fnamemodify(result[1], ':h')
+    end
+
+    local cmd = { 'clangd' }
+    if compile_commands_dir then
+        table.insert(cmd, '--compile-commands-dir=' .. compile_commands_dir)
+    end
+    vim.notify(vim.inspect(cmd))
+    return cmd
+end
+vim.lsp.config('clangd', {
+    cmd = get_clangd_cmd(),
+    capabilities = capabilities
+})
+
 vim.lsp.enable('neocmake')
 vim.lsp.enable('pylsp')
 vim.lsp.enable('html')
