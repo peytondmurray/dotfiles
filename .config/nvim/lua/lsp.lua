@@ -120,7 +120,6 @@ local function get_clangd_cmd()
     if compile_commands_dir then
         table.insert(cmd, '--compile-commands-dir=' .. compile_commands_dir)
     end
-    vim.notify(vim.inspect(cmd))
     return cmd
 end
 vim.lsp.config('clangd', {
