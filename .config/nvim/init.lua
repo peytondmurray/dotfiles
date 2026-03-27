@@ -279,8 +279,7 @@ require("lazy").setup({
                 -- outside of the completion menu.
                 ['<Esc>'] = {
                     function(cmp)
-                        cmp.cancel()
-                        return nil
+                        cmp.hide()
                     end,
                     'fallback'
                 },
@@ -295,6 +294,18 @@ require("lazy").setup({
                     ['<C-j>'] = { 'select_next', 'fallback_to_mappings' },
                     ['<Tab>'] = { 'select_next', 'fallback_to_mappings' },
                     ['<S-Tab>'] = { 'select_prev', 'fallback_to_mappings' },
+                    ['<Esc>'] = {
+                        function(cmp)
+                            if cmp.is_visible() then
+                                cmp.hide()
+                                return true
+                            else
+                                -- Exit command mode without executing
+                                vim.api.nvim_feedkeys(vim.keycode('<C-c>'), 'n', false)
+                                return true
+                            end
+                        end
+                    },
                 },
                 completion = { menu = { auto_show = true } },
             },
