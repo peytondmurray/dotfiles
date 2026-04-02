@@ -368,15 +368,14 @@ require("lazy").setup({
 
     -- Tree-sitter
     {
+        'nvim-treesitter/nvim-treesitter',
+        lazy = false,
+        branch = 'main',
+        build = ':TSUpdate',
+    },
+    {
         'nvim-treesitter/nvim-treesitter-textobjects',
-        dependencies = {
-            {
-                'nvim-treesitter/nvim-treesitter',
-                build = ':TSUpdate',
-                event = { 'BufRead', 'BufNewFile', 'InsertEnter' }
-            },
-
-        },
+        branch = 'main',
     },
     'nvim-treesitter/nvim-treesitter-context',
     {
