@@ -103,9 +103,43 @@ require("lazy").setup({
         dependencies = {'kyazdani42/nvim-web-devicons'},
         config = function()
             require("nvim-tree").setup({
+                disable_netrw = true,
+                hijack_netrw = true,
+                open_on_tab = false,
+                hijack_cursor = false,
+                update_cwd = false,
+                diagnostics = {
+                    enable = true,
+                    icons = {
+                        hint = "",
+                        info = "",
+                        warning = "",
+                        error = "",
+                    }
+                },
+                update_focused_file = {
+                    enable = false,
+                    update_cwd = false,
+                    ignore_list = {}
+                },
                 filters = {
-                    custom = { "^\\.git$" }
-                }
+                    dotfiles = false,
+                    custom = {
+                        '^\\.git$',
+                        'node_modules',
+                        '.cache',
+                        '__pycache__',
+                        '.pytest_cache',
+                        '.mypy_cache',
+                        '.ipynb_checkpoints',
+                    }
+                },
+                view = {
+                    adaptive_size = true,
+                    width = 30,
+                    side = 'left',
+                },
+                sort_by = "extension",
             })
         end
     },
@@ -253,7 +287,10 @@ require("lazy").setup({
 
     -- Completion
     -- https://github.com/SmiteshP/nvim-navic
-    'neovim/nvim-lspconfig',
+    {
+        'neovim/nvim-lspconfig',
+        dir = "~/dev/nvim-lspconfig/",
+    },
     {
         'saghen/blink.cmp',
         dependencies = {
@@ -367,17 +404,6 @@ require("lazy").setup({
     'p00f/clangd_extensions.nvim',
 
     -- Tree-sitter
-    {
-        'nvim-treesitter/nvim-treesitter',
-        lazy = false,
-        branch = 'main',
-        build = ':TSUpdate',
-    },
-    {
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        branch = 'main',
-    },
-    'nvim-treesitter/nvim-treesitter-context',
     {
         "chrisgrieser/nvim-various-textobjs",
         config = function ()
@@ -524,5 +550,4 @@ require('telescope').load_extension('fzf')
 require('telescope').load_extension('live_grep_args')
 require('telescope').load_extension('emoji')
 require('styles')
-require('tree')
 require('lsp')
