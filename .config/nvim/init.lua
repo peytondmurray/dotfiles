@@ -157,6 +157,9 @@ require("lazy").setup({
         event = "VeryLazy",
     },
 
+    -- Override python indent behavior
+    "Vimjas/vim-python-pep8-indent",
+
     -- Symbols browser
     {
         "hedyhli/outline.nvim",
@@ -289,7 +292,7 @@ require("lazy").setup({
     -- https://github.com/SmiteshP/nvim-navic
     {
         'neovim/nvim-lspconfig',
-        dir = "~/dev/nvim-lspconfig/",
+	    branch = "master",
     },
     {
         'saghen/blink.cmp',
@@ -404,6 +407,10 @@ require("lazy").setup({
     'p00f/clangd_extensions.nvim',
 
     -- Tree-sitter
+    {
+        'https://github.com/arborist-ts/arborist.nvim',
+        config = function() require('arborist').setup() end,
+    },
     {
         "chrisgrieser/nvim-various-textobjs",
         config = function ()
