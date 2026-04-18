@@ -43,7 +43,7 @@ vim.lsp.config('pylsp', {
     }
 })
 vim.lsp.config('ruff', {
-    cmd = get_python_lsp_command('ruff', 'server')
+    cmd = get_python_lsp_command('ruff', 'server', '--preview')
 })
 vim.lsp.config('stylelint_lsp', {
     filetypes = { "css", "less", "scss", "sugarss", "wxss" }
