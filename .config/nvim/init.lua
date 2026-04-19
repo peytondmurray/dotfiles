@@ -157,9 +157,6 @@ require("lazy").setup({
         event = "VeryLazy",
     },
 
-    -- Override python indent behavior
-    "Vimjas/vim-python-pep8-indent",
-
     -- Symbols browser
     {
         "hedyhli/outline.nvim",
@@ -408,8 +405,10 @@ require("lazy").setup({
 
     -- Tree-sitter
     {
-        'https://github.com/arborist-ts/arborist.nvim',
-        config = function() require('arborist').setup() end,
+        'nvim-treesitter/nvim-treesitter',
+        lazy = false,
+        branch = 'main',
+        build = ':TSUpdate',
     },
     {
         "chrisgrieser/nvim-various-textobjs",
@@ -417,6 +416,11 @@ require("lazy").setup({
             require("various-textobjs").setup({ keymaps = { useDefaults = true }})
         end,
     },
+    {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        branch = 'main',
+    },
+    'nvim-treesitter/nvim-treesitter-context',
 
     -- Line diffs
     'AndrewRadev/linediff.vim',
