@@ -192,3 +192,33 @@ map('n', '<leader>b', toggle_venn, opts, "Toggle venn diagram mode")
 -- AI
 map({'n', 'v'}, '<leader>tc', '<cmd>CodeCompanionChat<CR>', opts, 'Open CodeCompanionChat')
 map({'n', 'v'}, '<leader>ti', '<cmd>CodeCompanion<CR>', opts, 'Run CodeCompanion inline')
+
+-- Treesitter movement
+-- You can use the capture groups defined in `textobjects.scm`
+map({ "n", "x", "o" }, "<M-j>", function()
+  require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
+end)
+map({ "n", "x", "o" }, "<M-J>", function()
+  require("nvim-treesitter-textobjects.move").goto_next_start("@class.outer", "textobjects")
+end)
+
+map({ "n", "x", "o" }, "<M-k>", function()
+  require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
+end)
+map({ "n", "x", "o" }, "<M-K>", function()
+  require("nvim-treesitter-textobjects.move").goto_previous_start("@class.outer", "textobjects")
+end)
+
+map({ "n", "x", "o" }, "<M-C-j>", function()
+  require("nvim-treesitter-textobjects.move").goto_next_end("@function.outer", "textobjects")
+end)
+map({ "n", "x", "o" }, "<M-C-J>", function()
+  require("nvim-treesitter-textobjects.move").goto_next_end("@class.outer", "textobjects")
+end)
+
+map({ "n", "x", "o" }, "<M-C-k>", function()
+  require("nvim-treesitter-textobjects.move").goto_previous_end("@function.outer", "textobjects")
+end)
+map({ "n", "x", "o" }, "<M-C-K>", function()
+  require("nvim-treesitter-textobjects.move").goto_previous_end("@class.outer", "textobjects")
+end)

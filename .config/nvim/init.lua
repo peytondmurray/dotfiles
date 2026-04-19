@@ -418,6 +418,16 @@ require("lazy").setup({
     },
     {
         'nvim-treesitter/nvim-treesitter-textobjects',
+        init = function()
+            vim.g.no_plugin_maps = true
+        end,
+        config = function()
+            require('nvim-treesitter-textobjects').setup({
+                move = {
+                    set_jumps = true
+                }
+            })
+        end,
         branch = 'main',
     },
     'nvim-treesitter/nvim-treesitter-context',
@@ -521,7 +531,6 @@ require("lazy").setup({
 require('options')
 require('statusline')
 require('keybindings')
-require('treesitter')
 require('dapconfig')
 require('telescope').setup{
     colorscheme = {
