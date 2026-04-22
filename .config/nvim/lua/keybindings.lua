@@ -195,30 +195,22 @@ map({'n', 'v'}, '<leader>ti', '<cmd>CodeCompanion<CR>', opts, 'Run CodeCompanion
 
 -- Treesitter movement
 -- You can use the capture groups defined in `textobjects.scm`
-map({ "n", "x", "o" }, "<M-j>", function()
-  require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
-end)
-map({ "n", "x", "o" }, "<M-J>", function()
-  require("nvim-treesitter-textobjects.move").goto_next_start("@class.outer", "textobjects")
-end)
+local tsmove = require("nvim-treesitter-textobjects.move")
+map({ "n", "x", "o" }, "<M-j>", function() tsmove.goto_next_start("@function.outer", "textobjects") end)
+map({ "n", "x", "o" }, "<M-J>", function() tsmove.goto_next_start("@class.outer", "textobjects") end)
 
-map({ "n", "x", "o" }, "<M-k>", function()
-  require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
-end)
-map({ "n", "x", "o" }, "<M-K>", function()
-  require("nvim-treesitter-textobjects.move").goto_previous_start("@class.outer", "textobjects")
-end)
+map({ "n", "x", "o" }, "<M-k>", function() tsmove.goto_previous_start("@function.outer", "textobjects") end)
+map({ "n", "x", "o" }, "<M-K>", function() tsmove.goto_previous_start("@class.outer", "textobjects") end)
 
-map({ "n", "x", "o" }, "<M-C-j>", function()
-  require("nvim-treesitter-textobjects.move").goto_next_end("@function.outer", "textobjects")
-end)
-map({ "n", "x", "o" }, "<M-C-J>", function()
-  require("nvim-treesitter-textobjects.move").goto_next_end("@class.outer", "textobjects")
-end)
+map({ "n", "x", "o" }, "<M-C-j>", function() tsmove.goto_next_end("@function.outer", "textobjects") end)
+map({ "n", "x", "o" }, "<M-C-J>", function() tsmove.goto_next_end("@class.outer", "textobjects") end)
 
-map({ "n", "x", "o" }, "<M-C-k>", function()
-  require("nvim-treesitter-textobjects.move").goto_previous_end("@function.outer", "textobjects")
-end)
-map({ "n", "x", "o" }, "<M-C-K>", function()
-  require("nvim-treesitter-textobjects.move").goto_previous_end("@class.outer", "textobjects")
-end)
+map({ "n", "x", "o" }, "<M-C-k>", function() tsmove.goto_previous_end("@function.outer", "textobjects") end)
+map({ "n", "x", "o" }, "<M-C-K>", function() tsmove.goto_previous_end("@class.outer", "textobjects") end)
+
+
+local tsselect = require("nvim-treesitter-textobjects.select")
+map({ "x", "o" }, "af", function() tsselect.select_textobject("@function.outer", "textobjects") end)
+map({ "x", "o" }, "if", function() tsselect.select_textobject("@function.inner", "textobjects") end)
+map({ "x", "o" }, "ac", function() tsselect.select_textobject("@class.outer", "textobjects") end)
+map({ "x", "o" }, "ic", function() tsselect.select_textobject("@class.inner", "textobjects") end)
