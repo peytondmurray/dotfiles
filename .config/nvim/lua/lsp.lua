@@ -128,7 +128,6 @@ vim.lsp.config('clangd', {
 })
 
 vim.lsp.enable('neocmake')
-vim.lsp.enable('pylsp')
 vim.lsp.enable('html')
 vim.lsp.enable('cssls')
 vim.lsp.enable('r_language_server')
