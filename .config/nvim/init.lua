@@ -34,6 +34,8 @@ require("lazy").setup({
     'kyazdani42/nvim-web-devicons',
     'junegunn/vim-easy-align',
 
+    'vimjas/vim-python-pep8-indent',
+
     {
         'luukvbaal/stabilize.nvim',
         config = function() require('stabilize').setup() end
