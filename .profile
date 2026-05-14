@@ -7,6 +7,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export XDG_SESSION_TYPE=wayland
 export MOZ_ENABLE_WAYLAND=1
 export WLR_NO_HARDWARE_CURSORS=1
+export BROWSER=zen-browser
 
 export GTK_THEME=Adwaita:dark
 
