@@ -493,19 +493,19 @@ require("lazy").setup({
                 interactions = {
                     chat = {
                         adapter = "claude_code",
-                        model = "claude-opus-4-7",
+                        model = "claude-opus-4-8",
                     },
                     inline = {
                         adapter = "claude_code",
-                        model = "claude-opus-4-7",
+                        model = "claude-opus-4-8",
                     },
                     cmd = {
                         adapter = "claude_code",
-                        model = "claude-opus-4-7",
+                        model = "claude-opus-4-8",
                     },
                     background = {
                         adapter = "claude_code",
-                        model = "claude-opus-4-7",
+                        model = "claude-opus-4-8",
                     },
                 },
             })
