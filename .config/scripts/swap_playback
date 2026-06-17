@@ -3,7 +3,7 @@
 INPUTS=$(pactl list sink-inputs short | grep -v '-' | awk '{print $1" "$2" "$3}')
 
 COMBINED_OUTPUT=$(pactl list sinks short | grep -i 'combined' | awk '{print $1}')
-HEADPHONE_OUTPUT=$(pactl list sinks short | grep -i 'speaker' | awk '{print $1}')
+HEADPHONE_OUTPUT=$(pactl list sinks short | grep -i 'Bose' | awk '{print $1}')
 
 echo "Combined output: $COMBINED_OUTPUT | Headphone output: $HEADPHONE_OUTPUT"
 echo "Moving outputs to $1"
