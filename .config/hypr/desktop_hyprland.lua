@@ -322,10 +322,10 @@ hl.bind(mainMod .. " + SHIFT + k", hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + j", hl.dsp.window.move({ direction = "down" }))
 
 -- Resize windows with mainMod + ALT + hjkl
-hl.bind(mainMod .. " + ALT + h", hl.dsp.window.resize({ x = -80, y = 0 }))
-hl.bind(mainMod .. " + ALT + j", hl.dsp.window.resize({ x = 0,   y = -80 }))
-hl.bind(mainMod .. " + ALT + k", hl.dsp.window.resize({ x = 0,   y = 80 }))
-hl.bind(mainMod .. " + ALT + l", hl.dsp.window.resize({ x = 80,  y = 0 }))
+hl.bind(mainMod .. " + ALT + h", hl.dsp.window.resize({ x = -80, y = 0, relative = true}))
+hl.bind(mainMod .. " + ALT + j", hl.dsp.window.resize({ x = 0,   y = -80, relative = true}))
+hl.bind(mainMod .. " + ALT + k", hl.dsp.window.resize({ x = 0,   y = 80, relative = true}))
+hl.bind(mainMod .. " + ALT + l", hl.dsp.window.resize({ x = 80,  y = 0, relative = true}))
 
 -- Handy transcription toggle
 hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd("handy --toggle-transcription"))
