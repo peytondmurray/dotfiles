@@ -237,4 +237,4 @@ dap.configurations.rust = {
 
 dap.configurations.c = dap.configurations.cpp
 
-require("dapui").setup()
+-- require("dapui").setup()

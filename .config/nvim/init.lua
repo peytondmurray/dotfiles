@@ -75,13 +75,14 @@ require("lazy").setup({
 
     -- DAP
     'mfussenegger/nvim-dap',
-    {
-        'rcarriga/nvim-dap-ui',
-        dependencies = {
-            'mfussenegger/nvim-dap',
-            'nvim-neotest/nvim-nio',
-        }
-    },
+    'igorlfs/nvim-dap-view',
+    -- {
+    --     'rcarriga/nvim-dap-ui',
+    --     dependencies = {
+    --         'mfussenegger/nvim-dap',
+    --         'nvim-neotest/nvim-nio',
+    --     }
+    -- },
     {
         'leoluz/nvim-dap-go',
         config = function()

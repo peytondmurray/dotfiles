@@ -147,7 +147,9 @@ map('n', '<F8>', function() require'dap'.step_out() end, opts, "Step out")
 map('n', '<F9>', function() require'dap'.toggle_breakpoint() end, opts, "Toggle breakpoint")
 map('n', '<F10>', function() require'dap'.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end, opts, "Set conditional breakpoint")
 map('n', '<F11>', function() require'dap'.repl.open() end, opts, "Open debug REPL")
-map('n', '<F12>', function() require("dapui").toggle() end, opts, "Toggle DAP UI")
+-- map('n', '<F12>', function() require("dapui").toggle() end, opts, "Toggle DAP UI")
+map('n', '<F12>', function() vim.cmd("DapViewToggle") end, opts, "Toggle DAP UI")
+
 
 -- map('n', '<leader>dl', '<cmd>lua require"dap".repl.run_last()<CR>', opts)
 -- map('n', '<leader>dsbm', '<cmd>lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>', opts)
