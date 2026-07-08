@@ -16,10 +16,15 @@
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output   = "HDMI-A-2",
-    mode     = "3840x2160@120",
+    output   = "eDP-1",
+    mode     = "2880x1800@90",
     position = "0x0",
     scale    = "1",
+})
+
+hl.monitor({
+    output = "DSI-1",
+    disabled = true,
 })
 
 
@@ -298,8 +303,12 @@ hl.bind(mainMod .. " + F9",  hl.dsp.exec_cmd("/home/pdmurray/.config/scripts/swa
 hl.bind(mainMod .. " + F10", hl.dsp.exec_cmd("/home/pdmurray/.config/scripts/swap_playback 'combined'"))
 
 -- Brightness
-hl.bind("XF86MonBrightnessUp",   hl.dsp.exec_cmd("light -A 5"), { repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("light -U 5"), { repeating = true })
+hl.bind("XF86MonBrightnessUp",   hl.dsp.exec_cmd("brightnessctl s +10%"), { repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 10%-"), { repeating = true })
+hl.bind("XF86AudioRaiseVolume",   hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true })
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
+
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace (silently) with mainMod + SHIFT + [0-9]
