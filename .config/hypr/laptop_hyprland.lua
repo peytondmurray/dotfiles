@@ -113,8 +113,8 @@ hl.config({
         gaps_out = 10,
         border_size = 3,
         col = {
-            active_border = "fcab03ff",
-            inactive_border = "33333366",
+            active_border = "#fcab03ff",
+            inactive_border = "#33333366",
         },
         layout = "dwindle",
 
