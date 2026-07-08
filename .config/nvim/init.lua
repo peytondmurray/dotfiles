@@ -230,7 +230,18 @@ require("lazy").setup({
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
-        config = true
+        config = function()
+            local npairs = require('nvim-autopairs')
+            npairs.setup()
+
+            -- Add codecompanion's filetype to the existing ``` rule
+            local Rule = require('nvim-autopairs.rule')
+            local cond = require('nvim-autopairs.conds')
+            npairs.add_rules({
+                Rule('```', '```', { 'codecompanion' })
+                    :with_pair(cond.not_before_char('`', 3)),
+            })
+        end,
     },
 
     'rktjmp/lush.nvim',
