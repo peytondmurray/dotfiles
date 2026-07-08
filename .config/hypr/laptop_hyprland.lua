@@ -253,10 +253,10 @@ hl.config({
         -- rate int he kernel. Make the mouse polling rate >1000Hz, using
         -- `modprobe usbhid mousepoll=1` or by setting it permanently via GRUB.
         -- Then also set the same rate in razergenie.
-        sensitivity = -0.4, -- -1.0 - 1.0, 0 means no modification.
+        sensitivity = 0.4, -- -1.0 - 1.0, 0 means no modification.
 
         touchpad = {
-            natural_scroll = false,
+            natural_scroll = true,
         },
     },
 })
