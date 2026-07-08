@@ -49,16 +49,16 @@ local terminal    = "kitty"
 -- end)
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd("pgrep -x waybar || waybar &")
-    hl.exec_cmd("pgrep -x udiskie || udiskie &")
-    hl.exec_cmd("pgrep -x clipman || wl-paste -t text --watch clipman store --no-persist &")
-    hl.exec_cmd("pgrep -x kdeconnectd || /usr/lib/kdeconnectd &")
-    hl.exec_cmd("pgrep -x kdeconnect-indicator || kdeconnect-indicator &")
-    hl.exec_cmd("pgrep -x mullvad-vpn || mullvad-vpn")
-    hl.exec_cmd("ssh-add ~/.ssh/id_ed25519")
-    hl.exec_cmd("pgrep -x blueman-applet || blueman-applet &")
-    hl.exec_cmd("swaybg -c '#000000'")
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+    hl.exec_cmd("ssh-add ~/.ssh/id_ed25519")
+    hl.exec_cmd("swaybg -c '#000000'")
+    hl.exec_cmd("sleep 2 && { pgrep -x waybar || waybar & }")
+    hl.exec_cmd("sleep 2 && { pgrep -x udiskie || udiskie & }")
+    hl.exec_cmd("sleep 2 && { pgrep -x clipman || wl-paste -t text --watch clipman store --no-persist & }")
+    hl.exec_cmd("sleep 2 && { pgrep -x kdeconnect-indicator || kdeconnect-indicator & }")
+    hl.exec_cmd("sleep 2 && { pgrep -x kdeconnectd || /usr/lib/kdeconnectd & }")
+    hl.exec_cmd("sleep 2 && { pgrep -x mullvad-vpn || mullvad-vpn & }")
+    hl.exec_cmd("sleep 2 && { pgrep -x blueman-applet || blueman-applet & }")
 end)
 
 
@@ -108,8 +108,8 @@ hl.config({
         gaps_out = 10,
         border_size = 3,
         col = {
-            active_border = "fcab03ff",
-            inactive_border = "33333366",
+            active_border = "#fcab03ff",
+            inactive_border = "#33333366",
         },
         layout = "dwindle",
 
@@ -291,9 +291,9 @@ hl.bind(mainMod .. " + P",              hl.dsp.exec_cmd("grimshot copy screen"))
 hl.bind(mainMod .. " + SHIFT + P",      hl.dsp.exec_cmd("grimshot copy area"))
 
 -- Volume and audio
-hl.bind(mainMod .. " + F8",  hl.dsp.exec_cmd("/home/pdmurray/.config/scripts/volume_change.sh +5%"),       { repeating = true })
-hl.bind(mainMod .. " + F7",  hl.dsp.exec_cmd("/home/pdmurray/.config/scripts/volume_change.sh -5%"),       { repeating = true })
 hl.bind(mainMod .. " + F6",  hl.dsp.exec_cmd("/home/pdmurray/.config/scripts/mute.sh"))
+hl.bind(mainMod .. " + F7",  hl.dsp.exec_cmd("/home/pdmurray/.config/scripts/volume_change.sh -5%"),       { repeating = true })
+hl.bind(mainMod .. " + F8",  hl.dsp.exec_cmd("/home/pdmurray/.config/scripts/volume_change.sh +5%"),       { repeating = true })
 hl.bind(mainMod .. " + F9",  hl.dsp.exec_cmd("/home/pdmurray/.config/scripts/swap_playback 'headphones'"))
 hl.bind(mainMod .. " + F10", hl.dsp.exec_cmd("/home/pdmurray/.config/scripts/swap_playback 'combined'"))
 
@@ -306,7 +306,7 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("light -U 5"), { repeating = tr
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
     hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i }))
-    hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i, silent = true }))
+    hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i, silent = true, follow = false }))
 end
 
 -- Move focus with mainMod + hjkl
@@ -337,8 +337,8 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Misc
 hl.bind(mainMod .. " + F4",  hl.dsp.exec_cmd("/home/pdmurray/.config/scripts/toggle_backlight"))
-hl.bind(mainMod .. " + F12", hl.dsp.exec_cmd("mullvad reconnect"))
 hl.bind(mainMod .. " + F11", hl.dsp.exec_cmd("/home/pdmurray/.config/scripts/mullvad_toggle"))
+hl.bind(mainMod .. " + F12", hl.dsp.exec_cmd("mullvad reconnect"))
 
 -- Sleep submap
 hl.bind(mainMod .. " + BackSpace", hl.dsp.submap("sleep"))
