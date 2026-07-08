@@ -10,6 +10,8 @@ export WLR_NO_HARDWARE_CURSORS=1
 export BROWSER=zen-browser
 
 export GTK_THEME=Adwaita:dark
+export PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium
+export PLAYWRIGHT_FIREFOX_EXECUTABLE_PATH=/usr/bin/firefox
 
 if [[ -z "${DISPLAY}" && $(tty) == "/dev/tty1" ]]; then
    exec start-hyprland
