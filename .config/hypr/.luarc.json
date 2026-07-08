@@ -1,0 +1,12 @@
+{
+  "workspace": {
+    "library": [
+      "/home/pdmurray/.config/hypr"
+    ]
+  },
+  "diagnostics": {
+    "globals": [
+      "hl"
+    ]
+  }
+}
