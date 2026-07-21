@@ -1,6 +1,3 @@
-# zmodload zsh/zprof
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 fpath=(/usr/share/zsh/site-functions/ $fpath)
 fpath=(~/.config/zsh-completions/ $fpath)
 
@@ -21,15 +18,9 @@ zstyle ':completion:*' file-list true
 alias eza='eza -laH --group-directories-first --sort=extension'
 alias ex='eza'
 alias ll='eza'
-alias du='du -h'
 alias df='df -h'
-alias ip='ip -c'
 alias sudo='sudo '
-alias paru='paru --devel --sudoloop'
-alias pacman='pacman'
 alias grep='grep --color=always'
-alias vectivate='source vectivate'
-alias kmon='kmon -u'
 alias rm='trashy put'
 alias rg='rg -S'
 alias less='less -R'
@@ -43,7 +34,6 @@ ssh-add -q
 
 export VISUAL=nvim
 export EDITOR=nvim
-export FONTCONFIG_PATH=/etc/fonts
 export TERM=xterm-kitty
 export DFT_DISPLAY='side-by-side-show-both'
 export LC_COLLATE="C" # Set hidden files on top
@@ -53,21 +43,19 @@ export NNN_OPTS="H"
 export NNN_PLUG="p:preview-tui"
 export SPLIT='v'
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export VOLTA_HOME="$HOME/.volta"
 
-
-export PATH="$HOME/.local/bin:$PATH"
-export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.config/scripts:$PATH
-export PATH=$HOME/.pixi/bin:$PATH
-export PATH=$HOME/bin:$PATH
-export PATH=$HOME/go/bin:$PATH
-export PATH=/opt/google-cloud-cli/bin/:$PATH
-export PATH=/usr/lib/emscripten:$PATH
-export PATH="$VOLTA_HOME/bin:$PATH"
+
+export PATH="$PATH:/Users/peyton/.local/bin"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+eval "$(pyenv init - zsh)"
+eval "$(pyenv virtualenv-init -)"
+
+# gcp-guard: default Prod GCP to read-only (added by eng-commons bootstrap.sh)
+eval "$(gcp-guard shell-init zsh)"
+
+. "$HOME/.atuin/bin/env"
 
 playbell() {
     paplay /usr/share/sounds/freedesktop/stereo/complete.oga
@@ -95,24 +83,8 @@ git() {
 	fi
 }
 
-cdc() {
-    cd "${HOME}/dev/codecrafters/$1" || return
-}
-
-cdl() {
-    cds && cd leetcode || return
-}
-
 cdd() {
     cd "${HOME}/dev/$1" || return
-}
-
-cdv() {
-    cdd && cd CV/ || return
-}
-
-cda() {
-    cd "${HOME}/Desktop/astro/$1" || return
 }
 
 cdsp() {
@@ -200,7 +172,6 @@ select-word-style bash
 eval "$(luarocks path)"
 eval "$(starship init zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
-eval "$(direnv hook zsh)"
 
 # case insensitive path-completion 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -208,38 +179,9 @@ zstyle ':completion:*' menu select=0
 
 bindkey '^I' complete-word
 
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/pdmurray/.zshrc'
-
-# fpath=(~/.config/zsh-completions $fpath)
-autoload -Uz compinit bashcompinit
-compinit
-bashcompinit
-
-# End of lines added by compinstall
-eval "$(pixi completion --shell zsh)"
-
-autoload -Uz /usr/share/zsh/site-functions/*(.:t)
-
-# Credit: https://github.com/rust-lang/rustup/blob/master/src/cli/self_update/env.sh
-case ":${PATH}:" in
-    *:"/home/pdmurray/.local/share/bob/nvim-bin":*)
-        ;;
-    *)
-        export PATH="/home/pdmurray/.local/share/bob/nvim-bin:$PATH"
-        ;;
-esac
-
 # Carapace completion
 export CARAPACE_MATCH="CASE_INSENSITIVE"
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
-
-# pnpm
-export PNPM_HOME="/home/pdmurray/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

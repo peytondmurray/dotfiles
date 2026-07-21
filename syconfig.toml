@@ -1,13 +1,4 @@
-platforms = ["laptop", "desktop"]
+platforms = ["mac"]
 
 [templates]
-".screenlayout/{}_default.sh" = ".screenlayout/default.sh"
-".config/i3/{}_config" = ".config/i3/config"
-".config/i3/{}_status.toml" = ".config/i3/status.toml"
-".config/sway/{}_config" = ".config/sway/config"
-".config/sway/{}_status.toml" = ".config/sway/status.toml"
 ".config/kitty/{}_kitty.conf" = ".config/kitty/kitty.conf"
-".config/waybar/{}_config" = ".config/waybar/config"
-".config/waybar/{}_style.css" = ".config/waybar/style.css"
-# ".config/hypr/{}_hyprland.conf" = ".config/hypr/hyprland.conf"
-".config/hypr/{}_hyprland.lua" = ".config/hypr/hyprland.lua"

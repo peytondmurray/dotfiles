@@ -1,5 +1,0 @@
-# ${UserConfigDir}/carapace/overlays/paru.yaml
-name: paru
-persistentFlags:
-  --devel=: Check development packages during sysupgrade
-completion:

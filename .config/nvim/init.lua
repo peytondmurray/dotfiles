@@ -12,21 +12,21 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    {
-      "m00qek/baleia.nvim",
-      version = "*",
-      config = function()
-        vim.g.baleia = require("baleia").setup({ })
-
-        -- Command to colorize the current buffer
-        vim.api.nvim_create_user_command("BaleiaColorize", function()
-          vim.g.baleia.once(vim.api.nvim_get_current_buf())
-        end, { bang = true })
-
-        -- Command to show logs
-        vim.api.nvim_create_user_command("BaleiaLogs", vim.g.baleia.logger.show, { bang = true })
-      end,
-    },
+    -- {
+    --   "m00qek/baleia.nvim",
+    --   version = "*",
+    --   config = function()
+    --     vim.g.baleia = require("baleia").setup({ })
+    --
+    --     -- Command to colorize the current buffer
+    --     vim.api.nvim_create_user_command("BaleiaColorize", function()
+    --       vim.g.baleia.once(vim.api.nvim_get_current_buf())
+    --     end, { bang = true })
+    --
+    --     -- Command to show logs
+    --     vim.api.nvim_create_user_command("BaleiaLogs", vim.g.baleia.logger.show, { bang = true })
+    --   end,
+    -- },
     {
         'nvim-lualine/lualine.nvim',
         dependencies = {'nvim-web-devicons'},
@@ -287,10 +287,6 @@ require("lazy").setup({
     'tpope/vim-fugitive',
 
     -- Telescope
-    {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
-    },
     'nvim-lua/plenary.nvim',
     {
         'nvim-telescope/telescope.nvim',
@@ -524,15 +520,6 @@ require("lazy").setup({
         end,
     },
     "juacker/git-link.nvim",
-
-    {
-        "doculus.nvim",
-        dir = "~/dev/doculus.nvim/",
-        config = function()
-            require("doculus").setup()
-        end,
-    },
-
     {
         't-troebst/perfanno.nvim',
         config = function()
@@ -580,7 +567,6 @@ require('telescope').setup{
         }
     }
 }
-require('telescope').load_extension('fzf')
 require('telescope').load_extension('live_grep_args')
 require('telescope').load_extension('emoji')
 require('styles')

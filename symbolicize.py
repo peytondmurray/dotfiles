@@ -6,7 +6,6 @@ import tomllib
 import re
 import pprint
 import textwrap
-from collections import defaultdict
 
 
 def load_config(path):
@@ -14,9 +13,9 @@ def load_config(path):
     with open(path, 'rb') as f:
         raw_config = tomllib.load(f)
 
-    configs = defaultdict(dict)
-
+    configs = {}
     for platform in raw_config['platforms']:
+        configs[platform] = {}
         for template, target in raw_config['templates'].items():
             configs[platform][template.format(platform)] = target
 

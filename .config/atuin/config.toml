@@ -28,7 +28,11 @@ update_check = false
 
 ## which search mode to use
 ## possible values: prefix, fulltext, fuzzy, skim
-search_mode = "skim"
+search_mode = "daemon-fuzzy"
+
+[daemon]
+enabled = true
+autostart = true
 
 ## which filter mode to use
 ## possible values: global, host, session, directory
