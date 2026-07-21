@@ -1,0 +1,31 @@
+#!/usr/bin/env sh
+
+# Automatic tiling (hyprland used dwindle; bsp is the closest yabai layout)
+yabai -m config layout bsp
+
+# Gaps / padding — matches hyprland gaps_in = gaps_out = 10
+yabai -m config window_gap 10
+yabai -m config top_padding 10
+yabai -m config bottom_padding 10
+yabai -m config left_padding 10
+yabai -m config right_padding 10
+
+# New windows open to the right/below the focused one
+# (hyprland dwindle preserve_split = true)
+yabai -m config window_placement second_child
+
+# Focus follows the cursor (hyprland focus_follows_mouse = 1)
+# autofocus = focus under cursor without raising (best for tiling)
+# autoraise = focus and raise the window under the cursor
+yabai -m config focus_follows_mouse autofocus
+
+# Float apps that don't tile well (fixed/capped window sizes)
+yabai -m rule --add app="^System Settings$" manage=off
+
+# --- Borders ---------------------------------------------------------------
+# yabai removed its built-in window borders in v6. To reproduce the hyprland
+# look (border_size = 3, active #fcab03, inactive #333333), install
+# JankyBorders:  brew install FelixKratz/formulae/borders
+# then uncomment the line below (run as a background process):
+#
+# borders active_color=0xfffcab03 inactive_color=0x66333333 width=3.0 &

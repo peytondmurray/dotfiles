@@ -44,7 +44,9 @@ export NNN_PLUG="p:preview-tui"
 export SPLIT='v'
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
+export PATH="/opt/homebrew/opt/trash/bin:$PATH"
 export PATH=$HOME/.config/scripts:$PATH
+alias rm="trash"
 
 export PATH="$PATH:/Users/peyton/.local/bin"
 export PYENV_ROOT="$HOME/.pyenv"
@@ -146,6 +148,9 @@ pgdb() {
         gdb
     fi
 }
+
+autoload -Uz compinit
+compinit
 
 autoload -U promptinit
 promptinit

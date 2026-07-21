@@ -1,0 +1,100 @@
+# ~/.config/skhd/skhdrc
+#
+# Window-management bindings mirroring the hyprland config from
+# github.com/peytondmurray/dotfiles.
+#
+# Main modifier is "alt" (the physical Option key). On a PC keyboard the
+# Super key sits in the same position, so Option here == SUPER on Linux.
+# This keeps normal macOS cmd-shortcuts (copy/paste/etc.) fully intact.
+#
+#   hyprland          ->  here
+#   SUPER             ->  alt          (Option)
+#   SUPER + SHIFT     ->  shift + alt
+#   SUPER + ALT       ->  cmd + alt
+
+
+# --- Launch ----------------------------------------------------------------
+# New kitty terminal                                     (SUPER + Return)
+# --single-instance opens a new OS window from the one running kitty instance
+# (a single dock icon), instead of `open -n` which spawns a whole new app.
+alt - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory ~
+
+
+# --- Session ---------------------------------------------------------------
+# Reload yabai + skhd                                    (SUPER + SHIFT + R)
+shift + alt - r : yabai --restart-service; skhd --reload
+
+
+# --- Window ops ------------------------------------------------------------
+# Toggle float                                           (SUPER + F)
+alt - f : yabai -m window --toggle float
+
+# Close focused window                                   (SUPER + W)
+alt - w : yabai -m window --close
+
+# Toggle fullscreen                                      (SUPER + M)
+alt - m : yabai -m window --toggle zoom-fullscreen
+
+
+# --- Focus:  alt + hjkl ---------------------------------  (SUPER + hjkl) --
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
+
+
+# --- Move / swap window:  alt + shift + hjkl -----  (SUPER + SHIFT + hjkl) -
+shift + alt - h : yabai -m window --swap west
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - l : yabai -m window --swap east
+
+
+# --- Resize:  cmd + alt + hjkl -------------------  (SUPER + ALT + hjkl) ---
+# l / k grow, h / j shrink — matching the hyprland resize directions.
+#
+# We pick the edge to move by querying for a neighbor FIRST, rather than
+# trying an edge and falling back on failure. yabai v7's `--resize` on a
+# window whose target edge is the screen border does not fail cleanly: it
+# sometimes exits 0 while nudging the wrong fence, so a plain `A || B` chain
+# alternates between the two commands on repeated presses and the window
+# appears to resize then revert. Choosing the edge deterministically avoids
+# relying on that unreliable exit status.
+#
+#   has east neighbor  -> move the shared right edge; else move own left edge
+#   has south neighbor -> move the shared bottom edge; else move own top edge
+cmd + alt - l : yabai -m query --windows --window east  && yabai -m window --resize right:80:0   || yabai -m window --resize left:-80:0
+cmd + alt - h : yabai -m query --windows --window east  && yabai -m window --resize right:-80:0  || yabai -m window --resize left:80:0
+cmd + alt - k : yabai -m query --windows --window south && yabai -m window --resize bottom:0:80  || yabai -m window --resize top:0:-80
+cmd + alt - j : yabai -m query --windows --window south && yabai -m window --resize bottom:0:-80 || yabai -m window --resize top:0:80
+
+
+# --- Screenshots (macOS screencapture, copied to clipboard) ----------------
+# Whole screen                                           (SUPER + P)
+alt - p : screencapture -c
+# Select area                                            (SUPER + SHIFT + P)
+shift + alt - p : screencapture -ic
+
+
+# --- Spaces / desktops -----------------------------------------------------
+# NOTE: yabai can't switch Spaces without its scripting addition, which needs
+# SIP partially disabled — NOT used on this machine. Instead these synthesize
+# macOS's native "Switch to Desktop N" shortcut (Ctrl + N).
+#
+# To make these work:
+#   1. Create the desktops in Mission Control (Ctrl + Up, then "+").
+#   2. System Settings > Keyboard > Keyboard Shortcuts > Mission Control:
+#      enable "Switch to Desktop 1..N" (they map to Ctrl + number).
+#
+# Moving a window to another Space also needs the scripting addition, so
+# there's no non-SIP equivalent — drag windows between Spaces manually.
+alt - 1 : skhd -k "ctrl - 1"
+alt - 2 : skhd -k "ctrl - 2"
+alt - 3 : skhd -k "ctrl - 3"
+alt - 4 : skhd -k "ctrl - 4"
+alt - 5 : skhd -k "ctrl - 5"
+alt - 6 : skhd -k "ctrl - 6"
+alt - 7 : skhd -k "ctrl - 7"
+alt - 8 : skhd -k "ctrl - 8"
+alt - 9 : skhd -k "ctrl - 9"
+alt - 0 : skhd -k "ctrl - 0"
