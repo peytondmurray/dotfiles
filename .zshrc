@@ -44,6 +44,9 @@ export NNN_PLUG="p:preview-tui"
 export SPLIT='v'
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
+export VOLTA_HOME=$HOME/.volta
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 export PATH="/opt/homebrew/opt/trash/bin:$PATH"
 export PATH=$HOME/.config/scripts:$PATH
 alias rm="trash"

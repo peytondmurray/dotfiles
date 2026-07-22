@@ -457,7 +457,7 @@ require("lazy").setup({
     -- AI
     {
         "olimorris/codecompanion.nvim",
-        version = "^v18.0.0",
+        version = "^v19.0.0",
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
