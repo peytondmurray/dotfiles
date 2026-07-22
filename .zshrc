@@ -43,10 +43,9 @@ export NNN_OPTS="H"
 export NNN_PLUG="p:preview-tui"
 export SPLIT='v'
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-
 export VOLTA_HOME=$HOME/.volta
-export PATH="$VOLTA_HOME/bin:$PATH"
 
+export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="/opt/homebrew/opt/trash/bin:$PATH"
 export PATH=$HOME/.config/scripts:$PATH
 alias rm="trash"
@@ -54,13 +53,19 @@ alias rm="trash"
 export PATH="$PATH:/Users/peyton/.local/bin"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-eval "$(pyenv virtualenv-init -)"
+if (( ! $+functions[pyenv] )); then
+    eval "$(pyenv init - zsh)"
+    eval "$(pyenv virtualenv-init -)"
+fi
 
 # gcp-guard: default Prod GCP to read-only (added by eng-commons bootstrap.sh)
 eval "$(gcp-guard shell-init zsh)"
 
 . "$HOME/.atuin/bin/env"
+
+# Needed because of how homebrew is...
+export LDFLAGS="-L/opt/homebrew/opt/libomp/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libomp/include"
 
 playbell() {
     paplay /usr/share/sounds/freedesktop/stereo/complete.oga
@@ -193,3 +198,5 @@ export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
