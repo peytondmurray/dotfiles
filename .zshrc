@@ -64,8 +64,12 @@ eval "$(gcp-guard shell-init zsh)"
 . "$HOME/.atuin/bin/env"
 
 # Needed because of how homebrew is...
-export LDFLAGS="-L/opt/homebrew/opt/libomp/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/libomp/include"
+export LDFLAGS="-L/opt/homebrew/opt/libomp/lib:$LDFLAGS"
+export CPPFLAGS="-I/opt/homebrew/opt/libomp/include:$CPPFLAGS"
+export PATH="/opt/homebrew/opt/imagemagick-full/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/imagemagick-full/lib:$LDFLAGS"
+export CPPFLAGS="-I/opt/homebrew/opt/imagemagick-full/include:$CPPFLAGS"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/imagemagick-full/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 playbell() {
     paplay /usr/share/sounds/freedesktop/stereo/complete.oga
